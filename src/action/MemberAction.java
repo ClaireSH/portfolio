@@ -6,25 +6,25 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.memberDAO;
+import dao.MemberDAO;
 import vo.Member;
 
-public class memberAction extends ActionSupport implements SessionAware{
+public class MemberAction extends ActionSupport implements SessionAware{
 	Member member;
 	String id;
 	String password;
 	boolean duplicated;
 	
-	memberDAO dao=new memberDAO();
+	MemberDAO dao=new MemberDAO();
 	Map<String, Object> session;
 	
 	@Override
-	public void setSession(Map<String, Object> arg0) {
+	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session=session;
 	}
 	
-	public String isnertMember(){
+	public String insertMember(){
 		dao.insertMember(member);
 		return SUCCESS;
 	}

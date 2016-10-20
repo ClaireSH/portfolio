@@ -5,10 +5,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import vo.Member;
 
-public class memberDAO {
+public class MemberDAO {
 	private SqlSessionFactory factory=MybatisConfig.getSqlSessionFactory();
 
-	public memberDAO(){
+	public MemberDAO(){
 		
 	}
 	
@@ -16,7 +16,7 @@ public class memberDAO {
 		System.out.println("memberDAO.insertMember");
 		SqlSession ss=factory.openSession();
 		try {
-			ss.insert("member.insertMember",member);
+			ss.insert("member.insertMember", member);
 			ss.commit();
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
@@ -31,7 +31,7 @@ public class memberDAO {
 		Member mem = null;
 		try {
 			ss = factory.openSession();
-			mem = ss.selectOne("memer.selectCustomer", id);
+			mem = ss.selectOne("member.selectMember", id);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

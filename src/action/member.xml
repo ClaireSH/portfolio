@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+	<!-- namespace 뒤에 붙음 --> 
+    <package name="member" namespace="/" extends="default">
+        <default-action-ref name="" />
+
+		<!-- 액션정의 -->
+		<action name="index">
+			<result>/index.html</result>
+		</action>
+		
+		<action name="joinForm">
+        	<result></result>
+        </action>
+		
+		<action name="loginForm">
+            <result>/pages/login.html</result>
+        </action>
+		
+		<action name="login" class="action.MemberAction" method="login">
+			<result name="login" type="redirect">index</result>
+			<result name="input" type="redirect">loginForm</result>
+		</action>
+	
+    </package>
+	
+
+
+
+</struts>
