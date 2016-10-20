@@ -29,7 +29,14 @@
 
 
 <body>
-	<div class="container" style="width: 1000px">
+	
+   	<script type="text/javascript" src="./../js/jquery-3.1.1.min.js"></script>
+	<div id="wrapper">
+		<script type="text/javascript" src="./../js/essential_2.js"></script>
+
+		<div id="myheader"></div>
+     <!-- Page Content -->
+	<div class="container" style="width: 70%">
 		<!-- 상단 메뉴 -->
 
 		<!-- Page Navigator -->
@@ -46,12 +53,8 @@
 				이력서 관리</span>
 		</div>
 
-		<!-- include tab_menu.html by html5 -->
-		<div w3-include-html="./../include/tab_menu.html"></div>
-		<script>
-         w3IncludeHTML();
-      </script>
-		<script type="text/javascript">
+	<!-- 나중에 essential2에 넣자 -->	
+	<script type="text/javascript">
       $(document).ready(function () {
       $('#tab01').removeClass();
       $('#tab02').addClass('active');
@@ -72,7 +75,7 @@
       });
       </script>
 		<!--  -->
-
+<div id="myheader2"></div>
 
 		<form id="resumeForm" method="post" enctype="multipart/form-data"
 			style="width: 100%;">
