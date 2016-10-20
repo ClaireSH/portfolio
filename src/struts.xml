@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!--요청에 대한   -->
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+	<!-- namespace 뒤에 붙음 --> 
+    <package name="default" namespace="/temp_portfolio" extends="struts-default">
+		<default-action-ref name=""/>
+    	
+    	<action name="index">
+    		<result>/index.jsp</result>
+    	</action>
+    	
+    	<action name="favoriteMemberPage">
+    		<result>/favoriteMemberPage.jsp</result>
+    	</action>
+    	
+    	<!-- 
+    	<action name="searchFavoriteMember">
+    		<result type="json"></result>
+    	</action>
+    	
+    	<action name="requestFavoriteMember">
+    		<result type="json"></result>
+    	</action>
+    	
+    	<action name="acceptFavoriteMember">
+    		<result type="json"></result>
+    	</action>
+    	
+    	<action name="rejectFavoriteMember">
+    		<result type="json"></result>
+    	</action>
+    	
+    	<action name="deleteFavoriteMember">
+    		<result type="json"></result>
+    	</action> 
+    	-->
+    </package>
+
+    <!-- Add packages here -->
+   	<include file="action\member.xml"/>
+    <include file="action\favoriteMember.xml"/>
+    
+    
+</struts>
