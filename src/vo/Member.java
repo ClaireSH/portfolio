@@ -1,23 +1,21 @@
-package src.portfolio.VO;
+package vo;
 
 public class Member {
-	String id;
+	String memberId;
 	String password;
 	String name;
 	String gender;
 	String birth;
 	String email;
 	String phone;
-	String resumeId;
-	
 	
 	public Member(){}
 	
-	public String getId() {
-		return id;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getPassword() {
 		return password;
@@ -56,21 +54,11 @@ public class Member {
 		this.phone = phone;
 	}
 
-	public String getResumeId() {
-		return resumeId;
-	}
-
-	public void setResumeId(String resumeId) {
-		this.resumeId = resumeId;
-	}
-
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", gender=" + gender + ", birth="
-				+ birth + ", email=" + email + ", phone=" + phone + ", resumeId=" + resumeId + "]";
+		return "Member [memberId=" + memberId + ", password=" + password + ", name=" + name + ", gender=" + gender
+				+ ", birth=" + birth + ", email=" + email + ", phone=" + phone + "]";
 	}
-	
-	
 
 	
 	
