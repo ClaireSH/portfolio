@@ -1,4 +1,4 @@
-package src.portfolio.VO;
+package vo;
 
 public class Resume {
 	String resumeId;		//pk

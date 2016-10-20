@@ -1,4 +1,4 @@
-package src.portfolio.VO;
+package vo;
 
 public class Member {
 	String id;
