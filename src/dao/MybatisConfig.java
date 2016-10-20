@@ -1,4 +1,4 @@
-package test.mybatis;
+package dao;
 
 import java.io.Reader;
 
