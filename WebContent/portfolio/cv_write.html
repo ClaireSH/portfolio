@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://sesoc.global/society_mypage/resumeManagement -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Soft Engineer Society</title>
+<!-- Latest compiled and minified CSS -->
+
+<!-- js -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- css -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<!-- 내부 -->
+<script type="text/javascript" src="./../include/js/resume_write_01.js"></script>
+<script type="text/javascript" src="./../include/js/resume_write_02.js"></script>
+<script type="text/javascript" src="./../include/js/w3data.js"></script>
+<link rel="stylesheet" href="./../include/css/resume_write.css">
+
+
+</head>
+
+
+
+<body>
+	<div class="container" style="width: 1000px">
+		<!-- 상단 메뉴 -->
+
+		<!-- Page Navigator -->
+		<ol class="breadcrumb path" style="background-color: white;">
+			<li><a href="../society/index" onclick="clickMenu('home')">Home</a></li>
+			<li class="active">이력서 관리</li>
+		</ol>
+		<!--  -->
+
+		<!-- Page Title -->
+		<div class="page-header" style="border-left: 5px solid #ff0000;">
+			<span
+				style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">기본
+				이력서 관리</span>
+		</div>
+
+		<!-- include tab_menu.html by html5 -->
+		<div w3-include-html="./../include/tab_menu.html"></div>
+		<script>
+         w3IncludeHTML();
+      </script>
+		<script type="text/javascript">
+      $(document).ready(function () {
+      $('#tab01').removeClass();
+      $('#tab03').addClass('active');
+      });
+      </script>
+		<!--  -->
+
+		<form id="resumeForm" method="post" enctype="multipart/form-data"
+			style="width: 100%;">
+			<input type="hidden" name="files" id="file1"> <input
+				type="hidden" name="files" id="file2"> <input type="hidden"
+				name="files" id="file3">
+
+			
+
+			<!-- 경력 -->
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<lngtag data-langnum="300">경력</lngtag>
+					</div>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered" id="careerTable"
+						style="table-layout: fixed; text-align: left;">
+						<tbody>
+							<tr>
+								<td data-langnum="301">입사</td>
+								<td data-langnum="302">퇴사</td>
+								<td colspan="2" data-langnum="303">회사명</td>
+								<td data-langnum="304">업종</td>
+								<td colspan="2" data-langnum="305">부서</td>
+								<td data-langnum="306">직위</td>
+							</tr>
+						</tbody>
+						<tbody></tbody>
+
+
+
+
+					</table>
+					<input type="button" class="btn btn-default"
+						onclick="careerRow(this)" value="+"> <input type="button"
+						class="btn btn-default" onclick="careerRow(this)" value="-">
+				</div>
+			</div>
+
+			<!-- 면허, 자격 -->
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<lngtag data-langnum="500">면허, 자격</lngtag>
+					</div>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered" id="licenseTable"
+						style="table-layout: fixed; text-align: left;">
+						<tbody>
+							<tr>
+								<td><b><lngtag data-langnum="501">년</lngtag></b></td>
+								<td><b><lngtag data-langnum="502">월</lngtag></b></td>
+								<td width="70%"><b><lngtag data-langnum="503">면허/자격</lngtag></b></td>
+								<td><b><lngtag data-langnum="504">비고</lngtag></b></td>
+							</tr>
+						</tbody>
+						<tbody></tbody>
+
+
+						<input type="hidden" class="license" name="resumeVO.license_seq"
+							value="15733">
+						<tbody>
+							<tr>
+								<td><input type="text" class="form-control" id="compJoin0"
+									name="resumeVO.license_year" value="" maxlength="4"
+									onkeyup="this.value=number_filter(this.value);"></td>
+								<td><input type="text" class="form-control" id="compLeave0"
+									name="resumeVO.license_month" value="" maxlength="2"
+									onkeyup="this.value=number_filter(this.value);"></td>
+								<td><input type="text" class="form-control" id="compName0"
+									name="resumeVO.license_name" value="" maxlength="40"></td>
+								<td><input type="text" class="form-control" id="industry0"
+									name="resumeVO.license_etc" value="" maxlength="50"></td>
+							</tr>
+
+
+
+						</tbody>
+					</table>
+					<input type="button" class="btn btn-default"
+						onclick="licenceRow(this)" value="+"> <input type="button"
+						class="btn btn-default" onclick="licenceRow(this)" value="-">
+				</div>
+			</div>
+
+			</tbody>
+			</table>
+			<input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input
+				type="hidden" id="ncd2" name="resumeVO.mbr_portfolio">
+	</div>
+	</div>
+	<input type="hidden" name="resumeVO.resume_seq" value="713">
+	</form>
+	<input type="hidden" id="sex" name="memberVo.sex" value="0">
+
+
+	<!--  onclick="return updateResume()" -->
+	<input type="button" id="admit" class="btn btn-default btn-info"
+		value="수정">
+	<input type="button" id="delete" class="btn btn-default" value="삭제"
+		onclick="deleteResume()">
+
+	</div>
+	<!-- end .container -->
+
+	<!-- Footer -->
+	<div class="footer"></div>
+
+</body>
+</html>

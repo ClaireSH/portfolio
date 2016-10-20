@@ -1,0 +1,77 @@
+/*  */
+
+/* +/- 버튼 */
+.btn-default { 
+	background-color: #dddddd;
+}
+
+body {
+	font-family: meiryo;
+}
+
+.panel panel-primary {
+	background-color: #dddddd;
+}
+
+.path {
+	float: right;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	font-size: 11px;
+}
+
+.copyright {
+	margin-top: 300px;
+}
+
+.textbox_custom {
+	border: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.textarea_custom {
+	border: 0;
+	width: 100%;
+}
+
+#btn_toggle {
+	width: 110px;
+	height: 40px;
+	margin-right: 5px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #ff0000;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 0;
+}
+#admit {
+	width: 110px;
+	height: 40px;
+	margin-right: 5px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #ff0000;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 0;
+}
+
+#delete {
+	width: 110px;
+	height: 40px;
+	margin-right: 5px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #ff0000;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 0;
+}
+.footer{
+	margin-bottom: 100px;
+}

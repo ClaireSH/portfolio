@@ -1,0 +1,192 @@
+body {
+	font-family: meiryo;
+}
+
+.path {
+	float: right;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	font-size: 11px;
+}
+
+#admit,#delete {
+	width: 250px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.copyright {
+	margin-top: 300px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	color: #000;
+}
+
+img {
+	border: 0;
+}
+
+body {
+	width: 100%;
+}
+
+#wrap {
+	width: 100%;
+	font-family: meiryo;
+}
+/* #companyLogin .step1{width:620px; margin:100px auto 0;} */
+#personLogin {
+	margin: 0 auto;
+}
+
+form {
+	width: 800px;
+	margin: 100px auto;
+	font-family: meiryo;
+	font-size: 13px;
+}
+
+fieldset {
+	border: 0;
+	font-size: 13px;
+}
+
+fieldset legend {
+	font-size: 25px;
+	font-weight: bold;
+	font-family: malgun gothic, sans-serif;
+	color: #00afef;
+	padding: 10px 0 20px 10px;
+}
+
+fieldset ul {
+	width: 800px;
+}
+
+fieldset label {
+	width: 150px;
+	display: inline-block;
+	padding-right: 25px;
+	text-align: right;
+	font-weight: bold;
+	color: #777;
+}
+
+fieldset input {
+	width: 260px;
+	height: 30px;
+	margin-bottom: 5px;
+	text-indent: 15px;
+	border-radius: 2px;
+	border: 1px solid #aaa;
+	color: #777;
+}
+
+#btn01 {
+	width: 80px;
+	height: 28px;
+	text-indent: 0px;
+	font-size: 11px;
+	font-weight: 600;
+	background-color: #fff;
+	color: #00afef;
+	border-radius: 5px;
+	border: 2px solid #00afef;
+	vertical-align: center;
+}
+
+fieldset #userpw0 {
+	margin-bottom: 30px;
+}
+
+fieldset #pwEnter {
+	margin-bottom: 30px;
+	border-bottom: 1px solid #ccc;
+}
+
+fieldset #gender {
+	width: 100%;
+	line-height: 30px;
+}
+
+#gender input {
+	width: 12px;
+	height: 12px;
+	margin: 0 5px 0 10px;
+	text-indent: 0px;
+	vertical-align: middle;
+}
+
+fieldset select {
+	width: 60px;
+	height: 24px;
+	margin-bottom: 7px;
+}
+
+fieldset select#useryear {
+	width: 90px;
+}
+
+#tel input {
+	width: 167px;
+}
+
+#master {
+	margin-bottom: 30px;
+}
+
+#master label {
+	font-weight: bold;
+}
+
+#master input {
+	width: 95px;
+	border-radius: 4px;
+	border: 2px solid #00afef;
+}
+
+#btnCenter {
+	width: 250px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#btnCenter input {
+	width: 110px;
+	height: 40px;
+	margin-right: 5px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #ff0000;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 0;
+}
+
+.danger {
+	color: red;
+	font-weight: normal;
+}
+
+#loginT .danger {
+	color: red;
+	font-weight: normal;
+	margin-left: 26%;
+}
+
+.must_text {
+	font-size: 12px;
+	color: #000;
+}
