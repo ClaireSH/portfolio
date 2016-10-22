@@ -25,7 +25,7 @@
     	
     	<global-results>
 	        <!-- 모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 리턴함) -->
-  			<result name="login" type="redirect">/customer/loginForm.action</result>
+  			<result name="login" type="redirect">/pages/main.action</result>
   		</global-results>
     	
     	<action name="main">
