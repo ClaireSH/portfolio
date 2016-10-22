@@ -3,14 +3,10 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
-<struts>
-
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="true" />
-
+<struts>   
 	<!-- namespace 뒤에 붙음 --> 
-    <package name="member" namespace="/" extends="default">
-        <default-action-ref name="" />
+    <package name="member" namespace="/member" extends="default">
+        
 
 		<!-- 액션정의 -->
 		<action name="index">
@@ -30,9 +26,34 @@
 			<result name="input" type="redirect">loginForm</result>
 		</action>
 	
-    </package>
+		<action name="favoriteMemberPage">
+    		<result>/favoriteMemberPage.jsp</result>
+    	</action>
+    	
+    	<action name="generalJoin">
+    		<result></result>
+    	</action>
+    	
+    	
+    	<action name="searchFavoriteMember">
+    		<result type="json"></result>
+    	</action>
+    	
+    	<action name="requestFavoriteMember">
+    		<result type="json"></result>
+    	</action>
+    	
+    	<action name="acceptFavoriteMember">
+    		<result type="json"></result>
+    	</action>
+    	
+    	<action name="rejectFavoriteMember">
+    		<result type="json"></result>
+    	</action>
+    	
+    	<action name="deleteFavoriteMember">
+    		<result type="json"></result>
+    	</action> 
 	
-
-
-
+    </package>
 </struts>
