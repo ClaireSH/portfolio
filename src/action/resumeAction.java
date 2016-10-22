@@ -13,13 +13,12 @@ import vo.Resume;
 public class resumeAction extends ActionSupport implements SessionAware{
 
 	private Resume resume;
-	private int resumeId;
+	private String resumeId;
 	
 	MemberDAO dao=new MemberDAO();
 	Map<String, Object> session;
 	
 	
-	@Override
 	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session=session;
