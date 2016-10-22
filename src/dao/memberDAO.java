@@ -6,10 +6,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import vo.Member;
 
-public class MemberDAO {
+public class memberDAO {
 	private SqlSessionFactory factory=MybatisConfig.getSqlSessionFactory();
 
-	public MemberDAO(){
+	public memberDAO(){
 		
 	}
 	
