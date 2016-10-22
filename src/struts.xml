@@ -9,39 +9,29 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="true" />
 
-	<!-- namespace 뒤에 붙음 --> 
+	
     <package name="default" namespace="/temp_portfolio" extends="struts-default">
-		<default-action-ref name=""/>
+    <interceptors>
+        	<!-- 로그인 인터셉터 정의 -->
+            <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor" />
+        	
+			 <interceptor-stack name="loginInterceptorStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="loginInterceptor" />
+			</interceptor-stack>
+						
+		</interceptors>
+		<default-action-ref name="main" />
     	
-    	<action name="index">
-    		<result>/index.jsp</result>
-    	</action>
+    	<global-results>
+	        <!-- 모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 리턴함) -->
+  			<result name="login" type="redirect">/customer/loginForm.action</result>
+  		</global-results>
     	
-    	<action name="favoriteMemberPage">
-    		<result>/favoriteMemberPage.jsp</result>
-    	</action>
+    	<action name="main">
+    		<result type="redirect">index.html</result>
+    	</action>   	
     	
-    	<!-- 
-    	<action name="searchFavoriteMember">
-    		<result type="json"></result>
-    	</action>
-    	
-    	<action name="requestFavoriteMember">
-    		<result type="json"></result>
-    	</action>
-    	
-    	<action name="acceptFavoriteMember">
-    		<result type="json"></result>
-    	</action>
-    	
-    	<action name="rejectFavoriteMember">
-    		<result type="json"></result>
-    	</action>
-    	
-    	<action name="deleteFavoriteMember">
-    		<result type="json"></result>
-    	</action> 
-    	-->
     </package>
 
     <!-- Add packages here -->
