@@ -21,8 +21,10 @@
  	<insert id="insertMember" parameterType="Member">
  		INSERT INTO Member(memberid, password, name, gender, birth, email, phone) 
  		VALUES(#{memberid}, #{password}, #{name}, 
- 		#{gender}, #{birth}, #{email}, #{phone})
+ 		#{gender}, #{birth}, #{email}, #{phone}) 		
  	</insert>
+ 	
+ 	
  	
  	<select id="selectMember" parameterType="String" resultMap="MemberResult">
  		SELECT * FROM MEMBER 

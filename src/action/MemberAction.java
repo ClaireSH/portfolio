@@ -18,7 +18,6 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	MemberDAO dao=new MemberDAO();
 	Map<String, Object> session;
 	
-	@Override
 	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session=session;
@@ -49,6 +48,19 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	
 	public String logout(){
 		session.clear();
+		return SUCCESS;
+	}
+	
+	public String updateCustomerForm() {
+		id = (String) session.get("loginId");
+		member = dao.selectMember(id);
+		return SUCCESS;
+	}
+
+	public String updateCustomer() {
+		id = (String) session.get("loginId");
+		member.setMemberId(id);
+		dao.updateCustomer(member);
 		return SUCCESS;
 	}
 }
