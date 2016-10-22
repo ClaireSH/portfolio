@@ -6,7 +6,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.MemberDAO;
+import dao.memberDAO;
 import vo.Member;
 import vo.Resume;
 
@@ -15,7 +15,7 @@ public class resumeAction extends ActionSupport implements SessionAware{
 	private Resume resume;
 	private String resumeId;
 	
-	MemberDAO dao=new MemberDAO();
+	memberDAO dao=new memberDAO();
 	Map<String, Object> session;
 	
 	
