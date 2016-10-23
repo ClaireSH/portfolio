@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resume">
+	<!-- 
+		본래 패키지를 포함한 타입의 클래스이름명을 사용하나
+		typeAlias에 등록된 Alias값을 사요할 수 도 있음
+	 -->
+	<resultMap type="Resume" id="ResumeResult">
+		<id property="resumeId" column="resumeid"/>
+		<result property = "memberId" column ="memberId"/>
+		<result property = "originalImgFile" column = "originalImgFile"/>
+		<result property = "savedImgFile" column = "savedImgFile" />
+		<result property = "prTitle" column = "prTitle" />
+		<result property = "prContent" column = "prContent" />
+ 	</resultMap>
+ 	
+ 	<insert id="insertResume" parameterType="String">
+ 		insert into RESUME(resumeId, memberId, originalImgFile, savedImgFile, prTitle, prContent)
+ 		values(RESUME_SEQ.nextval, #{memberVo.memberId}, null, null, null, null, null)
+ 	</insert>
+ 	
+</mapper>
+	
+	

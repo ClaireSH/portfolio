@@ -10,9 +10,15 @@ import dao.MemberDAO;
 import vo.Member;
 
 public class MemberAction extends ActionSupport implements SessionAware{
-	Member member;
+	Member memberVo;
 	String id;
 	String password;
+	
+	//membervo.birth에 들어갈 유저의 생년월일 정보  
+	String useryear;
+	String usermonth;
+	String userday;
+	
 	boolean duplicated;
 	
 	MemberDAO dao=new MemberDAO();
@@ -24,22 +30,22 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	}
 	
 	public String insertMember(){
-		dao.insertMember(member);
+		dao.insertMember(memberVo);
 		return SUCCESS;
 	}
 	
 	public String idCheck(){
-		member=dao.selectMember(id);
-		duplicated=member !=null;
+		memberVo=dao.selectMember(id);
+		duplicated=memberVo !=null;
 		return SUCCESS;
 	}
 	
 	public String login(){
-		member=dao.selectMember(id);
-		if(member==null){
+		memberVo=dao.selectMember(id);
+		if(memberVo==null){
 			return INPUT;
 		}
-		if(!password.equals(member.getPassword())){
+		if(!password.equals(memberVo.getPassword())){
 			return INPUT;	
 		}
 		session.put("loginId", id);
@@ -51,16 +57,30 @@ public class MemberAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 	
+	public String join(){
+		
+		memberVo.setBirth(useryear+"-"+usermonth+"-"+userday);
+		if(memberVo != null){
+			//회원가입 성공
+			dao.insertMember(memberVo);
+			return SUCCESS;
+		}else{
+			//회원가입 실패
+			return INPUT;
+		}
+		
+	}
+	
 	public String updateCustomerForm() {
 		id = (String) session.get("loginId");
-		member = dao.selectMember(id);
+		memberVo = dao.selectMember(id);
 		return SUCCESS;
 	}
 
 	public String updateCustomer() {
 		id = (String) session.get("loginId");
-		member.setMemberId(id);
-		dao.updateCustomer(member);
+		memberVo.setMemberId(id);
+		dao.updateCustomer(memberVo);
 		return SUCCESS;
 	}
 }

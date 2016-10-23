@@ -10,7 +10,7 @@
     <constant name="struts.devMode" value="true" />
 
 	
-    <package name="default" namespace="/temp_portfolio" extends="struts-default">
+    <package name="default" namespace="/portfolio" extends="struts-default">
     <interceptors>
         	<!-- 로그인 인터셉터 정의 -->
             <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor" />
@@ -27,20 +27,6 @@
 	        <!-- 모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 리턴함) -->
   			<result name="login" type="redirect">/pages/main.action</result>
   		</global-results>
-    	
-<<<<<<< HEAD
-    	<action name="login">
-    		<result name="login" type="redirect">index</result>
-    	</action>
-    	
-    	<action name="favoriteMemberPage">
-    		<result>/favoriteMemberPage.jsp</result>
-    	</action>
-=======
-    	<action name="main">
-    		<result type="redirect">index.html</result>
-    	</action>   	
->>>>>>> e0b026b240b9543be26625ff2eecbfac184df5ac
     	
     </package>
 
