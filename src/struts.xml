@@ -17,6 +17,10 @@
     		<result>/index.jsp</result>
     	</action>
     	
+    	<action name="login">
+    		<result name="login" type="redirect">index</result>
+    	</action>
+    	
     	<action name="favoriteMemberPage">
     		<result>/favoriteMemberPage.jsp</result>
     	</action>

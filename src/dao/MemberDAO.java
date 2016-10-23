@@ -12,6 +12,7 @@ public class MemberDAO {
 		
 	}
 	
+	
 	public void insertMember(Member member){
 		System.out.println("memberDAO.insertMember");
 		SqlSession ss=factory.openSession();
@@ -25,13 +26,13 @@ public class MemberDAO {
 		}
 	}
 	
-	public Member selectMember(String id) {
+	public Member selectMember(String memberId) {
 		System.out.println("memberDAO.selectMember");
 		SqlSession ss = null;
 		Member mem = null;
 		try {
 			ss = factory.openSession();
-			mem = ss.selectOne("member.selectMember", id);
+			mem = ss.selectOne("member.selectMember", memberId);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
