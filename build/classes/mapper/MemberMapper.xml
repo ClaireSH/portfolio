@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<!-- 
+		본래 패키지를 포함한 타입의 클래스이름명을 사용하나
+		typeAlias에 등록된 Alias값을 사요할 수 도 있음
+	 -->
+	<resultMap type="Member" id="MemberResult">
+		<id property="memberId" column="memberid"/>
+		<result property = "password" column ="password"/>
+		<result property = "name" column = "name"/>
+		<result property = "gender" column = "gender" />
+		<result property = "birth" column = "birth" />
+		<result property = "email" column = "email" />
+		<result property = "phone" column ="phone"/>
+ 	</resultMap>
+ 	
+ 	<insert id="insertMember" parameterType="Member">
+ 		INSERT INTO Member(memberid, password, name, gender, birth, email, phone) 
+ 		VALUES(#{memberid}, #{password}, #{name}, 
+ 		#{gender}, #{birth}, #{email}, #{phone}) 		
+ 	</insert>
+ 	
+ 	
+ 	
+ 	<select id="selectMember" parameterType="String" resultMap="MemberResult">
+ 		SELECT * FROM MEMBER 
+ 		WHERE memberid = #{memberid}
+ 	</select>
+ 	
+</mapper>
+	
+	

@@ -3,12 +3,13 @@ package dao;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+
 import vo.Member;
 
-public class MemberDAO {
+public class memberDAO {
 	private SqlSessionFactory factory=MybatisConfig.getSqlSessionFactory();
 
-	public MemberDAO(){
+	public memberDAO(){
 		
 	}
 	
@@ -19,6 +20,8 @@ public class MemberDAO {
 		try {
 			ss.insert("member.insertMember", member);
 			ss.commit();
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}		finally {
@@ -41,5 +44,23 @@ public class MemberDAO {
 			if (ss != null) ss.close();
 		}		
 		return mem;
+	}
+	
+	public int updateCustomer(Member member) {
+		SqlSession ss = null;
+		int result = 0;
+		
+		try {
+			ss = factory.openSession();
+			result = ss.update("member.selectMember", member);
+			ss.commit();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (ss != null) ss.close();
+		}
+		return result;
 	}
 }

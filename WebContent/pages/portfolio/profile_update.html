@@ -16,15 +16,21 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
 <!-- 내부참조 -->
-<script type="text/javascript" src="./../include/js/profile_modify.js"></script>
-<script type="text/javascript" src="./../include/js/w3data.js"></script>
-<link rel="stylesheet" href="./../include/css/profile_modify.css">
+<script type="text/javascript" src="./../../include/js/profile_modify.js"></script>
+<script type="text/javascript" src="./../../include/js/w3data.js"></script>
+<link rel="stylesheet" href="./../../include/css/profile_modify.css">
 
 
 <title>Soft Engineer Society</title>
 </head>
 <body>
-	<div class="container" style="width: 1000px; height: 1000px;">
+
+	<script type="text/javascript" src="./../../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="./../../js/essential_2.js"></script>
+	<!-- essential2에서 헤더호출 -->
+	<div id="myheader"></div>
+	<!-- Page Content -->
+	<div class="container" style="width: 80%; margin-left: 15%">
 		<!-- 상단 메뉴 -->
 
 		<!-- Page Navigator -->
@@ -43,12 +49,8 @@
 		</div>
 
 
-		<!-- include tab_menu.html by html5 -->
-		<div w3-include-html="./../include/tab_menu.html"></div>
-		<script>
-			w3IncludeHTML();
-		</script>
-		<!--  -->
+	<!-- essential2에서 탭메뉴호출 -->
+		<div id="myheader2"></div>
 
 		<form action="memberUpdate" name="form1"
 			onsubmit="return joinMember()" method="post"

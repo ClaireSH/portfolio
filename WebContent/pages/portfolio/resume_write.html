@@ -18,10 +18,12 @@
 <link rel="stylesheet"
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <!-- 내부 -->
-<script type="text/javascript" src="./../include/js/resume_write_01.js"></script>
-<script type="text/javascript" src="./../include/js/resume_write_02.js"></script>
-<script type="text/javascript" src="./../include/js/w3data.js"></script>
-<link rel="stylesheet" href="./../include/css/resume_write.css">
+<script type="text/javascript"
+	src="./../../include/js/resume_write_01.js"></script>
+<script type="text/javascript"
+	src="./../../include/js/resume_write_02.js"></script>
+<script type="text/javascript" src="./../../include/js/w3data.js"></script>
+<link rel="stylesheet" href="./../../include/css/resume_write.css">
 
 
 </head>
@@ -29,8 +31,15 @@
 
 
 <body>
-	<div class="container" style="width: 1000px">
+
+	<script type="text/javascript" src="./../../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="./../../js/essential_2.js"></script>
+	<!-- essential2에서 헤더호출 -->
+	<div id="myheader"></div>
+	<!-- Page Content -->
+	<div class="container" style="width: 80%; margin-left: 15%">
 		<!-- 상단 메뉴 -->
+
 
 		<!-- Page Navigator -->
 		<ol class="breadcrumb path" style="background-color: white;">
@@ -46,13 +55,11 @@
 				이력서 관리</span>
 		</div>
 
-		<!-- include tab_menu.html by html5 -->
-		<div w3-include-html="./../include/tab_menu.html"></div>
-		<script>
-         w3IncludeHTML();
-      </script>
-		<script type="text/javascript">
-      $(document).ready(function () {
+		<div id="myheader2"></div>
+		<!-- 나중에 essential2에 넣자 -->
+
+	  <script type="text/javascript">
+	  $(document).ready(function () {
       $('#tab01').removeClass();
       $('#tab02').addClass('active');
       
@@ -65,14 +72,10 @@
     		  $('input:text').removeAttr('readonly');
     		  toggle = true; 
     	  }
-    	  
-    	  
-    	  
       });
       });
       </script>
 		<!--  -->
-
 
 		<form id="resumeForm" method="post" enctype="multipart/form-data"
 			style="width: 100%;">
@@ -112,16 +115,12 @@
 									<div class="form-inline">
 										<input readonly="" type="text" class="form-control"
 											style="width: 25%;" maxlength="4" id="year"
-											name="memberVo.year" value="">
-										년
-										<input readonly="" type="text" class="form-control"
-											style="width: 25%;" maxlength="2" id="month"
-											name="memberVo.month" value="">
-										월
-										<input readonly="" type="text" class="form-control"
+											name="memberVo.year" value=""> 년 <input readonly=""
+											type="text" class="form-control" style="width: 25%;"
+											maxlength="2" id="month" name="memberVo.month" value="">
+										월 <input readonly="" type="text" class="form-control"
 											style="width: 25%;" maxlength="2" id="day"
-											name="memberVo.day" value="">
-										일
+											name="memberVo.day" value=""> 일
 									</div>
 								</td>
 							</tr>
@@ -157,9 +156,7 @@
 			<!-- 학력, 관련교육 이수 -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">
-						학력, 관련교육 이수
-					</div>
+					<div class="panel-title">학력, 관련교육 이수</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="eduTable"
@@ -167,7 +164,7 @@
 						<tbody>
 							<tr>
 								<td>입학</td>
-								<td >졸업</td>
+								<td>졸업</td>
 								<td colspan="2">학교</td>
 								<td colspan="2">전공</td>
 								<td>학위</td>
@@ -241,9 +238,7 @@
 			<!-- 경력 -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">
-						경력
-					</div>
+					<div class="panel-title">경력</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="careerTable"
@@ -273,9 +268,7 @@
 			<!-- 면허, 자격 -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">
-						면허, 자격
-					</div>
+					<div class="panel-title">면허, 자격</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="licenseTable"
@@ -320,9 +313,7 @@
 			<!-- 프로젝트 경력 -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">
-						프로젝트 경력
-					</div>
+					<div class="panel-title">프로젝트 경력</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered table-hove " id="projectTable"
@@ -372,20 +363,23 @@
 			</div>
 			</tbody>
 			</table>
+			<div style="text-align: center;">
+				<!--  onclick="return updateResume()" -->
+				<input type="button" id="admit" class="btn btn-default btn-info"
+					value="저장"> <input type="button" id="btn_toggle"
+					class="btn btn-default btn-info" value="수정토글"> <input
+					type="button" id="delete" class="btn btn-default" value="삭제"
+					onclick="deleteResume()">
+			</div>
 			<input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input
-				type="hidden" id="ncd2" name="resumeVO.mbr_portfolio">
+				type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input
+				type="hidden" name="resumeVO.resume_seq" value="713"> <input
+				type="hidden" id="sex" name="memberVo.sex" value="0">
 	</div>
 	</div>
-	<input type="hidden" name="resumeVO.resume_seq" value="713">
 	</form>
-	<input type="hidden" id="sex" name="memberVo.sex" value="0">
 
-	<div style="position:relative;margin:auto;margin-left:38%">
-		<!--  onclick="return updateResume()" -->
-		<input type="button" id="admit" class="btn btn-default btn-info" value="저장">
-		<input type="button" id="btn_toggle" class="btn btn-default btn-info" value="수정토글">
-		<input type="button" id="delete" class="btn btn-default" value="삭제" onclick="deleteResume()">
-	</div>
+
 	<!-- end .container -->
 
 	<!-- Footer -->
