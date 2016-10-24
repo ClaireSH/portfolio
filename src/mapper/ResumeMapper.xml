@@ -9,7 +9,7 @@
 		typeAlias에 등록된 Alias값을 사요할 수 도 있음
 	 -->
 	<resultMap type="Resume" id="ResumeResult">
-		<id property="resumeId" column="resumeid"/>
+		<id property="resumeId" column="resumeId"/>
 		<result property = "memberId" column ="memberId"/>
 		<result property = "originalImgFile" column = "originalImgFile"/>
 		<result property = "savedImgFile" column = "savedImgFile" />
@@ -19,7 +19,7 @@
  	
  	<insert id="insertResume" parameterType="String">
  		insert into RESUME(resumeId, memberId, originalImgFile, savedImgFile, prTitle, prContent)
- 		values(RESUME_SEQ.nextval, #{memberVo.memberId}, null, null, null, null, null)
+ 		values(RESUME_SEQ.nextval, #{memberId}, null, null, null, null)
  	</insert>
  	
 </mapper>

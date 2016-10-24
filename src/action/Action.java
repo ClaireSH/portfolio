@@ -23,21 +23,20 @@ public class Action extends ActionSupport implements SessionAware{
 	MemberDAO dao = new MemberDAO();
 	
 	public String login(){
-		System.out.println("==========================로그인");
-		memberVo=dao.selectMember(id);
+		System.out.println("==========================로그인  : " + memberVo.getMemberId());
 		
-		return SUCCESS; 
+		Member m = dao.selectMember(memberVo.getMemberId());
 		
-	/*	if(memberVo == null){
+		if(m == null){
 			return INPUT;
-		}else if(!password.equals(memberVo.getPassword())){
+		}else if(!(memberVo.getPassword()).equals(m.getPassword())){
 			return INPUT;
 		}else{
 			//로그인
-			System.out.println(memberVo.getName() + "  " + id + " Login!!");
-			session.put("loginId", id);
+			System.out.println(m.getName() + "  " + id + " Login!!");
+			session.put("loginId", memberVo.getMemberId());
 			return LOGIN;
-		}*/
+		}
 	}
 	
 	public String logout(){
