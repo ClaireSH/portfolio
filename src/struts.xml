@@ -10,7 +10,7 @@
     <constant name="struts.devMode" value="true" />
 
 	
-    <package name="default" namespace="/portfolio" extends="struts-default">
+    <package name="default" namespace="/" extends="struts-default">
     <interceptors>
         	<!-- 로그인 인터셉터 정의 -->
             <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor" />
@@ -21,13 +21,16 @@
 			</interceptor-stack>
 		</interceptors>
 		<default-action-ref name="main" />
-    	
+    	<!-- 
     	<global-results>
-	        <!-- 모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 리턴함) -->
-  			<result name="login" type="redirect">/pages/main.action</result>
+	        모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 리턴함)
+  			
   		</global-results>
+  		 -->
     	
-    	
+    	<action name="main" class="" method="">
+    		<result name="login" type="redirect">./pages/main.html</result>
+    	</action>
     	
 		<!-- 인덱스로 이동 -->
 		<action name="index">
