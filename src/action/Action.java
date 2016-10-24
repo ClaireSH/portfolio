@@ -23,9 +23,12 @@ public class Action extends ActionSupport implements SessionAware{
 	MemberDAO dao = new MemberDAO();
 	
 	public String login(){
+		System.out.println("==========================로그인");
 		memberVo=dao.selectMember(id);
 		
-		if(memberVo == null){
+		return SUCCESS; 
+		
+	/*	if(memberVo == null){
 			return INPUT;
 		}else if(!password.equals(memberVo.getPassword())){
 			return INPUT;
@@ -34,12 +37,25 @@ public class Action extends ActionSupport implements SessionAware{
 			System.out.println(memberVo.getName() + "  " + id + " Login!!");
 			session.put("loginId", id);
 			return LOGIN;
-		}
+		}*/
 	}
 	
 	public String logout(){
 		session.clear();
 		return SUCCESS;
+	}
+	
+	public String idCheck(){
+		
+		Member m = dao.selectMember(memberVo.getMemberId());
+		if(m != null){
+			//idCheck()
+			System.out.println(m.getMemberId() +" : ID 사용 가능");
+			return SUCCESS;
+		}else{
+			System.out.println(m.getMemberId() +" : 이미 존재 하는 ID입니다.");
+			return INPUT;
+		}
 	}
 	
 	public String join(){
@@ -55,6 +71,18 @@ public class Action extends ActionSupport implements SessionAware{
 			return INPUT;
 		}
 	}
+	
+	//init
+	public String updateMemberForm(){
+		//현재 로그인 ID를 불러 updateMemberForm에 값을 Init 
+		String loginId = (String)session.get("loginId");
+		memberVo = dao.selectMember(loginId);
+		return SUCCESS;
+	}
+	
+/*	public String updateMember(){
+		dao.updateMember(memberVo);
+	}*/
 
 	public Member getMemberVo() {
 		return memberVo;

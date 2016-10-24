@@ -31,6 +31,12 @@
  		WHERE memberid = #{memberid}
  	</select>
  	
+ 	<update id="updateMember" parameterType="Member">
+ 		UPDATE MEMBER
+ 		SET password = #{password},
+ 		
+ 	</update>
+ 	
 </mapper>
 	
 	
