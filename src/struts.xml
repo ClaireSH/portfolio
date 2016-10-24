@@ -19,7 +19,6 @@
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="loginInterceptor" />
 			</interceptor-stack>
-						
 		</interceptors>
 		<default-action-ref name="main" />
     	
