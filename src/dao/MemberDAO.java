@@ -45,13 +45,13 @@ public class MemberDAO {
 		return mem;
 	}
 	
-	public int updateCustomer(Member memberVo) {
+	public int updateMember(Member memberVo) {
 		SqlSession ss = null;
 		int result = 0;
 		
 		try {
 			ss = factory.openSession();
-			result = ss.update("member.selectMember", memberVo);
+			result = ss.update("member.updateMember", memberVo);
 			ss.commit();
 		}
 		catch (Exception e) {

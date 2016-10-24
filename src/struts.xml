@@ -11,18 +11,45 @@
 
 	
     <package name="default" namespace="/" extends="struts-default">
-
-
-
-	<!-- 로그인 (로그인/가입/탈퇴) -->    	
+    	<interceptors>
+        	<!-- 로그인 인터셉터 정의 -->
+            <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor" />
+        	
+			 <interceptor-stack name="loginInterceptorStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="loginInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-action-ref name="index" />
+    	<!-- 
+    	<global-results>
+	        모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 리턴함)
+  			
+  		</global-results>
+  		 -->
+    	
     	<action name="main" class="action.Action" method="login">
-    		<result name="success">/pages/main.html</result>
+    		<result name="success" type="redirect">/pages/main.html</result>
     	</action>
-	<!-- -->
-	
-	<!-- 글작성 -->
-
-	<!-- -->	
+    	
+		<!-- 인덱스로 이동 -->
+		<action name="index">
+			<result>/index.html</result>
+		</action>
+		
+		<!-- <action name="favoriteMemberPage">
+    		<result>/favoriteMemberPage.jsp</result>
+    	</action> -->
+    	
+    	<action name="join" class="action.Action" method="join">
+    		<!--회원가입 성공  -->
+    		<result name="success" type="redirect">main</result>
+    		<!--회원가입 실패  -->
+    		<result name="input" type="redirect">/index.action</result>
+    	</action>
+    	
+    	
+    	
     	
     </package>
 

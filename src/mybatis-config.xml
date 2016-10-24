@@ -6,13 +6,13 @@
 	<properties resource="db.properties" />
 	
 	<typeAliases>
-		<typeAlias type="portfolio.vo.AcademicBg" alias="AcademicBg"/>
-		<typeAlias type="portfolio.vo.Career" alias="Career"/>
-		<typeAlias type="portfolio.vo.Certificate" alias="Certificate"/>
-		<typeAlias type="portfolio.vo.FavoriteMember" alias="FavoriteMember"/>
-		<typeAlias type="portfolio.vo.FavoriteMember" alias="Member"/>
-		<typeAlias type="portfolio.vo.FavoriteMember" alias="ProjectCareer"/>
-		<typeAlias type="portfolio.vo.FavoriteMember" alias="Resume"/>
+		<typeAlias type="vo.AcademicBg" alias="AcademicBg"/>
+		<typeAlias type="vo.Career" alias="Career"/>
+		<typeAlias type="vo.Certificate" alias="Certificate"/>
+		<typeAlias type="vo.FavoriteMember" alias="FavoriteMember"/>
+		<typeAlias type="vo.Member" alias="Member"/>
+		<typeAlias type="vo.ProjectCareer" alias="ProjectCareer"/>
+		<typeAlias type="vo.Resume" alias="Resume"/>
 	</typeAliases>
 	
 	<!-- DB접속 정보 셋팅 -->
