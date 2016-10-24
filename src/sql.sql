@@ -9,7 +9,10 @@ create table member(
 	
 )
 
+select * from member natural join resume
+
 select * from member;
+select * from resume;
 insert into member values('lsh', '1234', '이수현', 'M', '1992-02-03', 'tooona@naver.com', '010-6486-7621', null);
 insert into member values('kdb', '1234', '김디비', 'F', '1989-02-03', 'kdb@naver.com', '010-6486-7621', null);
 insert into member values('jyp', '1234', '박진영', 'M', '1967-02-03', 'jyp@naver.com', '010-6486-7621', null);
@@ -30,11 +33,14 @@ create table resume(
 	resumeId		varchar2(20)	primary key,
 	memberId		varchar2(20),
 	constraint fk_resume_memberId foreign key(memberId) references member(memberId),
-	orginalImgFile	varchar2(200),
+	originalImgFile	varchar2(200),
 	savedImgFile	varchar2(50),
 	prTitle			varchar2(100),	
 	prContent		varchar2(1000)
 )
+
+alter table resume
+rename column orginalImgFile to originalImgFile; 
 
 create table academicBg(
 	academicBgId	varchar2(20)	primary key,

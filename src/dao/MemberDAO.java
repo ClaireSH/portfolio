@@ -19,17 +19,21 @@ public class MemberDAO {
 		SqlSession ss=factory.openSession();
 		try {
 			ss.insert("member.insertMember", memberVo);
-			ss.insert("resume.insertResume", memberVo.getMemberId());
+			System.out.println("member.insertMember==== SUCCESS");
+			ss.commit();
+			String memberId = memberVo.getMemberId();
+			ss.insert("resume.insertResume", memberId);
+			System.out.println("resume.insertResume==== SUCCESS");
 			ss.commit();
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
-		}		finally {
+		}  finally {
 			if (ss != null) ss.close();
 		}
 	}
 	
 	public Member selectMember(String memberId) {
-		System.out.println("memberDAO.selectMember");
+		System.out.println("memberDAO.selectMember :      "+memberId );
 		SqlSession ss = null;
 		Member mem = null;
 		try {
