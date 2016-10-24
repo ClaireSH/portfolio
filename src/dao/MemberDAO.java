@@ -6,21 +6,21 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import vo.Member;
 
-public class memberDAO {
+public class MemberDAO {
 	private SqlSessionFactory factory=MybatisConfig.getSqlSessionFactory();
 
-	public memberDAO(){
+	public MemberDAO(){
 		
 	}
 	
-	public void insertMember(Member member){
+	
+	public void insertMember(Member memberVo){
 		System.out.println("memberDAO.insertMember");
 		SqlSession ss=factory.openSession();
 		try {
-			ss.insert("member.insertMember", member);
+			ss.insert("member.insertMember", memberVo);
+			ss.insert("resume.insertResume", memberVo.getMemberId());
 			ss.commit();
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}		finally {
@@ -28,13 +28,13 @@ public class memberDAO {
 		}
 	}
 	
-	public Member selectMember(String id) {
+	public Member selectMember(String memberId) {
 		System.out.println("memberDAO.selectMember");
 		SqlSession ss = null;
 		Member mem = null;
 		try {
 			ss = factory.openSession();
-			mem = ss.selectOne("member.selectMember", id);
+			mem = ss.selectOne("member.selectMember", memberId);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -45,13 +45,13 @@ public class memberDAO {
 		return mem;
 	}
 	
-	public int updateCustomer(Member member) {
+	public int updateCustomer(Member memberVo) {
 		SqlSession ss = null;
 		int result = 0;
 		
 		try {
 			ss = factory.openSession();
-			result = ss.update("member.selectMember", member);
+			result = ss.update("member.selectMember", memberVo);
 			ss.commit();
 		}
 		catch (Exception e) {

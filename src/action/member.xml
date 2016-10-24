@@ -4,6 +4,9 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>   
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
 	<!-- namespace 뒤에 붙음 --> 
     <package name="member" namespace="/member" extends="default">
         
@@ -32,8 +35,11 @@
     		<result>/favoriteMemberPage.jsp</result>
     	</action>
     	
-    	<action name="generalJoin">
-    		<result></result>
+    	<action name="generalJoin" class="action.MemberAction" method="join">
+    		<!--회원가입 성공  -->
+    		<result name="success" type="redirect">main.html</result>
+    		<!--회원가입 실패  -->
+    		<result name="input" type="redirect">index.action</result>
     	</action>
     	
     	
