@@ -7,10 +7,9 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.MemberDAO;
-import vo.Member;
 
 public class Action extends ActionSupport implements SessionAware{
-	Member memberVo;
+//	Member memberVo;
 	String id;
 	String password;
 	
@@ -18,12 +17,50 @@ public class Action extends ActionSupport implements SessionAware{
 	String usermonth;
 	String userday;
 	
-	Map<String, Object> session;
+	//test
+	String email;
+	String remember;
 	
-	MemberDAO dao = new MemberDAO();
+	
+	
+//	Map<String, Object> session;
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(
+			String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(
+			String email) {
+		this.email = email;
+	}
+
+	public String getRemember() {
+		return remember;
+	}
+
+	public void setRemember(
+			String remember) {
+		this.remember = remember;
+	}
+
+//	MemberDAO dao = new MemberDAO();
 	
 	public String login(){
-		memberVo=dao.selectMember(id);
+	
+		System.out .println("123============");
+		return SUCCESS;
+		
+		/*
+		 * memberVo=dao.selectMember(id);
 		
 		if(memberVo == null){
 			return INPUT;
@@ -34,10 +71,16 @@ public class Action extends ActionSupport implements SessionAware{
 			System.out.println(memberVo.getName() + "  " + id + " Login!!");
 			session.put("loginId", id);
 			return LOGIN;
-		}
+		}*/
+	}
+
+	public void setSession(
+			Map arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	public String logout(){
+	/*public String logout(){
 		session.clear();
 		return SUCCESS;
 	}
@@ -107,6 +150,6 @@ public class Action extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-	
+*/	
 	
 }

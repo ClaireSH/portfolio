@@ -405,7 +405,7 @@
 					</h2>
 
 
-					<form name="login" role="form" onsubmit="">
+					<form action="main.action" method="post" name="login"  role="form" >
 						<fieldset>
 							<div class="form-group">
 								<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
@@ -414,11 +414,12 @@
 								<input class="form-control" placeholder="Password" name="password" type="password" value="">
 							</div>
 							<div class="checkbox">
-								<label> <input name="remember" type="checkbox" value="Remember Me">저장w
+								<label> <input name="remember" type="checkbox" value="Remember Me">저장
 								</label>
 							</div>
 							<!-- Change this to a button or input when using this as a form -->
-							<a href="#joinModal" data-toggle="modal" class="btn btn-lg btn-success btn-block" data-dismiss="modal">회원가입</a> <a href="./pages/main.html" onclick="javascript:login.submit();" class="btn btn-lg btn-success btn-block">로그인</a>
+							<a href="#joinModal" data-toggle="modal" class="btn btn-lg btn-success btn-block" data-dismiss="modal">회원가입</a> 
+							<a href="#" onclick="javascript:login.submit();" class="btn btn-lg btn-success btn-block">로그인</a>
 						</fieldset>
 					</form>
 

@@ -11,79 +11,18 @@
 
 	
     <package name="default" namespace="/" extends="struts-default">
-    <interceptors>
-        	<!-- 로그인 인터셉터 정의 -->
-            <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor" />
-        	
-			 <interceptor-stack name="loginInterceptorStack">
-				<interceptor-ref name="defaultStack" />
-				<interceptor-ref name="loginInterceptor" />
-			</interceptor-stack>
-		</interceptors>
-		<default-action-ref name="main" />
-    	<!-- 
-    	<global-results>
-	        모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 리턴함)
-  			
-  		</global-results>
-  		 -->
-    	
-    	<action name="main" class="" method="">
-    		<result name="login" type="redirect">./pages/main.html</result>
+
+
+
+	<!-- 로그인 (로그인/가입/탈퇴) -->    	
+    	<action name="main" class="action.Action" method="login">
+    		<result name="success">/pages/main.html</result>
     	</action>
-    	
-		<!-- 인덱스로 이동 -->
-		<action name="index">
-			<result type="redirect">/index.html</result>
-		</action>
-		
-		<!-- 고객 가입 처리 -->
-        <action name="insertMember" class="action.memberAction" method="insertMember">
-			<result type="chain">login</result>
-        	<result name="input">index.action</result>
-        </action>
-		
-		<action name="login" class="action.memberAction" method="login">
-			<result name="success" type="redirect">main.html</result>
-			<result name="input" type="redirect">loginForm</result> 
-			<!-- 여기 어떻게 함?
-			
-			
-			 -->
-		</action>
+	<!-- -->
 	
-		<action name="favoriteMemberPage">
-    		<result>/favoriteMemberPage.jsp</result>
-    	</action>
-    	
-    	<action name="join" class="action.MemberAction" method="join">
-    		<!--회원가입 성공  -->
-    		<result name="success" type="redirect">index.action</result>
-    		<!--회원가입 실패  -->
-    		<result name="input" type="redirect">index.action</result>
-    	</action>
-    	
-    	
-    	<action name="searchFavoriteMember">
-    		<result type="json"></result>
-    	</action>
-    	
-    	<action name="requestFavoriteMember">
-    		<result type="json"></result>
-    	</action>
-    	
-    	<action name="acceptFavoriteMember">
-    		<result type="json"></result>
-    	</action>
-    	
-    	<action name="rejectFavoriteMember">
-    		<result type="json"></result>
-    	</action>
-    	
-    	<action name="deleteFavoriteMember">
-    		<result type="json"></result>
-    	</action> 
-    	
+	<!-- 글작성 -->
+
+	<!-- -->	
     	
     </package>
 
