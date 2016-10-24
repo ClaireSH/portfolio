@@ -11,8 +11,6 @@ document.write('<script type="text/javascript" src="./../../include/js/w3data.js
 document.write('<script type="text/javascript" src="./../../js/jquery-3.1.1.min.js"></script>');
 
 document.write('<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">');
-document.write('<script type="text/javascript" src="./../../include/js/resume_write_01.js"></script>');
-document.write('<script type="text/javascript" src="./../../include/js/resume_write_02.js"></script>');
 document.write('<script type="text/javascript" src="./../../include/js/w3data.js"></script>');
 document.write('<link rel="stylesheet" href="./../../include/css/resume_write.css">');
 
