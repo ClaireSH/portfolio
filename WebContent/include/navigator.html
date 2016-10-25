@@ -7,7 +7,7 @@
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.html">Cover Me :: 엔진v1.0</a>
+		<a class="navbar-brand" href="index.html">Cover Me :: 엔진v0.55</a>
 	</div>
 	<!-- /.navbar-header -->
 
@@ -55,7 +55,7 @@
 							</div>
 						</div>
 				</a></li>
-				
+
 				<li class="divider"></li>
 				<li><a class="text-center" href="#"> <strong>전체 완성률 보기</strong> <i class="fa fa-angle-right"></i>
 				</a></li>
@@ -111,23 +111,28 @@
 					</div> <!-- /input-group -->
 				</li>
 				<li><a href="/portfolio/pages/main.html"><i class="fa fa-dashboard fa-fw"></i> 한눈보기</a></li>
-				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 분석<span class="fa arrow"></span></a>
+				
+
+				<li><a href="#"><i class="fa fa-comments fa-fw"></i> 질문답변<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="/portfolio/pages/flot.html">분석차트1</a></li>
-						<li><a href="/portfolio/pages/morris.html">분석차트2</a></li>
+						<li><a href="/portfolio/pages/tables.html"><i class="fa  fa-table fa-fw"></i> 질문편집</a></li>
+						<li><a href="#qnaModal" data-toggle="modal" data-dismiss="modal"><i class="fa fa-edit fa-fw"></i> 답변하기</a></li>
 					</ul> <!-- /.nav-second-level --></li>
-				<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i> 질문답변</a></li>
+
+
 
 				<li><a href="#"><i class="fa fa-files-o fa-fw"></i> 포트폴리오<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="/portfolio/pages/tables.html"><i class="fa  fa-search-plus fa-fw"></i> 테이블 (이거뭐로쓸까?)</a></li>
-						<li><a href="goUpdateMemberForm"><i class="fa fa-user fa-fw"></i> 프로필커버</a></li>
+						<li><a href="/portfolio/pages/portfolio/profile_update.html"><i class="fa fa-user fa-fw"></i> 프로필커버</a></li>
 						<li><a href="/portfolio/pages/portfolio/resume_write.html"><i class="fa fa-th-list fa-fw"></i> 이력서커버</a></li>
 						<li><a href="/portfolio/pages/portfolio/cv_write.html"><i class="fa fa-columns   fa-fw"></i> 자기소개커버</a></li>
 						<li><a href="/portfolio/pages/blank.html">==Blank Page==</a></li>
-					</ul> <!-- /.nav-second-level -->
-				</li>
-
+					</ul> <!-- /.nav-second-level --></li>
+				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 분석<span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="/portfolio/pages/morris.html"><i class="fa  fa-list-ol fa-fw"></i> 순위분석</a></li>
+						<li><a href="/portfolio/pages/flot.html"><i class="fa fa-bar-chart-o fa-fw"></i> 추이분석</a></li>
+					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>개발자도구(개발자용)<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="/portfolio/pages/example/panels-wells.html">Panels and Wells</a></li>
@@ -160,14 +165,246 @@
 	</div>
 	<!-- /.navbar-static-side -->
 </nav>
-	<!-- jQuery -->
-	<script src="/portfolio/vendor/jquery/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="/portfolio/vendor/jquery/jquery.min.js"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="/portfolio/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="/portfolio/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-	<!-- Metis Menu Plugin JavaScript -->
-	<script src="/portfolio/vendor/metisMenu/metisMenu.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="/portfolio/vendor/metisMenu/metisMenu.min.js"></script>
 
-	<!-- Custom Theme JavaScript -->
-	<script src="/portfolio/dist/js/sb-admin-2.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="/portfolio/dist/js/sb-admin-2.js"></script>
+
+
+
+<!-- 회원가입 -->
+<style>
+/*
+회원가입창 스타일 수정
+*/
+#qnaModal  ul {
+	list-style-type: none;
+}
+
+#qnaModal  form {
+	width: 100%;
+	font-family: meiryo;
+	font-size: 13px;
+}
+
+#qnaModal  fieldset {
+	border: 0;
+	font-size: 13px;
+}
+
+#qnaModal  fieldset legend {
+	font-size: 25px;
+	font-weight: bold;
+	font-family: malgun gothic, sans-serif;
+	color: #00afef;
+	padding: 10px 0 20px 10px;
+}
+
+#qnaModal  fieldset ul {
+	width: 800px;
+}
+
+#qnaModal  fieldset label {
+	width: 150px;
+	display: inline-block;
+	padding-right: 25px;
+	text-align: right;
+	font-weight: bold;
+	color: #777;
+}
+
+#qnaModal  fieldset input {
+	width: 260px;
+	height: 30px;
+	margin-bottom: 5px;
+	text-indent: 15px;
+	border-radius: 2px;
+	border: 1px solid #aaa;
+	color: #777;
+}
+
+#qnaModal  #btn01 {
+	width: 80px;
+	height: 28px;
+	text-indent: 0px;
+	font-size: 11px;
+	font-weight: 600;
+	background-color: #fff;
+	color: #00afef;
+	border-radius: 5px;
+	border: 2px solid #00afef;
+	vertical-align: center;
+}
+
+#qnaModal  fieldset #userpw0 {
+	margin-bottom: 30px;
+}
+
+#qnaModal  fieldset #pwEnter {
+	margin-bottom: 30px;
+}
+
+#qnaModal  fieldset #gender {
+	width: 100%;
+	line-height: 30px;
+}
+
+#qnaModal   #gender input {
+	width: 12px;
+	height: 12px;
+	margin: 0 5px 0 10px;
+	text-indent: 0px;
+	vertical-align: middle;
+}
+
+#qnaModal  fieldset select {
+	width: 60px;
+	height: 24px;
+	margin-bottom: 7px;
+}
+
+#qnaModal  fieldset select#useryear {
+	width: 90px;
+}
+
+#qnaModal  #tel input {
+	width: 167px;
+}
+
+#qnaModal  #master {
+	margin-bottom: 30px;
+}
+
+#qnaModal  #master label {
+	font-weight: bold;
+}
+
+#qnaModal  #master input {
+	width: 95px;
+	border-radius: 4px;
+	border: 2px solid #00afef;
+}
+
+#qnaModal  #btnCenter {
+	width: 250px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#qnaModal  #btnCenter input {
+	width: 110px;
+	height: 40px;
+	margin-right: 5px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #00afef;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 0;
+}
+
+#qnaModal  .danger {
+	color: red;
+	font-weight: normal;
+}
+
+#qnaModal  #loginT .danger {
+	color: red;
+	font-weight: normal;
+	margin-left: 26%;
+}
+
+#qnaModal .must_text {
+	font-size: 12px;
+	color: #000;
+}
+}
+</style>
+<div id="qnaModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="chat-panel panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-comments fa-fw"></i> Chat
+						<div class="btn-group pull-right">
+							<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-chevron-down"></i>
+							</button>
+							<ul class="dropdown-menu slidedown">
+								<li><a href="#"> <i class="fa fa-refresh fa-fw"></i> 질문바꾸기
+								</a></li>
+								<li><a href="#"> <i class="fa fa-check-circle fa-fw"></i> 전송하기
+								</a></li>
+								<li class="divider"></li>
+								<li><a href="#" data-dismiss="modal"> <i class="fa fa-times fa-fw"></i> 나가기
+								</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<ul class="chat">
+							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />
+							</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">[여가생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> 12 / 20번 질문
+										</small>
+									</div>
+									<p>평소에 하는 운동은 뭐가 있어?</p>
+								</div></li>
+							<li class="right clearfix"><span class="chat-img pull-right"> </span>
+								<div class="clearfix">
+									<div class="header">
+										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전
+										</small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong>
+									</div>
+									<p>저는 야구를 좋아합니다. 그래서 고등학교 시절에는 야구부를 하였습니다. 단언컨데 LG가 최고입니다.</p>
+								</div></li>
+							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_pm.png" alt="User Avatar" class="img-circle" />
+							</span>
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">[조직생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> 2 / 30번 질문
+										</small>
+									</div>
+									<p>대학생활 중 동아리나 사회활동을 한 적이 있었다면 뭐를 했어?</p>
+								</div></li>
+							<li class="right clearfix"><span class="chat-img pull-right"> </span>
+								<div class="clearfix">
+									<div class="header">
+										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 5분 전
+										</small> <strong class="pull-right primary-font">[ 3번째 ] 답변</strong>
+									</div>
+									<p>대학에서 경극 동아리를 하며 중국어와 연기를 함께 공부했습니다. 그러면서 동아리원들과 함께 양꼬치와 찡따오를 먹을 수 있었습니다.</p>
+								</div></li>
+						</ul>
+					</div>
+					<!-- /.panel-body -->
+					<div class="panel-footer">
+						<div class="input-group">
+							<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
+								<button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+							</span>
+						</div>
+					</div>
+					<!-- /.panel-footer -->
+				</div>
+				<!-- /.panel .chat-panel -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--  -->
+
+
