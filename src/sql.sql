@@ -82,5 +82,13 @@ create table projectCareer(
 	etc					varchar2(20)
 );
 
+create table qna(
+	qnaid varchar2(20) primary key,
+	num varchar2(20), 
+	qnatype varchar2(20),
+	question varchar2(20),
+	answer varchar2(20),
+	completeness varchar2(20)
+);
 
-
+create sequence qna_sequence;

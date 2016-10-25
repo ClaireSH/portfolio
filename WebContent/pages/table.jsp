@@ -59,7 +59,7 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">��������</h1>
+					<h1 class="page-header">질문편집</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -67,7 +67,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">�ڱ� �м� ����</div>
+						<div class="panel-heading">자기 분석 질문</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<table width="100%"
@@ -75,15 +75,14 @@
 								id="dataTables-example">
 								<thead>
 									<tr>
-										<th>�з�</th>
-										<th>����</th>
-										<th>�亯</th>
-										
-									</tr>
+						    <th>분류</th>
+                              <th>질문</th>
+                              <th>답변</th>
+										</tr>
 								</thead>
 								<tbody>
 
-									<s:iterator value="boardlist" status="status">
+									<s:iterator value="qnalist" status="status">
 										<tr>
 											<td><s:property value="type"/></td>
 											<td><s:property value="question"/></td>
@@ -249,7 +248,7 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">�ֽ� ������Ȱ</div>
+						<div class="panel-heading">최신 여가생활</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div class="table-responsive">
@@ -257,9 +256,9 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>����</th>
-											<th>�亯��</th>
-											<th>�˻��±�</th>
+											<th>질문</th>
+                                 <th>답변일</th>
+                                 <th>검색태그</th>
 										</tr>
 									</thead>
 									        <tbody>
