@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html lang="kr">
 <head>
 
 <meta charset="utf-8">
@@ -60,7 +60,7 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Áú¹®ÆíÁý</h1>
+					<h1 class="page-header">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -68,7 +68,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">ÀÚ±â ºÐ¼® Áú¹®</div>
+						<div class="panel-heading">ï¿½Ú±ï¿½ ï¿½Ð¼ï¿½ ï¿½ï¿½ï¿½ï¿½</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<table width="100%"
@@ -76,9 +76,9 @@
 								id="dataTables-example">
 								<thead>
 									<tr>
-										<th>ºÐ·ù</th>
-										<th>Áú¹®</th>
-										<th>´äº¯</th>
+										<th>ï¿½Ð·ï¿½</th>
+										<th>ï¿½ï¿½ï¿½ï¿½</th>
+										<th>ï¿½äº¯</th>
 										
 									</tr>
 								</thead>
@@ -246,11 +246,11 @@
 			</div>
 			<!-- /.row -->
 
-			<!-- Ã¹¹øÂ° ¼½¼Ç -->
+			<!-- Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ -->
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">ÃÖ½Å ¿©°¡»ýÈ°</div>
+						<div class="panel-heading">ï¿½Ö½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È°</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div class="table-responsive">
@@ -258,9 +258,9 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>Áú¹®</th>
-											<th>´äº¯ÀÏ</th>
-											<th>°Ë»öÅÂ±×</th>
+											<th>ï¿½ï¿½ï¿½ï¿½</th>
+											<th>ï¿½äº¯ï¿½ï¿½</th>
+											<th>ï¿½Ë»ï¿½ï¿½Â±ï¿½</th>
 										</tr>
 									</thead>
 									        <tbody>
@@ -290,7 +290,7 @@
 				<!-- /.col-lg-6 -->
 
 			</div>
-			<!-- µÎ¹øÂ° ¼½¼Ç -->
+			<!-- ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½ -->
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="panel panel-default">
