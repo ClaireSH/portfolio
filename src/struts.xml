@@ -11,15 +11,6 @@
 
 	
     <package name="default" namespace="/" extends="struts-default">
-    	<interceptors>
-        	<!-- 로그인 인터셉터 정의 -->
-            <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor" />
-        	
-			 <interceptor-stack name="loginInterceptorStack">
-				<interceptor-ref name="defaultStack" />
-				<interceptor-ref name="loginInterceptor" />
-			</interceptor-stack>
-		</interceptors>
 		<default-action-ref name="index" />
     	<!-- 
     	<global-results>
@@ -33,19 +24,38 @@
 			<result>/index.html</result>
 		</action>
 		
-    	
-    	<action name="main" class="action.Action" method="login">
-    		<result name="login" type="redirect">/pages/main.html</result>
+		<!-- 메인으로 이동 -->
+		<action name="main">
+			<result>/pages/main.html</result>
+		</action>
+		
+		<!-- 개인정보 관리의 [개인 정보]  -->
+		<action name="updateMemberForm">
+			<result>/pages/portfolio/profile_update.jsp</result>
+		</action>
+		
+    	<!--회원가입 한 후 자동로그인 (메인)  -->
+    	<action name="joinToLogin" class="action.Action" method="login">
+    		<result name="login" type="redirect">main</result>
     	</action>
     	
+    	<!--회원가입 -->
     	<action name="join" class="action.Action" method="join">
     		<!--회원가입 성공  -->
     		<!--Chain을 하면 Action클래스의 "ValueObject"가 잔존하여 다음 액션(main)에도 값을 줄 수 있음 -->
-    		<result name="success" type="chain">main</result>
+    		<result name="success" type="chain">joinToLogin</result>
     		<!--회원가입 실패  -->
     		<result name="input" type="redirect">/index.action</result>
     	</action>
 		
+		<!--로그인 -->
+		<action name="login" class="action.Action" method="login">
+			<result name="login" type="redirect">main</result>
+		</action>
+		
+		<action name="goUpdateMemberForm" class="action.Action" method="initUpdateMember">
+			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
+		</action>
 		
 		<!-- <action name="favoriteMemberPage">
     		<result>/favoriteMemberPage.jsp</result>

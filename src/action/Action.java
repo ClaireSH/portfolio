@@ -23,7 +23,6 @@ public class Action extends ActionSupport implements SessionAware{
 	MemberDAO dao = new MemberDAO();
 	
 	public String login(){
-		System.out.println("==========================로그인  : " + memberVo.getMemberId());
 		
 		Member m = dao.selectMember(memberVo.getMemberId());
 		
@@ -33,7 +32,7 @@ public class Action extends ActionSupport implements SessionAware{
 			return INPUT;
 		}else{
 			//로그인
-			System.out.println(m.getName() + "  " + id + " Login!!");
+			System.out.println(m.getName() + "  " + " Login!!");
 			session.put("loginId", memberVo.getMemberId());
 			return LOGIN;
 		}
@@ -72,10 +71,16 @@ public class Action extends ActionSupport implements SessionAware{
 	}
 	
 	//init
-	public String updateMemberForm(){
+	public String initUpdateMember(){
 		//현재 로그인 ID를 불러 updateMemberForm에 값을 Init 
 		String loginId = (String)session.get("loginId");
 		memberVo = dao.selectMember(loginId);
+		memberVo.setPassword("");
+		String useryear = (memberVo.getBirth()).substring(0,4);
+		String usermonth = (memberVo.getBirth()).substring(5,7);	
+		String userday = (memberVo.getBirth().substring(8, 10)); 
+		System.out.println(useryear+"/"+usermonth+"/"+userday);
+		System.out.println(memberVo.toString());
 		return SUCCESS;
 	}
 	
