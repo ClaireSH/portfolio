@@ -19,8 +19,9 @@ var duplId = false;
 		for (i=1;i<=31;i++) d += ("<option>" +i+"</option>");
 		$("#day").html(d); 
 	
-	});//ready
 		
+	});//ready
+	
 	function check_Id(){		
 
 		var userid= $('#userid').val();

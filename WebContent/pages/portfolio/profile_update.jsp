@@ -13,10 +13,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-
+<script src="./include/js/resume_modify.js"></script>
 <!-- 내부참조 -->
 <link rel="stylesheet" href="/portfolio/include/css/profile_modify.css">
+<script>
 
+</script>
 
 <title>Soft Engineer Society</title>
 </head>
@@ -59,12 +61,7 @@
 					<!-- 이부분 Action이랑 연결시켜야함. -->
 					<li id="gender"><label>성별</label> <input name="memberVo.sex" id="man" type="radio" value="0" />남자 <input name="memberVo.sex" id="woman" type="radio" value="1" />여자</li>
 					<!-- ---- -->
-					<li><label>생년월일</label> 
-					<s:select headerKey="1" headerValue="y" id="y" list="#{year}" name="u" value="1" />년 
-					<s:select headerKey="1" headerValue="year" id="year" list="#{'1':'2011', '2':'2010'}" name="useryear" value="1" />년 
-					&nbsp;&nbsp; <select id="month" name="usermonth" title="월">
-					</select> 월 &nbsp; <select id="day" name="userday" title="일"></select> 일
-					</li>
+					<li><label>생년월일</label> <select id="year" name="useryear" title="년"></select>년&nbsp;&nbsp; <select id="month" name="usermonth" title="월"></select> 월 &nbsp; <select id="day" name="userday" title="일"></select> 일</li>
 					<li><label>이메일</label> <input type='text' placeholder='이메일 주소@도메인' id="email" name="memberVo.email" value=""></li>
 					<li><label>전화번호</label> <input type='text' id="tel" name="memberVo.phone" placeholder="숫자만 입력" value=""></li>
 					

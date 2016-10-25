@@ -13,7 +13,7 @@ public class Action extends ActionSupport implements SessionAware{
 	Member memberVo;
 	String id;
 	String password;
-	
+
 	String useryear;
 	String usermonth;
 	String userday;
