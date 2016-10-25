@@ -7,18 +7,14 @@ create table member(
 	email		varchar2(50)	not null,
 	phone		varchar2(20) 	not null
 	
-)
+);
 
-select * from member natural join resume
+insert into member values('lsh', '1234', '이수현', 'M', '1992-02-03', 'tooona@naver.com', '010-6486-7621');
+insert into member values('kdb', '1234', '김디비', 'F', '1989-02-03', 'kdb@naver.com', '010-6486-7621');
+insert into member values('jyp', '1234', '박진영', 'M', '1967-02-03', 'jyp@naver.com', '010-6486-7621'
+insert into member values('kss', '1234', '김삼성', 'M', '1991-02-03', 'samsung@naver.com', '010-6486-7621');
 
-select * from member;
-select * from resume;
-insert into member values('lsh', '1234', '이수현', 'M', '1992-02-03', 'tooona@naver.com', '010-6486-7621', null);
-insert into member values('kdb', '1234', '김디비', 'F', '1989-02-03', 'kdb@naver.com', '010-6486-7621', null);
-insert into member values('jyp', '1234', '박진영', 'M', '1967-02-03', 'jyp@naver.com', '010-6486-7621', null);
-insert into member values('kss', '1234', '김삼성', 'M', '1991-02-03', 'samsung@naver.com', '010-6486-7621', null);
-
-create sequence RESUME_SEQ
+create sequence RESUME_SEQ;
 
 create table favoriteMember(
 	memberId 				varchar2(20),	
@@ -27,7 +23,7 @@ create table favoriteMember(
 	favoriteCheck			varchar2(1)		default 'F',
 	requestTimeStamp		date			not null,
 	acknowledgeTimeStamp	date
-)
+);
 
 create table resume(
 	resumeId		varchar2(20)	primary key,
@@ -37,10 +33,8 @@ create table resume(
 	savedImgFile	varchar2(50),
 	prTitle			varchar2(100),	
 	prContent		varchar2(1000)
-)
+);
 
-alter table resume
-rename column orginalImgFile to originalImgFile; 
 
 create table academicBg(
 	academicBgId	varchar2(20)	primary key,
@@ -52,7 +46,7 @@ create table academicBg(
 	major			varchar2(50),
 	degree			varchar2(20),
 	remarks			varchar2(20)		
-)
+);
 
 create table career(
 	careerId		varchar2(20)	primary key,
@@ -64,7 +58,7 @@ create table career(
 	businessType	varchar2(20),
 	department		varchar2(50),
 	position		varchar2(20)
-)
+);
 
 create table certificate(
 	certificateId	varchar2(20)	primary key,
@@ -74,7 +68,7 @@ create table certificate(
 	month			varchar2(20),
 	certificateName	varchar2(50),
 	remarks			varchar2(20)
-)
+);
 
 create table projectCareer(
 	projectCareerID		varchar2(20)	primary key,
@@ -86,7 +80,7 @@ create table projectCareer(
 	language			varchar2(20),
 	dbos				varchar2(20),
 	etc					varchar2(20)
-)
+);
 
 
 
