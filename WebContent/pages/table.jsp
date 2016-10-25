@@ -79,25 +79,16 @@
 										<th>분류</th>
 										<th>질문</th>
 										<th>답변</th>
-										<th>완성도</th>
-										<th>수정/삭제</th>
+										
 									</tr>
 								</thead>
 								<tbody>
 
 									<s:iterator value="boardlist" status="status">
 										<tr>
-											<td><s:property
-													value="pagenavi.totalRecordsCount -  pagenavi.startRecord - #status.index" /></td>
-											<td class="board_title"><s:url id="readurl"
-													value="/board/readBoard.action">
-													<s:param name="boardno" value="%{boardno}" />
-												</s:url> <s:a href="%{readurl}">
-													<s:property value="title" />
-												</s:a></td>
-											<td><s:property value="regdate" /></td>
-											<td><s:property value="custid" /></td>
-											<td><s:property value="hitcount" /></td>
+											<td><s:property value="type"/></td>
+											<td><s:property value="question"/></td>
+											<td><s:property value="answer" /></td>											
 										</tr>
 									</s:iterator>
  										<!--<tr>
@@ -272,15 +263,22 @@
 											<th>검색태그</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>나의 취미 [ ]는 본인에게 어떤 도움이 될까?</td>
-											<td>건강해진다. 집중력이 높아진다.</td>
-											<td>@운동 @취미</td>
-										</tr>
+									        <tbody>
+                              <s:subset source="list" count="3" start="1">
+                                 <s:iterator>
+                                    <tr>
+                                       <td><s:property value="num"/></td>
+                                       <td><s:property value="question"/></td>
+                                       <td><s:property value="answer"/></td>
+                                       <td><s:property value="title"/></td>
+                                    </tr>
+                                 </s:iterator>
+                              </s:subset>
+                              <tr>
 
-									</tbody>
+                              </tr>
+
+                           </tbody>
 								</table>
 							</div>
 							<!-- /.table-responsive -->
