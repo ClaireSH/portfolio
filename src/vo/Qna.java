@@ -1,6 +1,6 @@
 package vo;
 
-public class QNA {
+public class Qna {
 	String num;
 	String type;
 	String question;
@@ -46,7 +46,7 @@ public class QNA {
 		this.completeness = completeness;
 	}
 	
-	public QNA() {
+	public Qna() {
 		// TODO Auto-generated constructor stub
 	}
 	@Override
@@ -54,7 +54,7 @@ public class QNA {
 		return "QNA [num=" + num + ", type=" + type + ", question=" + question + ", answer=" + answer
 				+ ", completeness=" + completeness + "]";
 	}
-	public QNA(String num, String type, String question, String answer, String completeness) {
+	public Qna(String num, String type, String question, String answer, String completeness) {
 		super();
 		this.num = num;
 		this.type = type;

@@ -5,16 +5,16 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import vo.QNA;
+import vo.Qna;
 
-public class QNADAO {
+public class QnaDAO {
 	private SqlSessionFactory factory=MybatisConfig.getSqlSessionFactory();
 	SqlSession ss=null;
 	
-	public void insertQNA(QNA qna) {
+	public void insertQNA(Qna qna) {
 		try {
 			ss = factory.openSession();	
-			ss.insert("QNAMapper.insertQNA", qna);
+			ss.insert("QnaMapper.insertQna", qna);
 			ss.commit();
 		}
 		catch (Exception e) {
@@ -25,12 +25,12 @@ public class QNADAO {
 		}
 	}
 	
-	public List<QNA> listQNA() {
-		List<QNA> QNAlist = null;
+	public List<Qna> listQNA() {
+		List<Qna> QNAlist = null;
 		
 		try {
 			ss = factory.openSession();
-			QNAlist = ss.selectList("QNAMapper.listQNA");
+			QNAlist = ss.selectList("QnaMapper.listQna");
 			ss.commit();
 		}
 		catch (Exception e) {
@@ -42,12 +42,12 @@ public class QNADAO {
 		return QNAlist;
 	}	
 	
-	public QNA getQNA(int qnano) {
-		QNA qna = null;
+	public Qna getQNA(int qnano) {
+		Qna qna = null;
 		
 		try {
 			ss = factory.openSession();
-			qna = ss.selectOne("QNAMapper.getQNA", qnano);
+			qna = ss.selectOne("QnaMapper.getQna", qnano);
 			ss.commit();
 		}
 		catch (Exception e) {
