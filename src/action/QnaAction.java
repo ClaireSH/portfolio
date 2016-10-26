@@ -23,14 +23,12 @@ public class QnaAction extends ActionSupport implements SessionAware{
 		String loginId = (String) session.get("loginId");
 		qna.setId(loginId);		
 		dao.insertQNA(qna);
-		return SUCCESS;
+		return SUCCESS;		
 	}
 	
 	public String listQNA() throws Exception {
-		QnaDAO dao = new QnaDAO();
-		
-		qnalist = dao.listQNA();
-		
+		QnaDAO dao = new QnaDAO();		
+		qnalist = dao.listQNA();		
 		System.out.println(qnalist);
 		return SUCCESS;
 	}
@@ -41,8 +39,6 @@ public class QnaAction extends ActionSupport implements SessionAware{
 		if (qna == null) return INPUT;
 		return SUCCESS;
 	}
-	
-	
 	
 	public Qna getQna() {
 		return qna;

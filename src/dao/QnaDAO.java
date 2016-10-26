@@ -42,6 +42,11 @@ public class QnaDAO {
 		return QNAlist;
 	}	
 	
+	/**
+	 * 하나의 글 읽기
+	 * @param qnano 글번호
+	 * @return 해당 게시물의 상세 정보
+	 */	
 	public Qna getQNA(int qnano) {
 		Qna qna = null;
 		
