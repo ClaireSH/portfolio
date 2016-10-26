@@ -368,7 +368,7 @@
 										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전
 										</small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong>
 									</div>
-									<p>저는 야구를 좋아합니다. 그래서 고등학교 시절에는 야구부를 하였습니다. 단언컨데 LG가 최고입니다.</p>
+									<p>야구가 좋아. 고등학교 시절에는 야구부였지. 단언컨데 LG가 최고!!</p>
 								</div></li>
 							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_pm.png" alt="User Avatar" class="img-circle" />
 							</span>
@@ -385,16 +385,19 @@
 										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 5분 전
 										</small> <strong class="pull-right primary-font">[ 3번째 ] 답변</strong>
 									</div>
-									<p>대학에서 경극 동아리를 하며 중국어와 연기를 함께 공부했습니다. 그러면서 동아리원들과 함께 양꼬치와 찡따오를 먹을 수 있었습니다.</p>
+									<p>대학에서 경극 동아리를 했는데 중국어랑 연기를 같이 했어. 동아리원들이랑 양꼬치에 찡따오!!</p>
 								</div></li>
 						</ul>
 					</div>
 					<!-- /.panel-body -->
 					<div class="panel-footer">
 						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
-								<button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
-							</span>
+							<form action="insertQNA.action" id="form1" name="form1" method="post" >
+						<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> 
+						<span class="input-group-btn">
+						<button class="btn btn-warning btn-sm" id="btn-chat">등록</button>
+						</span>
+						</form>	
 						</div>
 					</div>
 					<!-- /.panel-footer -->
