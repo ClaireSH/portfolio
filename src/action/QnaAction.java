@@ -36,7 +36,6 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	public String readQNA() throws Exception {
 		//전달된 글번호로 검색. 해당 번호의 글이 없으면 리턴
 		qna = dao.getQNA(qnano);
-		if (qna == null) return INPUT;
 		return SUCCESS;
 	}
 	
