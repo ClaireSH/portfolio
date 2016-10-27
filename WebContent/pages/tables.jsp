@@ -75,11 +75,9 @@
                                 </thead>
                                 <tbody>
                                 
-                                   <s:iterator value="boardlist" status="status">
+                                   <s:iterator value="qnalist" status="status">
                               <tr>
-                                 <td><s:property
-                                       value="pagenavi.totalRecordsCount -  pagenavi.startRecord - #status.index" /></td>
-                                 <td class="board_title"><s:url id="readurl"
+                                <td class="board_title"><s:url id="readurl"
                                        value="/board/readBoard.action">
                                        <s:param name="boardno" value="%{boardno}" />
                                     </s:url> <s:a href="%{readurl}">
