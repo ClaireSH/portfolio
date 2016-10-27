@@ -116,7 +116,7 @@
 				<li><a href="#"><i class="fa fa-comments fa-fw"></i> 질문답변<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="/portfolio/pages/tables.html"><i class="fa  fa-table fa-fw"></i> 질문편집</a></li>
-						<li><a href="#qnaModal" data-toggle="modal" data-dismiss="modal"><i class="fa fa-edit fa-fw"></i> 답변하기</a></li>
+						<li><a id="answering" href="#qnaModal" data-toggle="modal" data-dismiss="modal"><i class="fa fa-edit fa-fw"></i> 답변하기</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 
 
@@ -189,30 +189,44 @@
 					</div>
 					<!-- /.panel-heading -->
 					<script>
-					$(document).ready(function() {
-						
-						//초기에 질문받아옴
-						$.ajax({
-							
-						});
+						$(document).ready( function() {
 
-						//답변전송 
-						$('#btn-chat').click(function(){
-							$.ajax({
-								url : 'insertQNA',
-								type : 'post',
-								data : {
-									"answer" :  "메시지다다다"
-								},							
-							
-							success : function(data){
-									alert(data.question+'/'+data.answer);
-																	
-								}
-							});
-							
-						})
-					});
+									//질문 목록 받아오기 
+									$('#answering').click(function() {
+
+										$.ajax({
+											url : 'insertQNA',
+											type : 'post',
+											success : function(data) {
+												//alert('질문(한번에 하나씩 받아온다?!) : '+data.question);
+												$('.chat').append('<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span> <div class="chat-body clearfix"> <div class="header"> <strong class="primary-font">['+ data.type +'생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> '+ data.num +'/ 20번 질문 </small> </div> <p>' + data.question + '</p> </div></li>');
+
+											}
+										});//ajax
+
+									});//click
+
+									//답변전송 
+									$('#btn-chat').click(
+											function() {
+
+												$.ajax({
+													url : 'insertQNA',
+													type : 'post',
+													data : {
+														"answer" : $( '#btn-input') .val()
+													},
+
+													success : function(data) {
+														alert(data.question
+																+ '/'
+																+ data.answer);
+
+													}
+												});
+
+											})
+								});
 					</script>
 					<div class="panel-body">
 						<ul class="chat">
@@ -231,7 +245,7 @@
 										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전
 										</small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong>
 									</div>
-									<p>야구가 좋아. 고등학교 시절에는 야구부였지. 단언컨데 LG가 최고!!</p>
+									<p>답변기다리는 중</p>
 								</div></li>
 							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_pm.png" alt="User Avatar" class="img-circle" />
 							</span>
@@ -248,7 +262,7 @@
 										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 5분 전
 										</small> <strong class="pull-right primary-font">[ 3번째 ] 답변</strong>
 									</div>
-									<p>대학에서 경극 동아리를 했는데 중국어랑 연기를 같이 했어. 동아리원들이랑 양꼬치에 찡따오!!</p>
+									<p>답변기다리는 중</p>
 								</div></li>
 						</ul>
 					</div>
