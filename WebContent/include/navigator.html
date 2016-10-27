@@ -111,7 +111,7 @@
 					</div> <!-- /input-group -->
 				</li>
 				<li><a href="/portfolio/pages/main.html"><i class="fa fa-dashboard fa-fw"></i> 한눈보기</a></li>
-				
+
 
 				<li><a href="#"><i class="fa fa-comments fa-fw"></i> 질문답변<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
@@ -126,7 +126,6 @@
 						<li><a href="/portfolio/pages/portfolio/profile_update.html"><i class="fa fa-user fa-fw"></i> 프로필커버</a></li>
 						<li><a href="/portfolio/pages/portfolio/resume_write.html"><i class="fa fa-th-list fa-fw"></i> 이력서커버</a></li>
 						<li><a href="/portfolio/pages/portfolio/cv_write.html"><i class="fa fa-columns   fa-fw"></i> 자기소개커버</a></li>
-						<li><a href="/portfolio/pages/blank.html">==Blank Page==</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 분석<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
@@ -142,21 +141,6 @@
 						<li><a href="/portfolio/pages/example/icons.html"> Icons</a></li>
 						<li><a href="/portfolio/pages/example/grid.html">Grid</a></li>
 					</ul> <!-- /.nav-second-level --></li>
-				<!-- 
-				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
-						Multi-Level Dropdown<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#">Second Level Item</a></li>
-						<li><a href="#">Second Level Item</a></li>
-						<li><a href="#">Third Level <span class="fa arrow"></span></a>
-							<ul class="nav nav-third-level">
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-							</ul> /.nav-third-level</li>
-					</ul> /.nav-second-level</li>
-				 -->
 
 
 			</ul>
@@ -180,161 +164,14 @@
 
 
 <!-- 회원가입 -->
-<style>
-/*
-회원가입창 스타일 수정
-*/
-#qnaModal  ul {
-	list-style-type: none;
-}
-
-#qnaModal  form {
-	width: 100%;
-	font-family: meiryo;
-	font-size: 13px;
-}
-
-#qnaModal  fieldset {
-	border: 0;
-	font-size: 13px;
-}
-
-#qnaModal  fieldset legend {
-	font-size: 25px;
-	font-weight: bold;
-	font-family: malgun gothic, sans-serif;
-	color: #00afef;
-	padding: 10px 0 20px 10px;
-}
-
-#qnaModal  fieldset ul {
-	width: 800px;
-}
-
-#qnaModal  fieldset label {
-	width: 150px;
-	display: inline-block;
-	padding-right: 25px;
-	text-align: right;
-	font-weight: bold;
-	color: #777;
-}
-
-#qnaModal  fieldset input {
-	width: 260px;
-	height: 30px;
-	margin-bottom: 5px;
-	text-indent: 15px;
-	border-radius: 2px;
-	border: 1px solid #aaa;
-	color: #777;
-}
-
-#qnaModal  #btn01 {
-	width: 80px;
-	height: 28px;
-	text-indent: 0px;
-	font-size: 11px;
-	font-weight: 600;
-	background-color: #fff;
-	color: #00afef;
-	border-radius: 5px;
-	border: 2px solid #00afef;
-	vertical-align: center;
-}
-
-#qnaModal  fieldset #userpw0 {
-	margin-bottom: 30px;
-}
-
-#qnaModal  fieldset #pwEnter {
-	margin-bottom: 30px;
-}
-
-#qnaModal  fieldset #gender {
-	width: 100%;
-	line-height: 30px;
-}
-
-#qnaModal   #gender input {
-	width: 12px;
-	height: 12px;
-	margin: 0 5px 0 10px;
-	text-indent: 0px;
-	vertical-align: middle;
-}
-
-#qnaModal  fieldset select {
-	width: 60px;
-	height: 24px;
-	margin-bottom: 7px;
-}
-
-#qnaModal  fieldset select#useryear {
-	width: 90px;
-}
-
-#qnaModal  #tel input {
-	width: 167px;
-}
-
-#qnaModal  #master {
-	margin-bottom: 30px;
-}
-
-#qnaModal  #master label {
-	font-weight: bold;
-}
-
-#qnaModal  #master input {
-	width: 95px;
-	border-radius: 4px;
-	border: 2px solid #00afef;
-}
-
-#qnaModal  #btnCenter {
-	width: 250px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-#qnaModal  #btnCenter input {
-	width: 110px;
-	height: 40px;
-	margin-right: 5px;
-	border-radius: 5px;
-	border: 0;
-	background-color: #00afef;
-	color: #fff;
-	font-size: 14px;
-	font-weight: bold;
-	text-indent: 0;
-}
-
-#qnaModal  .danger {
-	color: red;
-	font-weight: normal;
-}
-
-#qnaModal  #loginT .danger {
-	color: red;
-	font-weight: normal;
-	margin-left: 26%;
-}
-
-#qnaModal .must_text {
-	font-size: 12px;
-	color: #000;
-}
-}
-</style>
+<!-- 질문답변 모달 -->
 <div id="qnaModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="chat-panel panel panel-default">
 					<div class="panel-heading">
-						<i class="fa fa-comments fa-fw"></i> Chat
+						<i class="fa fa-comments fa-fw"></i> 질문답변
 						<div class="btn-group pull-right">
 							<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-chevron-down"></i>
@@ -351,6 +188,32 @@
 						</div>
 					</div>
 					<!-- /.panel-heading -->
+					<script>
+					$(document).ready(function() {
+						
+						//초기에 질문받아옴
+						$.ajax({
+							
+						});
+
+						//답변전송 
+						$('#btn-chat').click(function(){
+							$.ajax({
+								url : 'insertQNA',
+								type : 'post',
+								data : {
+									"answer" :  "메시지다다다"
+								},							
+							
+							success : function(data){
+									alert(data.question+'/'+data.answer);
+																	
+								}
+							});
+							
+						})
+					});
+					</script>
 					<div class="panel-body">
 						<ul class="chat">
 							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />
@@ -390,14 +253,15 @@
 						</ul>
 					</div>
 					<!-- /.panel-body -->
+
+
+
+
 					<div class="panel-footer">
 						<div class="input-group">
-							<form action="insertQNA.action" id="form1" name="form1" method="post" >
-						<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> 
-						<span class="input-group-btn">
-						<button class="btn btn-warning btn-sm" id="btn-chat">등록</button>
-						</span>
-						</form>	
+							<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
+								<button class="btn btn-warning btn-sm" id="btn-chat">보내기</button>
+							</span>
 						</div>
 					</div>
 					<!-- /.panel-footer -->
