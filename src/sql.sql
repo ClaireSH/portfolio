@@ -84,6 +84,8 @@ create table projectCareer(
 
 create table qna(
 	qnaid varchar2(20) primary key,
+	memberId varchar2(20),
+	constraint fk_qna_memberId foreign key(memberId) references member(memberId),
 	num varchar2(20), 
 	qnatype varchar2(20),
 	question varchar2(20),
