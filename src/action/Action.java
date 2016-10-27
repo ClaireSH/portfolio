@@ -99,52 +99,61 @@ public class Action extends ActionSupport implements SessionAware{
 	}
 	
 	//개인정보관리
-		public String updateMember(){
+	public String updateMember(){
+		
+		String loginId = (String)session.get("loginId");
+		Member m = dao.selectMember(loginId);
+		if(m == null){
+			return INPUT;
+		}else if(!(memberVo.getPassword()).equals(m.getPassword())){
+			return INPUT;
+		}else{
+			//업데이트
+			System.out.println(m.getName() + "  " + " Update!!");
+			dao.updateMember(m);
+			return SUCCESS;
+		}
+	}
+		
+	//개인정보 이력 초기화 작업
+	public String initUpdateResume() throws Exception{
+		
+		String loginId = (String)session.get("loginId");
+		Member m = dao.selectMember(loginId);
+		Resume r = dao.selectResume(loginId);
+		if(m == null || r == null){
+			//회원의 개인정보가 없거나, 이력서가 없으면 Fail(그러나, 계정로그인 한 이상 일어날 일은 없음!)
+			return INPUT;
+		}else{
 			
-			String loginId = (String)session.get("loginId");
-			Member m = dao.selectMember(loginId);
-			if(m == null){
-				return INPUT;
-			}else if(!(memberVo.getPassword()).equals(m.getPassword())){
-				return INPUT;
-			}else{
-				//업데이트
-				System.out.println(m.getName() + "  " + " Update!!");
-				dao.updateMember(m);
-				return SUCCESS;
-			}
+			//생년월일
+			useryear = (m.getBirth().substring(0,4));
+			usermonth = (m.getBirth().substring(5,7));	
+			userday = (m.getBirth().substring(8, 10));
+			
+			//계정의 resumeId로 학력, 경력, 자격, 프로젝트를 각각 List로 받음
+			academicBgList = (ArrayList<AcademicBg>) dao.allAcdemicBgById(r.getResumeId());
+			careerList = (ArrayList<Career>) dao.allCareerById(r.getResumeId());
+			certificateList = (ArrayList<Certificate>) dao.allCertificateBgById(r.getResumeId());
+			projectCareerList = (ArrayList<ProjectCareer>) dao.allProjectCareerById(r.getResumeId());
+			
+			
+			return SUCCESS;
+		}	
+	}
+	
+	public String updateResume(){
+		String loginId = (String)session.get("loginId");
+		Resume r = dao.selectResume(loginId);
+		if(r == null){
+			return INPUT;
+		}else{
+			
+			
 		}
 		
-		//개인정보 이력 초기화 작업
-		public String initUpdateResume() throws Exception{
-			
-			String loginId = (String)session.get("loginId");
-			Member m = dao.selectMember(loginId);
-			Resume r = dao.selectResume(loginId);
-			if(m == null || r == null){
-				//회원의 개인정보가 없거나, 이력서가 없으면 Fail(그러나, 계정로그인 한 이상 일어날 일은 없음!)
-				return INPUT;
-			}else{
-				
-				//생년월일
-				useryear = (m.getBirth().substring(0,4));
-				usermonth = (m.getBirth().substring(5,7));	
-				userday = (m.getBirth().substring(8, 10));
-				
-				//계정의 resumeId로 학력, 경력, 자격, 프로젝트를 각각 List로 받음
-				academicBgList = (ArrayList<AcademicBg>) dao.allAcdemicBgById(r.getResumeId());
-				careerList = (ArrayList<Career>) dao.allCareerById(r.getResumeId());
-				certificateList = (ArrayList<Certificate>) dao.allCertificateBgById(r.getResumeId());
-				projectCareerList = (ArrayList<ProjectCareer>) dao.allProjectCareerById(r.getResumeId());
-				
-				
-				return SUCCESS;
-			}	
-		}
-	
-/*	public String updateMember(){
-		dao.updateMember(memberVo);
-	}*/
+		return SUCCESS;
+	}
 
 	
 	public void setSession(Map<String, Object> session) {
