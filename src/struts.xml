@@ -121,6 +121,14 @@
 			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
 >>>>>>> af95295e08ea7223b463c2952c551197070cfc58
 		</action>
+<<<<<<< HEAD
+    	
+    	<!-- 이력서 등록 -->
+    	
+    	
+    </package>
+=======
+>>>>>>> 86f4c14c3ad55d06d1d22df44dd91e9481b83742
 
 
 
