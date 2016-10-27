@@ -1,10 +1,17 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-
+import vo.AcademicBg;
+import vo.Career;
+import vo.Certificate;
 import vo.Member;
+import vo.ProjectCareer;
+import vo.Resume;
 
 public class MemberDAO {
 	private SqlSessionFactory factory=MybatisConfig.getSqlSessionFactory();
@@ -65,5 +72,85 @@ public class MemberDAO {
 			if (ss != null) ss.close();
 		}
 		return result;
+	}
+	
+	public Resume selectResume(String memberId) {
+		SqlSession ss = null;
+		Resume resume = null;
+		
+		try {
+			ss = factory.openSession();
+			resume = ss.selectOne("resume.selectResume", memberId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if( ss != null) ss.close();
+		}
+		
+		return resume;
+	}
+	
+	public ArrayList<AcademicBg> allAcdemicBgById(String resumeId){
+		SqlSession ss = null;
+		List<AcademicBg> aList = null;
+		
+		try {
+			ss = factory.openSession();
+			aList = ss.selectList("academicbg.allAcademicBgById", resumeId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(ss != null) ss.close();
+		}
+		
+		return (ArrayList<AcademicBg>) aList;
+	}
+	
+	public ArrayList<Career> allCareerById(String resumeId){
+		SqlSession ss = null;
+		List<Career> cList = null;
+		
+		try {
+			ss = factory.openSession();
+			cList = ss.selectList("career.allCareerBgById", resumeId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(ss != null) ss.close();
+		}
+		
+		return (ArrayList<Career>) cList;
+	}
+	
+	public ArrayList<Certificate> allCertificateBgById(String resumeId){
+		SqlSession ss = null;
+		List<Certificate> cList = null;
+		
+		try {
+			ss = factory.openSession();
+			cList = ss.selectList("certificate.allCertificateById", resumeId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(ss != null) ss.close();
+		}
+		
+		return (ArrayList<Certificate>) cList;
+	}
+	
+	public ArrayList<ProjectCareer> allProjectCareerById(String resumeId){
+		SqlSession ss = null;
+		List<ProjectCareer> pList = null;
+		
+		try {
+			ss = factory.openSession();
+			pList = ss.selectList("academicbg.allProjectCareerById", resumeId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(ss != null) ss.close();
+		}
+		
+		return (ArrayList<ProjectCareer>) pList;
 	}
 }
