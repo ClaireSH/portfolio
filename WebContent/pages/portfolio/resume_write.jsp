@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Cover me</title>
 <!-- js -->
-<script
+<script>
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- css -->
@@ -95,8 +95,8 @@
 						<tbody>
 							<tr>
 								<td style="width: 12%;">이름</td>
-								<td><input readonly type="text" class="form-control"
-									maxlength="10" id="name" name="memberVO.name" value=""></td>
+								<td><input type="text" class="form-control" maxlength="10"
+									id="name" name="memberVO.name" value="" disabled></td>
 								<td class="text-center" rowspan="4" style="width: 20%;"><img
 									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
 									src=""> <input type="file" value="업로드" id="upload"
@@ -115,15 +115,14 @@
 								<td>생년월일</td>
 								<td>
 									<div class="form-inline">
-										<input readonly="" type="text" class="form-control"
-											style="width: 25%;" maxlength="4" id="year"
-											name="memberVo.useryear" value=""> 년 <input
-											readonly="" type="text" class="form-control"
+										<input type="text" class="form-control" style="width: 25%;"
+											maxlength="4" id="year" name="memberVo.useryear" value=""
+											disabled> 년 <input type="text" class="form-control"
 											style="width: 25%;" maxlength="2" id="month"
-											name="memberVo.usermonth" value=""> 월 <input
-											readonly="" type="text" class="form-control"
-											style="width: 25%;" maxlength="2" id="day"
-											name="memberVo.userday" value=""> 일
+											name="memberVo.usermonth" value="" disabled> 월 <input
+											type="text" class="form-control" style="width: 25%;"
+											maxlength="2" id="day" name="memberVo.userday" value=""
+											disabled> 일
 									</div>
 								</td>
 							</tr>
@@ -175,13 +174,15 @@
 						</tbody>
 						<tbody></tbody>
 
-						<input type="hidden" name="academicVO.edu_seq" class="edu_seq" value="17151">
+						<input type="hidden" name="academicVO.edu_seq" class="edu_seq"
+							value="17151">
 						<input type="hidden" name="resumeVO.edu_gubun" value="0">
- 
+
 						<tbody>
 							<tr>
 								<td><input type="text" class="form-control" id="entrance0"
-									maxlength="11" name="resumeVO.edu_term_from" value="" required readonly></td>
+									maxlength="11" name="resumeVO.edu_term_from" value="" required
+									readonly></td>
 								<td><input type="text" class="form-control"
 									id="graduation0" maxlength="11" name="resumeVO.edu_term_to"
 									value="" required readonly></td>
@@ -192,11 +193,13 @@
 									class="form-control" maxlength="30" id="major0"
 									name="resumeVO.edu_major" value="" required readonly></td>
 								<td><input type="text" class="form-control" id="degree0"
-									maxlength="20" name="resumeVO.edu_degree" value="" required readonly></td>
+									maxlength="20" name="resumeVO.edu_degree" value="" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="note0"
-									maxlength="20" name="resumeVO.edu_note" value="" required readonly></td>
-							</tr>						
-							</tbody>
+									maxlength="20" name="resumeVO.edu_note" value="" required
+									readonly></td>
+							</tr>
+						</tbody>
 					</table>
 					<input type="button" class="btn btn-default"
 						onclick="abilityRow(this)" value="+"> <input type="button"
@@ -223,29 +226,32 @@
 							</tr>
 						</tbody>
 						<tbody></tbody>
-						
-						<input type="hidden" name="resumeVO.edu_seq" class="edu_seq"
-								value="17152">
-							<input type="hidden" name="resumeVO.edu_gubun" value="0">
 
-							<tr>
-								<td><input type="text" class="form-control" id="entrance0"
-									maxlength="11" name="resumeVO.edu_term_from" value="" required readonly></td>
-								<td><input type="text" class="form-control"
-									id="graduation0" maxlength="11" name="resumeVO.edu_term_to"
-									value="" required readonly></td>
-								<td colspan="2"><input size="25%" type="text"
-									class="form-control" maxlength="30" id="school0"
-									name="resumeVO.edu_school" value="" required readonly></td>
-								<td colspan="2"><input size="25%" type="text"
-									class="form-control" maxlength="30" id="major0"
-									name="resumeVO.edu_major" value="" required readonly></td>
-								<td><input type="text" class="form-control" id="degree0"
-									maxlength="20" name="resumeVO.edu_degree" value="" required readonly></td>
-								<td><input type="text" class="form-control" id="note0"
-									maxlength="20" name="resumeVO.edu_note" value="" required readonly></td>
-							</tr>
-				</table>
+						<input type="hidden" name="resumeVO.edu_seq" class="edu_seq"
+							value="17152">
+						<input type="hidden" name="resumeVO.edu_gubun" value="0">
+
+						<tr>
+							<td><input type="text" class="form-control" id="entrance0"
+								maxlength="11" name="resumeVO.edu_term_from" value="" required
+								readonly></td>
+							<td><input type="text" class="form-control" id="graduation0"
+								maxlength="11" name="resumeVO.edu_term_to" value="" required
+								readonly></td>
+							<td colspan="2"><input size="25%" type="text"
+								class="form-control" maxlength="30" id="school0"
+								name="resumeVO.edu_school" value="" required readonly></td>
+							<td colspan="2"><input size="25%" type="text"
+								class="form-control" maxlength="30" id="major0"
+								name="resumeVO.edu_major" value="" required readonly></td>
+							<td><input type="text" class="form-control" id="degree0"
+								maxlength="20" name="resumeVO.edu_degree" value="" required
+								readonly></td>
+							<td><input type="text" class="form-control" id="note0"
+								maxlength="20" name="resumeVO.edu_note" value="" required
+								readonly></td>
+						</tr>
+					</table>
 					<input type="button" class="btn btn-default"
 						onclick="careerRow(this)" value="+"> <input type="button"
 						class="btn btn-default" onclick="careerRow(this)" value="-">
@@ -276,14 +282,18 @@
 							<tr>
 								<td><input type="text" class="form-control" id="compJoin0"
 									name="resumeVO.license_year" value="" maxlength="4"
-									onkeyup="this.value=number_filter(this.value);" required readonly></td>
+									onkeyup="this.value=number_filter(this.value);" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="compLeave0"
 									name="resumeVO.license_month" value="" maxlength="2"
-									onkeyup="this.value=number_filter(this.value);" required readonly></td>
+									onkeyup="this.value=number_filter(this.value);" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="compName0"
-									name="resumeVO.license_name" value="" maxlength="40" required readonly></td>
+									name="resumeVO.license_name" value="" maxlength="40" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="industry0"
-									name="resumeVO.license_etc" value="" maxlength="50" required readonly></td>
+									name="resumeVO.license_etc" value="" maxlength="50" required
+									readonly></td>
 							</tr>
 
 
@@ -326,17 +336,23 @@
 						<tbody>
 							<tr>
 								<td><input type="text" class="form-control" id="compJoin0"
-									name="resumeVO.project_name" value="" maxlength="30" required readonly></td>
+									name="resumeVO.project_name" value="" maxlength="30" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="compLeave0"
-									name="resumeVO.project_term" value="" maxlength="33" required readonly></td>
+									name="resumeVO.project_term" value="" maxlength="33" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="compName0"
-									name="resumeVO.project_number" value="" maxlength="15" required readonly></td>
+									name="resumeVO.project_number" value="" maxlength="15" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="industry0"
-									name="resumeVO.project_lang" value="" maxlength="80" required readonly></td>
+									name="resumeVO.project_lang" value="" maxlength="80" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="cert1"
-									name="resumeVO.project_db_os" value="" maxlength="80" required readonly></td>
+									name="resumeVO.project_db_os" value="" maxlength="80" required
+									readonly></td>
 								<td><input type="text" class="form-control" id="cert1"
-									name="resumeVO.project_etc" value="" maxlength="80" required readonly></td>
+									name="resumeVO.project_etc" value="" maxlength="80" required
+									readonly></td>
 							</tr>
 
 
@@ -349,18 +365,17 @@
 			</div>
 			</tbody>
 			</table>
-			</form>
-			<div style="text-align: center;">
-				<!--  onclick="return updateResume()" -->
-				<input type="button" id="btn_toggle"
-					class="btn btn-default btn-info" value="수정"> <input
-					type="button" id="delete" class="btn btn-default" value="초기화"
-					onclick="deleteResume()">
-			</div>
-			<input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input
-				type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input
-				type="hidden" name="resumeVO.resume_seq" value="713"> <input
-				type="hidden" id="sex" name="memberVo.sex" value="0">
+		</form>
+		<div style="text-align: center;">
+			<!--  onclick="return updateResume()" -->
+			<input type="button" id="btn_toggle" class="btn btn-default btn-info"
+				value="수정"> <input type="button" id="delete"
+				class="btn btn-default" value="초기화" onclick="deleteResume()">
+		</div>
+		<input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input
+			type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input
+			type="hidden" name="resumeVO.resume_seq" value="713"> <input
+			type="hidden" id="sex" name="memberVo.sex" value="0">
 	</div>
 	</div>
 
