@@ -48,7 +48,7 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Morris.js Charts</h1>
+					<h1 class="page-header">순위분석</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -56,7 +56,7 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">Area Chart Example</div>
+						<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 답변분야</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div id="morris-area-chart"></div>
@@ -68,7 +68,7 @@
 				<!-- /.col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">응답현황</div>
+						<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 응답현황</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div id="morris-bar-chart"></div>
@@ -80,7 +80,7 @@
 				<!-- /.col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">Line Chart Example</div>
+						<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 일별응답</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div id="morris-line-chart"></div>
@@ -92,7 +92,7 @@
 				<!-- /.col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">Donut Chart Example</div>
+						<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 빈출단어</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div id="morris-donut-chart"></div>
@@ -102,15 +102,94 @@
 					<!-- /.panel -->
 				</div>
 				<!-- /.col-lg-6 -->
-				<div class="col-lg-12">
+			
+			</div>
+			<!-- /.row -->
+
+			<div class="row">
+				<div class="col-lg-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">Morris.js Usage</div>
+						<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 최근답변</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
-							<p>
-								Morris.js is a jQuery based charting plugin created by Olly Smith. In SB Admin, we are using the most recent version of Morris.js which includes the resize function, which makes the charts fully responsive. The documentation for Morris.js is available on their website, <a target="_blank" href="http://morrisjs.github.io/morris.js/">http://morrisjs.github.io/morris.js/</a>.
-							</p>
-							<a target="_blank" class="btn btn-default btn-lg btn-block" href="http://morrisjs.github.io/morris.js/">View Morris.js Documentation</a>
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>질문</th>
+											<th>답변</th>
+											<th>@태그</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>대학시절 취미는 무엇이었어?</td>
+											<td>밴드활동을 하면서 기타를 쳤었습니다.</td>
+											<td>@취미 @밴드</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>본인의 모토는 무엇?</td>
+											<td>지금을 충실하게 살자!</td>
+											<td>@모토</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>좋아하는 IT분야는?</td>
+											<td>임베디드 쪽에 흥미가 있습니다.</td>
+											<td>@IT</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.table-responsive -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-6 -->
+				<div class="col-lg-6">
+					<div class="panel panel-default">
+						<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 전체응답</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
+											<td>1</td>
+											<td>대학시절 취미는 무엇이었어?</td>
+											<td>밴드활동을 하면서 기타를 쳤었습니다.</td>
+											<td>@취미 @밴드</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="success">
+											<td>1</td>
+											<td>Mark</td>
+											<td>Otto</td>
+											<td>@mdo</td>
+										</tr>
+										<tr class="info">
+											<td>2</td>
+											<td>본인의 모토는 무엇?</td>
+											<td>지금을 충실하게 살자!</td>
+											<td>@모토</td>
+										</tr>
+										<tr class="warning">
+											<td>3</td>
+											<td>좋아하는 IT분야는?</td>
+											<td>임베디드 쪽에 흥미가 있습니다.</td>
+											<td>@IT</td>
+										</tr>
+									
+									</tbody>
+								</table>
+							</div>
+							<!-- /.table-responsive -->
 						</div>
 						<!-- /.panel-body -->
 					</div>
