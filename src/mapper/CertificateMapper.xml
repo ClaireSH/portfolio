@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="certificate">
+	<!-- 
+		본래 패키지를 포함한 타입의 클래스이름명을 사용하나
+		typeAlias에 등록된 Alias값을 사요할 수 도 있음
+	 -->
+	<resultMap type="Certificate" id="CertificateResult">
+		<id property="certificateId" column="certificateId"/>
+		<result property = "resumeId" column ="resumeId"/>
+		<result property = "year" column = "year"/>
+		<result property = "month" column = "month" />
+		<result property = "certificateName" column = "certificateName" />
+		<result property = "remarks" column = "remarks" />
+ 	</resultMap>
+ 	
+ 	<select id="allCertificateById" parameterType="String" resultMap="CertificateResult">
+ 		 select *
+ 		 from Certificate
+ 		 where resumeId = #{resumeId}		
+ 	</select>
+ 	
+</mapper>

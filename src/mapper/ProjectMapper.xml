@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="projectCareer">
+	<!-- 
+		본래 패키지를 포함한 타입의 클래스이름명을 사용하나
+		typeAlias에 등록된 Alias값을 사요할 수 도 있음
+	 -->
+	<resultMap type="ProjectCareer" id="ProjectCareerResult">
+		<id property="projectCareerId" column="projectCareerId"/>
+		<result property = "resumeId" column ="resumeId"/>
+		<result property = "projectName" column = "projectName"/>
+		<result property = "developmentPeriod" column = "developmentPeriod" />
+		<result property = "duration" column = "duration" />
+		<result property = "language" column = "language" />
+		<result property = "dbos" column = "dbos" />
+		<result property = "etc" column = "etc" />
+ 	</resultMap>
+ 	
+ 	<select id="allProjectCareerById" parameterType="String" resultMap="ProjectCareerResult">
+ 		 select *
+ 		 from ProjectCareer
+ 		 where resumeId = #{resumeId}		
+ 	</select>
+ 	
+</mapper>

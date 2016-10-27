@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="academicBg">
+	<!-- 
+		본래 패키지를 포함한 타입의 클래스이름명을 사용하나
+		typeAlias에 등록된 Alias값을 사요할 수 도 있음
+	 -->
+	<resultMap type="AcademicBg" id="AcademicBgResult">
+		<id property="academicBgId" column="academicBgId"/>
+		<result property = "resumeId" column ="resumeId"/>
+		<result property = "adminssionYear" column = "adminssionYear"/>
+		<result property = "graduationYear" column = "graduationYear" />
+		<result property = "schoolName" column = "schoolName" />
+		<result property = "major" column = "major" />
+		<result property = "degree" column ="degree"/>
+		<result property = "remarks" column ="remarks"/>
+ 	</resultMap>
+ 	
+ 	<select id="allAcademicBgById" parameterType="String" resultMap="academicBgResult">
+ 		 select *
+ 		 from ACADEMICBG
+ 		 where resumeId = #{resumeId}		
+ 	</select>
+
+ 	
+</mapper>
