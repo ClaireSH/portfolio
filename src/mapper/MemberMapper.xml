@@ -30,10 +30,15 @@
  		WHERE memberId = #{memberId}
  	</select>
  	
- 	<update id="updateMember" parameterType="Member">
+ 	<update id="updateMember" parameterType="vo.Member">
  		UPDATE MEMBER
  		SET password = #{password},
- 		
+ 			name = #{name},
+ 			gender = #{gender},
+ 			birth = #{birth},
+ 			email = #{email},
+ 			phone = #{phone}
+ 		WHERE memberId = #{memberId}
  	</update>
  	
 </mapper>

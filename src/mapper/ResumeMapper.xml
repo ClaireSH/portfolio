@@ -17,6 +17,12 @@
 		<result property = "prContent" column = "prContent" />
  	</resultMap>
  	
+ 	<select id="selectResume" parameterType="String">
+ 		select *
+ 		from RESUME
+ 		where memberId = #{memberId}
+ 	</select>
+ 	
  	<insert id="insertResume" parameterType="String">
  		insert into RESUME(resumeId, memberId, originalImgFile, savedImgFile, prTitle, prContent)
  		values(RESUME_SEQ.nextval, #{memberId}, null, null, null, null)

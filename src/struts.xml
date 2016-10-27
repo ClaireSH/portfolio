@@ -20,6 +20,7 @@
 			<result>/index.html</result>
 		</action>
 
+<<<<<<< HEAD
 		<!-- 메인으로 이동 -->
 		<action name="main">
 			<result>/pages/main.html</result>
@@ -49,10 +50,38 @@
 			<result name="login" type="redirect">main</result>
 		</action>
 
+=======
+    	<!-- 1-1 회원가입 -->
+    	<action name="join" class="action.Action" method="join">
+    		<!--회원가입 성공  -->
+    		<!--Chain을 하면 Action클래스의 "ValueObject"가 잔존하여 다음 액션(main)에도 값을 줄 수 있음 -->
+    		<result name="success" type="chain">joinToLogin</result>
+    		<!--회원가입 실패  -->
+    		<result name="input" type="redirect">/index.action</result>
+    	</action>
+    	
+    	<!-- 1-2 회원가입 한 후 자동로그인 (메인)  -->
+    	<action name="joinToLogin" class="action.Action" method="login">
+    		<result name="login" type="redirect">main</result>
+    	</action>
+		
+		<!-- 2-1 로그인 -->
+		<action name="login" class="action.Action" method="login">
+			<result name="login" type="redirect">main</result>
+		</action>
+		
+		<!-- 2-2 메인으로 이동 -->
+		<action name="main">
+			<result>/pages/main.html</result>
+		</action>
+		
+		<!-- 3-1 [포트폴리오]의 [개인정보관리]  -->
+>>>>>>> af95295e08ea7223b463c2952c551197070cfc58
 		<action name="goUpdateMemberForm" class="action.Action" method="initUpdateMember">
 			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp
 			</result>
 		</action>
+<<<<<<< HEAD
 
 		<!-- <action name="favoriteMemberPage"> <result>/favoriteMemberPage.jsp</result> 
 			</action> -->
@@ -66,6 +95,27 @@
 		<!-- table.html -->
 		<action name="selectQNA" class="action.JsonTestAction" method="tableFill">
 			<result type="json" />
+=======
+		
+		<!-- 3-2 (1)개인정보 관리 업데이트 -->
+		<action name="updateMember" class="Action.action" method="updateMember">
+    		<result name="success" type="redirect">goUpdateMemberForm</result>
+    	</action>
+    	
+    	<!-- 3-2 (2)회원탈퇴 -->
+		<action name="deleteMember" class="Action.action" method="deleteMember">
+    		<result name="success" type="redirect">index</result>
+    	</action>
+		
+		<!-- 4-1 [포트폴리오]의 [기본이력서]  -->
+		<action name="goUpdateResumeForm" class="action.Action" method="initUpdateResume">
+			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
+		</action>
+    	
+    	<!-- 질문입력 -->
+    	<action name="insertQNA" class="action.QnaAction" method="insertQNA">
+			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
+>>>>>>> af95295e08ea7223b463c2952c551197070cfc58
 		</action>
 
 
