@@ -108,7 +108,7 @@
 			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
 		</action>
 		
-		<action name="UpdateResume" class="action.Action" method="updateResume">
+		<action name="updateResume" class="action.MemberAction" method="updateResume">
 			<result name="success" type="redirect">goUpdateResumeForm</result>
 		</action>
     	

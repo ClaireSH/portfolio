@@ -12,6 +12,7 @@ import dao.ResumeDAO;
 import vo.AcademicBg;
 import vo.Career;
 import vo.Certificate;
+import vo.FavoriteMember;
 import vo.Member;
 import vo.ProjectCareer;
 import vo.Resume;
@@ -20,11 +21,15 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	Member memberVo;
 	AcademicBg academicVo;
 	Resume resumeVo;
-	
+	Career careerVo;
+	Certificate certificateVo;
+	ProjectCareer projectCareerVo;
+		
 	ArrayList<AcademicBg> academicBgList;
 	ArrayList<Career> careerList;
 	ArrayList<Certificate> certificateList;
 	ArrayList<ProjectCareer> projectCareerList;
+	ArrayList<Resume> resumeList;
 	
 	String id;
 	String password;
