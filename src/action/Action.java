@@ -119,23 +119,23 @@ public class Action extends ActionSupport implements SessionAware{
 	public String initUpdateResume() throws Exception{
 		
 		String loginId = (String)session.get("loginId");
-		Member m = dao.selectMember(loginId);
-		Resume r = dao.selectResume(loginId);
-		if(m == null || r == null){
+		memberVo = dao.selectMember(loginId);
+		resumeVo = dao.selectResume(loginId);
+		if(memberVo == null || resumeVo == null){
 			//회원의 개인정보가 없거나, 이력서가 없으면 Fail(그러나, 계정로그인 한 이상 일어날 일은 없음!)
 			return INPUT;
 		}else{
 			
 			//생년월일
-			useryear = (m.getBirth().substring(0,4));
-			usermonth = (m.getBirth().substring(5,7));	
-			userday = (m.getBirth().substring(8, 10));
+			useryear = (memberVo.getBirth().substring(0,4));
+			usermonth = (memberVo.getBirth().substring(5,7));	
+			userday = (memberVo.getBirth().substring(8, 10));
 			
 			//계정의 resumeId로 학력, 경력, 자격, 프로젝트를 각각 List로 받음
-			academicBgList = (ArrayList<AcademicBg>) dao.allAcdemicBgById(r.getResumeId());
-			careerList = (ArrayList<Career>) dao.allCareerById(r.getResumeId());
-			certificateList = (ArrayList<Certificate>) dao.allCertificateBgById(r.getResumeId());
-			projectCareerList = (ArrayList<ProjectCareer>) dao.allProjectCareerById(r.getResumeId());
+			academicBgList = (ArrayList<AcademicBg>) dao.allAcdemicBgById(resumeVo.getResumeId());
+			careerList = (ArrayList<Career>) dao.allCareerById(resumeVo.getResumeId());
+			certificateList = (ArrayList<Certificate>) dao.allCertificateBgById(resumeVo.getResumeId());
+			projectCareerList = (ArrayList<ProjectCareer>) dao.allProjectCareerById(resumeVo.getResumeId());
 			
 			
 			return SUCCESS;
