@@ -2,7 +2,7 @@ package vo;
 
 
 public class ProjectCareer {
-	private String projectCareerID;
+	private String projectCareerId;
 	private String resumeId;
 	private String projectName;
 	private String developmentPeriod;
@@ -13,12 +13,13 @@ public class ProjectCareer {
 	
 	public ProjectCareer() {}
 
+
 	public String getProjectCareerID() {
-		return projectCareerID;
+		return projectCareerId;
 	}
 
-	public void setProjectCareerID(String projectCareerID) {
-		this.projectCareerID = projectCareerID;
+	public void setProjectCareerID(String projectCareerId) {
+		this.projectCareerId = projectCareerId;
 	}
 
 	public String getResumeId() {
@@ -79,12 +80,21 @@ public class ProjectCareer {
 
 	@Override
 	public String toString() {
-		return "ProjectCareer [projectCareerID=" + projectCareerID + ", resumeId=" + resumeId + ", projectName="
+		return "ProjectCareer [projectCareerID=" + projectCareerId + ", resumeId=" + resumeId + ", projectName="
 				+ projectName + ", developmentPeriod=" + developmentPeriod + ", duration=" + duration + ", language="
 				+ language + ", dbos=" + dbos + ", etc=" + etc + "]";
 	}
 	
-	
+	public void setEmptyValues(){
+		this.projectCareerId = "";
+		this.resumeId = "";
+		this.projectName = "";
+		this.developmentPeriod = "";
+		this.duration = "";
+		this.language = "";
+		this.dbos = "";
+		this.etc = "";
+	}
 	
 	
 }

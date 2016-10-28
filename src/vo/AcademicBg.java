@@ -83,7 +83,16 @@ public class AcademicBg {
 				+ major + ", degree=" + degree + ", remarks=" + remarks + "]";
 	}
 	
-	
+	public void setEmptyValues(){
+		this.academicBgId = "";
+		this.resumeId = "";
+		this.adminssionYear = "";
+		this.graduationYear = "";
+		this.schoolName = "";
+		this.major = "";
+		this.degree = "";
+		this.remarks = "";
+	}
 	
 	
 	

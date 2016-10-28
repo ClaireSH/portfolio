@@ -19,15 +19,26 @@
 		<result property = "remarks" column ="remarks"/>
  	</resultMap>
  	
- 	<select id="allAcademicBgById" parameterType="String" resultMap="academicBgResult">
+ 	<select id="allAcademicBgById" parameterType="String" resultMap="AcademicBgResult">
  		 select *
  		 from ACADEMICBG
  		 where resumeId = #{resumeId}		
  	</select>
  	
  	<insert id="insertAcademicBg" parameterType="vo.AcademicBg">
- 		insert into ACADEMICBG(academicBgId, resumeId, adminssionYear, graduationYear, schoolName, major, degree, remarks)
- 		values(#{academicBgId}, #{resumeId}, #{adminssionYear}, #{graduationYear}, #{schoolName}, #{major}, #{degree}, #{remarks});
+ 		insert into ACADEMICBG
+ 			(academicBgId, resumeId, adminssionYear, graduationYear, schoolName, major, degree, remarks)
+ 		values
+ 			(
+ 				#{academicBgId}, 
+ 				#{resumeId}, 
+ 				#{adminssionYear, jdbcType=VARCHAR}, 
+ 				#{graduationYear, jdbcType=VARCHAR}, 
+ 				#{schoolName, jdbcType=VARCHAR}, 
+ 				#{major, jdbcType=VARCHAR}, 
+ 				#{degree, jdbcType=VARCHAR}, 
+ 				#{remarks, jdbcType=VARCHAR}
+ 			)
  	</insert>
  	
  	<update id="updateAcademicBg" parameterType="vo.AcademicBg">

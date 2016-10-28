@@ -25,7 +25,14 @@
  	
  	<insert id="insertCertificate" parameterType="vo.Certificate">
  		insert into Certificate(certificateId, resumeId, year, month, certificateName, remarks)
- 		values(#{certificateId}, #{resumeId}, #{year}, #{month}, #{certificateName}, #{remarks})
+ 		values(
+ 			#{certificateId}, 
+ 			#{resumeId}, 
+ 			#{year, jdbcType=VARCHAR}, 
+ 			#{month, jdbcType=VARCHAR}, 
+ 			#{certificateName, jdbcType=VARCHAR}, 
+ 			#{remarks, jdbcType=VARCHAR}
+ 		)
  	</insert>
  	
  	<update id="updateCertificate" parameterType="vo.Certificate">

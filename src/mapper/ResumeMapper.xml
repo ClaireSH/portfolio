@@ -24,8 +24,8 @@
  	</select>
  	
  	<insert id="insertResume" parameterType="String">
- 		insert into RESUME(resumeId, memberId, originalImgFile, savedImgFile, prTitle, prContent)
- 		values(RESUME_SEQ.nextval, #{memberId}, null, null, null, null)
+ 		insert into RESUME(resumeId, memberId, originalImgFile, savedImgFile)
+ 		values(#{memberId}, #{memberId}, null, null)
  	</insert>
  	
 </mapper>

@@ -27,13 +27,21 @@
  	
  	<insert id="insertCareer" parameterType="vo.Career">
  		insert into Career(careerId, resumeId, joinYear, retirementYear, companyName, businessType, department, position) 
- 		values(#{careerId}, #{resumeId}, #{joinYear}, #{retirementYear}, #{companyName}, #{businessType}, #{department}, #{position})
+ 		values(
+ 			#{careerId}, 
+ 			#{resumeId}, 
+ 			#{joinYear, jdbcType=VARCHAR}, 
+ 			#{retirementYear, jdbcType=VARCHAR}, 
+ 			#{companyName, jdbcType=VARCHAR}, 
+ 			#{businessType, jdbcType=VARCHAR}, 
+ 			#{department, jdbcType=VARCHAR}, 
+ 			#{position, jdbcType=VARCHAR}
+ 		)
  	</insert>
  	
  	<update id="updateCareer" parameterType="vo.Career">
  		update Career
- 		set resumeId = #{resumeId}
- 			joinYear = #{joinYear}
+ 		set joinYear = #{joinYear}
  			retirementYear = #{retirementType}
  			companyName = #{businessType}
  			department = #{department}

@@ -27,7 +27,16 @@
  	
  	<insert id="insertProjectCareer" parameterType="vo.ProjectCareer">
  		insert into ProjectCareer(projectCareerId, resumeId, projectName, developmentPeriod, duration, language, dbos, etc) 
- 		values(#{projectCareerId}, #{resumeId}, #{projectName}, #{developmentPeriod}, #{duration}, #{language}, #{dbos}, #{etc})
+ 		values(
+ 			#{projectCareerId}, 
+ 			#{resumeId}, 
+ 			#{projectName, jdbcType=VARCHAR}, 
+ 			#{developmentPeriod, jdbcType=VARCHAR}, 
+ 			#{duration, jdbcType=VARCHAR}, 
+ 			#{language, jdbcType=VARCHAR}, 
+ 			#{dbos, jdbcType=VARCHAR}, 
+ 			#{etc, jdbcType=VARCHAR}
+ 		)
  	</insert>
  	
  	<update id="updateProjectCareer" parameterType="vo.ProjectCareer">

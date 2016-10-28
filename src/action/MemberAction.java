@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.MemberDAO;
+import dao.ResumeDAO;
 import vo.AcademicBg;
 import vo.Career;
 import vo.Certificate;
@@ -34,11 +35,12 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	
 	Map<String, Object> session;
 	
-	MemberDAO dao = new MemberDAO();
+	MemberDAO memberDAO = new MemberDAO();
+	ResumeDAO resumeDAO = new ResumeDAO();
 	
 	public String login(){
 		
-		Member m = dao.selectMember(memberVo.getMemberId());
+		Member m = memberDAO.selectMember(memberVo.getMemberId());
 		
 		if(m == null){
 			return INPUT;
@@ -59,7 +61,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	
 	public String idCheck(){
 		
-		Member m = dao.selectMember(memberVo.getMemberId());
+		Member m = memberDAO.selectMember(memberVo.getMemberId());
 		if(m != null){
 			//idCheck()
 			System.out.println(m.getMemberId() +" : ID 사용 가능");
@@ -76,7 +78,32 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			//회원가입 정보가 존재하면
 			String birth = useryear+"/"+usermonth+"/"+userday;
 			memberVo.setBirth(birth);
-			dao.insertMember(memberVo);
+			
+			AcademicBg academicBg = new AcademicBg();
+			Career career = new Career();
+			Certificate certificate = new Certificate();
+			ProjectCareer projectCareer = new ProjectCareer();
+			
+			academicBg.setAcademicBgId(memberVo.getMemberId()+"000000");
+			academicBg.setResumeId(memberVo.getMemberId());
+			career.setCareerId(memberVo.getMemberId()+"000000");
+			career.setResumeId(memberVo.getMemberId());
+			certificate.setCertificateId(memberVo.getMemberId()+"000000");
+			certificate.setResumeId(memberVo.getMemberId());
+			projectCareer.setProjectCareerID(memberVo.getMemberId()+"000000");
+			projectCareer.setResumeId(memberVo.getMemberId());
+			
+			System.out.println(academicBg.toString());
+			System.out.println(career.toString());
+			System.out.println(certificate.toString());
+			System.out.println(projectCareer.toString());
+			
+			memberDAO.insertMember(memberVo);
+			resumeDAO.insertAcademicBg(academicBg);
+			resumeDAO.insertCareer(career);
+			resumeDAO.insertCertificate(certificate);
+			resumeDAO.insertProjectCareer(projectCareer);
+			
 			return SUCCESS;
 		}else{
 			//회원가입 실패
@@ -88,11 +115,12 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	public String initUpdateMember(){
 		//현재 로그인 ID를 불러 updateMemberForm에 값을 Init 
 		String loginId = (String)session.get("loginId");
-		memberVo = dao.selectMember(loginId);
+		memberVo = memberDAO.selectMember(loginId);
 		memberVo.setPassword("");
 		String useryear = (memberVo.getBirth()).substring(0,4);
 		String usermonth = (memberVo.getBirth()).substring(5,7);	
 		String userday = (memberVo.getBirth().substring(8, 10)); 
+		
 		System.out.println(useryear+"/"+usermonth+"/"+userday);
 		System.out.println(memberVo.toString());
 		return SUCCESS;
@@ -102,7 +130,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	public String updateMember(){
 		
 		String loginId = (String)session.get("loginId");
-		Member m = dao.selectMember(loginId);
+		Member m = memberDAO.selectMember(loginId);
 		if(m == null){
 			return INPUT;
 		}else if(!(memberVo.getPassword()).equals(m.getPassword())){
@@ -110,7 +138,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 		}else{
 			//업데이트
 			System.out.println(m.getName() + "  " + " Update!!");
-			dao.updateMember(m);
+			memberDAO.updateMember(m);
 			return SUCCESS;
 		}
 	}
@@ -119,8 +147,8 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	public String initUpdateResume() throws Exception{
 		
 		String loginId = (String)session.get("loginId");
-		memberVo = dao.selectMember(loginId);
-		resumeVo = dao.selectResume(loginId);
+		memberVo = memberDAO.selectMember(loginId);
+		resumeVo = resumeDAO.selectResume(loginId);
 		if(memberVo == null || resumeVo == null){
 			//회원의 개인정보가 없거나, 이력서가 없으면 Fail(그러나, 계정로그인 한 이상 일어날 일은 없음!)
 			return INPUT;
@@ -132,11 +160,10 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			userday = (memberVo.getBirth().substring(8, 10));
 			
 			//계정의 resumeId로 학력, 경력, 자격, 프로젝트를 각각 List로 받음
-			academicBgList = (ArrayList<AcademicBg>) dao.allAcdemicBgById(resumeVo.getResumeId());
-			careerList = (ArrayList<Career>) dao.allCareerById(resumeVo.getResumeId());
-			certificateList = (ArrayList<Certificate>) dao.allCertificateBgById(resumeVo.getResumeId());
-			projectCareerList = (ArrayList<ProjectCareer>) dao.allProjectCareerById(resumeVo.getResumeId());
-			
+			academicBgList = (ArrayList<AcademicBg>) resumeDAO.allAcdemicBgById(resumeVo.getResumeId());
+			careerList = (ArrayList<Career>) resumeDAO.allCareerById(resumeVo.getResumeId());
+			certificateList = (ArrayList<Certificate>) resumeDAO.allCertificateBgById(resumeVo.getResumeId());
+			projectCareerList = (ArrayList<ProjectCareer>) resumeDAO.allProjectCareerById(resumeVo.getResumeId());
 			
 			return SUCCESS;
 		}	
@@ -144,7 +171,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	
 	public String updateResume(){
 		String loginId = (String)session.get("loginId");
-		Resume r = dao.selectResume(loginId);
+		Resume r = resumeDAO.selectResume(loginId);
 		if(r == null){
 			return INPUT;
 		}else{

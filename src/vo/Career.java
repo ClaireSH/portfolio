@@ -83,7 +83,16 @@ public class Career {
 				+ businessType + ", department=" + department + ", position=" + position + "]";
 	}
 	
-	
+	public void setEmptyValues(){
+		this.careerId = "";
+		this.resumeId = "";
+		this.joinYear = "";
+		this.retirementYear = "";
+		this.companyName = "";
+		this.businessType = "";
+		this.department = "";
+		this.position = "";
+	}
 	
 	
 }
