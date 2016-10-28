@@ -26,9 +26,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 
 	public String insertResume(){
 		String loginId = (String) session.get("loginId");
-		resume.setMemberId(loginId);
-		
-		return SUCCESS;
-		
+		resume.setMemberId(loginId);		
+		return SUCCESS;		
 	}
 }
