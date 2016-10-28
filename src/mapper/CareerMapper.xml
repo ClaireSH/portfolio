@@ -25,4 +25,25 @@
  		 where resumeId = #{resumeId}		
  	</select>
  	
+ 	<insert id="insertCareer" parameterType="vo.Career">
+ 		insert into Career(careerId, resumeId, joinYear, retirementYear, companyName, businessType, department, position) 
+ 		values(#{careerId}, #{resumeId}, #{joinYear}, #{retirementYear}, #{companyName}, #{businessType}, #{department}, #{position})
+ 	</insert>
+ 	
+ 	<update id="updateCareer" parameterType="vo.Career">
+ 		update Career
+ 		set resumeId = #{resumeId}
+ 			joinYear = #{joinYear}
+ 			retirementYear = #{retirementType}
+ 			companyName = #{businessType}
+ 			department = #{department}
+ 			position = #{position}
+ 		where careerId = #{careerId}
+ 	</update>
+ 	
+ 	<delete id="deleteCareer" parameterType="String">
+ 		delete from career
+ 		where careerId = #{careerId}
+ 	</delete>
+ 	
 </mapper>

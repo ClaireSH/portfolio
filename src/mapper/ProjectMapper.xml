@@ -25,4 +25,25 @@
  		 where resumeId = #{resumeId}		
  	</select>
  	
+ 	<insert id="insertProjectCareer" parameterType="vo.ProjectCareer">
+ 		insert into ProjectCareer(projectCareerId, resumeId, projectName, developmentPeriod, duration, language, dbos, etc) 
+ 		values(#{projectCareerId}, #{resumeId}, #{projectName}, #{developmentPeriod}, #{duration}, #{language}, #{dbos}, #{etc})
+ 	</insert>
+ 	
+ 	<update id="updateProjectCareer" parameterType="vo.ProjectCareer">
+ 		update ProjectCareer
+ 		set projectName = #{projectName},
+ 			developmentPeriod = #{developmentPeriod},
+ 			duration = #{duration},
+ 			language = #{language},
+ 			dbos = #{dbos},
+ 			etc = #{etc}
+ 		where projectCareerId = #{projectCareerId}
+ 	</update>
+ 	
+ 	<delete id="deleteProjectCareer" parameterType="String">
+ 		delete from ProjectCareer
+ 		where projectCareerId = #{projectCareerId}
+ 	</delete>
+ 	
 </mapper>

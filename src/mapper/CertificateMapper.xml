@@ -23,4 +23,22 @@
  		 where resumeId = #{resumeId}		
  	</select>
  	
+ 	<insert id="insertCertificate" parameterType="vo.Certificate">
+ 		insert into Certificate(certificateId, resumeId, year, month, certificateName, remarks)
+ 		values(#{certificateId}, #{resumeId}, #{year}, #{month}, #{certificateName}, #{remarks})
+ 	</insert>
+ 	
+ 	<update id="updateCertificate" parameterType="vo.Certificate">
+ 		update Certificate
+ 		set year = #{year},
+ 			month = #{month},
+ 			certificateName = #{certificateName},
+ 			remarks = #{remarks}
+ 		where certificateId = #{certificateId}
+ 	</update>
+ 	
+ 	<delete id="deleteCertificate" parameterType="String">
+ 		delete from Certificate
+ 		where certificateId = #{certificateId}
+ 	</delete>
 </mapper>

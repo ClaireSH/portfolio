@@ -24,6 +24,25 @@
  		 from ACADEMICBG
  		 where resumeId = #{resumeId}		
  	</select>
-
  	
+ 	<insert id="insertAcademicBg" parameterType="vo.AcademicBg">
+ 		insert into ACADEMICBG(academicBgId, resumeId, adminssionYear, graduationYear, schoolName, major, degree, remarks)
+ 		values(#{academicBgId}, #{resumeId}, #{adminssionYear}, #{graduationYear}, #{schoolName}, #{major}, #{degree}, #{remarks});
+ 	</insert>
+ 	
+ 	<update id="updateAcademicBg" parameterType="vo.AcademicBg">
+		update AcademicBg
+		set adminssionYear = #{adminssionYear}
+			graduationYear = #{graduationYear}
+			schoolName = #{schoolName}
+			major = #{major}
+			degree = #{degree}
+			remarks = #{remarks}
+		where academicBgId = #{academicBgId}
+	</update>
+ 	
+ 	<delete id="deleteAcademicBg" parameterType="String">
+ 		delete from AcademicBg
+ 		where academicBgId = #{academicBgId}
+ 	</delete>
 </mapper>
