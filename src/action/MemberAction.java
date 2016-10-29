@@ -24,15 +24,6 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	Career careerVo;
 	Certificate certificateVo;
 	ProjectCareer projectCareerVo;
-		
-	ArrayList<AcademicBg> academicBgList;
-	ArrayList<Career> careerList;
-	ArrayList<Certificate> certificateList;
-	ArrayList<ProjectCareer> projectCareerList;
-	ArrayList<Resume> resumeList;
-	
-	String id;
-	String password;
 	
 	String useryear;
 	String usermonth;
@@ -115,82 +106,6 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			return INPUT;
 		}
 	}
-	
-	//init
-	public String initUpdateMember(){
-		//현재 로그인 ID를 불러 updateMemberForm에 값을 Init 
-		String loginId = (String)session.get("loginId");
-		memberVo = memberDAO.selectMember(loginId);
-		memberVo.setPassword("");
-		String useryear = (memberVo.getBirth()).substring(0,4);
-		String usermonth = (memberVo.getBirth()).substring(5,7);	
-		String userday = (memberVo.getBirth().substring(8, 10)); 
-		
-		System.out.println(useryear+"/"+usermonth+"/"+userday);
-		System.out.println(memberVo.toString());
-		return SUCCESS;
-	}
-	
-	//개인정보관리
-	public String updateMember(){
-		
-		String loginId = (String)session.get("loginId");
-		Member m = memberDAO.selectMember(loginId);
-		if(m == null){
-			return INPUT;
-		}else if(!(memberVo.getPassword()).equals(m.getPassword())){
-			return INPUT;
-		}else{
-			//업데이트
-			System.out.println(m.getName() + "  " + " Update!!");
-			memberDAO.updateMember(m);
-			return SUCCESS;
-		}
-	}
-		
-	//개인정보 이력 초기화 작업
-	public String initUpdateResume() throws Exception{
-		
-		String loginId = (String)session.get("loginId");
-		memberVo = memberDAO.selectMember(loginId);
-		resumeVo = resumeDAO.selectResume(loginId);
-		if(memberVo == null || resumeVo == null){
-			//회원의 개인정보가 없거나, 이력서가 없으면 Fail(그러나, 계정로그인 한 이상 일어날 일은 없음!)
-			return INPUT;
-		}else{
-			
-			//생년월일
-			useryear = (memberVo.getBirth().substring(0,4));
-			usermonth = (memberVo.getBirth().substring(5,7));	
-			userday = (memberVo.getBirth().substring(8, 10));
-			
-			//계정의 resumeId로 학력, 경력, 자격, 프로젝트를 각각 List로 받음
-			academicBgList = (ArrayList<AcademicBg>) resumeDAO.allAcdemicBgById(resumeVo.getResumeId());
-			careerList = (ArrayList<Career>) resumeDAO.allCareerById(resumeVo.getResumeId());
-			certificateList = (ArrayList<Certificate>) resumeDAO.allCertificateBgById(resumeVo.getResumeId());
-			projectCareerList = (ArrayList<ProjectCareer>) resumeDAO.allProjectCareerById(resumeVo.getResumeId());
-			
-			return SUCCESS;
-		}	
-	}
-	
-	public String updateResume(){
-		String loginId = (String)session.get("loginId");
-		Resume r = resumeDAO.selectResume(loginId);
-		if(r == null){
-			return INPUT;
-		}else{
-			
-			
-		}
-		
-		return SUCCESS;
-	}
-
-	
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
 
 	public Member getMemberVo() {
 		return memberVo;
@@ -198,6 +113,14 @@ public class MemberAction extends ActionSupport implements SessionAware{
 
 	public void setMemberVo(Member memberVo) {
 		this.memberVo = memberVo;
+	}
+
+	public AcademicBg getAcademicVo() {
+		return academicVo;
+	}
+
+	public void setAcademicVo(AcademicBg academicVo) {
+		this.academicVo = academicVo;
 	}
 
 	public Resume getResumeVo() {
@@ -208,52 +131,28 @@ public class MemberAction extends ActionSupport implements SessionAware{
 		this.resumeVo = resumeVo;
 	}
 
-	public ArrayList<AcademicBg> getAcademicBgList() {
-		return academicBgList;
+	public Career getCareerVo() {
+		return careerVo;
 	}
 
-	public void setAcademicBgList(ArrayList<AcademicBg> academicBgList) {
-		this.academicBgList = academicBgList;
+	public void setCareerVo(Career careerVo) {
+		this.careerVo = careerVo;
 	}
 
-	public ArrayList<Career> getCareerList() {
-		return careerList;
+	public Certificate getCertificateVo() {
+		return certificateVo;
 	}
 
-	public void setCareerList(ArrayList<Career> careerList) {
-		this.careerList = careerList;
+	public void setCertificateVo(Certificate certificateVo) {
+		this.certificateVo = certificateVo;
 	}
 
-	public ArrayList<Certificate> getCertificateList() {
-		return certificateList;
+	public ProjectCareer getProjectCareerVo() {
+		return projectCareerVo;
 	}
 
-	public void setCertificateList(ArrayList<Certificate> certificateList) {
-		this.certificateList = certificateList;
-	}
-
-	public ArrayList<ProjectCareer> getProjectCareerList() {
-		return projectCareerList;
-	}
-
-	public void setProjectCareerList(ArrayList<ProjectCareer> projectCareerList) {
-		this.projectCareerList = projectCareerList;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setProjectCareerVo(ProjectCareer projectCareerVo) {
+		this.projectCareerVo = projectCareerVo;
 	}
 
 	public String getUseryear() {
@@ -279,6 +178,15 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	public void setUserday(String userday) {
 		this.userday = userday;
 	}
+	
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+	
+		
+	
+
+	
 	
 	
 }

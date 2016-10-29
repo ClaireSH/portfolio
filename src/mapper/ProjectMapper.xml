@@ -41,7 +41,8 @@
  	
  	<update id="updateProjectCareer" parameterType="vo.ProjectCareer">
  		update ProjectCareer
- 		set projectName = #{projectName},
+ 		set resumeId = #{resumeId},
+ 			projectName = #{projectName},
  			developmentPeriod = #{developmentPeriod},
  			duration = #{duration},
  			language = #{language},
@@ -50,9 +51,47 @@
  		where projectCareerId = #{projectCareerId}
  	</update>
  	
- 	<delete id="deleteProjectCareer" parameterType="String">
+ 	<update id="mergeProjectCareer" parameterType="vo.ProjectCareer">
+ 		MERGE INTO ProjectCareer A
+		USING (
+			select 
+				#{projectCareerId} projectCareerId, 
+ 				#{resumeId} resumeId, 
+ 				#{projectName, jdbcType=VARCHAR} projectName, 
+ 				#{developmentPeriod, jdbcType=VARCHAR} developmentPeriod, 
+ 				#{duration, jdbcType=VARCHAR} duration, 
+ 				#{language, jdbcType=VARCHAR} language, 
+ 				#{dbos, jdbcType=VARCHAR} dbos, 
+ 				#{etc, jdbcType=VARCHAR} etc
+			from dual
+		) B
+		ON (A.projectCareerId = B.projectCareerId)
+		WHEN MATCHED THEN
+			update set
+				projectName = #{projectName, jdbcType=VARCHAR}, 
+	 			developmentPeriod = #{developmentPeriod, jdbcType=VARCHAR}, 
+	 			duration# = {duration, jdbcType=VARCHAR}, 
+	 			language# = {language, jdbcType=VARCHAR}, 
+	 			dbos = #{dbos, jdbcType=VARCHAR}, 
+	 			etc = #{etc, jdbcType=VARCHAR}
+ 		WHEN NOT MATCHED THEN
+ 			INSERT (
+ 				A.projectCareerId, A.resumeId, A.projectName, A.developmentPeriod, A.duration, A.language, A.dbos, A.etc) 
+ 			VALUES(
+ 				#{projectCareerId}, 
+	 			#{resumeId}, 
+	 			#{projectName, jdbcType=VARCHAR}, 
+	 			#{developmentPeriod, jdbcType=VARCHAR}, 
+	 			#{duration, jdbcType=VARCHAR}, 
+	 			#{language, jdbcType=VARCHAR}, 
+	 			#{dbos, jdbcType=VARCHAR}, 
+	 			#{etc, jdbcType=VARCHAR}
+ 			)
+ 	</update>
+ 	
+ 	<delete id="deleteProjectCareerById" parameterType="String">
  		delete from ProjectCareer
- 		where projectCareerId = #{projectCareerId}
+ 		where resumeId = #{loginId}
  	</delete>
  	
 </mapper>
