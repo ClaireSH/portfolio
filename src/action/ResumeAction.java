@@ -287,7 +287,5 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session=session;
-	}
-	
-	
+	}	
 }
