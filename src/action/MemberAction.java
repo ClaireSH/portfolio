@@ -23,7 +23,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	Resume resumeVo;
 	Career careerVo;
 	Certificate certificateVo;
-	ProjectCareer projectCareerVo;
+	ProjectCareer projectcareerVo;
 		
 	ArrayList<AcademicBg> academicBgList;
 	ArrayList<Career> careerList;
@@ -188,6 +188,66 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	}
 
 	
+	public AcademicBg getAcademicVo() {
+		return academicVo;
+	}
+
+	public void setAcademicVo(AcademicBg academicVo) {
+		this.academicVo = academicVo;
+	}
+
+	public Career getCareerVo() {
+		return careerVo;
+	}
+
+	public void setCareerVo(Career careerVo) {
+		this.careerVo = careerVo;
+	}
+
+	public Certificate getCertificateVo() {
+		return certificateVo;
+	}
+
+	public void setCertificateVo(Certificate certificateVo) {
+		this.certificateVo = certificateVo;
+	}
+
+	public ProjectCareer getProjectcareerVo() {
+		return projectcareerVo;
+	}
+
+	public void setProjectcareerVo(ProjectCareer projectcareerVo) {
+		this.projectcareerVo = projectcareerVo;
+	}
+
+	public ArrayList<Resume> getResumeList() {
+		return resumeList;
+	}
+
+	public void setResumeList(ArrayList<Resume> resumeList) {
+		this.resumeList = resumeList;
+	}
+
+	public MemberDAO getMemberDAO() {
+		return memberDAO;
+	}
+
+	public void setMemberDAO(MemberDAO memberDAO) {
+		this.memberDAO = memberDAO;
+	}
+
+	public ResumeDAO getResumeDAO() {
+		return resumeDAO;
+	}
+
+	public void setResumeDAO(ResumeDAO resumeDAO) {
+		this.resumeDAO = resumeDAO;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
