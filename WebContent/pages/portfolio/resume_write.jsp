@@ -1,91 +1,79 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%-- 	<%@ taglib prefix="s" uri="/struts-tags" %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Cover me</title>
-<!-- js -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì»¤ë²„ë¯¸ :: ì´ë ¥ì„œìˆ˜ì • í˜ì´ì§€</title>
 
 <!-- css -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/portfolio/include/css/resume_write.css">
-<!-- ³»ºÎ -->
-<script type="text/javascript"
-	src="/portfolio/include/js/resume_write_01.js"></script>
-<script type="text/javascript"
-	src="/portfolio/include/js/resume_write_02.js"></script>
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+   integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+   crossorigin="anonymous">
 
 
 </head>
 <body>
 	<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
-	<!-- essential2¿¡¼­ Çì´õÈ£Ãâ -->
+	<!-- essential2ì—ì„œ í—¤ë”í˜¸ì¶œ -->
 	<div id="myheader"></div>
 	<!-- Page Content -->
 	<div class="container" style="width: 80%; margin-left: 15%">
-		<!-- »ó´Ü ¸Ş´º -->
+		<!-- ìƒë‹¨ ë©”ë‰´ -->
 
 
 		<!-- Page Navigator -->
 		<ol class="breadcrumb path" style="background-color: white;">
 			<li><a href="/portfolio/pages/main.html"
 				onclick="clickMenu('home')">Home</a></li>
-			<li class="active">ÀÌ·Â¼­ °ü¸®</li>
+			<li class="active">ì´ë ¥ì„œ ê´€ë¦¬</li>
 		</ol>
 		<!--  -->
 
 		<!-- Page Title -->
 		<div class="page-header" style="border-left: 5px solid #ff0000;">
 			<span
-				style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">±âº»
-				ÀÌ·Â¼­ °ü¸®</span>
+				style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">ê¸°ë³¸
+				ì´ë ¥ì„œ ê´€ë¦¬</span>
 		</div>
 
 		<div id="myheader2"></div>
-		<!-- ³ªÁß¿¡ essential2¿¡ ³ÖÀÚ -->
+		<!-- ë‚˜ì¤‘ì— essential2ì— ë„£ì -->
 
-		<script>
+<!-- 		<script>
+		 var toggle = false;  
+	var toggle = false; 
 	  $(document).ready(function () {
-      $("#btn_toggle").click(function(){
-    	  $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").attr("readonly",false); //ÀÔ·Â°¡´É
-		}); 
-  		var prev = $(this).prev('input'),
- 	    ro   = prev.prop('readonly');
-   	    $(this).val(ro ? 'Save' : 'Edit');
- 		});
-    	  
-    	  
-    	  
-		  
-		   
-	  
-	$('#tab01').removeClass();
-      $('#tab02').addClass('active');
-      
-      
-		
-/*		 var toggle = false; 
      	  if(toggle){
+       $("#btn_toggle").click(function(){
+    	   $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").attr("readonly",false); //ì…ë ¥ê°€ëŠ¥
+	    	  $("#btn_toggle").val("ì €ì¥");
+    	  toggle=true;    	  
+    	  }}else{
+    		  $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").removeAttr("readonly",true);
+    		  toggle = false; 
+    	  } 
+    	   if(count !== 0){
+    	  $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").attr("readonly",true); //ì…ë ¥ê°€ëŠ¥
+	    	  $("#btn_toggle").val("ìˆ˜ì •");
+    			  count=0;       
+      }); 
+  		 var prev = $(this).prev('input'),
+ 	    ro   = prev.prop('readonly');
+   	    $(this).val(ro ? 'Save' : 'Edit'); 
+	 $('#tab01').removeClass();
+      $('#tab02').addClass('active'); 
+    	  
+		 var toggle = false; 
     	  $('input:text').attr('readonly','readonly'); 
     	  toggle = false; 
-    	  }else{
-    		  $('input:text').removeAttr('readonly');
-    		  toggle = true; 
-    	  } */
-      });
-	  
-      </script>
-		<!-- action="insertResume.action"   onsubmit="return insertResume()"-->
+      });  
+	  ì•„ë¬´ë¦¬í•´ë„ ëª¨ë¥´ê² ìŒ 
+      </script> -->
+		
 
 		<form action="insertResume" id="resumeForm" method="post"
 			enctype="multipart/form-data" style="width: 100%;">
@@ -93,118 +81,104 @@
 				type="hidden" name="files" id="file2"> <input type="hidden"
 				name="files" id="file3">
 
-			<!-- ±âº»Á¤º¸ -->
+			<!-- ê¸°ë³¸ì •ë³´ -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">±âº»Á¤º¸</div>
+					<div class="panel-title">ê¸°ë³¸ì •ë³´</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered">
 						<tbody>
 							<tr>
-								<td style="width: 12%;">ÀÌ¸§</td>
+								<td style="width: 12%;">ì´ë¦„</td>
 								<td><input type="text" class="form-control" maxlength="10"
 									id="name" name="memberVO.name" value="" disabled></td>
 								<td class="text-center" rowspan="4" style="width: 20%;"><img
 									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
-									src=""> <input type="file" value="¾÷·Îµå" id="upload"
+									src=""> <input type="file" value="ì—…ë¡œë“œ" id="upload"
 									name="upload"
 									onchange="previewImage(this,&#39;previewImg&#39;)"
 									style="width: 100%;"></td>
 							</tr>
 							<!-- <tr>
-								<td>¿ä¹Ì°¡³ª</td>
+								<td>ìš”ë¯¸ê°€ë‚˜</td>
 								<td><input readonly type="text" class="form-control"
 									maxlength="13" id="jpnName" name="resumeVO.mbr_name_yomi"
 									value=""></td>
 
 							</tr> -->
 							<tr>
-								<td>»ı³â¿ùÀÏ</td>
+								<td>ìƒë…„ì›”ì¼</td>
 								<td>
 									<div class="form-inline">
 										<input type="text" class="form-control" style="width: 25%;"
 											maxlength="4" id="year" name="memberVo.useryear" value=""
-											disabled> ³â <input type="text" class="form-control"
+											disabled> ë…„ <input type="text" class="form-control"
 											style="width: 25%;" maxlength="2" id="month"
-											name="memberVo.usermonth" value="" disabled> ¿ù <input
+											name="memberVo.usermonth" value="" disabled> ì›” <input
 											type="text" class="form-control" style="width: 25%;"
 											maxlength="2" id="day" name="memberVo.userday" value=""
-											disabled> ÀÏ
+											disabled> ì¼
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td>¼ºº°</td>
+								<td>ì„±ë³„</td>
 								<td><label class="radio-inline"> <input
 										type="radio" name="memberVO.gender" id="gender1" value="0"
-										disabled="">³²
+										disabled="">ë‚¨
 								</label> <label class="radio-inline"> <input type="radio"
 										name="memberVO.gender" id="gender2" value="1" disabled="">
-										¿©
+										ì—¬
 								</label></td>
-							</tr>
-							<tr>
-								<td>ÁÖ¼Ò</td>
-								<td colspan="2"><input type="text" class="form-control"
-									id="addr" maxlength="160" name="resumeVO.mbr_address" value=""
-									readonly></td>
-								<!-- ÁÖ¼Ò ¾îÄÉÇÏÁö..¤Ğ -->
-
-							</tr>
-							<!-- <tr>
-								<td>ÁÖ¼Ò ¿ä¹Ì°¡³ª</td>
-								<td colspan="2"><input readonly type="text" class="form-control" id="jpnAddr" maxlength="250" name="resumeVO.mbr_address_yomi" value=""></td>
-
-							</tr> -->
+							</tr>							
 						</tbody>
 					</table>
 				</div>
 			</div>
 
-			<!-- ÇĞ·Â, °ü·Ã±³À° ÀÌ¼ö -->
+			<!-- í•™ë ¥, ê´€ë ¨êµìœ¡ ì´ìˆ˜ -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">ÇĞ·Â, °ü·Ã±³À° ÀÌ¼ö</div>
+					<div class="panel-title">í•™ë ¥, ê´€ë ¨êµìœ¡ ì´ìˆ˜</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="eduTable"
 						style="table-layout: fixed; text-align: left;">
 						<tbody>
 							<tr>
-								<td>ÀÔÇĞ</td>
-								<td>Á¹¾÷</td>
-								<td colspan="2">ÇĞ±³</td>
-								<td colspan="2">Àü°ø</td>
-								<td>ÇĞÀ§</td>
-								<td>ºñ°í</td>
+								<td>ì…í•™</td>
+								<td>ì¡¸ì—…</td>
+								<td colspan="2">í•™êµ</td>
+								<td colspan="2">ì „ê³µ</td>
+								<td>í•™ìœ„</td>
+								<td>ë¹„ê³ </td>
 							</tr>
 						</tbody>
 						<tbody></tbody>
 
 						<!-- <input type="hidden" name="resumeVO.edu_gubun" value="0"> -->
-						<input type="hidden" name="academicVO.edu_seq" class="edu_seq"
-							value="17151">
+						<input type="hidden" name="academicVO.academicBgId" value="0">
 
 						<tbody>
 							<tr>
-								<td><input type="text" class="form-control" id="admission0"
-									maxlength="11" name="academicVo.edu_term_from" value="" 
+								<td><input type="text" class="form-control" id="adminssionYear0"
+									maxlength="11" name="academicVo.adminssionYear" value="" 
 									readonly></td>
 								<td><input type="text" class="form-control"
-									id="graduation0" maxlength="11" name="resumeVO.edu_term_to"
+									id="graduationYear0" maxlength="11" name="resumeVO.graduationYear"
 									value=""  readonly></td>
 								<td colspan="2"><input size="25%" type="text"
-									class="form-control" maxlength="30" id="school0"
-									name="resumeVO.edu_school" value=""  readonly></td>
+									class="form-control" maxlength="30" id="schoolName0"
+									name="resumeVO.schoolName" value=""  readonly></td>
 								<td colspan="2"><input size="25%" type="text"
 									class="form-control" maxlength="30" id="major0"
-									name="resumeVO.edu_major" value=""  readonly></td>
+									name="resumeVO.major" value=""  readonly></td>
 								<td><input type="text" class="form-control" id="degree0"
-									maxlength="20" name="resumeVO.edu_degree" value="" 
+									maxlength="20" name="resumeVO.degree" value="" 
 									readonly></td>
-								<td><input type="text" class="form-control" id="note0"
-									maxlength="20" name="resumeVO.edu_note" value="" 
+								<td><input type="text" class="form-control" id="remarks0"
+									maxlength="20" name="resumeVO.remarks" value="" 
 									readonly></td>
 							</tr>
 						</tbody>
@@ -215,48 +189,48 @@
 				</div>
 			</div>
 
-			<!-- °æ·Â -->
+			<!-- ê²½ë ¥ -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">°æ·Â</div>
+					<div class="panel-title">ê²½ë ¥</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="careerTable"
 						style="table-layout: fixed; text-align: left;">
 						<tbody>
 							<tr>
-								<td>ÀÔ»ç</td>
-								<td>Åğ»ç</td>
-								<td colspan="2">È¸»ç¸í</td>
-								<td>¾÷Á¾</td>
-								<td colspan="2">ºÎ¼­</td>
-								<td>Á÷À§</td>
+								<td>ì…ì‚¬</td>
+								<td>í‡´ì‚¬</td>
+								<td colspan="2">íšŒì‚¬ëª…</td>
+								<td>ì—…ì¢…</td>
+								<td colspan="2">ë¶€ì„œ</td>
+								<td>ì§ìœ„</td>
 							</tr>
 						</tbody>
 						<tbody></tbody>
 
-						<input type="hidden" name="resumeVO.edu_seq" class="edu_seq"
-							value="17152">
-						<input type="hidden" name="resumeVO.edu_gubun" value="0">
+						<!-- <input type="hidden" name="resumeVO.edu_seq" class="edu_seq"
+							value="17152"> -->
+						<input type="hidden" name="careerVO.careerId" value="0">
 
 						<tr>
-							<td><input type="text" class="form-control" id="entrance0"
-								maxlength="11" name="resumeVO.edu_term_from" value="" 
+							<td><input type="text" class="form-control" id="joinYear0"
+								maxlength="11" name="careerVO.joinYear" value="" 
 								readonly></td>
-							<td><input type="text" class="form-control" id="resign0"
-								maxlength="11" name="resumeVO.edu_term_to" value="" 
+							<td><input type="text" class="form-control" id="retirementYear0"
+								maxlength="11" name="careerVO.retirementYeard" value="" 
 								readonly></td>
 							<td colspan="2"><input size="25%" type="text"
-								class="form-control" maxlength="30" id="company0"
-								name="resumeVO.edu_school" value=""  readonly></td>
+								class="form-control" maxlength="30" id="companyName0"
+								name="careerVO.companyName" value=""  readonly></td>
 							<td colspan="2"><input size="25%" type="text"
-								class="form-control" maxlength="30" id="business0"
-								name="resumeVO.edu_major" value=""  readonly></td>
+								class="form-control" maxlength="30" id="businessType0"
+								name="careerVO.businessType" value=""  readonly></td>
 							<td><input type="text" class="form-control" id="department0"
-								maxlength="20" name="resumeVO.edu_degree" value="" 
+								maxlength="20" name="careerVO.department" value="" 
 								readonly></td>
 							<td><input type="text" class="form-control" id="position0"
-								maxlength="20" name="resumeVO.edu_note" value="" 
+								maxlength="20" name="careerVO.position" value="" 
 								readonly></td>
 						</tr>
 					</table>
@@ -266,41 +240,41 @@
 				</div>
 			</div>
 
-			<!-- ¸éÇã, ÀÚ°İ -->
+			<!-- ë©´í—ˆ, ìê²© -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">¸éÇã, ÀÚ°İ</div>
+					<div class="panel-title">ë©´í—ˆ, ìê²©</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="licenseTable"
 						style="table-layout: fixed; text-align: left;">
 						<tbody>
 							<tr>
-								<td><b>³â</b></td>
-								<td><b>¿ù</b></td>
-								<td width="70%"><b>¸éÇã/ÀÚ°İ</b></td>
-								<td><b>ºñ°í</b></td>
+								<td><b>ë…„</b></td>
+								<td><b>ì›”</b></td>
+								<td width="70%"><b>ë©´í—ˆ/ìê²©</b></td>
+								<td><b>ë¹„ê³ </b></td>
 							</tr>
 						</tbody>
 						<tbody></tbody>
 
-						<input type="hidden" class="license" name="resumeVO.license_seq"
+						<input type="hidden"  name="certificateVO.certificateId"
 							value="15733">
 						<tbody>
 							<tr>
 								<td><input type="text" class="form-control" id="year0"
-									name="resumeVO.license_year" value="" maxlength="4"
+									name="certificateVO.year" value="" maxlength="4"
 									onkeyup="this.value=number_filter(this.value);" 
 									readonly></td>
 								<td><input type="text" class="form-control" id="month0"
-									name="resumeVO.license_month" value="" maxlength="2"
+									name="certificateVO.,month" value="" maxlength="2"
 									onkeyup="this.value=number_filter(this.value);" 
 									readonly></td>
-								<td><input type="text" class="form-control" id="license0"
-									name="resumeVO.license_name" value="" maxlength="40" 
+								<td><input type="text" class="form-control" id="certificateName0"
+									name="certificateVO.certificateName" value="" maxlength="40" 
 									readonly></td>
-								<td><input type="text" class="form-control" id="lnote0"
-									name="resumeVO.license_etc" value="" maxlength="50" 
+								<td><input type="text" class="form-control" id="remarks0"
+									name="certificateVO.remarks" value="" maxlength="50" 
 									readonly></td>
 							</tr>
 
@@ -314,52 +288,52 @@
 				</div>
 			</div>
 
-			<!-- ÇÁ·ÎÁ§Æ® °æ·Â -->
+			<!-- í”„ë¡œì íŠ¸ ê²½ë ¥ -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<div class="panel-title">ÇÁ·ÎÁ§Æ® °æ·Â</div>
+					<div class="panel-title">í”„ë¡œì íŠ¸ ê²½ë ¥</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered table-hove " id="projectTable"
 						style="table-layout: fixed; text-align: left;">
 						<tbody>
 							<tr>
-								<th rowspan="2">ÇÁ·ÎÁ§Æ®¸í</th>
-								<th rowspan="2">°³¹ß±â°£</th>
-								<th rowspan="2">¼Ò¿ä±â°£</th>
-								<th colspan="3">½ºÅ³ºĞ¾ß</th>
+								<th rowspan="2">í”„ë¡œì íŠ¸ëª…</th>
+								<th rowspan="2">ê°œë°œê¸°ê°„</th>
+								<th rowspan="2">ì†Œìš”ê¸°ê°„</th>
+								<th colspan="3">ìŠ¤í‚¬ë¶„ì•¼</th>
 							</tr>
 							<tr>
 								<td>Language</td>
 								<td>DB/OS</td>
-								<td>±×¿Ü</td>
+								<td>ê·¸ì™¸</td>
 							</tr>
 						</tbody>
 						<tbody></tbody>
 
 
 
-						<input type="hidden" class="project" name="resumeVO.project_seq"
+						<input type="hidden" name="projectcareerVo.projectCareerId"
 							value="14984">
 						<tbody>
 							<tr>
-								<td><input type="text" class="form-control" id="project0"
-									name="resumeVO.project_name" value="" maxlength="30" 
+								<td><input type="text" class="form-control" id="projectName0"
+									name="projectcareerVo.projectName" value="" maxlength="30" 
 									readonly></td>
-								<td><input type="text" class="form-control" id="term0"
-									name="resumeVO.project_term" value="" maxlength="33" 
+								<td><input type="text" class="form-control" id="developmentPeriod0"
+									name="projectcareerVo.developmentPeriod" value="" maxlength="33" 
 									readonly></td>
-								<td><input type="text" class="form-control" id="taketerm0"
-									name="resumeVO.project_number" value="" maxlength="15" 
+								<td><input type="text" class="form-control" id="duration"
+									name="projectcareerVo.duration" value="" maxlength="15" 
 									readonly></td>
 								<td><input type="text" class="form-control" id="language0"
-									name="resumeVO.project_lang" value="" maxlength="80" 
+									name="projectcareerVo.language" value="" maxlength="80" 
 									readonly></td>
-								<td><input type="text" class="form-control" id="db0"
-									name="resumeVO.project_db_os" value="" maxlength="80" 
+								<td><input type="text" class="form-control" id="dbos0"
+									name="projectcareerVo.dbos" value="" maxlength="80" 
 									readonly></td>
 								<td><input type="text" class="form-control" id="etc0"
-									name="resumeVO.project_etc" value="" maxlength="80" 
+									name="projectcareerVo.etx" value="" maxlength="80" 
 									readonly></td>
 							</tr>
 
@@ -377,13 +351,13 @@
 		<div style="text-align: center;">
 			<!--  onclick="return updateResume()" -->
 			<input type="button" id="btn_toggle" class="btn btn-default btn-info"
-				value="¼öÁ¤"> <input type="button" id="delete"
-				class="btn btn-default" value="ÃÊ±âÈ­" onclick="deleteResume()">
+				value="ìˆ˜ì •"> <input type="button" id="delete"
+				class="btn btn-default" value="ì´ˆê¸°í™”" onclick="deleteResume()">
 		</div>
 		<input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input
 			type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input
 			type="hidden" name="resumeVO.resume_seq" value="713"> <input
-			type="hidden" id="sex" name="memberVo.sex" value="0">
+			type="hidden" id="sex" name="memberVo.gender" value="0">
 	</div>
 	</div>
 

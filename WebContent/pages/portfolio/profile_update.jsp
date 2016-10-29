@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>    
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,7 +17,7 @@
 <link rel="stylesheet" href="/portfolio/include/css/profile_modify.css">
 
 
-<title>Soft Engineer Society</title>
+<title>커버미 :: 개인정보 수정</title>
 </head>
 <body>
 
@@ -32,7 +31,7 @@
 
 		<!-- Page Navigator -->
 		<ol class="breadcrumb path" style="background-color: white;">
-			<li><a href="../society/index" onclick="clickMenu('home')">Home</a></li>
+			<li><a href="/index" onclick="clickMenu('home')">Home</a></li>
 			<li class="active">기본정보 관리</li>
 		</ol>
 		<!--  -->
@@ -51,10 +50,10 @@
 			<!-- name 변경 해야함,  col-md(크기) 변경-->
 			<fieldset class="width:100%;">
 				<ul>
-					<li><label for="userid">아이디</label> <input type='text' name="memberVo.memberId" maxlength=20 value="${memberVo.memberId}" readonly /></li>
+					<li><label for="userid">아이디</label> <input type='text' name="${memberVo.memberId}" maxlength=20 value="" readonly /></li>
 					<li><label for="userpw">패스워드</label> <input type='password' id="userpw" name="memberVo.password" maxlength=20 /></li>
 					<li id="pwEnter"><label for="userpw0">패스워드 확인</label> <input type='password' id="userpw0" maxlength=20 /></li>
-					<li><label for="username">이름</label> <input type='text' id="username" name="memberVo.name" maxlength=20 value="${memberVo.name}" /></li>
+					<li><label for="username">이름</label> <input type='text' id="username" name="${memberVo.name}" maxlength=20 value="" /></li>
 
 					<!-- 이부분 Action이랑 연결시켜야함. -->
 					<li id="gender"><label>성별</label> <input name="memberVo.sex" id="man" type="radio" value="0" />남자 <input name="memberVo.sex" id="woman" type="radio" value="1" />여자</li>

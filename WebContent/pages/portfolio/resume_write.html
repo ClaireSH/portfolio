@@ -5,18 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Soft Engineer Society</title>
 <!-- Latest compiled and minified CSS -->
-
-<!-- js -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<!-- css -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
 <!-- 내부 -->
 <script type="text/javascript"
 	src="/portfolio/include/js/resume_write_01.js"></script>
@@ -32,8 +22,7 @@
 
 <body>
 
-	<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
+
 	<!-- essential2에서 헤더호출 -->
 	<div id="myheader"></div>
 	<!-- Page Content -->
@@ -62,19 +51,19 @@
 	  $(document).ready(function () {
       $('#tab01').removeClass();
       $('#tab02').addClass('active');
-      
-      var toggle = false; 
+
+      var toggle = false;
       $('#btn_toggle').on('click',function(){
     	  if(toggle){
-    	  $('input:text').attr('readonly','readonly'); 
-    	  toggle = false; 
+    	  $('input:text').attr('readonly','readonly');
+    	  toggle = false;
     	  }else{
     		  $('input:text').removeAttr('readonly');
-    		  toggle = true; 
+    		  toggle = true;
     	  }
       });
-      
-      
+
+
       });
       </script>
 		<!--  -->
@@ -95,34 +84,34 @@
 						<tbody>
 							<tr>
 								<td style="width: 12%;">이름</td>
-								<td><input type="text" class="form-control" maxlength="10"
-									id="name" name="resumeVO.mbr_name" value="" disabled></td>
+								<td><input readonly type="text" class="form-control"
+									maxlength="10" id="name" name="resumeVO.mbr_name" value=""></td>
 								<td class="text-center" rowspan="4" style="width: 20%;"><img
 									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
-									src=""> <input type="file" value="업로드" id="upload"
+									src="http://placehold.it/20x20"> <input type="file" value="업로드" id="upload"
 									name="upload"
 									onchange="previewImage(this,&#39;previewImg&#39;)"
 									style="width: 100%;"></td>
 							</tr>
-							<!-- <tr>
+							<tr>
 								<td>요미가나</td>
 								<td><input readonly type="text" class="form-control"
 									maxlength="13" id="jpnName" name="resumeVO.mbr_name_yomi"
 									value=""></td>
 
-							</tr> -->
+							</tr>
 							<tr>
 								<td>생년월일</td>
 								<td>
 									<div class="form-inline">
-										<input type="text" class="form-control" style="width: 25%;"
-											maxlength="4" id="year" name="memberVo.year" value=""
-											disabled> 년 <input type="text" class="form-control"
-											style="width: 25%;" maxlength="2" id="month"
-											name="memberVo.month" value="" disabled> 월 <input
+										<input readonly="" type="text" class="form-control"
+											style="width: 25%;" maxlength="4" id="year"
+											name="memberVo.year" value=""> 년 <input readonly=""
 											type="text" class="form-control" style="width: 25%;"
-											maxlength="2" id="day" name="memberVo.day" value="" disabled>
-										일
+											maxlength="2" id="month" name="memberVo.month" value="">
+										월 <input readonly="" type="text" class="form-control"
+											style="width: 25%;" maxlength="2" id="day"
+											name="memberVo.day" value=""> 일
 									</div>
 								</td>
 							</tr>

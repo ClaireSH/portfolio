@@ -7,7 +7,7 @@
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.html">Cover Me :: 엔진v0.55</a>
+		<a class="navbar-brand" href="/portfolio/pages/main.html">Cover Me :: 엔진v0.58</a>
 	</div>
 	<!-- /.navbar-header -->
 
@@ -116,7 +116,7 @@
 				<li><a href="#"><i class="fa fa-comments fa-fw"></i> 질문답변<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="/portfolio/pages/tables.html"><i class="fa  fa-table fa-fw"></i> 질문편집</a></li>
-						<li><a href="#qnaModal" data-toggle="modal" data-dismiss="modal"><i class="fa fa-edit fa-fw"></i> 답변하기</a></li>
+						<li><a id="answering" href="#qnaModal" data-toggle="modal" data-dismiss="modal"><i class="fa fa-edit fa-fw"></i> 답변하기</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 
 
@@ -189,30 +189,50 @@
 					</div>
 					<!-- /.panel-heading -->
 					<script>
-					$(document).ready(function() {
-						
-						//초기에 질문받아옴
-						$.ajax({
-							
-						});
+						$(document).ready( function() {
 
-						//답변전송 
-						$('#btn-chat').click(function(){
-							$.ajax({
-								url : 'insertQNA',
-								type : 'post',
-								data : {
-									"answer" :  "메시지다다다"
-								},							
-							
-							success : function(data){
-									alert(data.question+'/'+data.answer);
-																	
-								}
-							});
-							
-						})
-					});
+									//질문 목록 받아오기
+									$('#answering').click(function() {
+
+										$.ajax({
+											url : 'insertQNA',
+											type : 'post',
+											success : function(data) {
+												//alert('질문(한번에 하나씩 받아온다?!) : '+data.question);
+
+
+											}
+										});//ajax
+
+									});//click
+
+									//답변전송
+									$('#btn-chat').click(
+											function() {
+
+												$.ajax({
+													url : 'insertQNA',
+													type : 'post',
+													data : {
+														"answer" : $( '#btn-input') .val()
+													},
+
+													success : function(data) {
+
+														 $('.chat').append('<li class="right clearfix"><span class="chat-img pull-right"> </span> <div class="clearfix"> <div class="header"> <small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전 </small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong> </div> <p>'+ data.answer +'</p> </div></li>').children("li:last").fadeIn(500);
+														  $( ".right:last-1" ).animate({
+														         opacity: 0.25 //use more parameter for effect
+														    }, 1000, function() {
+														         jQuery('.right:last').html(dd);
+														       // Animation complete.
+														   });
+$('.chat').append('<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span> <div class="chat-body clearfix"> <div class="header"> <strong class="primary-font">['+ data.type +'생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> '+ data.num +'/ 20번 질문 </small> </div> <p>' + data.question + '</p> </div></li>').children("li:last").fadeIn(500);
+$( '#btn-input') .val('');
+													}
+												});
+
+											})
+								});
 					</script>
 					<div class="panel-body">
 						<ul class="chat">
@@ -223,7 +243,7 @@
 										<strong class="primary-font">[여가생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> 12 / 20번 질문
 										</small>
 									</div>
-									<p>평소에 하는 운동은 머야?</p>
+									<p>평소에 하는 운동은 뭐가 있어?</p>
 								</div></li>
 							<li class="right clearfix"><span class="chat-img pull-right"> </span>
 								<div class="clearfix">
@@ -231,7 +251,7 @@
 										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전
 										</small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong>
 									</div>
-									<p>야구가 좋아. 고등학교 시절에는 야구부였지. LG가 최고!!</p>
+									<p>답변기다리는 중</p>
 								</div></li>
 							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_pm.png" alt="User Avatar" class="img-circle" />
 							</span>
@@ -240,7 +260,7 @@
 										<strong class="primary-font">[조직생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> 2 / 30번 질문
 										</small>
 									</div>
-									<p>대학생활 중 동아리나 사회활동을 한 적이 있다면?</p>
+									<p>대학생활 중 동아리나 사회활동을 한 적이 있었다면 뭐를 했어?</p>
 								</div></li>
 							<li class="right clearfix"><span class="chat-img pull-right"> </span>
 								<div class="clearfix">
@@ -248,7 +268,7 @@
 										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 5분 전
 										</small> <strong class="pull-right primary-font">[ 3번째 ] 답변</strong>
 									</div>
-									<p>대학에서 경극 동아리였는데 중국어랑 연기를 같이 했어. 동아리원들이랑 양꼬치에 찡따오!!</p>
+									<p>답변기다리는 중</p>
 								</div></li>
 						</ul>
 					</div>
@@ -259,18 +279,9 @@
 
 					<div class="panel-footer">
 						<div class="input-group">
-<<<<<<< HEAD
-
-						<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요"  /> 
-						<span class="input-group-btn">
-						<button class="btn btn-warning btn-sm" id="btn-chat">등록</button>
-						</span>
-
-=======
 							<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
 								<button class="btn btn-warning btn-sm" id="btn-chat">보내기</button>
 							</span>
->>>>>>> 86f4c14c3ad55d06d1d22df44dd91e9481b83742
 						</div>
 					</div>
 					<!-- /.panel-footer -->
@@ -282,5 +293,3 @@
 </div>
 
 <!--  -->
-
-

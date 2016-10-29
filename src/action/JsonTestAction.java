@@ -27,6 +27,11 @@ public class JsonTestAction extends ActionSupport {
 
 	public String insertQNA() {
 		System.out.println("AJAX 질문입력액션 들어옴");
+		
+		num = "1";
+		type = "타입(여가/조직/취미/학습/대학)";
+		question = "서버에서 질문합니다.";
+		
 		System.out.println(answer);
 		return SUCCESS;
 	}

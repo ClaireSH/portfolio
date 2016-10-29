@@ -117,7 +117,6 @@
     	<action name="insertQNA" class="action.QnaAction" method="insertQNA">
 			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
 		</action>
-
     	
     	<!-- 이력서 수정 -->
     	<action name="insertResume" >
