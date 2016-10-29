@@ -163,17 +163,17 @@
 						<tbody>
 							<s:iterator value="academicBgList" status="stat">
 								<tr>
-									<s:property value="academicBgList[#stat.index]" />
+									
 									<td><input type="hidden" name="academicBgId"
 										value="<s:property value="academicBgId" />" /></td>
 									<td><input type="text" class="form-control"
 										id="adminssionYear0" maxlength="11"
-										name="academicVo.adminssionYear"
-										value="<s:property value="adminssionYear"/>" readonly></td>
+										name="academicBgList.adminssionYear"
+										value="<s:property value="academicBgList[#stat.index].adminssionYear" />" readonly></td>
 									<td><input type="text" class="form-control"
 										id="graduationYear0" maxlength="11"
 										name="resumeVo.graduationYear"
-										value="<s:property value="graduationYear"/>" readonly></td>
+										value="<s:property value="academicBgList[#stat.index].academicBgId"/>" readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="schoolName0"
 										name="resumeVo.schoolName" value="<s:property value="schoolName"/>"
