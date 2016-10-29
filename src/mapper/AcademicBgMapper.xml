@@ -19,7 +19,7 @@
 		<result property = "remarks" column ="remarks"/>
  	</resultMap>
  	
- 	<select id="allAcademicBgById" parameterType="String" resultMap="AcademicBgResult">
+ 	<select id="allAcademicBgId" parameterType="String" resultMap="AcademicBgResult">
  		 select *
  		 from ACADEMICBG
  		 where resumeId = #{resumeId}		

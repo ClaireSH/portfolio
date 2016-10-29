@@ -290,7 +290,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session=session;
-<<<<<<< HEAD
+
 	}
 
 	public ArrayList<Pr> getPrList() {
@@ -300,10 +300,5 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	public void setPrList(ArrayList<Pr> prList) {
 		this.prList = prList;
 	}
-	
-	
-	
-=======
-	}	
->>>>>>> ffce96814a07a466e5ccdffc1d54ddc325ffd40f
+
 }

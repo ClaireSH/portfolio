@@ -161,8 +161,9 @@
 						<!-- <input type="hidden" name="resumeVO.edu_gubun" value="0"> -->
 
 						<tbody>
-							<s:iterator value="academicBgList">
+							<s:iterator value="academicBgList" status="stat">
 								<tr>
+									<s:property value="academicBgList[#stat.index]" />
 									<td><input type="hidden" name="academicBgId"
 										value="<s:property value="academicBgId" />" /></td>
 									<td><input type="text" class="form-control"
