@@ -61,6 +61,57 @@ $('textarea').jqte();
 				</div>
 				<div class="panel-body">
 
+
+									<link rel="stylesheet" href="../../plugin/tagInput/bootstrap-tagsinput.css">
+
+					<link rel="stylesheet" href="../../plugin/tagInput/app.css">
+					<script>
+					(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+					m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+					})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+					ga('create', 'UA-42755476-1', 'bootstrap-tagsinput.github.io');
+					ga('send', 'pageview');
+					</script>
+<input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput">
+<!--카테고리태그 -->
+					<input type="text" />
+					<script>
+					var cities = new Bloodhound({
+					  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+					  queryTokenizer: Bloodhound.tokenizers.whitespace,
+					  prefetch: '../../plugin/tagInput/cities.json'
+					});
+					cities.initialize();
+
+					var elt = $('input');
+					elt.tagsinput({
+					  tagClass: function(item) {
+					    switch (item.continent) {
+					      case 'Europe'   : return 'label label-primary';
+					      case 'America'  : return 'label label-danger label-important';
+					      case 'Australia': return 'label label-success';
+					      case 'Africa'   : return 'label label-default';
+					      case 'Asia'     : return 'label label-warning';
+					    }
+					  },
+					  itemValue: 'value',
+					  itemText: 'text',
+					  typeaheadjs: {
+					    name: 'cities',
+					    displayKey: 'text',
+					    source: cities.ttAdapter()
+					  }
+					});
+					elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });
+					elt.tagsinput('add', { "value": 4 , "text": "Washington"  , "continent": "America"   });
+					elt.tagsinput('add', { "value": 7 , "text": "Sydney"      , "continent": "Australia" });
+					elt.tagsinput('add', { "value": 10, "text": "Beijing"     , "continent": "Asia"      });
+					elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa"    });
+					</script>
+
+<!--버튼 -->
 					<input type="button" class="btn btn-default"
 						onclick="careerRow(this)" value="+"> <input type="button"
 						class="btn btn-default" onclick="careerRow(this)" value="-">
@@ -77,7 +128,7 @@ $('textarea').jqte();
 						</div>
 						<div class="panel-body">
 							<div class="container">
-								<h3><input type="text" placeholder="더블클릭해서 수정" value=""><i class="fa fa-clock-o"></i>수정7 </h3>
+								<h3><input type="text" class="form-control input-lg" placeholder="더블클릭해서 수정" value=""><i class="fa fa-clock-o"></i>수정7 </h3>
 								<textarea name="textarea" class="jqte-test"></textarea>
 
 
@@ -109,6 +160,8 @@ $('textarea').jqte();
 	<!-- Footer -->
 	<div class="footer">
 
+    <script src="../../plugin/tagInput/app.js"></script>
+    <script src="../../plugin/tagInput/app_bs3.js"></script>
 <script>
 	$('.jqte-test').jqte();
 
