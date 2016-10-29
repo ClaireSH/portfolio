@@ -44,23 +44,35 @@
 		<!-- 나중에 essential2에 넣자 -->
 
 		<script>
-		 var toggle = false;  
-	  	$(document).ready(function () {
-	  	$("btn btn-default").style.display="none";
- 		
-       	$("#btn_toggle").click(function(){
-     	if(toggle){
+		$("#btn_toggle").on('click', function() {
+		    var prev = $(this).prev('input'),
+		        ro   = prev.prop('readonly');
+		    prev.prop('readonly', !ro);
+		    $(this).val(ro ? '저장' : '수정');
+		});
+		
+		/*
+		$(document).ready(function () {var toggle=false;
+			if(toggle){	
+		
+	  	$("#btn_toggle").click(function(){	
     	$(".form-control").attr("readonly",false); //입력가능
 	    $("#btn_toggle").val("저장");
-	  		$("#button").style.display="block";
-    		  toggle=true;    	  
-    	  }else{
-    		  $(".form-control").removeAttr("readonly",true);
+	  	toggle=true;
+	  	}) 
+	  	}
+	  	}); */
+		
+		
+/*     		  $(".form-control").removeAttr("readonly",true);
 	    $("#btn_toggle").val("수정");
 	  		$("#button").style.display="none";
     	  }
-    	  });
-	  	});
+    	  }); */
+	  	
+	  	
+	  	/*  $("input[type=submit]").attr("disabled", "disabled");
+	  	 */
 		/* var toggle = false; 
     		  toggle = false; 
     	  } 
@@ -82,7 +94,7 @@
       </script> 
 
 
-		<form action="insertResume" id="resumeForm" method="post"
+		<form action="updateResume" id="resumeForm" method="post"
 			enctype="multipart/form-data" style="width: 100%;">
 			<input type="hidden" name="files" id="file1"> <input
 				type="hidden" name="files" id="file2"> <input type="hidden"
