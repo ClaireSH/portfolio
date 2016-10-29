@@ -43,17 +43,25 @@
 		<div id="myheader2"></div>
 		<!-- 나중에 essential2에 넣자 -->
 
-		<!-- 		<script>
+		<script>
 		 var toggle = false;  
-	var toggle = false; 
-	  $(document).ready(function () {
-     	  if(toggle){
-       $("#btn_toggle").click(function(){
-    	   $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").attr("readonly",false); //입력가능
-	    	  $("#btn_toggle").val("저장");
-    	  toggle=true;    	  
-    	  }}else{
-    		  $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").removeAttr("readonly",true);
+	  	$(document).ready(function () {
+	  	$("btn btn-default").style.display="none";
+ 		
+       	$("#btn_toggle").click(function(){
+     	if(toggle){
+    	$(".form-control").attr("readonly",false); //입력가능
+	    $("#btn_toggle").val("저장");
+	  		$("#button").style.display="block";
+    		  toggle=true;    	  
+    	  }else{
+    		  $(".form-control").removeAttr("readonly",true);
+	    $("#btn_toggle").val("수정");
+	  		$("#button").style.display="none";
+    	  }
+    	  });
+	  	});
+		/* var toggle = false; 
     		  toggle = false; 
     	  } 
     	   if(count !== 0){
@@ -70,12 +78,11 @@
 		 var toggle = false; 
     	  $('input:text').attr('readonly','readonly'); 
     	  toggle = false; 
-      });  
-	  아무리해도 모르겠음 
-      </script> -->
+    	  아무리해도 모르겠음  */
+      </script> 
 
 
-		<form action="updateResume" id="resumeForm" method="post"
+		<form action="insertResume" id="resumeForm" method="post"
 			enctype="multipart/form-data" style="width: 100%;">
 			<input type="hidden" name="files" id="file1"> <input
 				type="hidden" name="files" id="file2"> <input type="hidden"
@@ -184,7 +191,7 @@
 									<td><input type="text" class="form-control" id="degree0"
 										maxlength="20" name="resumeVo.degree"
 										value="<s:property value="degree"/>" readonly></td>
-									<td><input type="text" class="form-control" id="remarks0"
+									<td><input type="text" class="form-control"
 										maxlength="20" name="resumeVo.remarks"
 										value="<s:property value="remarks"/>" readonly></td>
 								</tr>
@@ -193,7 +200,7 @@
 					</table>
 					<input type="button" class="btn btn-default"
 						onclick="abilityRow(this)" value="+"> <input type="button"
-						class="btn btn-default" onclick="abilityRow(this)" value="-">
+						class="btn btn-default" onclick="abilityRow(this)" value="-" >
 				</div>
 			</div>
 
@@ -242,7 +249,7 @@
 					</table>
 					<input type="button" class="btn btn-default"
 						onclick="careerRow(this)" value="+"> <input type="button"
-						class="btn btn-default" onclick="careerRow(this)" value="-">
+						class="btn btn-default"  onclick="careerRow(this)" value="-">
 				</div>
 			</div>
 
@@ -285,9 +292,9 @@
 
 						</tbody>
 					</table>
-					<input type="button" class="btn btn-default"
+					<input type="button"  class="btn btn-default"
 						onclick="licenceRow(this)" value="+"> <input type="button"
-						class="btn btn-default" onclick="licenceRow(this)" value="-">
+						class="btn btn-default" onclick="licenceRow(this)"value="-">
 				</div>
 			</div>
 
