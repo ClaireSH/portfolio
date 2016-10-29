@@ -307,6 +307,22 @@ public class MemberAction extends ActionSupport implements SessionAware{
 		this.projectCareerVo = projectCareerVo;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getUseryear() {
 		return useryear;
 	}
@@ -331,6 +347,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 		this.userday = userday;
 	}
 	
+
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
