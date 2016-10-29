@@ -13,6 +13,7 @@ import vo.AcademicBg;
 import vo.Career;
 import vo.Certificate;
 import vo.Member;
+import vo.Pr;
 import vo.ProjectCareer;
 import vo.Resume;
 
@@ -24,7 +25,9 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	ArrayList<Career> careerList;
 	ArrayList<Certificate> certificateList;
 	ArrayList<ProjectCareer> projectCareerList;
+	
 	ArrayList<Resume> resumeList;
+	ArrayList<Pr> prList;
 	
 	String useryear;
 	String usermonth;
@@ -33,7 +36,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	private Resume resume;
 	private String resumeId;
 	
-	MemberDAO memberDAO=new MemberDAO();
+	MemberDAO memberDAO= new MemberDAO();
 	ResumeDAO resumeDAO = new ResumeDAO();
 	Map<String, Object> session;
 	
@@ -72,6 +75,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	//개인정보 이력 초기화 작업
 	public String initUpdateResume() throws Exception{
 		
+		System.out.println("-------------------------initUpdateResume");
 		String loginId = (String)session.get("loginId");
 		memberVo = memberDAO.selectMember(loginId);
 		resumeVo = resumeDAO.selectResume(loginId);
@@ -90,6 +94,11 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			careerList = (ArrayList<Career>) resumeDAO.allCareerById(resumeVo.getResumeId());
 			certificateList = (ArrayList<Certificate>) resumeDAO.allCertificateBgById(resumeVo.getResumeId());
 			projectCareerList = (ArrayList<ProjectCareer>) resumeDAO.allProjectCareerById(resumeVo.getResumeId());
+			
+			for(AcademicBg ab : academicBgList){
+				System.out.println(ab.toString());
+			}
+			
 			
 			return SUCCESS;
 		}	
@@ -281,7 +290,15 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session=session;
+
 	}
-	
-	
+
+	public ArrayList<Pr> getPrList() {
+		return prList;
+	}
+
+	public void setPrList(ArrayList<Pr> prList) {
+		this.prList = prList;
+	}
+
 }

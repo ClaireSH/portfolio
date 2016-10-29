@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- 	<%@ taglib prefix="s" uri="/struts-tags" %> --%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,7 +34,7 @@
 		<!--  -->
 
 		<!-- Page Title -->
-		<div class="page-header" style="border-left: 5px solid #ff0000;">
+		<div class="page-header" style="border-left: 5px solid #337ab7;">
 			<span
 				style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">기본
 				이력서 관리</span>
@@ -43,7 +43,7 @@
 		<div id="myheader2"></div>
 		<!-- 나중에 essential2에 넣자 -->
 
-<!-- 		<script>
+		<!-- 		<script>
 		 var toggle = false;  
 	var toggle = false; 
 	  $(document).ready(function () {
@@ -73,9 +73,9 @@
       });  
 	  아무리해도 모르겠음 
       </script> -->
-		
 
-		<form action="insertResume" id="resumeForm" method="post"
+
+		<form action="updateResume" id="resumeForm" method="post"
 			enctype="multipart/form-data" style="width: 100%;">
 			<input type="hidden" name="files" id="file1"> <input
 				type="hidden" name="files" id="file2"> <input type="hidden"
@@ -92,7 +92,8 @@
 							<tr>
 								<td style="width: 12%;">이름</td>
 								<td><input type="text" class="form-control" maxlength="10"
-									id="name" name="memberVO.name" value="#{memberVo.name}" disabled></td>
+									id="name" name="memberVO.name" value="${memberVo.name}"
+									disabled></td>
 								<td class="text-center" rowspan="4" style="width: 20%;"><img
 									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
 									src=""> <input type="file" value="업로드" id="upload"
@@ -112,26 +113,27 @@
 								<td>
 									<div class="form-inline">
 										<input type="text" class="form-control" style="width: 25%;"
-											maxlength="4" id="year" name="memberVo.useryear" value="#{memberVo.useryear}"
-											disabled> 년 <input type="text" class="form-control"
-											style="width: 25%;" maxlength="2" id="month"
-											name="memberVo.usermonth" value="#{memberVo.usermonth}" disabled> 월 <input
+											maxlength="4" id="year" name="useryear"
+											value="${useryear}" disabled> 년 <input
 											type="text" class="form-control" style="width: 25%;"
-											maxlength="2" id="day" name="memberVo.userday" value="#{memberVo.userday}"
-											disabled> 일
+											maxlength="2" id="month" name="usermonth"
+											value="${usermonth}" disabled> 월 <input
+											type="text" class="form-control" style="width: 25%;"
+											maxlength="2" id="day" name="userday"
+											value="${userday}" disabled> 일
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>성별</td>
 								<td><label class="radio-inline"> <input
-										type="radio" name="memberVO.gender" id="gender1" value="0"
+										type="radio" name="memberVO.gender" id="gender1" value="${memberVo.gender}"
 										disabled="">남
 								</label> <label class="radio-inline"> <input type="radio"
 										name="memberVO.gender" id="gender2" value="1" disabled="">
 										여
 								</label></td>
-							</tr>							
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -157,29 +159,37 @@
 						</tbody>
 
 						<!-- <input type="hidden" name="resumeVO.edu_gubun" value="0"> -->
-						<input type="hidden" name="academicVO.academicBgId" value="0">
 
 						<tbody>
-							<tr>
-								<td><input type="text" class="form-control" id="adminssionYear0"
-									maxlength="11" name="academicVo.adminssionYear" value="#{academicVo.adminssionYear}" 
-									readonly></td>
-								<td><input type="text" class="form-control"
-									id="graduationYear0" maxlength="11" name="resumeVO.graduationYear"
-									value="#{academicVo.graduationYear}"  readonly></td>
-								<td colspan="2"><input size="25%" type="text"
-									class="form-control" maxlength="30" id="schoolName0"
-									name="resumeVO.schoolName" value="#{academicVo.schoolName}"  readonly></td>
-								<td colspan="2"><input size="25%" type="text"
-									class="form-control" maxlength="30" id="major0"
-									name="resumeVO.major" value="#{academicVo.adminssionYear}"  readonly></td>
-								<td><input type="text" class="form-control" id="degree0"
-									maxlength="20" name="resumeVO.degree" value="#{academicVo.adminssionYear}" 
-									readonly></td>
-								<td><input type="text" class="form-control" id="remarks0"
-									maxlength="20" name="resumeVO.remarks" value="#{academicVo.adminssionYear}" 
-									readonly></td>
-							</tr>
+							<s:iterator value="academicBgList" status="stat">
+								<tr>
+									<s:property value="academicBgList[#stat.index]" />
+									<td><input type="hidden" name="academicBgId"
+										value="<s:property value="academicBgId" />" /></td>
+									<td><input type="text" class="form-control"
+										id="adminssionYear0" maxlength="11"
+										name="academicVo.adminssionYear"
+										value="<s:property value="adminssionYear"/>" readonly></td>
+									<td><input type="text" class="form-control"
+										id="graduationYear0" maxlength="11"
+										name="resumeVo.graduationYear"
+										value="<s:property value="graduationYear"/>" readonly></td>
+									<td colspan="2"><input size="25%" type="text"
+										class="form-control" maxlength="30" id="schoolName0"
+										name="resumeVo.schoolName" value="<s:property value="schoolName"/>"
+										readonly></td>
+									<td colspan="2"><input size="25%" type="text"
+										class="form-control" maxlength="30" id="major0"
+										name="resumeVo.major" value="<s:property value="major"/>"
+										readonly></td>
+									<td><input type="text" class="form-control" id="degree0"
+										maxlength="20" name="resumeVo.degree"
+										value="<s:property value="degree"/>" readonly></td>
+									<td><input type="text" class="form-control" id="remarks0"
+										maxlength="20" name="resumeVo.remarks"
+										value="<s:property value="remarks"/>" readonly></td>
+								</tr>
+							</s:iterator>
 						</tbody>
 					</table>
 					<input type="button" class="btn btn-default"
@@ -207,31 +217,28 @@
 							</tr>
 						</tbody>
 						<tbody></tbody>
-
+						
+						<!--s:iterator하고 careerList  -->
 						<!-- <input type="hidden" name="resumeVO.edu_seq" class="edu_seq"
 							value="17152"> -->
 						<input type="hidden" name="careerVO.careerId" value="0">
 
 						<tr>
 							<td><input type="text" class="form-control" id="joinYear0"
-								maxlength="11" name="careerVO.joinYear" value="" 
-								readonly></td>
-							<td><input type="text" class="form-control" id="retirementYear0"
-								maxlength="11" name="careerVO.retirementYeard" value="" 
-								readonly></td>
+								maxlength="11" name="careerVO.joinYear" value="" readonly></td>
+							<td><input type="text" class="form-control"
+								id="retirementYear0" maxlength="11"
+								name="careerVO.retirementYeard" value="" readonly></td>
 							<td colspan="2"><input size="25%" type="text"
 								class="form-control" maxlength="30" id="companyName0"
-								name="careerVO.companyName" value=""  readonly></td>
-							<td colspan="2">
-							<input type="text"
-								class="form-control" maxlength="20" id="businessType0"
-								name="careerVO.businessType" value=""  readonly></td>
+								name="careerVO.companyName" value="" readonly></td>
+							<td colspan="2"><input type="text" class="form-control"
+								maxlength="20" id="businessType0" name="careerVO.businessType"
+								value="" readonly></td>
 							<td><input type="text" class="form-control" id="department0"
-								maxlength="20" name="careerVO.department" value="" 
-								readonly></td>
+								maxlength="20" name="careerVO.department" value="" readonly></td>
 							<td><input type="text" class="form-control" id="position0"
-								maxlength="20" name="careerVO.position" value="" 
-								readonly></td>
+								maxlength="20" name="careerVO.position" value="" readonly></td>
 						</tr>
 					</table>
 					<input type="button" class="btn btn-default"
@@ -258,24 +265,21 @@
 						</tbody>
 						<tbody></tbody>
 
-						<input type="hidden"  name="certificateVO.certificateId"
+						<input type="hidden" name="certificateVO.certificateId"
 							value="15733">
 						<tbody>
 							<tr>
 								<td><input type="text" class="form-control" id="year0"
 									name="certificateVO.year" value="" maxlength="4"
-									onkeyup="this.value=number_filter(this.value);" 
-									readonly></td>
+									onkeyup="this.value=number_filter(this.value);" readonly></td>
 								<td><input type="text" class="form-control" id="month0"
 									name="certificateVO.,month" value="" maxlength="2"
-									onkeyup="this.value=number_filter(this.value);" 
-									readonly></td>
-								<td><input type="text" class="form-control" id="certificateName0"
-									name="certificateVO.certificateName" value="" maxlength="40" 
-									readonly></td>
+									onkeyup="this.value=number_filter(this.value);" readonly></td>
+								<td><input type="text" class="form-control"
+									id="certificateName0" name="certificateVO.certificateName"
+									value="" maxlength="40" readonly></td>
 								<td><input type="text" class="form-control" id="remarks0"
-									name="certificateVO.remarks" value="" maxlength="50" 
-									readonly></td>
+									name="certificateVO.remarks" value="" maxlength="50" readonly></td>
 							</tr>
 
 
@@ -317,24 +321,23 @@
 							value="14984">
 						<tbody>
 							<tr>
-								<td><input type="text" class="form-control" id="projectName0"
-									name="projectcareerVo.projectName" value="" maxlength="30" 
-									readonly></td>
-								<td><input type="text" class="form-control" id="developmentPeriod0"
-									name="projectcareerVo.developmentPeriod" value="" maxlength="33" 
-									readonly></td>
+								<td><input type="text" class="form-control"
+									id="projectName0" name="projectcareerVo.projectName" value=""
+									maxlength="30" readonly></td>
+								<td><input type="text" class="form-control"
+									id="developmentPeriod0"
+									name="projectcareerVo.developmentPeriod" value=""
+									maxlength="33" readonly></td>
 								<td><input type="text" class="form-control" id="duration"
-									name="projectcareerVo.duration" value="" maxlength="15" 
+									name="projectcareerVo.duration" value="" maxlength="15"
 									readonly></td>
 								<td><input type="text" class="form-control" id="language0"
-									name="projectcareerVo.language" value="" maxlength="80" 
+									name="projectcareerVo.language" value="" maxlength="80"
 									readonly></td>
 								<td><input type="text" class="form-control" id="dbos0"
-									name="projectcareerVo.dbos" value="" maxlength="80" 
-									readonly></td>
+									name="projectcareerVo.dbos" value="" maxlength="80" readonly></td>
 								<td><input type="text" class="form-control" id="etc0"
-									name="projectcareerVo.etx" value="" maxlength="80" 
-									readonly></td>
+									name="projectcareerVo.etx" value="" maxlength="80" readonly></td>
 							</tr>
 
 
