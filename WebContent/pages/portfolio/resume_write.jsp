@@ -92,7 +92,7 @@
 							<tr>
 								<td style="width: 12%;">이름</td>
 								<td><input type="text" class="form-control" maxlength="10"
-									id="name" name="memberVO.name" value="#{memberVo.name}"
+									id="name" name="memberVO.name" value="${memberVo.name}"
 									disabled></td>
 								<td class="text-center" rowspan="4" style="width: 20%;"><img
 									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
@@ -113,21 +113,21 @@
 								<td>
 									<div class="form-inline">
 										<input type="text" class="form-control" style="width: 25%;"
-											maxlength="4" id="year" name="memberVo.useryear"
-											value="#{memberVo.useryear}" disabled> 년 <input
+											maxlength="4" id="year" name="useryear"
+											value="${useryear}" disabled> 년 <input
 											type="text" class="form-control" style="width: 25%;"
-											maxlength="2" id="month" name="memberVo.usermonth"
-											value="#{memberVo.usermonth}" disabled> 월 <input
+											maxlength="2" id="month" name="usermonth"
+											value="${usermonth}" disabled> 월 <input
 											type="text" class="form-control" style="width: 25%;"
-											maxlength="2" id="day" name="memberVo.userday"
-											value="#{memberVo.userday}" disabled> 일
+											maxlength="2" id="day" name="userday"
+											value="${userday}" disabled> 일
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>성별</td>
 								<td><label class="radio-inline"> <input
-										type="radio" name="memberVO.gender" id="gender1" value="0"
+										type="radio" name="memberVO.gender" id="gender1" value="${memberVo.gender}"
 										disabled="">남
 								</label> <label class="radio-inline"> <input type="radio"
 										name="memberVO.gender" id="gender2" value="1" disabled="">
@@ -163,30 +163,30 @@
 						<tbody>
 							<s:iterator value="academicBgList">
 								<tr>
-									<td><input type="hidden" name="academicVo.academicBgId"
-										value="<s:property value="academicVo.academicBgId" />" /></td>
+									<td><input type="hidden" name="academicBgId"
+										value="<s:property value="academicBgId" />" /></td>
 									<td><input type="text" class="form-control"
 										id="adminssionYear0" maxlength="11"
 										name="academicVo.adminssionYear"
-										value="<s:property value="academicVo.adminssionYear"/>" readonly></td>
+										value="<s:property value="adminssionYear"/>" readonly></td>
 									<td><input type="text" class="form-control"
 										id="graduationYear0" maxlength="11"
 										name="resumeVo.graduationYear"
-										value="<s:property value="academicVo.graduationYear"/>" readonly></td>
+										value="<s:property value="graduationYear"/>" readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="schoolName0"
-										name="resumeVo.schoolName" value="<s:property value="academicVo.schoolName"/>"
+										name="resumeVo.schoolName" value="<s:property value="schoolName"/>"
 										readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="major0"
-										name="resumeVo.major" value="<s:property value="academicVo.major"/>"
+										name="resumeVo.major" value="<s:property value="major"/>"
 										readonly></td>
 									<td><input type="text" class="form-control" id="degree0"
 										maxlength="20" name="resumeVo.degree"
-										value="<s:property value="academicVo.degree"/>" readonly></td>
+										value="<s:property value="degree"/>" readonly></td>
 									<td><input type="text" class="form-control" id="remarks0"
 										maxlength="20" name="resumeVo.remarks"
-										value="<s:property value="academicVo.remarks"/>" readonly></td>
+										value="<s:property value="remarks"/>" readonly></td>
 								</tr>
 							</s:iterator>
 						</tbody>
@@ -216,7 +216,8 @@
 							</tr>
 						</tbody>
 						<tbody></tbody>
-
+						
+						<!--s:iterator하고 careerList  -->
 						<!-- <input type="hidden" name="resumeVO.edu_seq" class="edu_seq"
 							value="17152"> -->
 						<input type="hidden" name="careerVO.careerId" value="0">

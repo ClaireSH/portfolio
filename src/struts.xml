@@ -66,12 +66,12 @@
       
       <!-- 4-2 [포트폴리오]의 [기본이력서] 수정  -->
       <action name="updateMember" class="action.ResumeAction" method="updateMember">
-         <result name="success" type="redirect">goUpdateResumeForm</result>
+         <result name="success" type="redirect">goUpdateMemberForm</result>
       </action>
 		
 	  <!-- 5-1 [포트폴리오]의 [기본이력서]  -->
       <action name="goUpdateResumeForm" class="action.ResumeAction" method="initUpdateResume">
-         <result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
+         <result name="success" type="dispatcher">/pages/portfolio/resume_write.jsp</result>
       </action>
       
       <!-- 5-2 [포트폴리오]의 [기본이력서] 수정  -->
