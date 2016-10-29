@@ -25,6 +25,44 @@
  		 where resumeId = #{resumeId}		
  	</select>
  	
+ 	<update id="mergeAcademicBg" parameterType="vo.AcademicBg">
+ 		MERGE INTO Academic A
+		USING (
+			select 
+				#{academicBgId} academicBgId, 
+ 				#{resumeId} resumeId, 
+ 				#{adminssionYear, jdbcType=VARCHAR} admicssionYear, 
+ 				#{graduationYear, jdbcType=VARCHAR} graduationYear ,
+ 				#{schoolName, jdbcType=VARCHAR} schoolName, 
+ 				#{major, jdbcType=VARCHAR} major, 
+ 				#{degree, jdbcType=VARCHAR} degree, 
+ 				#{remarks, jdbcType=VARCHAR} remarks
+			from dual
+		) B
+		ON (A.academicBgId = B.academicBgId)
+		WHEN MATCHED THEN
+		update set
+			adminssionYear = #{adminssionYear, jdbcType=VARCHAR},
+ 			graduationYear = #{graduationYear, jdbcType=VARCHAR},
+ 			schoolName = #{schoolName, jdbcType=VARCHAR},
+ 			major = #{major, jdbcType=VARCHAR},
+ 			degree = #{degree, jdbcType=VARCHAR},
+ 			remarks =#{remarks, jdbcType=VARCHAR}
+ 		WHEN NOT MATCHED THEN
+ 			INSERT (
+ 				A.academicBgId, A.resumeId, A.adminssionYear, A.graduationYear, A.schoolName, A.major, A.degree, A.remarks) 
+ 			VALUES(
+ 				#{academicBgId}, 
+ 				#{resumeId}, 
+ 				#{adminssionYear, jdbcType=VARCHAR}, 
+ 				#{graduationYear, jdbcType=VARCHAR}, 
+ 				#{schoolName, jdbcType=VARCHAR}, 
+ 				#{major, jdbcType=VARCHAR}, 
+ 				#{degree, jdbcType=VARCHAR}, 
+ 				#{remarks, jdbcType=VARCHAR}
+ 			)
+ 	</update>
+ 	
  	<insert id="insertAcademicBg" parameterType="vo.AcademicBg">
  		insert into ACADEMICBG
  			(academicBgId, resumeId, adminssionYear, graduationYear, schoolName, major, degree, remarks)
@@ -43,17 +81,18 @@
  	
  	<update id="updateAcademicBg" parameterType="vo.AcademicBg">
 		update AcademicBg
-		set adminssionYear = #{adminssionYear}
-			graduationYear = #{graduationYear}
-			schoolName = #{schoolName}
-			major = #{major}
-			degree = #{degree}
+		set resumeId = #{resumeId},
+			adminssionYear = #{adminssionYear},
+			graduationYear = #{graduationYear},
+			schoolName = #{schoolName},
+			major = #{major},
+			degree = #{degree},
 			remarks = #{remarks}
 		where academicBgId = #{academicBgId}
 	</update>
  	
- 	<delete id="deleteAcademicBg" parameterType="String">
+ 	<delete id="deleteAcademicBgById" parameterType="String">
  		delete from AcademicBg
- 		where academicBgId = #{academicBgId}
+ 		where resumeId = #{loginId}
  	</delete>
 </mapper>

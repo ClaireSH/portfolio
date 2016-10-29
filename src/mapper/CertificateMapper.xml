@@ -37,15 +37,48 @@
  	
  	<update id="updateCertificate" parameterType="vo.Certificate">
  		update Certificate
- 		set year = #{year},
+ 		set resumeId = #{resumeId},
+ 			year = #{year},
  			month = #{month},
  			certificateName = #{certificateName},
  			remarks = #{remarks}
  		where certificateId = #{certificateId}
  	</update>
  	
- 	<delete id="deleteCertificate" parameterType="String">
+ 	<update id="mergeCertificate" parameterType="vo.Certificate">
+ 		MERGE INTO Certificate A
+		USING (
+			select 
+				#{certificateId} certificateId, 
+	 			#{resumeId} resumeId, 
+	 			#{year, jdbcType=VARCHAR} year, 
+	 			#{month, jdbcType=VARCHAR} month, 
+	 			#{certificateName, jdbcType=VARCHAR} certificateName, 
+	 			#{remarks, jdbcType=VARCHAR} remarks
+			from dual
+		) B
+		ON (A.certificateId = B.certificateId)
+		WHEN MATCHED THEN
+			update set
+ 				year = #{year, jdbcType=VARCHAR},
+ 				month = #{month, jdbcType=VARCHAR},
+ 				certificateName = #{certificateName, jdbcType=VARCHAR},
+ 				remarks = #{remarks, jdbcType=VARCHAR}
+ 		WHEN NOT MATCHED THEN
+ 			INSERT (
+ 				A.certificateId, A.resumeId, A.year, A.month, A.certificateName, A.remarks) 
+ 			VALUES(
+ 				#{certificateId}, 
+	 			#{resumeId}, 
+	 			#{year, jdbcType=VARCHAR}, 
+	 			#{month, jdbcType=VARCHAR}, 
+	 			#{certificateName, jdbcType=VARCHAR}, 
+	 			#{remarks, jdbcType=VARCHAR}
+ 			)
+ 	</update>
+ 	
+ 	<delete id="deleteCertificateById" parameterType="String">
  		delete from Certificate
- 		where certificateId = #{certificateId}
+ 		where resumeId = #{loginId}
  	</delete>
 </mapper>
