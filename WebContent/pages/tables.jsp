@@ -42,11 +42,11 @@
 
 <body>
 
-   	<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
-	<div id="wrapper">
-		<script type="text/javascript" src="/portfolio/js/essential.js"></script>
+      <script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
+   <div id="wrapper">
+      <script type="text/javascript" src="/portfolio/js/essential.js"></script>
 
-		<div id="myheader"></div>
+      <div id="myheader"></div>
      <!-- Page Content -->
 
         <div id="page-wrapper">
@@ -77,15 +77,15 @@
                                 
                                    <s:iterator value="qnalist" status="status">
                               <tr>
-                                <td class="board_title"><s:url id="readurl"
+                                <%-- <td class="board_title"><s:url id="readurl"
                                        value="/board/readBoard.action">
                                        <s:param name="boardno" value="%{boardno}" />
                                     </s:url> <s:a href="%{readurl}">
                                        <s:property value="title" />
-                                    </s:a></td>
-                                 <td><s:property value="regdate" /></td>
-                                 <td><s:property value="custid" /></td>
-                                 <td><s:property value="hitcount" /></td>
+                                    </s:a></td> --%>
+                                 <td><s:property value="qnatype" /></td>
+                                 <td><s:property value="question" /></td>
+                                 <td><s:property value="answer" /></td>
                               </tr>
                            </s:iterator>
                                 
@@ -118,7 +118,7 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            최신 여가생활
+                            최근 질문과 답변
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -126,27 +126,21 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                <th>#</th>
                                  <th>질문</th>
                                  <th>답변일</th>
                                  <th>검색태그</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                              <s:subset source="list" count="3" start="1">
-                                 <s:iterator>
-                                    <tr>
-                                       <td><s:property value="num"/></td>
-                                       <td><s:property value="question"/></td>
-                                       <td><s:property value="answer"/></td>
-                                       <td><s:property value="title"/></td>
-                                    </tr>
-                                 </s:iterator>
-                              </s:subset>
-                              <tr>
-
-                              </tr>
-
+                            <s:iterator value="list" begin="0" end="2" step="1">
+                                 <tr>
+                                    <td><s:property value="num" /></td>
+                                    <td><s:property value="question" /></td>
+                                    <td><s:property value="answer" /></td>
+                                    <td><s:property value="title" /></td>
+                                 </tr>
+                     </s:iterator>
                            </tbody>
                                 </table>
                             </div>
@@ -157,12 +151,14 @@
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-6 -->
+                
+                	<!-- 아직 안 씀
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Basic Table
                         </div>
-                        <!-- /.panel-heading -->
+                        /.panel-heading
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table">
@@ -196,22 +192,22 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.table-responsive -->
+                            /.table-responsive
                         </div>
-                        <!-- /.panel-body -->
+                        /.panel-body
                     </div>
-                    <!-- /.panel -->
+                    /.panel
                 </div>
-                <!-- /.col-lg-6 -->
+                /.col-lg-6
             </div>
-            <!-- /.row -->
+            /.row
             <div class="row">
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Striped Rows
                         </div>
-                        <!-- /.panel-heading -->
+                        /.panel-heading
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -245,19 +241,19 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.table-responsive -->
+                            /.table-responsive
                         </div>
-                        <!-- /.panel-body -->
+                        /.panel-body
                     </div>
-                    <!-- /.panel -->
+                    /.panel
                 </div>
-                <!-- /.col-lg-6 -->
+                /.col-lg-6
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Bordered Table
                         </div>
-                        <!-- /.panel-heading -->
+                        /.panel-heading
                         <div class="panel-body">
                             <div class="table-responsive table-bordered">
                                 <table class="table">
@@ -291,22 +287,22 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.table-responsive -->
+                            /.table-responsive
                         </div>
-                        <!-- /.panel-body -->
+                        /.panel-body
                     </div>
-                    <!-- /.panel -->
+                    /.panel
                 </div>
-                <!-- /.col-lg-6 -->
+                /.col-lg-6
             </div>
-            <!-- /.row -->
+            /.row
             <div class="row">
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Hover Rows
                         </div>
-                        <!-- /.panel-heading -->
+                        /.panel-heading
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-hover">
@@ -340,19 +336,19 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.table-responsive -->
+                            /.table-responsive
                         </div>
-                        <!-- /.panel-body -->
+                        /.panel-body
                     </div>
-                    <!-- /.panel -->
+                    /.panel
                 </div>
-                <!-- /.col-lg-6 -->
+                /.col-lg-6
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Context Classes
                         </div>
-                        <!-- /.panel-heading -->
+                        /.panel-heading
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table">
@@ -392,20 +388,20 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.table-responsive -->
+                            /.table-responsive
                         </div>
-                        <!-- /.panel-body -->
+                        /.panel-body
                     </div>
-                    <!-- /.panel -->
+                    /.panel
                 </div>
-                <!-- /.col-lg-6 -->
+                /.col-lg-6
             </div>
-            <!-- /.row -->
+            /.row
         </div>
-        <!-- /#page-wrapper -->
+        /#page-wrapper
 
     </div>
-    <!-- /#wrapper -->
+    /#wrapper -->
 
     <!-- jQuery -->
     <script src="/portfolio/vendor/jquery/jquery.min.js"></script>

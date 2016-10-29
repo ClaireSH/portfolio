@@ -17,7 +17,7 @@ import vo.Resume;
 
 public class Action extends ActionSupport implements SessionAware{
 	Member memberVo;
-	
+	AcademicBg academicVo;
 	Resume resumeVo;
 	
 	ArrayList<AcademicBg> academicBgList;
