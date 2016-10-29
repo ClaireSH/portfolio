@@ -64,7 +64,14 @@ public class Certificate {
 				+ month + ", certificateName=" + certificateName + ", remarks=" + remarks + "]";
 	}
 	
-	
+	public void setEmptyValues(){
+		this.certificateId = "";
+		this.resumeId = "";
+		this.year = "";
+		this.month = "";
+		this.certificateName = "";
+		this.remarks = "";
+	}
 	
 	
 }

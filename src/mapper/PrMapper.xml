@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pr">
+	<!-- 
+		본래 패키지를 포함한 타입의 클래스이름명을 사용하나
+		typeAlias에 등록된 Alias값을 사요할 수 도 있음
+	 -->
+	<resultMap type="Pr" id="PrResult">
+		<id property="prId" column="prId"/>
+		<result property = "resumeId" column ="resumeId"/>
+		<result property = "prTitle" column = "prTitle"/>
+		<result property = "prContent" column = "prContent" />
+		<result property = "prRegdate" column = "prRegdate" />
+ 	</resultMap>
+ 	
+ 	<select id="allPrById" parameterType="String" resultMap="CareerResult">
+ 		 select prId, resumeId, prTitle, prContent, TO_DATE(#{prRegdate}, 'YYYYMMDDHH24MISS')
+ 		 from pr
+ 		 where resumeId = #{resumeId}		
+ 	</select>
+ 	
+ 	<insert id="insertPr" parameterType="vo.Pr">
+ 		insert into pr(prId, resumeId, prTitle, prContent, prRegdate) 
+ 		values(#{prId}, #{resumeId}, #{prTitle}, #{prContent}, sysdate)
+ 	</insert>
+ 	
+ 	<update id="updateCareer" parameterType="vo.Career">
+ 		update PR
+ 		set prTitle = #{prTitle}
+ 			prContent = #{prContent}
+ 		where prId = #{prId}
+ 	</update>
+ 	
+ 	<delete id="deleteCareer" parameterType="String">
+ 		delete from career
+ 		where careerId = #{careerId}
+ 	</delete>
+ 	
+</mapper>
