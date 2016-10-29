@@ -55,34 +55,35 @@
 		<!-- 나중에 essential2에 넣자 -->
 
 		<script>
+		/* var toggle = false;  
+	var toggle = false; 
 	  $(document).ready(function () {
-      $("#btn_toggle").click(function(){
-    	  $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").attr("readonly",false); //입력가능
-		}); 
-  		var prev = $(this).prev('input'),
- 	    ro   = prev.prop('readonly');
-   	    $(this).val(ro ? 'Save' : 'Edit');
- 		});
-    	  
-    	  
-    	  
-		  
-		   
-	  
-	$('#tab01').removeClass();
-      $('#tab02').addClass('active');
-      
-      
-		
-/*		 var toggle = false; 
      	  if(toggle){
+       $("#btn_toggle").click(function(){
+    	   $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").attr("readonly",false); //입력가능
+	    	  $("#btn_toggle").val("저장");
+    	  toggle=true;    	  
+    	  }}else{
+    		  $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").removeAttr("readonly",true);
+    		  toggle = false; 
+    	  } 
+    	   if(count !== 0){
+    	  $("#note0,#entrance0,#admission0,#resign0,#company0,#business0,#department0,#position0,#year0,#month0,#license0,#lnote0,#project0,#term0,#taketerm0,#language0,#db0,#etc0,#graduation0,#school0,#major0,#degree0,#note0").attr("readonly",true); //입력가능
+	    	  $("#btn_toggle").val("수정");
+    			  count=0;       
+      }); 
+  		 var prev = $(this).prev('input'),
+ 	    ro   = prev.prop('readonly');
+   	    $(this).val(ro ? 'Save' : 'Edit'); 
+	 $('#tab01').removeClass();
+      $('#tab02').addClass('active'); 
+    	  
+		 var toggle = false; 
     	  $('input:text').attr('readonly','readonly'); 
     	  toggle = false; 
-    	  }else{
-    		  $('input:text').removeAttr('readonly');
-    		  toggle = true; 
-    	  } */
-      });
+      });  
+	  아무리해도 모르겠음
+	  */
 	  
       </script>
 		<!-- action="insertResume.action"   onsubmit="return insertResume()"-->
