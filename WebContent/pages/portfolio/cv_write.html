@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)http://sesoc.global/society_mypage/resumeManagement -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> 커버미 :: 이력서커버 </title>
 <!-- 내부참조 -->
 <script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
 <link rel="stylesheet" href="/portfolio/include/css/resume_write.css">
-<title>커버미 :: 이력서커버</title>
+<!--편집-->
+<link rel="stylesheet" href="/portfolio/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css">
+
+<script type="text/javascript" src="/portfolio/jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js" charset="utf-8">
+
+
 </head>
 <body>
+<script type="text/javascript">
+$('textarea').jqte();
+</script>
 
 	<!-- essential2에서 헤더호출 -->
 	<div id="myheader"></div>
@@ -41,101 +49,71 @@
 				name="files" id="file3">
 
 
+				<div class="row">
+<!-- 섹션 -->
+					<div class="col-lg-3">
 
-			<!-- 경력 -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
 					<div class="panel-title">
-						<lngtag data-langnum="300">경력</lngtag>
+						<lngtag data-langnum="300"><i class="fa fa-clock-o fa-fw"></i> My커버</lngtag>
 					</div>
 				</div>
 				<div class="panel-body">
-					<table class="table table-bordered" id="careerTable"
-						style="table-layout: fixed; text-align: left;">
-						<tbody>
-							<tr>
-								<td data-langnum="301">입사</td>
-								<td data-langnum="302">퇴사</td>
-								<td colspan="2" data-langnum="303">회사명</td>
-								<td data-langnum="304">업종</td>
-								<td colspan="2" data-langnum="305">부서</td>
-								<td data-langnum="306">직위</td>
-							</tr>
-						</tbody>
-						<tbody></tbody>
 
-
-
-
-					</table>
 					<input type="button" class="btn btn-default"
 						onclick="careerRow(this)" value="+"> <input type="button"
 						class="btn btn-default" onclick="careerRow(this)" value="-">
 				</div>
 			</div>
+		</div>
+		<!--섹션.끝-->
+		<!-- 섹션 -->
+							<div class="col-lg-9">
 
-			<!-- 면허, 자격 -->
-			<div class="panel panel-danger">
-				<div class="panel-heading">
-					<div class="panel-title">
-						<lngtag data-langnum="500">면허, 자격</lngtag>
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<div class="panel-title"><i class="fa fa-clock-o fa-fw"></i> 자기소개서</div>
+						</div>
+						<div class="panel-body">
+							<div class="container">
+								<h3><input type="text" placeholder="더블클릭해서 수정" value=""><i class="fa fa-clock-o"></i>수정7 </h3>
+								<textarea name="textarea" class="jqte-test"></textarea>
+
+
+							</div>
+							<input type="button" class="btn btn-default"
+								onclick="careerRow(this)" value="+"> <input type="button"
+								class="btn btn-default" onclick="careerRow(this)" value="-">
+						</div>
 					</div>
 				</div>
-				<div class="panel-body">
-					<table class="table table-bordered" id="licenseTable"
-						style="table-layout: fixed; text-align: left;">
-						<tbody>
-							<tr>
-								<td><b><lngtag data-langnum="501">년</lngtag></b></td>
-								<td><b><lngtag data-langnum="502">월</lngtag></b></td>
-								<td width="70%"><b><lngtag data-langnum="503">면허/자격</lngtag></b></td>
-								<td><b><lngtag data-langnum="504">비고</lngtag></b></td>
-							</tr>
-						</tbody>
-						<tbody></tbody>
+				<!--섹션.끝-->
 
+</div>
 
-						<tbody>
-							<tr>
-								<td><input type="text" class="form-control" id="compJoin0"
-									name="resumeVO.license_year" value="" maxlength="4"
-									onkeyup="this.value=number_filter(this.value);"></td>
-								<td><input type="text" class="form-control" id="compLeave0"
-									name="resumeVO.license_month" value="" maxlength="2"
-									onkeyup="this.value=number_filter(this.value);"></td>
-								<td><input type="text" class="form-control" id="compName0"
-									name="resumeVO.license_name" value="" maxlength="40"></td>
-								<td><input type="text" class="form-control" id="industry0"
-									name="resumeVO.license_etc" value="" maxlength="50"></td>
-							</tr>
-
-
-
-						</tbody>
-					</table>
-					<input type="button" class="btn btn-default"
-						onclick="licenceRow(this)" value="+"> <input type="button"
-						class="btn btn-default" onclick="licenceRow(this)" value="-">
-				</div>
-
+	<div style="text-align: center;">
+			<input type="button" id="admit" class="btn btn-default btn-info"
+				value="수정"> <input type="button" id="delete"
+				class="btn btn-default" value="삭제" onclick="deleteResume()">
 			</div>
-
-
 
 			<input type="hidden" class="license" name="resumeVO.license_seq" value="15733"> <input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input type="hidden" id="ncd2" name="resumeVO.mbr_portfolio">
 			<input type="hidden" name="resumeVO.resume_seq" value="713">
 			<input type="hidden" id="sex" name="memberVo.sex" value="0">
 		</form>
-		<!-- 버튼 -->
-			<input type="button" id="admit" class="btn btn-default btn-info"
-				value="수정"> <input type="button" id="delete"
-				class="btn btn-default" value="삭제" onclick="deleteResume()">
-		<!-- 버튼.끝 -->
+
 	</div>
 
 	<!-- end .container -->
 	<!-- Footer -->
-	<div class="footer"></div>
+	<div class="footer">
+
+<script>
+	$('.jqte-test').jqte();
+
+</script>
+	</div>
 
 </body>
 </html>
