@@ -1,3 +1,6 @@
+
+
+
 //테이블 삭제한 후 생성할 것!!
 create table member(
 	memberId 	varchar2(20)	primary key,
@@ -27,14 +30,14 @@ create table resume(
 	savedImgFile	varchar2(50)
 );
 
-create table pr{
+create table pr(
 	prId 			varchar2(20)	primary key,
 	resumeId		varchar2(20),
-	constarint fk_pr_resumeId foreign key(resumeId) references resume(resumeId),
+	constraint fk_pr_resumeId foreign key(resumeId) references resume(resumeId),
 	prTitle			varchar2(100),
 	prContent		varchar2(2000),
 	prRegdate		date
-};
+);
 
 create table academicBg(
 	academicBgId	varchar2(20)	primary key,
@@ -86,6 +89,7 @@ insert into member values('lsh', '1234', '이수현', '0', '1992-02-03', 'tooona
 insert into member values('kdb', '1234', '김디비', '0', '1989-02-03', 'kdb@naver.com', '010-6486-7621');
 insert into member values('jyp', '1234', '박진영', '0', '1967-02-03', 'jyp@naver.com', '010-6486-7621');
 insert into member values('kss', '1234', '김삼성', '1', '1991-02-03', 'samsung@naver.com', '010-6486-7621');
+insert into member values('admin', '1234', '김삼성', '1', '1991-02-03', 'samsung@naver.com', '010-6486-7621');
 
 //테이블 삭제 (안되면 밑에서 부터 차례대로 삭제!!)
 drop table member;
