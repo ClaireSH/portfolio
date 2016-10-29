@@ -7,22 +7,16 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-
-<!-- 외부참조 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<!-- 내부참조 -->
+<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
 
 <!-- 내부참조 -->
 <link rel="stylesheet" href="/portfolio/include/css/profile_modify.css">
-
-
 <title>커버미 :: 개인정보 수정</title>
 </head>
 <body>
 
-	<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
 	<!-- essential2에서 헤더호출 -->
 	<div id="myheader"></div>
 	<!-- Page Content -->
@@ -46,7 +40,7 @@
 		<!-- essential2에서 탭메뉴호출 -->
 		<div id="myheader2"></div>
 
-		<form action="memberUpdate" name="form1" onsubmit="return joinMember()" method="post" style="margin: 0px; padding-bottom: 100px; border-top: none; background: url('') no-repeat center center; background-size: cover;">
+		<s:form action="memberUpdate" name="updateForm" onsubmit="return joinMember()" method="post" style="margin: 0px; padding-bottom: 100px; border-top: none; background: url('') no-repeat center center; background-size: cover;">
 			<!-- name 변경 해야함,  col-md(크기) 변경-->
 			<fieldset class="width:100%;">
 				<ul>
@@ -56,7 +50,7 @@
 					<li><label for="username">이름</label> <input type='text' id="username" name="${memberVo.name}" maxlength=20 value="" /></li>
 
 					<!-- 이부분 Action이랑 연결시켜야함. -->
-					<li id="gender"><label>성별</label> <input name="memberVo.sex" id="man" type="radio" value="0" />남자 <input name="memberVo.sex" id="woman" type="radio" value="1" />여자</li>
+					<li id="gender"><label>성별</label> <input name="memberVo.gender" id="man" type="radio" value="0" />남자 <input name="memberVo.gender" id="woman" type="radio" value="1" />여자</li>
 					<!-- ---- -->
 					<li><label>생년월일</label> 
 					<s:select headerKey="1" headerValue="y" id="y" list="#{year}" name="u" value="1" />년 
@@ -77,11 +71,10 @@
 			<div id="btnCenter" style="top: 50px;">
 				<input type="submit" value="수정" /> <input type="reset" value="삭제" />
 			</div>
-		</form>
-		<input type="hidden" id="sex" name="memberVo.sex" value="0">
+		</s:form>
+		<input type="hidden" id="gender" name="memberVo.gender" value="0">
 	</div>
 	<!-- end .container -->
-
 	<div class="footer"></div>
 	<!-- end .footer -->
 </body>

@@ -6,18 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>커버미 :: 이력서수정 페이지</title>
+<!-- Latest compiled and minified CSS -->
+<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
+<!-- 내부 -->
+<script type="text/javascript"
+	src="/portfolio/include/js/resume_write_01.js"></script>
+<script type="text/javascript"
+	src="/portfolio/include/js/resume_write_02.js"></script>
 
-<!-- css -->
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-   integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-   crossorigin="anonymous">
-
-
+<link rel="stylesheet" href="/portfolio/include/css/resume_write.css">
 </head>
 <body>
-	<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
 	<!-- essential2에서 헤더호출 -->
 	<div id="myheader"></div>
 	<!-- Page Content -->
@@ -92,7 +92,7 @@
 							<tr>
 								<td style="width: 12%;">이름</td>
 								<td><input type="text" class="form-control" maxlength="10"
-									id="name" name="memberVO.name" value="" disabled></td>
+									id="name" name="memberVO.name" value="#{memberVo.name}" disabled></td>
 								<td class="text-center" rowspan="4" style="width: 20%;"><img
 									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
 									src=""> <input type="file" value="업로드" id="upload"
@@ -112,12 +112,12 @@
 								<td>
 									<div class="form-inline">
 										<input type="text" class="form-control" style="width: 25%;"
-											maxlength="4" id="year" name="memberVo.useryear" value=""
+											maxlength="4" id="year" name="memberVo.useryear" value="#{memberVo.useryear}"
 											disabled> 년 <input type="text" class="form-control"
 											style="width: 25%;" maxlength="2" id="month"
-											name="memberVo.usermonth" value="" disabled> 월 <input
+											name="memberVo.usermonth" value="#{memberVo.usermonth}" disabled> 월 <input
 											type="text" class="form-control" style="width: 25%;"
-											maxlength="2" id="day" name="memberVo.userday" value=""
+											maxlength="2" id="day" name="memberVo.userday" value="#{memberVo.userday}"
 											disabled> 일
 									</div>
 								</td>
@@ -155,7 +155,6 @@
 								<td>비고</td>
 							</tr>
 						</tbody>
-						<tbody></tbody>
 
 						<!-- <input type="hidden" name="resumeVO.edu_gubun" value="0"> -->
 						<input type="hidden" name="academicVO.academicBgId" value="0">
@@ -163,22 +162,22 @@
 						<tbody>
 							<tr>
 								<td><input type="text" class="form-control" id="adminssionYear0"
-									maxlength="11" name="academicVo.adminssionYear" value="" 
+									maxlength="11" name="academicVo.adminssionYear" value="#{academicVo.adminssionYear}" 
 									readonly></td>
 								<td><input type="text" class="form-control"
 									id="graduationYear0" maxlength="11" name="resumeVO.graduationYear"
-									value=""  readonly></td>
+									value="#{academicVo.graduationYear}"  readonly></td>
 								<td colspan="2"><input size="25%" type="text"
 									class="form-control" maxlength="30" id="schoolName0"
-									name="resumeVO.schoolName" value=""  readonly></td>
+									name="resumeVO.schoolName" value="#{academicVo.schoolName}"  readonly></td>
 								<td colspan="2"><input size="25%" type="text"
 									class="form-control" maxlength="30" id="major0"
-									name="resumeVO.major" value=""  readonly></td>
+									name="resumeVO.major" value="#{academicVo.adminssionYear}"  readonly></td>
 								<td><input type="text" class="form-control" id="degree0"
-									maxlength="20" name="resumeVO.degree" value="" 
+									maxlength="20" name="resumeVO.degree" value="#{academicVo.adminssionYear}" 
 									readonly></td>
 								<td><input type="text" class="form-control" id="remarks0"
-									maxlength="20" name="resumeVO.remarks" value="" 
+									maxlength="20" name="resumeVO.remarks" value="#{academicVo.adminssionYear}" 
 									readonly></td>
 							</tr>
 						</tbody>
@@ -223,8 +222,9 @@
 							<td colspan="2"><input size="25%" type="text"
 								class="form-control" maxlength="30" id="companyName0"
 								name="careerVO.companyName" value=""  readonly></td>
-							<td colspan="2"><input size="25%" type="text"
-								class="form-control" maxlength="30" id="businessType0"
+							<td colspan="2">
+							<input type="text"
+								class="form-control" maxlength="20" id="businessType0"
 								name="careerVO.businessType" value=""  readonly></td>
 							<td><input type="text" class="form-control" id="department0"
 								maxlength="20" name="careerVO.department" value="" 
