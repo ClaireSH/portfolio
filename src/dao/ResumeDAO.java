@@ -57,7 +57,7 @@ public class ResumeDAO {
 		
 		try {
 			ss = factory.openSession();
-			cList = ss.selectList("career.allCareerBgById", resumeId);
+			cList = ss.selectList("career.allCareerById", resumeId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

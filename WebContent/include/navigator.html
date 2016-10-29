@@ -123,8 +123,8 @@
 
 				<li><a href="#"><i class="fa fa-files-o fa-fw"></i> 포트폴리오<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="/portfolio/pages/portfolio/profile_update.html"><i class="fa fa-user fa-fw"></i> 프로필커버</a></li>
-						<li><a href="/portfolio/pages/portfolio/resume_write.html"><i class="fa fa-th-list fa-fw"></i> 이력서커버</a></li>
+						<li><a href="goUpdateMemberForm"><i class="fa fa-user fa-fw"></i> 프로필커버</a></li>
+						<li><a href="goUpdateResumeForm"><i class="fa fa-th-list fa-fw"></i> 이력서커버</a></li>
 						<li><a href="/portfolio/pages/portfolio/cv_write.html"><i class="fa fa-columns   fa-fw"></i> 자기소개커버</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 분석<span class="fa arrow"></span></a>
@@ -226,8 +226,8 @@
 														         jQuery('.right:last').html(dd);
 														       // Animation complete.
 														   });
-$('.chat').append('<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span> <div class="chat-body clearfix"> <div class="header"> <strong class="primary-font">['+ data.type +'생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> '+ data.num +'/ 20번 질문 </small> </div> <p>' + data.question + '</p> </div></li>').children("li:last").fadeIn(500);
-$( '#btn-input') .val('');
+						$('.chat').append('<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span> <div class="chat-body clearfix"> <div class="header"> <strong class="primary-font">['+ data.type +'생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> '+ data.num +'/ 20번 질문 </small> </div> <p>' + data.question + '</p> </div></li>').children("li:last").fadeIn(500);
+						$( '#btn-input') .val('');
 													}
 												});
 

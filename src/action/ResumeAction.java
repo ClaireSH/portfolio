@@ -75,6 +75,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	//개인정보 이력 초기화 작업
 	public String initUpdateResume() throws Exception{
 		
+		System.out.println("-------------------------initUpdateResume");
 		String loginId = (String)session.get("loginId");
 		memberVo = memberDAO.selectMember(loginId);
 		resumeVo = resumeDAO.selectResume(loginId);
@@ -93,6 +94,11 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			careerList = (ArrayList<Career>) resumeDAO.allCareerById(resumeVo.getResumeId());
 			certificateList = (ArrayList<Certificate>) resumeDAO.allCertificateBgById(resumeVo.getResumeId());
 			projectCareerList = (ArrayList<ProjectCareer>) resumeDAO.allProjectCareerById(resumeVo.getResumeId());
+			
+			for(AcademicBg ab : academicBgList){
+				System.out.println(ab.toString());
+			}
+			
 			
 			return SUCCESS;
 		}	
@@ -284,6 +290,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session=session;
+<<<<<<< HEAD
 	}
 
 	public ArrayList<Pr> getPrList() {
@@ -296,4 +303,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	
 	
 	
+=======
+	}	
+>>>>>>> ffce96814a07a466e5ccdffc1d54ddc325ffd40f
 }

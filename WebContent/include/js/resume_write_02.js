@@ -135,13 +135,9 @@ function check() {
 }
 
 function insertResume() {
-	var result = check();
+	/*var result = check();
 	if (result == false)
-		return false;
-	
-	
-	
-	
+		return false;*/
 	var resumeForm = document.getElementById('resumeForm');
 	resumeForm.action = "resumeRegister";
 	resumeForm.submit();

@@ -1,158 +1,141 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
-    <meta charset="EUC-KR">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/portfolio/js/essential.js"></script>
 
-    <title>Cover ME</title>
+<title>Cover ME</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/portfolio/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- MetisMenu CSS -->
-    <link href="/portfolio/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
-    <link href="/portfolio/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="/portfolio/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/portfolio/dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="/portfolio/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
 <body>
+				<s:form action="templete" method="post">
+		<div id="wrapper">
+			<div id="myheader"></div>
+			<!-- Page Content -->
 
-      <script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
-   <div id="wrapper">
-      <script type="text/javascript" src="/portfolio/js/essential.js"></script>
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">ÏßàÎ¨∏Ìé∏Ïßë</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">ÏßàÎ¨∏ÎãµÎ≥ÄÎ™©Î°ù</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<table width="100%"
+									class="table table-striped table-bordered table-hover"
+									id="dataTables-example">
+									<col width="5%">
+									<col width="15%">
+									<col width="45%">
+									<col width="35%">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Î∂ÑÎ•ò</th>
+											<th>ÏßàÎ¨∏</th>
+											<th>ÎãµÎ≥Ä</th>
+										</tr>
+									</thead>
+									<tbody>
 
-      <div id="myheader"></div>
-     <!-- Page Content -->
-
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">¡˙πÆ∆Ì¡˝</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            ¿⁄±‚ ∫–ºÆ ¡˙πÆ
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                              <th>∫–∑˘</th>
-                              <th>¡˙πÆ</th>
-                              <th>¥‰∫Ø</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                
-                                   <s:iterator value="qnalist" status="status">
-                              <tr>
-                                <%-- <td class="board_title"><s:url id="readurl"
+										<tr>
+											<s:iterator value="qnalist" status="status">
+												<%-- <td class="board_title"><s:url id="readurl"
                                        value="/board/readBoard.action">
                                        <s:param name="boardno" value="%{boardno}" />
                                     </s:url> <s:a href="%{readurl}">
                                        <s:property value="title" />
                                     </s:a></td> --%>
-                                 <td><s:property value="qnatype" /></td>
-                                 <td><s:property value="question" /></td>
-                                 <td><s:property value="answer" /></td>
-                              </tr>
-                           </s:iterator>
-                                
-                                
-                                   <!--  <tr class="odd gradeX">
+												<td><s:property value="qnatype" /></td>
+												<td><s:property value="question" /></td>
+												<td><s:property value="answer" /></td>
+											</s:iterator>
+										</tr>
+
+
+										<!--  <tr class="odd gradeX">
                                         <td>Trident</td>
                                         <td>Internet Explorer 4.0</td>
                                         <td>Win 95+</td>
                                         <td class="center">4</td>
                                         <td class="center">X</td>
                                     </tr> -->
-                                  
-                                </tbody>
-                            </table>
-                            <!-- /.table-responsive -->
-                            <!-- <div class="well">
+
+									</tbody>
+								</table>
+								<!-- /.table-responsive -->
+								<!-- <div class="well">
                                 <h4>DataTables Usage Information</h4>
                                 <p>DataTables is a very flexible, advanced tables plugin for jQuery. In SB Admin, we are using a specialized version of DataTables built for Bootstrap 3. We have also customized the table headings to use Font Awesome icons in place of images. For complete documentation on DataTables, visit their website at <a target="_blank" href="https://datatables.net/">https://datatables.net/</a>.</p>
                                 <a class="btn btn-default btn-lg btn-block" target="_blank" href="https://datatables.net/">View DataTables Documentation</a>
                             </div> -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            √÷±Ÿ ¡˙πÆ∞˙ ¥‰∫Ø
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                <th>#</th>
-                                 <th>¡˙πÆ</th>
-                                 <th>¥‰∫Ø¿œ</th>
-                                 <th>∞Àªˆ≈¬±◊</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                            <s:iterator value="list" begin="0" end="2" step="1">
-                                 <tr>
-                                    <td><s:property value="num" /></td>
-                                    <td><s:property value="question" /></td>
-                                    <td><s:property value="answer" /></td>
-                                    <td><s:property value="title" /></td>
-                                 </tr>
-                     </s:iterator>
-                           </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-6 -->
-                
-                	<!-- æ∆¡˜ æ» æ∏
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">ÏµúÍ∑º ÏßàÎ¨∏Í≥º ÎãµÎ≥Ä</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>ÏßàÎ¨∏</th>
+												<th>ÎãµÎ≥ÄÏùº</th>
+												<th>Í≤ÄÏÉâÌÉúÍ∑∏</th>
+											</tr>
+										</thead>
+										<tbody>
+											<s:iterator value="list" begin="0" end="2" step="1">
+												<tr>
+													<td><s:property value="num" /></td>
+													<td><s:property value="question" /></td>
+													<td><s:property value="answer" /></td>
+													<td><s:property value="title" /></td>
+												</tr>
+											</s:iterator>
+										</tbody>
+									</table>
+								</div>
+								<!-- /.table-responsive -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- /.col-lg-6 -->
+
+		<!-- ÏïÑÏßÅ Ïïà ÏîÄ
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -403,32 +386,50 @@
     </div>
     /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="/portfolio/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/portfolio/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="/portfolio/vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- DataTables JavaScript -->
-    <script src="/portfolio/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="/portfolio/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-    <script src="/portfolio/vendor/datatables-responsive/dataTables.responsive.js"></script>
+		<!-- jQuery -->
+		<script src="/portfolio/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="/portfolio/dist/js/sb-admin-2.js"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="/portfolio/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
-    </script>
+		<!-- Metis Menu Plugin JavaScript -->
+		<script src="/portfolio/vendor/metisMenu/metisMenu.min.js"></script>
 
+		<!-- DataTables JavaScript -->
+		<script src="/portfolio/vendor/datatables/js/jquery.dataTables.min.js"></script>
+		<script
+			src="/portfolio/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+		<script
+			src="/portfolio/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+		<!-- Custom Theme JavaScript -->
+		<script src="/portfolio/dist/js/sb-admin-2.js"></script>
+
+		<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+		<script>
+			$(document).ready(function() {
+				$('#dataTables').dataTable({
+					"sPaginationType" : "full_numbers",
+					"bProcessing" : false,
+					"bServerSide" : false,
+					"sAjaxSource" : "selectQNA",
+					"bJQueryUI" : true,
+					"aoColumns" : [ {
+						"mData" : "#"
+					}, {
+						"mData" : "Î∂ÑÎ•ò"
+					}, {
+						"mData" : "ÏßàÎ¨∏"
+					}, {
+						"mData" : "ÎãµÎ≥Ä"
+					} ]
+				});
+			});
+		</script>
+</s:form>
 </body>
 
 </html>

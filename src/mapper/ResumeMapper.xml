@@ -17,7 +17,7 @@
 		<result property = "prContent" column = "prContent" />
  	</resultMap>
  	
- 	<select id="selectResume" parameterType="String">
+ 	<select id="selectResume" parameterType="String" resultMap="ResumeResult">
  		select *
  		from RESUME
  		where memberId = #{memberId}
