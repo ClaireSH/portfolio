@@ -74,10 +74,37 @@
 		</action>
 		
 		<!-- 3-1 [포트폴리오]의 [개인정보관리]  -->
-		<action name="goUpdateMemberForm" class="action.MemberAction" method="initUpdateMember">
+		<action name="goUpdateMemberForm" class="action.ResumeAction" method="initUpdateMember">
 			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp
 			</result>
 		</action>
+		
+		<!-- 3-2 (1)개인정보 관리 업데이트 -->
+		<action name="updateMember" class="action.ResumeAction" method="updateMember">
+    		<result name="success" type="redirect">goUpdateMemberForm</result>
+    	</action>
+    	
+    	<!-- 3-2 (2)회원탈퇴 -->
+		<action name="deleteMember" class="action.ResumeAction" method="deleteMember">
+    		<result name="success" type="redirect">index</result>
+    	</action>
+		
+		<!-- 4-1 [포트폴리오]의 [기본이력서]  -->
+		<action name="goUpdateResumeForm" class="action.MemberAction" method="initUpdateResume">
+			<result name="success" type="dispatcher">/pages/portfolio/resume_write.jsp</result>
+=======
+		<action name="goUpdateResumeForm" class="action.ResumeAction" method="initUpdateResume">
+			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
+>>>>>>> cbf0bcebf6c6b7711d4320ee6e7871d9b0c9beec
+		</action>
+		
+		<!-- 4-2 [포트폴리오]의 [기본이력서] 수정  -->
+		<action name="updateResume" class="action.ResumeAction" method="updateResume">
+			<result name="success" type="redirect">goUpdateResumeForm</result>
+		</action>
+<<<<<<< HEAD
+    	
+=======
 
 		<!-- <action name="favoriteMemberPage"> <result>/favoriteMemberPage.jsp</result> 
 			</action> -->
@@ -93,39 +120,15 @@
 			<result type="json" />
 		</action>
 		
-		<!-- 3-2 (1)개인정보 관리 업데이트 -->
-		<action name="updateMember" class="action.MemberAction" method="updateMember">
-    		<result name="success" type="redirect">goUpdateMemberForm</result>
-    	</action>
-    	
-    	<!-- 3-2 (2)회원탈퇴 -->
-		<action name="deleteMember" class="action.MemberAction" method="deleteMember">
-    		<result name="success" type="redirect">index</result>
-    	</action>
-		
-		<!-- 4-1 [포트폴리오]의 [기본이력서]  -->
-		<action name="goUpdateResumeForm" class="action.MemberAction" method="initUpdateResume">
-			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
-		</action>
-		
-		<action name="updateResume" class="action.MemberAction" method="updateResume">
-			<result name="success" type="redirect">goUpdateResumeForm</result>
-		</action>
-    	
     	<!-- 질문입력 -->
     	<action name="insertQNA" class="action.QnaAction" method="insertQNA">
 			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
 		</action>
+>>>>>>> cbf0bcebf6c6b7711d4320ee6e7871d9b0c9beec
     	
-    	<!-- 이력서 수정 -->
-    	<action name="insertResume" >
-			<result>/pages/portfolio/resume_write.jsp</result>
-		</action>
     	
-
-
-	</package>
-
+    	</package>
+    	
 	<!-- Add packages here -->
 
 

@@ -39,19 +39,58 @@
  		)
  	</insert>
  	
+ 	<update id="mergeCareer" parameterType="vo.Career">
+ 		MERGE INTO Career A
+		USING (
+			select 
+				#{careerId} careerId, 
+ 				#{resumeId} resumeId, 
+ 				#{joinYear, jdbcType=VARCHAR} joinYear, 
+ 				#{retirementYear, jdbcType=VARCHAR} retirementYear, 
+ 				#{companyName, jdbcType=VARCHAR} companyName, 
+ 				#{businessType, jdbcType=VARCHAR} businessType, 
+ 				#{department, jdbcType=VARCHAR} department, 
+ 				#{position, jdbcType=VARCHAR} position
+			from dual
+		) B
+		ON (A.careerId = B.careerId)
+		WHEN MATCHED THEN
+			update set
+				joinYear = #{joinYear, jdbcType=VARCHAR}, 
+ 				retirementYear = #{retirementYear, jdbcType=VARCHAR}, 
+ 				companyName = #{companyName, jdbcType=VARCHAR}, 
+ 				businessType = #{businessType, jdbcType=VARCHAR}, 
+ 				department = #{department, jdbcType=VARCHAR}, 
+ 				position = #{position, jdbcType=VARCHAR}
+ 		WHEN NOT MATCHED THEN
+ 			INSERT (
+ 				A.careerId, A.resumeId, A.joinYear, A.retirementYear, A.companyName, A.businessType, A.department, A.position) 
+ 			VALUES(
+ 				#{careerId}, 
+	 			#{resumeId}, 
+	 			#{joinYear, jdbcType=VARCHAR}, 
+	 			#{retirementYear, jdbcType=VARCHAR}, 
+	 			#{companyName, jdbcType=VARCHAR}, 
+	 			#{businessType, jdbcType=VARCHAR}, 
+	 			#{department, jdbcType=VARCHAR}, 
+	 			#{position, jdbcType=VARCHAR}
+ 			)
+ 	</update>
+ 	
  	<update id="updateCareer" parameterType="vo.Career">
  		update Career
- 		set joinYear = #{joinYear}
- 			retirementYear = #{retirementType}
- 			companyName = #{businessType}
- 			department = #{department}
+ 		set resumeId = #{resumeId},
+ 			joinYear = #{joinYear},
+ 			retirementYear = #{retirementType},
+ 			companyName = #{businessType},
+ 			department = #{department},
  			position = #{position}
  		where careerId = #{careerId}
  	</update>
  	
- 	<delete id="deleteCareer" parameterType="String">
+ 	<delete id="deleteCareerById" parameterType="String">
  		delete from career
- 		where careerId = #{careerId}
+ 		where resumeId = #{loginId}
  	</delete>
  	
 </mapper>

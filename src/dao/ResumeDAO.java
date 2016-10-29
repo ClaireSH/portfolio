@@ -221,5 +221,174 @@ public class ResumeDAO {
 		}
 	}
 	
+	public void updateAcademicBg(AcademicBg academicBg){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			System.out.println(academicBg.toString());
+			ss.update("academicBg.updateAcademicBg", academicBg);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
 	
+	public void updateCareer(Career career){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.update("career.updateCareer", career);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void updateCertificate(Certificate certificate){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.update("certificate.updateCertificate", certificate);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void updateProjectCareer(ProjectCareer projectCareer){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.update("projectCareer.updateProjectCareer", projectCareer);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void mergeAcademicBg(ArrayList<AcademicBg> academicBgList){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			System.out.println(academicBgList.toString());
+			ss.update("academicBg.mergeAcademicBg", academicBgList);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void mergeCareer(ArrayList<Career> careerList){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.update("career.mergeCareer", careerList);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void mergeCertificate(ArrayList<Certificate> certificateList){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.update("certificate.mergeCertificate", certificateList);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void mergeProjectCareer(ArrayList<ProjectCareer> projectCareerList){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.update("projectCareer.mergeProjectCareer", projectCareerList);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	//delete
+	public void deleteAcademicBgById(String loginId){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.delete("academicBg.deleteAcademicBgById", loginId);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void deleteCareerById(String loginId){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.delete("career.deleteCareerById", loginId);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void deleteCertificateById(String loginId){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.delete("certificate.deleteCertificateById", loginId);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
+	
+	public void deleteProjectCareerById(String loginId){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.delete("projectCareer.deleteProjectCareerById", loginId);
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
+			if( ss != null) ss.close();
+		}
+	}
 }
