@@ -174,7 +174,7 @@ fieldset select#useryear {
 	text-indent: 0;
 }
 
-.danger {
+/* .danger {
 	color: red;
 	font-weight: normal;
 }
@@ -183,7 +183,7 @@ fieldset select#useryear {
 	color: red;
 	font-weight: normal;
 	margin-left: 26%;
-}
+} */
 
 .must_text {
 	font-size: 12px;
