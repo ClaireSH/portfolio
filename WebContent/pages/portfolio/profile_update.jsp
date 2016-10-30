@@ -20,7 +20,7 @@
 	<!-- essential2에서 헤더호출 -->
 	<div id="myheader"></div>
 	<!-- Page Content -->
-	<div class="container" style="width: 80%; margin-left: 15%">
+	<div id="page-wrapper">
 		<!-- 상단 메뉴 -->
 
 		<!-- Page Navigator -->
