@@ -167,14 +167,14 @@ fieldset select#useryear {
 	margin-right: 5px;
 	border-radius: 5px;
 	border: 0;
-	background-color: #ff0000;
+	background-color: #337ab7;
 	color: #fff;
 	font-size: 14px;
 	font-weight: bold;
 	text-indent: 0;
 }
 
-.danger {
+/* .danger {
 	color: red;
 	font-weight: normal;
 }
@@ -183,7 +183,7 @@ fieldset select#useryear {
 	color: red;
 	font-weight: normal;
 	margin-left: 26%;
-}
+} */
 
 .must_text {
 	font-size: 12px;

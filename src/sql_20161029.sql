@@ -1,4 +1,15 @@
 
+<<<<<<< HEAD
+=======
+delete from MEMBER 
+delete from resume
+delete from academicBg
+delete from career
+delete from certificate
+delete from projectCareer
+
+select * from member   
+>>>>>>> 10ad5ce5d76767cb904fac52c94895fd00e4732c
 //테이블 삭제한 후 생성할 것!!
 create table member(
 	memberId 	varchar2(20)	primary key,
@@ -97,6 +108,8 @@ insert into member values('kdb', '1234', '김디비', '0', '1989-02-03', 'kdb@na
 insert into member values('jyp', '1234', '박진영', '0', '1967-02-03', 'jyp@naver.com', '010-6486-7621');
 insert into member values('kss', '1234', '김삼성', '1', '1991-02-03', 'samsung@naver.com', '010-6486-7621');
 insert into member values('admin', '1234', '김삼성', '1', '1991-02-03', 'samsung@naver.com', '010-6486-7621');
+commit
+
 
 //테이블 삭제 (안되면 밑에서 부터 차례대로 삭제!!)
 drop table member CASCADE CONSTRAINTS;
