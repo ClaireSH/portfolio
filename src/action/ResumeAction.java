@@ -66,8 +66,25 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			return INPUT;
 		}else{
 			//업데이트
-			System.out.println(m.getName() + "  " + " Update!!");
 			memberDAO.updateMember(m);
+			System.out.println(m.getName() + "  " + " Update!!");
+			return SUCCESS;
+		}
+	}
+	
+	//회원탈퇴
+	public String deleteMember(){
+		
+		String loginId = (String)session.get("loginId");
+		Member m = memberDAO.selectMember(loginId);
+		if(m == null){
+			return INPUT;
+		}else if(!(memberVo.getPassword()).equals(m.getPassword())){
+			return INPUT;
+		}else{
+			//업데이트
+			memberDAO.deleteMember(loginId);
+			System.out.println(m.getName() + "  " + " Delete!!");
 			return SUCCESS;
 		}
 	}
