@@ -37,13 +37,17 @@
       <!-- 2-1 로그인 -->
       <action name="login" class="action.MemberAction" method="login">
          <result name="login" type="redirect">main</result>
+         <!-- 2-2-B index -->
+         <result name="input" type="redirect">index</result>
       </action>
       
-      <!-- 2-2 메인으로 이동 -->
+      <!-- 2-2-A 메인으로 이동 -->
       <action name="main">
          <result>/pages/main.html</result>
       </action>
       
+      
+  
       <!-- 3-1 [포트폴리오]의 [개인정보관리]  -->
       <action name="goUpdateMemberForm" class="action.ResumeAction" method="initUpdateMember">
          <result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
