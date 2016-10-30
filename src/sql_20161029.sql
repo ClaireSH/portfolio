@@ -39,15 +39,6 @@ create table resume(
 	savedImgFile	varchar2(50)
 );
 
-create table pr(
-	prId 			varchar2(20)	primary key,
-	resumeId		varchar2(20),
-	constraint fk_pr_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
-	prTitle			varchar2(100),
-	prContent		varchar2(2000),
-	prRegdate		date
-);
-
 create table academicBg(
 	academicBgId	varchar2(20)	primary key,
 	resumeId		varchar2(20),
@@ -95,13 +86,31 @@ create table projectCareer(
 );
 
 create table question(
-	questionId 		varchar2(20)	primary key,
-	qnaType			varchar2(20),
-	question		varchar2(100) 	not null,
-	regDate			date
+	questionId 			varchar2(20)	primary key,
+	qnaType				varchar2(20)	not null,
+	question			varchar2(200) 	not null,
+	regDate				date
 );
 
+create table answer(	
+	questionId		
+	memberId
+	answer				varchar2(200)	not null,			
+	regDate				date
+);
 
+create table pr(
+	prId 			varchar2(20)	primary key,
+	resumeId		varchar2(20),
+	constraint fk_pr_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
+	prTitle			varchar2(100),
+	prContent		varchar2(2000),
+	prRegdate		date
+);
+create table tag(
+	tagId			varchar2(20)
+	tagName			varchar2(20)
+) 
 
 insert into member values('lsh', '1234', '이수현', '0', '1992-02-03', 'tooona@naver.com', '010-6486-7621');
 insert into member values('kdb', '1234', '김디비', '0', '1989-02-03', 'kdb@naver.com', '010-6486-7621');
