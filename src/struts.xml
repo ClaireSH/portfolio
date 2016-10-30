@@ -59,19 +59,19 @@
           <result name="success" type="redirect">index</result>
        </action>
       
-      <!-- 4-1 [포트폴리오]의 [기본이력서]  -->
+      <!-- 4-1 [포트폴리오]의 [개인정보]  -->
       <action name="goUpdateMemberForm" class="action.ResumeAction" method="initUpdateMember">
          <result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
       </action>
       
-      <!-- 4-2 [포트폴리오]의 [기본이력서] 수정  -->
+      <!-- 4-2 [포트폴리오]의 [개인정보] 수정  -->
       <action name="updateMember" class="action.ResumeAction" method="updateMember">
          <result name="success" type="redirect">goUpdateResumeForm</result>
       </action>
       
      <!-- 5-1 [포트폴리오]의 [기본이력서]  -->
       <action name="goUpdateResumeForm" class="action.ResumeAction" method="initUpdateResume">
-         <result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
+         <result name="success" type="dispatcher">/pages/portfolio/resume_write.jsp</result>
       </action>
       
       <!-- 5-2 [포트폴리오]의 [기본이력서] 수정  -->
@@ -90,14 +90,8 @@
       <!-- table.html -->
       <action name="selectQNA" class="action.JsonTestAction" method="tableFill">
          <result type="json" />
-      </action>
-      
-       
-       <!-- 이력서 수정 -->
-       <action name="insertResume" >
-         <result>/pages/portfolio/resume_write.jsp</result>
-      </action>
-       
+      </action> 
+            
        <!--  -->
       <action name="goPrWriteForm" class="action.ResumeAction" method="initPrWriteForm">
          <result name="success" type="dispatcher">/pages/portfolio/cv_write.html</result>
