@@ -65,9 +65,8 @@
       <!-- 3-2 (2)회원탈퇴 -->
       <action name="deleteMember" class="action.ResumeAction" method="deleteMember">
           <result name="success" type="redirect">index</result>
-<<<<<<< HEAD
           <result name="input" type="redirect">goUpdateMemberForm</result>
-=======
+
        </action>
       
       <!-- 4-1 [포트폴리오]의 [개인정보]  -->
@@ -78,7 +77,6 @@
       <!-- 4-2 [포트폴리오]의 [개인정보] 수정  -->
       <action name="updateMember" class="action.ResumeAction" method="updateMember">
          <result name="success" type="redirect">goUpdateResumeForm</result>
->>>>>>> 10ad5ce5d76767cb904fac52c94895fd00e4732c
       </action>
       
      <!-- 4-1 [포트폴리오]의 [기본이력서]  -->
@@ -102,19 +100,15 @@
       <!-- table.html -->
       <action name="selectQNA" class="action.JsonTestAction" method="tableFill">
          <result type="json" />
-<<<<<<< HEAD
+
       </action>
       
        
        <!-- 이력서 수정 -->
       <action name="insertResume" >
          <result>/pages/portfolio/resume_write.jsp</result>
-      </action>
-       
-=======
-      </action> 
-            
->>>>>>> 10ad5ce5d76767cb904fac52c94895fd00e4732c
+      </action>       
+   
        <!--  -->
       <action name="goPrWriteForm" class="action.ResumeAction" method="initPrWriteForm">
          <result name="success" type="dispatcher">/pages/portfolio/cv_write.html</result>
