@@ -53,11 +53,11 @@
       var toggle = false;
       $('#btn_toggle').on('click',function(){
     	  if(toggle){
-    	  $('input:text').attr('readonly',false);
-    	  toggle = true;
+    	  $('input:text').attr('readonly','readonly');
+    	  toggle = false;
     	  }else{
     		  $('input:text').removeAttr('readonly');
-    		  toggle = false;
+    		  toggle = true;
     	  }
       });
 
@@ -230,10 +230,10 @@
 								class="form-control" maxlength="30" id="companyName0"
 								name="careerList.companyName" 
 								value="<s:property value="careerList[#stat.index].companyName" />" readonly></td>
-							<td colspan="2"><input type="text" class="form-control"
+							<td><input type="text" class="form-control"
 								maxlength="20" id="businessType0" name="careerList.businessType"
 								value="<s:property value="careerList[#stat.index].businessType" />" readonly></td>
-							<td><input type="text" class="form-control" id="department0"
+							<td  colspan="2"><input type="text" class="form-control" id="department0"
 								maxlength="20" name="careerList.department" 
 								value="<s:property value="careerList[#stat.index].department" />" readonly></td>
 							<td><input type="text" class="form-control" id="position0"
@@ -365,9 +365,11 @@
 		</form>
 		<div style="text-align: center;">
 			<!--  onclick="return updateResume()" -->
-			<input type="button" id="btn_toggle" class="btn btn-default btn-info"
-				value="수정"> <input type="button" id="delete"
-				class="btn btn-default" value="초기화" onclick="deleteResume()">
+			<input type="button" id="admit" class="btn btn-default btn-info"
+					value="저장" onclick="return updateResume()"> <input type="button" id="btn_toggle"
+					class="btn btn-default btn-info" value="수정"> <input
+					type="button" id="delete" class="btn btn-default" value="삭제"
+					onclick="deleteResume()">
 		</div>
 		<input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input
 			type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input

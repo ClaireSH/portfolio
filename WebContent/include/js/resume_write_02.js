@@ -52,7 +52,7 @@ function check() {
 		return false;
 	}
 
-	if (jpnName.value == '') {
+	/*if (jpnName.value == '') {
 	
 			alert('이름 일어표기를 입력해주시기 바랍니다');
 		
@@ -116,7 +116,7 @@ function check() {
 		return false;
 	}
 
-	/*if ($('#mbr_pic').val() != null) {
+	if ($('#mbr_pic').val() != null) {
 		$('#file1').attr("value", "upload");
 	}
 
@@ -159,21 +159,21 @@ function deleteResume() {
 }
 
 function updateResume() {
-	alert("ipdate");
+	/*alert("ipdate");
 	var result = check();
 	if (result == false)
 		return false;
     
 	
 	
-	var resumeForm = document.getElementById('resumeForm');
+	*/var resumeForm = document.getElementById('resumeForm');
 	resumeForm.action = "updateResume";
 	resumeForm.submit();
 	return true;
 }
 function update() {
-	alert("ipdate2");
-	check();
+	/*alert("ipdate2");
+	*/check();
 	var resumeForm = document.getElementById('resumeForm');
 	
 	resumeForm.action = "resumeUpdate";
