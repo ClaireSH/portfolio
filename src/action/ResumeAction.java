@@ -58,6 +58,10 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	//개인정보관리
 	public String updateMember(){
 		
+		System.out.println("RESUME ACTION");
+		for(AcademicBg a : academicBgList){
+			System.out.println(a.toString());
+		}
 		String loginId = (String)session.get("loginId");
 		Member m = memberDAO.selectMember(loginId);
 		if(m == null){
@@ -128,6 +132,9 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			return INPUT;
 		}else{
 			
+			for(AcademicBg ab : academicBgList){
+				System.out.println(ab.toString());
+			}
 			//값을 Insert
 			//각 List 값을 init하여 DB에 저장
 			//academicBgList
@@ -135,9 +142,11 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 				academicBgList = new ArrayList<>();
 				//List에 없더라도  PK,FK 값 집어 넣음
 				//('loginID000000', 'loginId', null, null...)
+				academicBgList = new ArrayList<>();
 				AcademicBg academicBg = new AcademicBg();
 				academicBg.setAcademicBgId(loginId+"000000");
 				academicBg.setResumeId(loginId);
+			
 				academicBgList.add(academicBg);
 			}else{
 				//리스트만큼 순차적으로 Id에 Serial값과 이력서id를 입력 
@@ -152,7 +161,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 				Career career = new Career();
 				career.setCareerId(loginId+"000000");
 				career.setResumeId(loginId);
-				careerList.add(career);
+				careerList.add(career); //error
 			}else{
 				for(int i=0;i<careerList.size();i++){
 					careerList.get(i).setCareerId(loginId+String.format("%06d", i));
