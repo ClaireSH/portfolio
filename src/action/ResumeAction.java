@@ -139,6 +139,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			//각 List 값을 init하여 DB에 저장
 			//academicBgList
 			if(academicBgList == null){
+				academicBgList = new ArrayList<>();
 				//List에 없더라도  PK,FK 값 집어 넣음
 				//('loginID000000', 'loginId', null, null...)
 				academicBgList = new ArrayList<>();
@@ -201,13 +202,13 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			resumeDAO.deleteCareerById(loginId);
 			resumeDAO.deleteCertificateById(loginId);
 			resumeDAO.deleteProjectCareerById(loginId);
+			
+			
 			//이력서 정보 전부 삽입
 			resumeDAO.insertAcademicBgList(academicBgList);
 			resumeDAO.insertCareerList(careerList);
 			resumeDAO.insertCertificateList(certificateList);
 			resumeDAO.insertProjectCareerList(projectCareerList);
-			
-			
 		}
 		
 		return SUCCESS;
