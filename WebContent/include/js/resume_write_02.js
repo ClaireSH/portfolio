@@ -52,7 +52,8 @@ function check() {
 		return false;
 	}
 
-	/*if (jpnName.value == '') {
+	/*
+	 * if (jpnName.value == '') {
 	
 			alert('이름 일어표기를 입력해주시기 바랍니다');
 		

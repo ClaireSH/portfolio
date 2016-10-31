@@ -42,13 +42,14 @@ public class MemberDAO {
 		try {
 			ss = factory.openSession();
 			mem = ss.selectOne("member.selectMember", memberId);
+			System.out.println("memberDAO.selectMember return:      "+mem );
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		finally {
 			if (ss != null) ss.close();
-		}		
+		}
 		return mem;
 	}
 	
