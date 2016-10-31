@@ -32,6 +32,8 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	String usermonth;
 	String userday;
 	
+	boolean result;
+	
 	Map<String, Object> session;
 	
 	MemberDAO memberDAO = new MemberDAO();
@@ -63,15 +65,19 @@ public class MemberAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 	
-	public String idCheck(){
+	public String idCheck() throws Exception{
 		
-		Member m = memberDAO.selectMember(memberVo.getMemberId());
-		if(m != null){
+		System.out.println("---------------"+id);
+		Member member = memberDAO.selectMember(memberVo.getMemberId());
+		System.out.println("--------------111-");
+		if(member == null){
 			//idCheck()
-			System.out.println(m.getMemberId() +" : ID 사용 가능");
+			System.out.println(" : ID 사용 가능");
+			result = true;
 			return SUCCESS;
 		}else{
-			System.out.println(m.getMemberId() +" : 이미 존재 하는 ID입니다.");
+			System.out.println(member.getMemberId() +" : 이미 존재 하는 ID입니다.");
+			result = false;
 			return INPUT;
 		}
 	}
@@ -197,6 +203,16 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	public void setUserday(String userday) {
 		this.userday = userday;
 	}
+
+	public boolean isResult() {
+		return result;
+	}
+
+	public void setResult(boolean result) {
+		this.result = result;
+	}
+	
+	
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

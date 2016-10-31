@@ -136,7 +136,28 @@
 					</table>
 				</div>
 			</div>
-
+						<s:iterator value="academicBgList">
+							<tr>
+								<td><s:hidden class="adminssionYear0" 
+								value="<s:property value="adminssionYear"/>
+								"></s:hidden></td>
+								<td><s:hidden class="graduationYear0" 
+								value="<s:property value="graduationYear"/>
+								"></s:hidden></td>
+								<td><s:hidden class="schoolName0" 
+								value="<s:property value="schoolName"/>
+								"></s:hidden></td>
+								<td><s:hidden class="major0" 
+								value="<s:property value="major"/>
+								"></s:hidden></td>
+								<td><s:hidden class="degree0" 
+								value="<s:property value="degree"/>
+								"></s:hidden></td>
+								<td><s:hidden class="remarks0" 
+								value="<s:property value="remarks"/>
+								"></s:hidden></td>
+							</tr>
+						</s:iterator>	
 			<!-- 학력, 관련교육 이수 -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
@@ -158,11 +179,10 @@
 						<tbody></tbody>
 
 						<!-- <input type="hidden" name="resumeVO.edu_gubun" value="0"> -->
-
+						
 						<tbody>
 								
 								<tr>
-									
 									<!--list[%{#stat.index}].lastname  -->
 							
 									<td><input type="text" class="form-control"
@@ -214,7 +234,7 @@
 										maxlength="20" name="academicBgList[0].remarks"
 										value="${academicBgList[0].remarks}"  
 										readonly></td>
-						
+								
 								</tr>
 								
 							

@@ -8,6 +8,34 @@
 //	// perviewImage();
 //});
 
+window.onload = function(){
+	/*전체가 읽힌 다음에 호출이 됌  */
+	
+	var adminssionYearArray = document.getElementsByClassName("adminssionYear0");
+	for(var index in adminssionYearArray){
+		cArray[index].onclick = function(){
+			/*여기에서 this는 function을 호출하는 cArray[index]를 가리킴 */
+			
+			var food = this.value;
+			
+			if(this.checked){
+				var imgTag = document.getElementById("imgTag");
+				imgTag.src = 'image/'+this.value+'.jpg';
+				
+				calcurate(food, "+");
+			}else{
+				
+				calcurate(food, "-");
+			}
+			
+		}
+	}
+	
+	abilityRow(btn)
+	
+}
+	
+
 function previewImage(input, target) {
 	if (input.files && input.files[0]) {
 		var image = new Image; // Image 객체 생성

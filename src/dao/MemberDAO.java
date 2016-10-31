@@ -35,14 +35,13 @@ public class MemberDAO {
 		}
 	}
 	
-	public Member selectMember(String memberId) {
+	public Member selectMember(String memberId){
 		System.out.println("memberDAO.selectMember :      "+memberId );
 		SqlSession ss = null;
-		Member mem = null;
+		Member member = null;
 		try {
 			ss = factory.openSession();
-			mem = ss.selectOne("member.selectMember", memberId);
-			System.out.println("memberDAO.selectMember return:      "+mem );
+			member = ss.selectOne("member.selectMember", memberId);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -50,7 +49,7 @@ public class MemberDAO {
 		finally {
 			if (ss != null) ss.close();
 		}
-		return mem;
+		return member;
 	}
 	
 	public int updateMember(Member memberVo) {
