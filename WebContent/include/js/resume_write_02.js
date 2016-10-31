@@ -27,6 +27,7 @@ window.onload = function(){
 	degree = document.getElementsByName("degree");
 	
 	console.log(academicBgId[0].value);
+	console.log(academicBgId[1].value);
 	abilityRow("init");
 	/*adminssionYearArr = document.getElementsByClassName("adminssionYear0");
 	graduationYearArr = document.getElementByClassName("graduationYear0");

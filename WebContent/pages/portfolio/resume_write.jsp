@@ -177,26 +177,26 @@
 									<td><input type="text" class="form-control"
 										id="adminssionYear0" maxlength="11"
 										name="academicBgList0.adminssionYear"
-										value="%{academicBgList[0].adminssionYear}" readonly></td>
+										value="" readonly></td>
 									<td><input type="text" class="form-control"
 										id="graduationYear0" maxlength="11"
-										name="academicBgList.graduationYear"
-										value="academicBgList0.graduationYear" readonly></td>
+										name="academicBgList0.graduationYear"
+										value="" readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="schoolName0"
-										name="academicBgList.schoolName" 
-										value="academicBgList0.schoolName" readonly></td>
+										name="academicBgList0.schoolName" 
+										value="" readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="major0"
-										name="academicBgList.major" 
-										value="academicBgList0.major"
+										name="academicBgList0.major" 
+										value=""
 										readonly></td>
 									<td><input type="text" class="form-control" id="degree0"
-										maxlength="20" name="academicBgList.degree"
-										value="academicBgList0.degree" readonly></td>
+										maxlength="20" name="academicBgList0.degree"
+										value="" readonly></td>
 									<td><input type="text" class="form-control"
-										maxlength="20" name="academicBgList.remarks"
-										value="academicBgList0.remarks" readonly></td>
+										maxlength="20" name="academicBgList0.remarks"
+										value="" readonly></td>
 								
 								</tr>
 								
@@ -230,7 +230,6 @@
 						</tbody>
 						<tbody></tbody>
 						<tbody>
-						<s:iterator value="careerList" status="stat">
 						<!--s:iterator하고 careerList  -->
 						<!-- <input type="hidden" name="resumeVO.edu_seq" class="edu_seq"
 							value="17152"> -->
@@ -257,24 +256,8 @@
 							<td><input type="text" class="form-control" id="position0"
 								maxlength="20" name="careerList.position" 
 								value="<s:property value="position" />" readonly></td>
-							<td><input type="text" class="form-control"
-								id="retirementYear0" maxlength="11"
-								name="careerList.retirementYear" value="<s:property value="careerList[0].retirementYear" />" readonly></td>
-							<td colspan="2"><input size="25%" type="text"
-								class="form-control" maxlength="30" id="companyName0"
-								name="careerList.companyName" 
-								value="<s:property value="careerList[0].companyName" />" readonly></td>
-							<td><input type="text" class="form-control"
-								maxlength="20" id="businessType0" name="careerList.businessType"
-								value="<s:property value="careerList[0].businessType" />" readonly></td>
-							<td  colspan="2"><input type="text" class="form-control" id="department0"
-								maxlength="20" name="careerList.department" 
-								value="<s:property value="careerList[0].department" />" readonly></td>
-							<td><input type="text" class="form-control" id="position0"
-								maxlength="20" name="careerList.position" 
-								value="<s:property value="careerList[0].position" />" readonly></td>
 						</tr>
-						</s:iterator>
+						
 						</tbody>
 					</table>
 					<input type="button" class="btn btn-default"
@@ -301,10 +284,7 @@
 						</tbody>
 						<tbody></tbody>
 						<tbody>
-						<s:iterator value="certificateList" status="stat">
 
-						<input type="hidden" name="certificateId"
-										value="<s:property value="certificateId" />">
 						
 							<tr>
 								<td><input type="text" class="form-control" id="year0"
@@ -321,20 +301,9 @@
 								<td><input type="text" class="form-control" id="remarks0"
 									name="certificateList.remarks" 
 									value="<s:property value="remarks" />" maxlength="50" readonly></td>
-								<td><input type="text" class="form-control" id="month0"
-									name="certificateList.month" 
-									value="<s:property value="certificateList[0].month" />" maxlength="2"
-									onkeyup="this.value=number_filter(this.value);" readonly></td>
-								<td><input type="text" class="form-control"
-									id="certificateName0" name="certificateList.certificateName"
-									value="<s:property value="certificateList[0].certificateName" />" maxlength="40" readonly></td>
-								<td><input type="text" class="form-control" id="remarks0"
-									name="certificateList.remarks" 
-									value="<s:property value="certificateList[0].remarks" />" maxlength="50" readonly></td>
 							</tr>
 
 
-	</s:iterator>
 						</tbody>
 					</table>
 					<input type="button"  class="btn btn-default"
@@ -369,10 +338,6 @@
 
 
 						<tbody>
-						<s:iterator value="projectCareerList" status="stat">
-
-						<input type="hidden" name="certificateId"
-										value="<s:property value="certificateId" />">
 							<tr>
 								<td><input type="text" class="form-control"
 									id="projectName0" name="projectCareerList.projectName" 
@@ -395,20 +360,8 @@
 									name="projectCareerList.dbos" value="<s:property value="dbos" />" maxlength="80" readonly></td>
 								<td><input type="text" class="form-control" id="etc0"
 									name="projectCareerList.etc" value="<s:property value="etc" />" maxlength="80" readonly></td>
-								<td><input type="text" class="form-control" id="duration"
-									name="projectCareerList.duration" value="<s:property value="projectCareerList[0].duration" />" maxlength="15"
-									readonly></td>
-								<td><input type="text" class="form-control" id="language0"
-									name="projectCareerList.language" 
-									value="<s:property value="projectCareerList[0].language" />" maxlength="80"
-									readonly></td>
-								<td><input type="text" class="form-control" id="dbos0"
-									name="projectCareerList.dbos" value="<s:property value="projectCareerList[0].dbos" />" maxlength="80" readonly></td>
-								<td><input type="text" class="form-control" id="etc0"
-									name="projectCareerList.etc" value="<s:property value="projectCareerList[0].etc" />" maxlength="80" readonly></td>
 							</tr>
 
-</s:iterator>
 						</tbody>
 					</table>
 					<input type="button" class="btn btn-default"
