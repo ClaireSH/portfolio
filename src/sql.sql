@@ -9,9 +9,11 @@ create table member(
 	
 );
 
+
+
 insert into member values('lsh', '1234', '이수현', 'M', '1992-02-03', 'tooona@naver.com', '010-6486-7621');
 insert into member values('kdb', '1234', '김디비', 'F', '1989-02-03', 'kdb@naver.com', '010-6486-7621');
-insert into member values('jyp', '1234', '박진영', 'M', '1967-02-03', 'jyp@naver.com', '010-6486-7621'
+insert into member values('jyp', '1234', '박진영', 'M', '1967-02-03', 'jyp@naver.com', '010-6486-7621');
 insert into member values('kss', '1234', '김삼성', 'M', '1991-02-03', 'samsung@naver.com', '010-6486-7621');
 
 create sequence RESUME_SEQ;
