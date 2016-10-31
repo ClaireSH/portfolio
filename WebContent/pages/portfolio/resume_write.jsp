@@ -85,12 +85,19 @@
 								<td><input type="text" class="form-control" maxlength="10"
 									id="name" name="memberVO.name" value="${memberVo.name}"
 									disabled></td>
-								<td class="text-center" rowspan="4" style="width: 20%;"><img
+									<!--  -->
+									
+									
+								<!-- <td class="text-center" rowspan="4" style="width: 20%;"><img
 									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
 									src=""> <input type="file" value="업로드" id="upload"
 									name="upload"
 									onchange="previewImage(this,&#39;previewImg&#39;)"
-									style="width: 100%;"></td>
+									style="width: 100%;"></td> -->
+									
+									
+									
+									<!--  -->
 							</tr>
 							<!-- <tr>
 								<td>요미가나</td>
@@ -162,26 +169,26 @@
 									<td><input type="text" class="form-control"
 										id="adminssionYear0" maxlength="11"
 										name="academicBgList.adminssionYear"
-										value="<s:property value="academicBgList[#stat.index].adminssionYear" />" readonly></td>
+										value="<s:property value="adminssionYear" />" readonly></td>
 									<td><input type="text" class="form-control"
 										id="graduationYear0" maxlength="11"
 										name="academicBgList.graduationYear"
-										value="<s:property value="academicBgList[#stat.index].graduationYear"/>" readonly></td>
+										value="<s:property value="graduationYear"/>" readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="schoolName0"
 										name="academicBgList.schoolName" 
-										value="<s:property value="academicBgList[#stat.index].schoolName" />" readonly></td>
+										value="<s:property value="schoolName" />" readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="major0"
 										name="academicBgList.major" 
-										value="<s:property value="academicBgList[#stat.index].major" />" 
+										value="<s:property value="major" />" 
 										readonly></td>
 									<td><input type="text" class="form-control" id="degree0"
 										maxlength="20" name="academicBgList.degree"
-										value="<s:property value="academicBgList[#stat.index].degree" />" readonly></td>
+										value="<s:property value="degree" />" readonly></td>
 									<td><input type="text" class="form-control"
 										maxlength="20" name="academicBgList.remarks"
-										value="<s:property value="academicBgList[#stat.index].remarks" />" readonly></td>
+										value="<s:property value="remarks" />" readonly></td>
 								</tr>
 							</s:iterator>
 						</tbody>
@@ -216,29 +223,29 @@
 						<!--s:iterator하고 careerList  -->
 						<!-- <input type="hidden" name="resumeVO.edu_seq" class="edu_seq"
 							value="17152"> -->
-						<input type="hidden" name="careerId"
-										value="<s:property value="careerId" />">
+						<%-- <input type="hidden" name="careerId"
+										value="<s:property value="careerId" />"> --%>
 
 						<tr>
 							<td><input type="text" class="form-control" id="joinYear0"
 								maxlength="11" name="careerList.joinYear" 
-								value="<s:property value="careerList[#stat.index].joinYear" />" readonly></td>
+								value="<s:property value="joinYear" />" readonly></td>
 							<td><input type="text" class="form-control"
 								id="retirementYear0" maxlength="11"
-								name="careerList.retirementYear" value="<s:property value="careerList[#stat.index].retirementYear" />" readonly></td>
+								name="careerList.retirementYear" value="<s:property value="retirementYear" />" readonly></td>
 							<td colspan="2"><input size="25%" type="text"
 								class="form-control" maxlength="30" id="companyName0"
 								name="careerList.companyName" 
-								value="<s:property value="careerList[#stat.index].companyName" />" readonly></td>
+								value="<s:property value="companyName" />" readonly></td>
 							<td><input type="text" class="form-control"
 								maxlength="20" id="businessType0" name="careerList.businessType"
-								value="<s:property value="careerList[#stat.index].businessType" />" readonly></td>
+								value="<s:property value="businessType" />" readonly></td>
 							<td  colspan="2"><input type="text" class="form-control" id="department0"
 								maxlength="20" name="careerList.department" 
-								value="<s:property value="careerList[#stat.index].department" />" readonly></td>
+								value="<s:property value="department" />" readonly></td>
 							<td><input type="text" class="form-control" id="position0"
 								maxlength="20" name="careerList.position" 
-								value="<s:property value="careerList[#stat.index].position" />" readonly></td>
+								value="<s:property value="position" />" readonly></td>
 						</tr>
 						</s:iterator>
 						</tbody>
@@ -275,18 +282,18 @@
 							<tr>
 								<td><input type="text" class="form-control" id="year0"
 									name="certificateList.year" 
-									value="<s:property value="certificateList[#stat.index].year" />" maxlength="4"
+									value="<s:property value="year" />" maxlength="4"
 									onkeyup="this.value=number_filter(this.value);" readonly></td>
 								<td><input type="text" class="form-control" id="month0"
 									name="certificateList.month" 
-									value="<s:property value="certificateList[#stat.index].month" />" maxlength="2"
+									value="<s:property value="month" />" maxlength="2"
 									onkeyup="this.value=number_filter(this.value);" readonly></td>
 								<td><input type="text" class="form-control"
 									id="certificateName0" name="certificateList.certificateName"
-									value="<s:property value="certificateList[#stat.index].certificateName" />" maxlength="40" readonly></td>
+									value="<s:property value="certificateName" />" maxlength="40" readonly></td>
 								<td><input type="text" class="form-control" id="remarks0"
 									name="certificateList.remarks" 
-									value="<s:property value="certificateList[#stat.index].remarks" />" maxlength="50" readonly></td>
+									value="<s:property value="remarks" />" maxlength="50" readonly></td>
 							</tr>
 
 
@@ -332,24 +339,24 @@
 							<tr>
 								<td><input type="text" class="form-control"
 									id="projectName0" name="projectCareerList.projectName" 
-									value="<s:property value="projectCareerList[#stat.index].projectName" />"
+									value="<s:property value="projectName" />"
 									maxlength="30" readonly></td>
 								<td><input type="text" class="form-control"
 									id="developmentPeriod0"
 									name="projectCareerList.developmentPeriod" 
-									value="<s:property value="projectCareerList[#stat.index].developmentPeriod" />"
+									value="<s:property value="developmentPeriod" />"
 									maxlength="33" readonly></td>
 								<td><input type="text" class="form-control" id="duration"
-									name="projectCareerList.duration" value="<s:property value="projectCareerList[#stat.index].duration" />" maxlength="15"
+									name="projectCareerList.duration" value="<s:property value="duration" />" maxlength="15"
 									readonly></td>
 								<td><input type="text" class="form-control" id="language0"
 									name="projectCareerList.language" 
-									value="<s:property value="projectCareerList[#stat.index].language" />" maxlength="80"
+									value="<s:property value="language" />" maxlength="80"
 									readonly></td>
 								<td><input type="text" class="form-control" id="dbos0"
-									name="projectCareerList.dbos" value="<s:property value="projectCareerList[#stat.index].dbos" />" maxlength="80" readonly></td>
+									name="projectCareerList.dbos" value="<s:property value="dbos" />" maxlength="80" readonly></td>
 								<td><input type="text" class="form-control" id="etc0"
-									name="projectCareerList.etc" value="<s:property value="projectCareerList[#stat.index].etc" />" maxlength="80" readonly></td>
+									name="projectCareerList.etc" value="<s:property value="etc" />" maxlength="80" readonly></td>
 							</tr>
 
 </s:iterator>

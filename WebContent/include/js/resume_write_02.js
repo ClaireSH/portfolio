@@ -166,7 +166,8 @@ function updateResume() {
     
 	
 	
-	*/var resumeForm = document.getElementById('resumeForm');
+	*/
+	var resumeForm = document.getElementById('resumeForm');
 	resumeForm.action = "updateResume";
 	resumeForm.submit();
 	return true;
