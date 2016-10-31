@@ -85,12 +85,18 @@
       
       <!-- <action name="favoriteMemberPage"> <result>/favoriteMemberPage.jsp</result> 
          </action> -->
-
+         
+         
+<!-- AJAX클래스로 보낼 액션들 -->
       <!-- 질문입력 -->
+      <action name="firstInsertQuestion" class="action.JsonTestAction" method="firstInsertQuestion">
+         <result type="json" />
+      </action>
       <action name="insertQNA" class="action.JsonTestAction" method="insertQNA">
          <result type="json" />
       </action>
-
+      
+<!-- .AJAX -->
       <!-- 질문수정 -->
       <!-- table.html -->
       <action name="selectQNA" class="action.JsonTestAction" method="tableFill">

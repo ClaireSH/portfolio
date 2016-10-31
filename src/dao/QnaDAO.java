@@ -56,7 +56,7 @@ public class QnaDAO {
 			ss.commit();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("해당 번호에 해당하는 질문 없음");
 		}
 		finally {
 			ss.close();
