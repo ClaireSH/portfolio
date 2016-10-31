@@ -18,13 +18,13 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	QnaDAO dao=new QnaDAO();
 	Map<String,Object> session;
 	
-	public String insertQNA() throws Exception {
+	/*public String insertQNA() throws Exception {
 		//세션으로부터 로그인한 ID 읽어서 qna객체에 저장
 		String loginId = (String) session.get("loginId");
 		qna.setId(loginId);		
 		dao.insertQNA(qna);
 		return SUCCESS;		
-	}
+	}*/
 	
 	public String listQNA() throws Exception {
 		QnaDAO dao = new QnaDAO();		
