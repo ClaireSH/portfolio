@@ -151,8 +151,7 @@
 						<tbody></tbody>
 
 						<!-- <input type="hidden" name="resumeVO.edu_gubun" value="0"> -->
-						
-						<s:iterator value="academicBgList" status="st">
+
 						<tbody>
 								
 								<tr>
@@ -162,70 +161,37 @@
 									<td><input type="text" class="form-control"
 										id="adminssionYear0" maxlength="11"
 										name="academicBgList[0].adminssionYear" 
-										value="<s:property value="adminssionYear" />" 
+										value="${academicBgList[0].adminssionYear}" 
 										readonly></td>
 									<td><input type="text" class="form-control"
 										id="graduationYear0" maxlength="11"
 										name="academicBgList[0].graduationYear" 
-										value="<s:property value="graduationYear" />" 
+										value="${academicBgList[0].graduationYear}"
 										readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="schoolName0"
 										name="academicBgList[0].schoolName" 
-										value="<s:property value="schoolName" />" 
+										value="${academicBgList[0].schoolName}" 
 										readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="major0"
 										name="academicBgList[0].major" 
-										value="<s:property value="major" />" 
+										value="${academicBgList[0].major}" 
 										readonly></td>
 									<td><input type="text" class="form-control" id="degree0"
 										maxlength="20" name="academicBgList[0].degree"
-										value="<s:property value="degree" />" 
+										value="${academicBgList[0].degree}"
 										readonly></td>
 									<td><input type="text" class="form-control"
 										maxlength="20" name="academicBgList[0].remarks"
-										value="<s:property value="remarks" />"   
+										value="${academicBgList[0].remarks}"  
 										readonly></td>
 						
 								</tr>
-								<tr>
-									
-									<!--list[%{#stat.index}].lastname  -->
-							
-									<td><input type="text" class="form-control"
-										id="adminssionYear0" maxlength="11"
-										name="academicBgList[1].adminssionYear" 
-										value="<s:property value="adminssionYear" />" 
-										readonly></td>
-									<td><input type="text" class="form-control"
-										id="graduationYear0" maxlength="11"
-										name="academicBgList[1].graduationYear" 
-										value="<s:property value="graduationYear" />" 
-										readonly></td>
-									<td colspan="2"><input size="25%" type="text"
-										class="form-control" maxlength="30" id="schoolName0"
-										name="academicBgList[1].schoolName" 
-										value="<s:property value="schoolName" />" 
-										readonly></td>
-									<td colspan="2"><input size="25%" type="text"
-										class="form-control" maxlength="30" id="major0"
-										name="academicBgList[1].major" 
-										value="<s:property value="major" />" 
-										readonly></td>
-									<td><input type="text" class="form-control" id="degree0"
-										maxlength="20" name="academicBgList[1].degree"
-										value="<s:property value="degree" />" 
-										readonly></td>
-									<td><input type="text" class="form-control"
-										maxlength="20" name="academicBgList[1].remarks"
-										value="<s:property value="remarks" />"   
-										readonly></td>
-						
-								</tr>
+								
 							
 						</tbody>
-						</s:iterator>
+						
 					</table>
 					<input type="button" class="btn btn-default"
 						onclick="abilityRow(this)" value="+"> <input type="button"
