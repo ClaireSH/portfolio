@@ -90,6 +90,9 @@ create table question(
 	regDate				date
 );
 
+
+insert into question values('1','취미','뭐먹을래',sysdate);
+
 create table answer(	
 	questionId		
 	memberId
