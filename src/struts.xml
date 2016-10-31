@@ -41,6 +41,11 @@
          <result name="input" type="redirect">index</result>
       </action>
       
+      <action name="idCheck" class="action.MemberAction" method="idCheck">
+      	<result name="success" type="json"></result>
+      	<result name="input" type="json"></result>
+      </action>
+      
       <!-- 2-2 (1) 메인으로 이동 -->
       <action name="main">
          <result>/pages/main.html</result>
