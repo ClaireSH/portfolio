@@ -1,6 +1,5 @@
 package action;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -40,9 +39,8 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	ResumeDAO resumeDAO = new ResumeDAO();
 	
 	public String login(){
-		
+		System.out.println("로그인을하자미친놈아");
 		Member m = memberDAO.selectMember(memberVo.getMemberId());
-		
 		if(m == null){
 			return INPUT;
 		}else if(!(memberVo.getPassword()).equals(m.getPassword())){
