@@ -51,6 +51,7 @@ $('document').ready(function() {
 	});//ready
 
 	function joinMember() {
+		
 
 		var f = document.form1;
 		var userpw = document.getElementById("userpw").value;
