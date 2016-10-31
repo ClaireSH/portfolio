@@ -39,6 +39,7 @@ public class MemberDAO {
 		System.out.println("memberDAO.selectMember :      "+memberId );
 		SqlSession ss = null;
 		Member member = null;
+		System.out.println("dao."+member);
 		try {
 			ss = factory.openSession();
 			member = ss.selectOne("member.selectMember", memberId);
