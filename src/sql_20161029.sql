@@ -1,6 +1,4 @@
 
-<<<<<<< HEAD
-=======
 delete from MEMBER 
 delete from resume
 delete from academicBg
@@ -9,7 +7,7 @@ delete from certificate
 delete from projectCareer
 
 select * from member   
->>>>>>> 10ad5ce5d76767cb904fac52c94895fd00e4732c
+
 //테이블 삭제한 후 생성할 것!!
 create table member(
 	memberId 	varchar2(20)	primary key,
