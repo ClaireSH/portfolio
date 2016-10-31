@@ -136,28 +136,17 @@
 					</table>
 				</div>
 			</div>
-						<s:iterator value="academicBgList">
-							<tr>
-								<td><s:hidden class="adminssionYear0" 
-								value="<s:property value="adminssionYear"/>
-								"></s:hidden></td>
-								<td><s:hidden class="graduationYear0" 
-								value="<s:property value="graduationYear"/>
-								"></s:hidden></td>
-								<td><s:hidden class="schoolName0" 
-								value="<s:property value="schoolName"/>
-								"></s:hidden></td>
-								<td><s:hidden class="major0" 
-								value="<s:property value="major"/>
-								"></s:hidden></td>
-								<td><s:hidden class="degree0" 
-								value="<s:property value="degree"/>
-								"></s:hidden></td>
-								<td><s:hidden class="remarks0" 
-								value="<s:property value="remarks"/>
-								"></s:hidden></td>
-							</tr>
-						</s:iterator>	
+					<!-- academicBgList%{#st.index} -->
+					<s:iterator value="academicBgList"  status="st">
+					    <s:hidden name="academicBgId" value="%{academicBgId}"/>
+					    <s:hidden name="resumeId" value="%{resumeId}"/>
+					    <s:hidden name="adminssinYear" value="%{adminssionYear}"/>
+					    <s:hidden name="graduationYear" value="%{graduationYear}"/>
+					    <s:hidden name="schoolName" value="%{schoolName}"/>
+					    <s:hidden name="major" value="%{major}"/>
+					    <s:hidden name="degree" value="%{degree}"/>
+					</s:iterator>
+						
 			<!-- 학력, 관련교육 이수 -->
 			<div class="panel panel-danger">
 				<div class="panel-heading">
@@ -187,53 +176,27 @@
 							
 									<td><input type="text" class="form-control"
 										id="adminssionYear0" maxlength="11"
-										name="academicBgList.adminssionYear"
-										value="<s:property value="adminssionYear" />" readonly></td>
+										name="academicBgList0.adminssionYear"
+										value="%{academicBgList[0].adminssionYear}" readonly></td>
 									<td><input type="text" class="form-control"
 										id="graduationYear0" maxlength="11"
 										name="academicBgList.graduationYear"
-										value="<s:property value="graduationYear"/>" readonly></td>
+										value="academicBgList0.graduationYear" readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="schoolName0"
 										name="academicBgList.schoolName" 
-										value="<s:property value="schoolName" />" readonly></td>
+										value="academicBgList0.schoolName" readonly></td>
 									<td colspan="2"><input size="25%" type="text"
 										class="form-control" maxlength="30" id="major0"
 										name="academicBgList.major" 
-										value="<s:property value="major" />" 
+										value="academicBgList0.major"
 										readonly></td>
 									<td><input type="text" class="form-control" id="degree0"
 										maxlength="20" name="academicBgList.degree"
-										value="<s:property value="degree" />" readonly></td>
+										value="academicBgList0.degree" readonly></td>
 									<td><input type="text" class="form-control"
 										maxlength="20" name="academicBgList.remarks"
-										value="<s:property value="remarks" />" readonly></td>
-										name="academicBgList[0].adminssionYear" 
-										value="${academicBgList[0].adminssionYear}" 
-										readonly></td>
-									<td><input type="text" class="form-control"
-										id="graduationYear0" maxlength="11"
-										name="academicBgList[0].graduationYear" 
-										value="${academicBgList[0].graduationYear}"
-										readonly></td>
-									<td colspan="2"><input size="25%" type="text"
-										class="form-control" maxlength="30" id="schoolName0"
-										name="academicBgList[0].schoolName" 
-										value="${academicBgList[0].schoolName}" 
-										readonly></td>
-									<td colspan="2"><input size="25%" type="text"
-										class="form-control" maxlength="30" id="major0"
-										name="academicBgList[0].major" 
-										value="${academicBgList[0].major}" 
-										readonly></td>
-									<td><input type="text" class="form-control" id="degree0"
-										maxlength="20" name="academicBgList[0].degree"
-										value="${academicBgList[0].degree}"
-										readonly></td>
-									<td><input type="text" class="form-control"
-										maxlength="20" name="academicBgList[0].remarks"
-										value="${academicBgList[0].remarks}"  
-										readonly></td>
+										value="academicBgList0.remarks" readonly></td>
 								
 								</tr>
 								
@@ -294,7 +257,6 @@
 							<td><input type="text" class="form-control" id="position0"
 								maxlength="20" name="careerList.position" 
 								value="<s:property value="position" />" readonly></td>
-								value="<s:property value="careerList.joinYear" />" readonly></td>
 							<td><input type="text" class="form-control"
 								id="retirementYear0" maxlength="11"
 								name="careerList.retirementYear" value="<s:property value="careerList[0].retirementYear" />" readonly></td>
@@ -359,8 +321,6 @@
 								<td><input type="text" class="form-control" id="remarks0"
 									name="certificateList.remarks" 
 									value="<s:property value="remarks" />" maxlength="50" readonly></td>
-									value="<s:property value="certificateList[0].year" />" maxlength="4"
-									onkeyup="this.value=number_filter(this.value);" readonly></td>
 								<td><input type="text" class="form-control" id="month0"
 									name="certificateList.month" 
 									value="<s:property value="certificateList[0].month" />" maxlength="2"
@@ -435,8 +395,6 @@
 									name="projectCareerList.dbos" value="<s:property value="dbos" />" maxlength="80" readonly></td>
 								<td><input type="text" class="form-control" id="etc0"
 									name="projectCareerList.etc" value="<s:property value="etc" />" maxlength="80" readonly></td>
-									value="<s:property value="projectCareerList[0].developmentPeriod" />"
-									maxlength="33" readonly></td>
 								<td><input type="text" class="form-control" id="duration"
 									name="projectCareerList.duration" value="<s:property value="projectCareerList[0].duration" />" maxlength="15"
 									readonly></td>
@@ -458,8 +416,7 @@
 						class="btn btn-default" onclick="projectRow(this)" value="-">
 				</div>
 			</div>
-			</tbody>
-			</table>
+			
 		</form>
 		<div style="text-align: center;">
 			<!--  onclick="return updateResume()" -->
