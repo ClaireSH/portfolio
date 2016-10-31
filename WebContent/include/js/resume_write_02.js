@@ -8,6 +8,34 @@
 //	// perviewImage();
 //});
 
+window.onload = function(){
+	/*전체가 읽힌 다음에 호출이 됌  */
+	
+	var adminssionYearArray = document.getElementsByClassName("adminssionYear0");
+	for(var index in adminssionYearArray){
+		cArray[index].onclick = function(){
+			/*여기에서 this는 function을 호출하는 cArray[index]를 가리킴 */
+			
+			var food = this.value;
+			
+			if(this.checked){
+				var imgTag = document.getElementById("imgTag");
+				imgTag.src = 'image/'+this.value+'.jpg';
+				
+				calcurate(food, "+");
+			}else{
+				
+				calcurate(food, "-");
+			}
+			
+		}
+	}
+	
+	abilityRow(btn)
+	
+}
+	
+
 function previewImage(input, target) {
 	if (input.files && input.files[0]) {
 		var image = new Image; // Image 객체 생성
@@ -52,7 +80,8 @@ function check() {
 		return false;
 	}
 
-	if (jpnName.value == '') {
+	/*
+	 * if (jpnName.value == '') {
 	
 			alert('이름 일어표기를 입력해주시기 바랍니다');
 		
@@ -116,7 +145,7 @@ function check() {
 		return false;
 	}
 
-	/*if ($('#mbr_pic').val() != null) {
+	if ($('#mbr_pic').val() != null) {
 		$('#file1').attr("value", "upload");
 	}
 
@@ -159,21 +188,22 @@ function deleteResume() {
 }
 
 function updateResume() {
-	alert("ipdate");
+	/*alert("ipdate");
 	var result = check();
 	if (result == false)
 		return false;
     
 	
 	
+	*/
 	var resumeForm = document.getElementById('resumeForm');
 	resumeForm.action = "updateResume";
 	resumeForm.submit();
 	return true;
 }
 function update() {
-	alert("ipdate2");
-	check();
+	/*alert("ipdate2");
+	*/check();
 	var resumeForm = document.getElementById('resumeForm');
 	
 	resumeForm.action = "resumeUpdate";
@@ -181,18 +211,20 @@ function update() {
 	return true;
 }
 
+	 
+
 function abilityRow(btn) {
 	if (btn.value == '+') {
 		var rowCount = $('#eduTable tr').length - 1;
 		var content = '';
 		content += '<tr>';
-		content += '<td><input class="form-control" type="text" maxlength = "11" name="resumeVO.edu_term_from" id="entrance' + rowCount + '" >';
-		content += '<input vaule= "0" class="form-control" type="hidden" id="edu_gubun" name="resumeVO.edu_gubun" id="edu_gubun' + rowCount + '" ></td>';
-		content += '<td><input class="form-control" type="text" maxlength = "11" name="resumeVO.edu_term_to" id="graduation' + rowCount + '"  ></td>';
-		content += '<td colspan="2"><input class="form-control" maxlength = "30" name="resumeVO.edu_school" type="text" id="school' + rowCount + '"  ></td>';
-		content += '<td colspan="2"><input class="form-control" maxlength = "30" type="text" name="resumeVO.edu_major" id="major' + rowCount + '"  ></td>';
-		content += '<td><input class="form-control" type="text" maxlength="20" name="resumeVO.edu_degree" id="degree' + rowCount + '"  ></td>';
-		content += '<td><input class="form-control" type="text" maxlength="20" name="resumeVO.edu_note" id="note' + rowCount + '"  ></td>';
+		content += '<td><input class="form-control" type="text" maxlength = "11" name="academicBgList[' + rowCount + '].adminssionYear" value="${academicBgList[' + rowCount + '].adminssionYear}"  id="entrance' + rowCount + '" >';
+		content += '<input vaule= "0" class="form-control" type="hidden" id="edu_gubun" name=""  id="edu_gubun' + rowCount + '" ></td>';
+		content += '<td><input class="form-control" type="text" maxlength = "11" name="academicBgList[' + rowCount + '].graduationYear" value="${academicBgList[' + rowCount + '].graduationYear}" id="graduation' + rowCount + '"  ></td>';
+		content += '<td colspan="2"><input class="form-control" maxlength = "30" name="academicBgList[' + rowCount + '].schoolName" value="${academicBgList[' + rowCount + '].schoolName}"  type="text" id="school' + rowCount + '"  ></td>';
+		content += '<td colspan="2"><input class="form-control" maxlength = "30" type="text" name="academicBgList[' + rowCount + '].major"  value="${academicBgList[' + rowCount + '].major}"  id="major' + rowCount + '"  ></td>';
+		content += '<td><input class="form-control" type="text" maxlength="20" name="academicBgList[' + rowCount + '].degree"  value="${academicBgList[' + rowCount + '].degree}" id="degree' + rowCount + '"  ></td>';
+		content += '<td><input class="form-control" type="text" maxlength="20" name="academicBgList[' + rowCount + '].remarks" value="${academicBgList[' + rowCount + '].remarks}"  id="note' + rowCount + '"  ></td>';
 		content += '</tr>';
 		$('#eduTable > tbody:last').append(content);
 	} else if (btn.value == '-') {

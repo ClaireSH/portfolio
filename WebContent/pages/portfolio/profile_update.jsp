@@ -20,7 +20,7 @@
 	<!-- essential2에서 헤더호출 -->
 	<div id="myheader"></div>
 	<!-- Page Content -->
-	<div class="container" style="width: 80%; margin-left: 15%">
+	<div id="page-wrapper">
 		<!-- 상단 메뉴 -->
 
 		<!-- Page Navigator -->
@@ -32,7 +32,7 @@
 
 		<!-- Page Title -->
 		<div class="col-md-2"></div>
-		<div class="page-header" style="border-left: 5px solid #ff0000;">
+		<div class="page-header" style="border-left: 5px solid #337ab7;">
 			<span style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">개인정보 관리</span>
 		</div>
 
