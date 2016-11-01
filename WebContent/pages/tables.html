@@ -12,6 +12,26 @@
 <script type="text/javascript" src="/portfolio/js/essential.js"></script>
 
 <title>Cover ME</title>
+<script>
+$.(document)ready(){
+	$.ajax({
+		url:'액션액션',
+		dataType:'json',
+		succenss:function(data){
+			var str='';
+			if(data.length>0){
+				$.each(data,function(i,s){
+					str+='<tr><td><input type='text' id="title" value="'+s.num+'"> </td>'
+					str+='<td><input type='text' id="title" value="'+s.title+'"> </td>'
+					str+='<td><input type='text' id="title" value="'+s.question+'"> </td>'
+					str+='<td><input type='text' id="title" value="'+s.answer+'"> </td></tr>'
+				});
+			}
+			$("#qnaTable").html(str);
+		}
+	});
+}
+</script>
 </head>
 
 <body>
@@ -48,15 +68,18 @@
 										<th>질문</th>
 										<th>답변</th>
 									</tr>
+									
 								</thead>
+								
 								<tbody>
-
-									<tr class="gradeU">
+									<div id="qnaTable"></div>
+									<!-- <tr class="gradeU">
 										<td id="num">H01</td>
 										<td id="type">취미생활</td>
 										<td id="question">실외 운동 중 좋아하는 건 뭐야?</td>
 										<td id="answer">내가 좋아하는 건...</td>
-									</tr>
+									</tr> -->
+									
 								</tbody>
 							</table>
 							<!-- /.table-responsive -->
@@ -75,11 +98,22 @@
 	</div>
 	<!-- /#wrapper -->
 
+	<!-- jQuery -->
+	<script src="/portfolio/vendor/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/portfolio/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="/portfolio/vendor/metisMenu/metisMenu.min.js"></script>
+
 	<!-- DataTables JavaScript -->
 	<script src="/portfolio/vendor/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="/portfolio/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 	<script src="/portfolio/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
+	<!-- Custom Theme JavaScript -->
+	<script src="/portfolio/dist/js/sb-admin-2.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 	<script>

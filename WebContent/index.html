@@ -23,7 +23,7 @@ window.onload=function(){
    var idCheck=false;
    var sid = document.getElementById("userid");
    sid.onblur=function(){
-      if(sid.value!=null&&sid.value.length>0){
+      if(sid.value!=null && sid.value.length>0){
          $.ajax({
             url:'idCheck',
             data:{

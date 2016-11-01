@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -136,9 +138,9 @@
 										</div>
 									</div>
 								</div>
-								<a href="#">
+								<a href="qnaEdit.action">
 									<div class="panel-footer">
-										<span class="pull-left">질문답변 바로가기</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+										<span class="pull-left">질문편집 바로가기</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 										<div class="clearfix"></div>
 									</div>
 								</a>
@@ -157,7 +159,7 @@
 										</div>
 									</div>
 								</div>
-								<a href="#">
+								<a href="goUpdateMemberForm">
 									<div class="panel-footer">
 										<span class="pull-left">포트폴리오 바로가기</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 										<div class="clearfix"></div>
@@ -178,7 +180,7 @@
 										</div>
 									</div>
 								</div>
-								<a href="#">
+								<a href="./morris">
 									<div class="panel-footer">
 										<span class="pull-left">분석 바로가기</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 										<div class="clearfix"></div>
@@ -199,7 +201,7 @@
 										</div>
 									</div>
 								</div>
-								<a href="#">
+								<a href="./example/panels-wells.html">
 									<div class="panel-footer">
 										<span class="pull-left">개발자도구 바로가기</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 										<div class="clearfix"></div>

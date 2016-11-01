@@ -80,11 +80,27 @@
 				<div class="panel-body">
 					<table class="table table-bordered">
 						<tbody>
-							<tr>
+				
+								
+								<tr>
 								<td style="width: 12%;">이름</td>
+								<td><input readonly type="text" class="form-control"
+									maxlength="10" id="name" name="resumeVO.mbr_name" value=""></td>
+								<td class="text-center" rowspan="3" style="width: 20%;"><img
+									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
+									src="http://placehold.it/20x20"> <input type="file" value="업로드" id="upload"
+									name="upload"
+									onchange="previewImage(this,&#39;previewImg&#39;)"
+									style="width: 100%;"></td>
+							</tr>
+								
+								
+								<%-- <td style="width: 12%;">이름</td>
 								<td><input type="text" class="form-control" maxlength="10"
 									id="name" name="memberVO.name" value="${memberVo.name}"
-									disabled></td>
+									disabled style="width: 80%;"></td>
+									<td rowspan="3" style="width: 13%;"></td> --%>
+									
 									<!--  -->
 									
 									
@@ -98,7 +114,6 @@
 									
 									
 									<!--  -->
-							</tr>
 							<!-- <tr>
 								<td>요미가나</td>
 								<td><input readonly type="text" class="form-control"
@@ -121,6 +136,7 @@
 											value="${userday}" disabled> 일
 									</div>
 								</td>
+							
 							</tr>
 							<tr>
 								<td>성별</td>
@@ -131,12 +147,13 @@
 										name="memberVO.gender" id="gender2" value="1" disabled>
 										여
 								</label></td>
+							
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-					<!-- 이력서의 기본키, 외래키 정보 -->
+<%-- 					<!-- 이력서의 기본키, 외래키 정보 -->
 					<s:iterator value="academicBgList" status="stat" >
 						<input type="hidden" 
 						name="academicBgList[<s:property value="%{#stat.index}"/>].academicBgId" 
@@ -179,7 +196,7 @@
 						name="projectCareerList[<s:property value="%{#stat.index}"/>].resumeId" 
 						value="<s:property value="resumeId"/>"
 						/>
-					</s:iterator>
+					</s:iterator> --%>
 					<!--  -->
 						
 			<!-- 학력, 관련교육 이수 -->
