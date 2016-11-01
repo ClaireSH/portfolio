@@ -4,131 +4,146 @@
    "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-   <!--요청에 대한 -->
+	<!--요청에 대한 -->
 
-   <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-   <constant name="struts.devMode" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
 
 
-   <package name="default" namespace="/" extends="struts-default, json-default">
-      <default-action-ref name="index" />
-      <!-- <global-results> 모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 
-         리턴함) </global-results> -->
+	<package name="default" namespace="/"
+		extends="struts-default, json-default">
+		<default-action-ref name="index" />
+		<!-- <global-results> 모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 
+			리턴함) </global-results> -->
 
-      <!-- 인덱스로 이동 -->
-      <action name="index">
-         <result>/index.html</result>
-      </action>
+		<!-- 인덱스로 이동 -->
+		<action name="index">
+			<result>/index.html</result>
+		</action>
 
-       <!-- 1-1 회원가입 -->
-       <action name="join" class="action.MemberAction" method="join">
-          <!--회원가입 성공  -->
-          <!--Chain을 하면 Action클래스의 "ValueObject"가 잔존하여 다음 액션(main)에도 값을 줄 수 있음 -->
-          <result name="success" type="chain">joinToLogin</result>
-          <!--회원가입 실패  -->
-          <result name="input" type="redirect">/index.action</result>
-       </action>
-       
-       <!-- 1-2 회원가입 한 후 자동로그인 (메인)  -->
-       <action name="joinToLogin" class="action.MemberAction" method="login">
-          <result name="login" type="redirect">main</result>
-       </action>
-      
-      <!-- 2-1 로그인 -->
-      <action name="login" class="action.MemberAction" method="login">
-         <result name="login" type="redirect">main</result>
-         <!-- 2-2-B index -->
-         <result name="input" type="redirect">index</result>
-      </action>
-      
-      <action name="idCheck" class="action.MemberAction" method="idCheck">
-      	<result name="success" type="json"></result>
-      	<result name="input" type="json"></result>
-      </action>
-      
-      <!-- 2-2 (1) 메인으로 이동 -->
-      <action name="main">
-         <result>/pages/main.html</result>
-      </action>
-      
-      <!-- 2-3 로그아웃 -->
-      <action name="logout" class="action.MemberAction" method="logout">
-         <result name="success" type="redirect">index</result>
-      </action>
-      
-      <!-- 3-1 [포트폴리오]의 [개인정보관리]  -->
-      <action name="goUpdateMemberForm" class="action.ResumeAction" method="initUpdateMember">
-         <result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp</result>
-      </action>
-      
-      <!-- 3-2 (1)개인정보 관리 업데이트 -->
-      <action name="updateMember" class="action.ResumeAction" method="updateMember">
-          <result name="success" type="redirect">goUpdateMemberForm</result>
-          <result name="input" type="redirect">goUpdateMemberForm</result>
-       </action>
-       
-      <!-- 3-2 (2)회원탈퇴 -->
-      <action name="deleteMember" class="action.ResumeAction" method="deleteMember">
-          <result name="success" type="redirect">index</result>
-          <result name="input" type="redirect">goUpdateMemberForm</result>
-       </action>
-      
-     <!-- 4-1 [포트폴리오]의 [기본이력서]  -->
-      <action name="goUpdateResumeForm" class="action.ResumeAction" method="initUpdateResume">
-         <result name="success" type="dispatcher">/pages/portfolio/resume_write.jsp</result>
-      </action>
-      
-      <!-- 4-2 [포트폴리오]의 [기본이력서] 수정  -->
-      <action name="updateResume" class="action.ResumeAction" method="updateResume">
-         <result name="success" type="redirect">goUpdateResumeForm</result>
-      </action>
-      
-      <!-- <action name="favoriteMemberPage"> <result>/favoriteMemberPage.jsp</result> 
-         </action> -->
-         
-         
-	<!-- AJAX클래스로 보낼 액션들 -->
-      <!-- 질문입력 -->
-      <action name="firstInsertQuestion" class="action.JsonTestAction" method="firstInsertQuestion">
-         <result type="json" />
-      </action>
-      <action name="insertQNA" class="action.JsonTestAction" method="insertQNA">
-         <result type="json" />
-      </action>
-      
-	<!-- .AJAX -->
-      <!-- 질문수정 -->
-      <!-- table.html -->
-      <action name="selectQNA" class="action.JsonTestAction" method="tableFill">
-         <result type="json" />
-      </action>
-      
-      	
-                     
-            
-       <!-- 이력서 수정 -->
-      <action name="insertResume" >
-         <result>/pages/portfolio/resume_write.jsp</result>
-      </action>
+		<!-- 1-1 회원가입 -->
+		<action name="join" class="action.MemberAction" method="join">
+			<!--회원가입 성공 -->
+			<!--Chain을 하면 Action클래스의 "ValueObject"가 잔존하여 다음 액션(main)에도 값을 줄 수 있음 -->
+			<result name="success" type="chain">joinToLogin</result>
+			<!--회원가입 실패 -->
+			<result name="input" type="redirect">/index.action</result>
+		</action>
 
-            
-       <!--  -->
-      <action name="goPrWriteForm" class="action.ResumeAction" method="initPrWriteForm">
-         <result name="success" type="dispatcher">/pages/portfolio/cv_write.html</result>
-      </action>
-      
-      <action name="prWrite" class="action.ResumeAction" method="prWrite">
-         <result name="success" type="redirect">goPrWriteForm</result>
-      </action>
-      
-      <!-- 자기소개서에 있는 질문리스트 -->
-      <action name="listQNA" class="action.QnaAction" method="listQNA">
-         <result name="success" >/pages/portfolio/cv_write.html</result>
-         </action>
+		<!-- 1-2 회원가입 한 후 자동로그인 (메인) -->
+		<action name="joinToLogin" class="action.MemberAction" method="login">
+			<result name="login" type="redirect">main</result>
+		</action>
 
-   </package>
+		<!-- 2-1 로그인 -->
+		<action name="login" class="action.MemberAction" method="login">
+			<result name="login" type="redirect">main</result>
+			<!-- 2-2-B index -->
+			<result name="input" type="redirect">index</result>
+		</action>
 
-   <!-- Add packages here -->
+		<action name="idCheck" class="action.MemberAction" method="idCheck">
+			<result name="success" type="json"></result>
+			<result name="input" type="json"></result>
+		</action>
+
+		<!-- 2-2 (1) 메인으로 이동 -->
+		<action name="main">
+			<result>/pages/main.html</result>
+		</action>
+
+		<!-- 2-3 로그아웃 -->
+		<action name="logout" class="action.MemberAction" method="logout">
+			<result name="success" type="redirect">index</result>
+		</action>
+
+		<!-- 3-1 [포트폴리오]의 [개인정보관리] -->
+		<action name="goUpdateMemberForm" class="action.ResumeAction"
+			method="initUpdateMember">
+			<result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp
+			</result>
+		</action>
+
+		<!-- 3-2 (1)개인정보 관리 업데이트 -->
+		<action name="updateMember" class="action.ResumeAction" method="updateMember">
+			<result name="success" type="redirect">goUpdateMemberForm</result>
+			<result name="input" type="redirect">goUpdateMemberForm</result>
+		</action>
+
+		<!-- 3-2 (2)회원탈퇴 -->
+		<action name="deleteMember" class="action.ResumeAction" method="deleteMember">
+			<result name="success" type="redirect">index</result>
+			<result name="input" type="redirect">goUpdateMemberForm</result>
+		</action>
+
+		<!-- 4-1 [포트폴리오]의 [기본이력서] -->
+		<action name="goUpdateResumeForm" class="action.ResumeAction"
+			method="initUpdateResume">
+			<result name="success" type="dispatcher">/pages/portfolio/resume_write.jsp
+			</result>
+		</action>
+
+		<!-- 4-2 [포트폴리오]의 [기본이력서] 수정 -->
+		<action name="updateResume" class="action.ResumeAction" method="updateResume">
+			<result name="success" type="redirect">goUpdateResumeForm</result>
+		</action>
+
+		<!-- <action name="favoriteMemberPage"> <result>/favoriteMemberPage.jsp</result> 
+			</action> -->
+
+		<action name="qnaEdit" class="action.QnaAction" method="listQNA">
+			<result name="success" type="dispatcher">/pages/tables.jsp
+			</result>
+		</action>
+		<action name="cvWrite" class="action.ResumeAction" method="listQNA">
+			<result name="success" type="dispatcher">/pages/portfolio/cv_write.jsp
+			</result>
+		</action>
+
+		<!-- AJAX클래스로 보낼 액션들 -->
+		<!-- 질문입력 -->
+		<action name="firstInsertQuestion" class="action.JsonTestAction"
+			method="firstInsertQuestion">
+			<result type="json" />
+		</action>
+		<action name="insertQNA" class="action.JsonTestAction" method="insertQNA">
+			<result type="json" />
+		</action>
+
+		<!-- .AJAX -->
+		<!-- 질문수정 -->
+		<!-- table.html -->
+		<action name="selectQNA" class="action.JsonTestAction" method="tableFill">
+			<result type="json" />
+		</action>
+
+
+
+
+		<!-- 이력서 수정 -->
+		<action name="insertResume">
+			<result>/pages/portfolio/resume_write.jsp</result>
+		</action>
+
+
+		<!-- -->
+		<action name="goPrWriteForm" class="action.ResumeAction"
+			method="initPrWriteForm">
+			<result name="success" type="dispatcher">/pages/portfolio/cv_write.html</result>
+		</action>
+
+		<action name="prWrite" class="action.ResumeAction" method="prWrite">
+			<result name="success" type="redirect">goPrWriteForm</result>
+		</action>
+
+		<!-- 자기소개서에 있는 질문리스트 -->
+		<action name="listQNA" class="action.QnaAction" method="listQNA">
+			<result name="success">/pages/portfolio/cv_write.html</result>
+		</action>
+
+	</package>
+
+	<!-- Add packages here -->
 
 
 

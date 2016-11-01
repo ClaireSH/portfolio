@@ -1,5 +1,6 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +29,13 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	
 	public String listQNA() throws Exception {
 		QnaDAO dao = new QnaDAO();		
-		qnalist = dao.listQNA();		
+//		qnalist = dao.listQNA();	
+		//FIXME 
+		qnalist = new ArrayList<Qna>();  
+		qnalist.add(new Qna("1번", "취미", "취미가 뭐라고요우?", "미응답상태", "없어도 되는거야 솔직히"));
+		qnalist.add(new Qna("2번", "취미", "취미가 뭐라고요우?", "미응답상태", "없어도 되는거야 솔직히"));
+		qnalist.add(new Qna("3번", "취미", "취미가 뭐라고요우?", "미응답상태", "없어도 되는거야 솔직히"));
+		qnalist.add(new Qna("4번", "취미", "취미가 뭐라고요우?", "미응답상태", "없어도 되는거야 솔직히"));
 		System.out.println(qnalist);
 		return SUCCESS;
 	}

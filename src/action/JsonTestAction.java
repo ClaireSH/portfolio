@@ -58,10 +58,7 @@ public class JsonTestAction extends ActionSupport {
 		question = dummyQuestions[cnt-1]; 
 		totalQna = dummyQuestions.length; //FIXME 전체 질문
 
-		System.out.println("22222222222222");
-		
-	
-		System.out.println("333333333");
+
 
 		System.out.println("===========바퀴 : "+cnt);
 
