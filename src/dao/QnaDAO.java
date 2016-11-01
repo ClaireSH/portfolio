@@ -12,6 +12,7 @@ public class QnaDAO {
 	SqlSession ss=null;
 	
 	public void insertQNA(Qna qna) {
+		System.out.println("qnadao");
 		try {
 			ss = factory.openSession();	
 			ss.insert("QnaMapper.insertQna", qna);

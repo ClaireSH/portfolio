@@ -162,7 +162,6 @@
 <script src="/portfolio/dist/js/sb-admin-2.js"></script>
 
 
-
 <!-- 회원가입 -->
 <!-- 질문답변 모달 -->
 <div id="qnaModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -188,6 +187,7 @@
 						</div>
 					</div>
 					<!-- /.panel-heading -->
+					
 					<script>
 						$(document).ready(
 								function() {
@@ -229,13 +229,14 @@
 
 											});//click
 
-								});//ready
+								});//ready								
 					</script>
+					
 					<div class="panel-body">
-						<ul class="chat">
+							<ul class="chat">
 							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />
 							</span>
-								<div class="chat-body clearfix">
+							<div class="chat-body clearfix">
 									<div class="header">
 										<strong class="primary-font">[여가생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> 12 / 20번 질문
 										</small>
@@ -270,14 +271,12 @@
 						</ul>
 					</div>
 					<!-- /.panel-body -->
-
-
-
-
+		
 					<div class="panel-footer">
 						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
-								<button class="btn btn-warning btn-sm" id="btn-chat">보내기</button>
+							<input id="btn-input" type="text" class="form-control input-sm" name="qna.answer" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
+								<button class="btn btn-warning btn-sm" id="btn-chat" >보내기</button>
+
 							</span>
 						</div>
 					</div>
