@@ -16,7 +16,7 @@ insert into member values('kdb', '1234', '김디비', 'F', '1989-02-03', 'kdb@na
 insert into member values('jyp', '1234', '박진영', 'M', '1967-02-03', 'jyp@naver.com', '010-6486-7621');
 insert into member values('kss', '1234', '김삼성', 'M', '1991-02-03', 'samsung@naver.com', '010-6486-7621');
 
-insert into 
+
 
 
 
@@ -96,5 +96,5 @@ create table qna(
 	answer varchar2(20),
 	completeness varchar2(20)
 );
-
+select * from ACADEMICBG;
 create sequence qna_sequence;
