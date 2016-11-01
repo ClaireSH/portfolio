@@ -1,11 +1,19 @@
 package action;
 
+import java.util.ArrayList;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.QnaDAO;
+import dao.QuestionDAO;
+import vo.Answer;
 import vo.Qna;
+import vo.Question;
 
-public class JsonTestAction extends ActionSupport {
+public class JsonTestAction extends ActionSupport implements SessionAware{
 
 	//JSON용 파라미터로
 	private String num;
@@ -16,10 +24,14 @@ public class JsonTestAction extends ActionSupport {
 	
 	private Qna qnavo = new Qna(); 
 	QnaDAO dao=new QnaDAO();
+	
+	QuestionDAO qDao = new QuestionDAO(); 
 	//////////////////////////////////////
 	private static int cnt = 0;
 	private static String [] dummyQuestions; 
 	//////////////////////////////////////
+	
+	Map<String, Object> session;
 	public String tableFill() {
 		System.out.println("AJAX 답변편집액션 들어옴");
 
@@ -49,7 +61,13 @@ public class JsonTestAction extends ActionSupport {
 		type = "취미"; 
 		num = Integer.toString(cnt);
 		
-		dummyQuestions = new String[]{"취미가뭐야?","어떤 계기로 하게 되었어?","다른 취미는 뭐가 있어?","취미를 직업으로 삼을 수 있다고 생각해?"};  
+		ArrayList<Question> qList = qDao.allQuestionList();
+		for(int i=0;i<qList.size();i++){
+			num = qList.get(i).getQuestionId();
+		}
+		
+		dummyQuestions = new String[]{qList.get(0).getQuestion(),qList.get(1).getQuestion(),qList.get(2).getQuestion(),qList.get(3).getQuestion()};  
+		//dummyQuestions = new String[]{"취미가뭐야?","어떤 계기로 하게 되었어?","다른 취미는 뭐가 있어?","취미를 직업으로 삼을 수 있다고 생각해?"};  
 		if(cnt > 4){
 			System.out.println("질문 array 넘어섰다. 다시 처음질문부터");
 			cnt = 1; 
@@ -76,6 +94,8 @@ public class JsonTestAction extends ActionSupport {
 //		num = qtable.getNum();//번호 
 //		question = qtable.getQuestion(); 
 		
+		
+		
 		//FIXME 답변에 대한 카운팅 잘 안된다.
 		if(cnt > 4){
 			System.out.println("질문 array 넘어섰다. 다시 처음질문부터");
@@ -93,12 +113,27 @@ public class JsonTestAction extends ActionSupport {
 		//클라이언트에서 보낸 정보 객체화해 저장 
 		qnavo.setAnswer(answer);
 		qnavo.setNum(num);
+		
+		Answer answerVo = new Answer();
+		answerVo.setAnswer(answer);
+		answerVo.setMemberId((String)session.get("loginId"));
+		answerVo.setQuestionId(num);
+		System.out.println("dd"+answerVo.toString());
+		qDao.insertAnswer(answerVo);
 		System.out.println("완성된 하나의 질답객체 : "+qnavo);
 		
 		
 		cnt++; //FIXME 질문 번호 증가 위해 초기값은 1 이므로 매번 처음부터라는 단점 
 		
 		
+		return SUCCESS;
+	}
+	
+	public String insertQuestion(){
+		ArrayList<Question> qList = qDao.allQuestionList();
+		for(int i=0;i<qList.size();i++){
+			num = qList.get(i).getQuestionId();
+		}
 		return SUCCESS;
 	}
 
@@ -140,6 +175,12 @@ public class JsonTestAction extends ActionSupport {
 
 	public void setTotalQna(int totalQna) {
 		this.totalQna = totalQna;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+		
 	}
 
 }

@@ -1,21 +1,22 @@
 package vo;
 
 public class Question {
-	String num;
-	String type;
+	String questionId;
+	String questionType;
 	String question;
 	
-	public String getNum() {
-		return num;
+	
+	public String getQuestionId() {
+		return questionId;
 	}
-	public void setNum(String num) {
-		this.num = num;
+	public void setQuestionId(String questionId) {
+		this.questionId = questionId;
 	}
-	public String getType() {
-		return type;
+	public String getQuestionType() {
+		return questionType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
 	}
 	public String getQuestion() {
 		return question;
@@ -23,6 +24,12 @@ public class Question {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
+	@Override
+	public String toString() {
+		return "Question [questionId=" + questionId + ", questionType=" + questionType + ", question=" + question + "]";
+	}
+	
+	
 
 
 	

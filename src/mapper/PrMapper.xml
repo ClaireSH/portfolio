@@ -11,32 +11,29 @@
 	<resultMap type="Pr" id="PrResult">
 		<id property="prId" column="prId"/>
 		<result property = "resumeId" column ="resumeId"/>
-		<result property = "prTitle" column = "prTitle"/>
-		<result property = "prContent" column = "prContent" />
-		<result property = "prRegdate" column = "prRegdate" />
+		<result property = "content" column = "content" />
  	</resultMap>
  	
  	<select id="allPrById" parameterType="String" resultMap="CareerResult">
- 		 select prId, resumeId, prTitle, prContent, TO_DATE(#{prRegdate}, 'YYYYMMDDHH24MISS')
+ 		 select prId, resumeId, content
  		 from pr
  		 where resumeId = #{resumeId}		
  	</select>
  	
  	<insert id="insertPr" parameterType="vo.Pr">
- 		insert into pr(prId, resumeId, prTitle, prContent, prRegdate) 
- 		values(#{prId}, #{resumeId}, #{prTitle}, #{prContent}, sysdate)
+ 		insert into pr(prId, resumeId, content) 
+ 		values(#{prId}, #{resumeId}, #{content})
  	</insert>
  	
- 	<update id="updateCareer" parameterType="vo.Career">
+ 	<update id="updatePr" parameterType="vo.Pr">
  		update PR
- 		set prTitle = #{prTitle}
- 			prContent = #{prContent}
+ 		set content = #{content}
  		where prId = #{prId}
  	</update>
  	
- 	<delete id="deleteCareer" parameterType="String">
- 		delete from career
- 		where careerId = #{careerId}
+ 	<delete id="deletePr" parameterType="String">
+ 		delete from PR
+ 		where prId = #{prId}
  	</delete>
  	
 </mapper>

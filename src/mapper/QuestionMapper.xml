@@ -7,25 +7,38 @@
 	 -->
 	<resultMap type="Question" id="QuestionResult">
 		<id property="questionId" column="questionId"/>
-		<result property = "type" column ="type"/>
+		<result property = "questionType" column ="questionType"/>
 		<result property = "question" column = "question"/>
-		<result property = "regDate" column = "regDate" />
  	</resultMap>
  	
+ 	<select id="allQuestionList" resultMap="QuestionResult">
+ 		select questionId, questionType, question
+ 		from question
+ 		order by questionId
+ 	</select>
+ 	
+ 	<select id="selectFinishedQuestionListById" parameterType="String" resultMap="QuestionResult">
+ 		 select q.questionId, q.questionType, q.question 
+			from question q, answer a, member m
+			where q.questionId = a.questionId and a.memberId = m.memberId 
+			and m.memberId = '#{memberId}'
+			order by questionId asc;	
+ 	</select>
+ 	
  	<select id="selectQuestion" parameterType="String" resultMap="QuestionResult">
- 		 select questionId, type, question, TO_DATE(#{regDate}, 'YYYYMMDDHH24MISS')
+ 		 select questionId, questionType, question
  		 from Question
- 		 where resumeId = #{resumeId}		
+ 		 where questionId = #{questionId}		
  	</select>
  	
  	<insert id="insertQuestion" parameterType="vo.Question">
- 		insert into pr(questionId, type, question, regDate) 
- 		values(#{questionId}, #{type}, #{question}, sysdate)
+ 		insert into Question(questionId, questionType, question) 
+ 		values(#{questionId}, #{questionType}, #{question})
  	</insert>
  	
  	<update id="updateQuestion" parameterType="vo.Question">
  		update Question
- 		set type = #{type}
+ 		set questionType = #{questionType}
  			question = #{question}
  		where questionId = #{questionId}
  	</update>

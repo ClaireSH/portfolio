@@ -117,20 +117,6 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			System.out.println("projectCareerList Before"+ resumeVo.getResumeId());
 			projectCareerList = (ArrayList<ProjectCareer>) resumeDAO.allProjectCareerById(resumeVo.getResumeId());
 			System.out.println("projectCareerList After"+ resumeVo.getResumeId());
-			for(AcademicBg ab : academicBgList){
-				System.out.println();
-				System.out.println(ab.toString());
-			}
-			for(Career c : careerList){
-				System.out.println(c.toString());
-			}
-			for(Certificate cf : certificateList){
-				System.out.println(cf.toString());
-			}
-			for(ProjectCareer pc : projectCareerList){
-				System.out.println(pc.toString());
-			}
-			
 			
 			return SUCCESS;
 		}	

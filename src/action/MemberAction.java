@@ -50,7 +50,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 		}else{
 			//로그인
 			System.out.println(m.getName() + "  " + " Login!!");
-			session.put("loginId", memberVo.getMemberId());
+			session.put("loginId", m.getMemberId());
 			
 			//로그인 하면 메인으로 가는데 거기서 필요한 데이터
 			//나의인생 , 알람소식 

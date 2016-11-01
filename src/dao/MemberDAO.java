@@ -21,7 +21,6 @@ public class MemberDAO {
 	}
 	
 	public void insertMember(Member memberVo){
-		System.out.println("memberDAO.insertMember");
 		SqlSession ss=factory.openSession();
 		
 		try {

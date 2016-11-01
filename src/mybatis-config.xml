@@ -15,6 +15,8 @@
 		<typeAlias type="vo.Resume" alias="Resume"/>
 		<typeAlias type="vo.Pr" alias="Pr"/>
 		<typeAlias type="vo.Qna" alias="Qna"/>
+		<typeAlias type="vo.Question" alias="Question"/>
+		<typeAlias type="vo.Answer" alias="Answer"/>
 	</typeAliases>
 	
 	<!-- DB접속 정보 셋팅 -->
@@ -38,8 +40,11 @@
 		<mapper resource="mapper\CareerMapper.xml"/>
 		<mapper resource="mapper\CertificateMapper.xml"/>
 		<mapper resource="mapper\ProjectMapper.xml"/>
+		<mapper resource="mapper\ProjectMapper.xml"/>
 	<!-- <mapper resource="mapper\PrMapper.xml"/>
 		<mapper resource="mapper\QNAMapper.xml"/> -->
+		<mapper resource="mapper\QuestionMapper.xml"/>
+		<mapper resource="mapper\AnswerMapper.xml"/>
 	</mappers>
 	
 </configuration>

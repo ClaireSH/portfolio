@@ -83,7 +83,6 @@ create table projectCareer(
 	etc					varchar2(20)
 );
 
-
 insert into question values('1','취미','뭐먹을래',sysdate);
 
 //자기소개
@@ -96,7 +95,7 @@ create table pr(
 
 //질문
 create table question(
-	num 				varchar2(20)	primary key,
+	questionId			varchar2(20)	primary key,
 	questionType		varchar2(20)	not null,
 	question			varchar2(200) 	not null
 );
@@ -107,8 +106,28 @@ create table answer(
 	constraint fk_answer_questionId foreign key(questionId) references question(questionId) on delete cascade,
 	memberId			varchar2(20),
 	constraint fk_answer_memberId foreign key(memberId) references member(memberId) on delete cascade,
-	answer				varchar2(200)	not null
+	answer				varchar2(200)
 );
+
+insert into question values('4', '취미', '취미 질문입니다.')
+insert into answer values('4', 'tooona', '취미 답변입니다.')
+
+select *
+from question
+order by questionId asc;
+
+select * from answer
+delete from answer where memberId = 'tooona'
+
+select q.questionId, q.questionType, q.question 
+from question q, answer a, member m
+where q.questionId = a.questionId and a.memberId = m.memberId 
+and m.memberId = 'tooona'
+order by questionId asc;
+
+select *
+from question
+order by questionId asc;
 
 //태그
 create table tag(

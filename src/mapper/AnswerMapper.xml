@@ -6,29 +6,39 @@
 		typeAlias에 등록된 Alias값을 사요할 수 도 있음
 	 -->
 	<resultMap type="Answer" id="AnswerResult">
+		<result property="questionId" column="questionId"/>
+		<result property="memberId" column="memberId"/>
 		<result property="answer" column="answer"/>
-		<result property = "regDate" column ="regDate"/>
  	</resultMap>
+
+
+	<select id="selectAnswerListById" parameterType="String" resultMap="AnswerResult">
+		select *
+		from answer
+		where memberId = #{memberId}
+	</select>
+
+	<select id="selectAnswer" parameterType="hashMap" resultMap="AnswerResult">
+		select *
+		from answer
+		where memberId = #{memberId} and questionId = #{questionId}	
+	</select>
  	
- 	<select id="selectAnswer" parameterType="String" resultMap="AnswerResult">
- 		 select answer, TO_DATE(#{regDate}, 'YYYYMMDDHH24MISS')
- 		 from Answer		
- 	</select>
  	
  	<insert id="insertAnswer" parameterType="vo.Answer">
- 		insert into answer(answer, regDate) values(#{answer}, sysdate);
+ 		insert into answer(questionId, memberId, answer)
+ 		values(#{questionId}, #{memberId}, #{answer})
  	</insert>
  	
  	<update id="updateAnswer" parameterType="vo.Answer">
  		update Answer
- 		set answer = #{type}
- 			regDate = sysdate
- 		where answerId = #{answerId}
+ 		set answer = #{answer}
+ 		where memberId = #{memberId} and questionId = #{questionId}	
  	</update>
  	
- 	<delete id="deleteAnswer" parameterType="String">
+ 	<delete id="deleteAnswer" parameterType="hashMap">
  		delete from Answer
- 		where answerId = #{answerId}
+ 		where memberId = #{memberId} and questionId = #{questionId}	
  	</delete>
  	
 </mapper>
