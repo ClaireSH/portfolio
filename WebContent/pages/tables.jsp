@@ -15,12 +15,18 @@
 
 <title>Cover ME</title>
 
-
+<script>
+$(document.ready(function(){
+	$("button").click(function(){
+		$(".gradeU").removeAttr("readonly");
+	});
+});
+</script>
 
 </head>
 
 <body>
-				<s:form action="templete" method="post">
+	<s:form action="templete" method="post">
 		<div id="wrapper">
 			<div id="myheader"></div>
 			<!-- Page Content -->
@@ -56,19 +62,24 @@
 									</thead>
 									<tbody>
 
-										<tr>
-											<s:iterator value="qnalist" status="status">
-												<%-- <td class="board_title"><s:url id="readurl"
-                                       value="/board/readBoard.action">
-                                       <s:param name="boardno" value="%{boardno}" />
-                                    </s:url> <s:a href="%{readurl}">
-                                       <s:property value="title" />
-                                    </s:a></td> --%>
-												<td><s:property value="qnatype" /></td>
-												<td><s:property value="question" /></td>
-												<td><s:property value="answer" /></td>
-											</s:iterator>
-										</tr>
+										<!-- <tr class="gradeU">
+										<td id="num">H01</td>
+										<td id="type">취미생활</td>
+										<td id="question">실외 운동 중 좋아하는 건 뭐야?</td>
+										<td id="answer">내가 좋아하는 건...</td>
+									</tr> -->
+										<s:iterator value="list">
+											<tr class="gradeU">
+												<td><input type="text" id="tables.Num"
+													value="<s:property value='num'/>" readonly="readonly"></td>
+												<td><input type="text" id="tables.Type"
+													value="<s:property value='type'/>" readonly="readonly"></td>
+												<td><input type="text" id="tables.Question"
+													value="<s:property value='question'/>" readonly="readonly"></td>
+												<td><input type="text" id="tables.Answer"
+													value="<s:property value='answer'/>" readonly="readonly"></td>
+											</tr>
+										</s:iterator>
 
 
 										<!--  <tr class="odd gradeX">
@@ -429,7 +440,7 @@
 				});
 			});
 		</script>
-</s:form>
+	</s:form>
 </body>
 
 </html>

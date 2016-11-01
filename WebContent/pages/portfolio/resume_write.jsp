@@ -138,22 +138,22 @@
 			</div>
 						<s:iterator value="academicBgList">
 							<tr>
-								<td><s:hidden name="adminssionYear0" 
+								<td><s:hidden class="adminssionYear0" 
 								value="<s:property value="adminssionYear"/>
 								"></s:hidden></td>
-								<td><s:hidden id="graduationYear0" 
+								<td><s:hidden class="graduationYear0" 
 								value="<s:property value="graduationYear"/>
 								"></s:hidden></td>
-								<td><s:hidden id="schoolName0" 
+								<td><s:hidden class="schoolName0" 
 								value="<s:property value="schoolName"/>
 								"></s:hidden></td>
-								<td><s:hidden id="major0" 
+								<td><s:hidden class="major0" 
 								value="<s:property value="major"/>
 								"></s:hidden></td>
-								<td><s:hidden id="degree0" 
+								<td><s:hidden class="degree0" 
 								value="<s:property value="degree"/>
 								"></s:hidden></td>
-								<td><s:hidden id="remarks0" 
+								<td><s:hidden class="remarks0" 
 								value="<s:property value="remarks"/>
 								"></s:hidden></td>
 							</tr>
