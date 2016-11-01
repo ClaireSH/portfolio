@@ -83,23 +83,10 @@ create table projectCareer(
 	etc					varchar2(20)
 );
 
-create table question(
-	questionId 			varchar2(20)	primary key,
-	qnaType				varchar2(20)	not null,
-	question			varchar2(200) 	not null,
-	regDate				date
-);
-
 
 insert into question values('1','취미','뭐먹을래',sysdate);
 
-create table answer(	
-	questionId		
-	memberId
-	answer				varchar2(200)	not null,			
-	regDate				date
-);
-
+//자기소개
 create table pr(
 	prId 			varchar2(20)	primary key,
 	resumeId		varchar2(20),
@@ -108,10 +95,32 @@ create table pr(
 	prContent		varchar2(2000),
 	prRegdate		date
 );
+
+//질문
+create table question(
+	questionId 			varchar2(20)	primary key,
+	qnaType				varchar2(20)	not null,
+	question			varchar2(200) 	not null,
+	regDate				date
+);
+
+//답변
+create table answer(	
+	questionId			varchar2(20),
+	constraint fk_answer_questionId foreign key(questionId) references question(questionId) on delete cascade,
+	memberId			varchar2(20),
+	constraint fk_answer_memberId foreign key(memberId) references member(memberId) on delete cascade,
+	answer				varchar2(200)	not null,			
+	regDate				date
+);
+
+//태그
 create table tag(
-	tagId			varchar2(20)
-	tagName			varchar2(20)
-) 
+	tagId			varchar2(20),
+	memberId		varchar2(20),
+	constraint fk_tag_questionId foreign key(memberId) references member(memberId) on delete cascade,
+	tagName			varchar2(100)
+);
 
 insert into member values('lsh', '1234', '이수현', '0', '1992-02-03', 'tooona@naver.com', '010-6486-7621');
 insert into member values('kdb', '1234', '김디비', '0', '1989-02-03', 'kdb@naver.com', '010-6486-7621');
@@ -143,9 +152,10 @@ delete from  projectCareer;
 
 select * from career
 select * from member
-select * from resume;
+select * from resume 
 select * from academicbg;
 select * from career 
+select * from projectCareer where resumeId = '1a';
 
 //삽입과 수정이 동시에 되는 구문
 MERGE INTO career A
