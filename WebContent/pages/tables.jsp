@@ -46,17 +46,17 @@
 											<tr>
 												<th>#</th>
 												<th>질문</th>
-												<th>답변일</th>
-												<th>검색태그</th>
+												<th>답변</th>
+												<th>유형</th>
 											</tr>
 										</thead>
 										<tbody>
-											<s:iterator value="qnalist" begin="0" end="2" step="1">
+											<s:iterator value="qnalist" begin="0" end="2" step="1" status="incre">
 												<tr>
-													<td><s:property value="num" /></td>
-													<td><s:property value="question" /></td>
-													<td><s:property value="answer" /></td>
-													<td><s:property value="title" /></td>
+													<td >${num}</td>
+													<td>${question}</td>
+													<td id="a+${incre.index}">${answer}</td>
+													<td>${title}</td>
 												</tr>
 											</s:iterator>
 										</tbody>
