@@ -91,17 +91,14 @@ create table pr(
 	prId 			varchar2(20)	primary key,
 	resumeId		varchar2(20),
 	constraint fk_pr_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
-	prTitle			varchar2(100),
-	prContent		varchar2(2000),
-	prRegdate		date
+	content		varchar2(2000)
 );
 
 //질문
 create table question(
-	questionId 			varchar2(20)	primary key,
-	qnaType				varchar2(20)	not null,
-	question			varchar2(200) 	not null,
-	regDate				date
+	num 				varchar2(20)	primary key,
+	questionType		varchar2(20)	not null,
+	question			varchar2(200) 	not null
 );
 
 //답변
@@ -110,8 +107,7 @@ create table answer(
 	constraint fk_answer_questionId foreign key(questionId) references question(questionId) on delete cascade,
 	memberId			varchar2(20),
 	constraint fk_answer_memberId foreign key(memberId) references member(memberId) on delete cascade,
-	answer				varchar2(200)	not null,			
-	regDate				date
+	answer				varchar2(200)	not null
 );
 
 //태그

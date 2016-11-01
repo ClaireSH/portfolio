@@ -188,11 +188,11 @@
 					</s:iterator>
 					
 					<s:iterator value="projectCareerList" status="stat" >
-						<input type="text" 
+						<input type="hidden" 
 						name="projectCareerList[<s:property value="%{#stat.index}"/>].projectCareerId" 
 						value="<s:property value="projectCareerId"/>"
 						/>
-						<input type="text" 
+						<input type="hidden" 
 						name="projectCareerList[<s:property value="%{#stat.index}"/>].resumeId" 
 						value="<s:property value="resumeId"/>"
 						/>
