@@ -114,10 +114,21 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			academicBgList = (ArrayList<AcademicBg>) resumeDAO.allAcdemicBgById(resumeVo.getResumeId());
 			careerList = (ArrayList<Career>) resumeDAO.allCareerById(resumeVo.getResumeId());
 			certificateList = (ArrayList<Certificate>) resumeDAO.allCertificateBgById(resumeVo.getResumeId());
+			System.out.println("projectCareerList Before"+ resumeVo.getResumeId());
 			projectCareerList = (ArrayList<ProjectCareer>) resumeDAO.allProjectCareerById(resumeVo.getResumeId());
-			
+			System.out.println("projectCareerList After"+ resumeVo.getResumeId());
 			for(AcademicBg ab : academicBgList){
+				System.out.println();
 				System.out.println(ab.toString());
+			}
+			for(Career c : careerList){
+				System.out.println(c.toString());
+			}
+			for(Certificate cf : certificateList){
+				System.out.println(cf.toString());
+			}
+			for(ProjectCareer pc : projectCareerList){
+				System.out.println(pc.toString());
 			}
 			
 			
@@ -132,77 +143,69 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 			return INPUT;
 		}else{
 			
-			for(AcademicBg ab : academicBgList){
-				System.out.println(ab.toString());
+			if(academicBgList == null){
+				System.out.println("academicBgList NULL");
+			}else{
+				for(AcademicBg ab : academicBgList){
+					System.out.println(ab.toString());
+				}
 			}
+			if(careerList == null){
+				System.out.println("careerList NULL");
+			}else{
+				for(Career c : careerList){
+					System.out.println(c.toString());
+				}
+			}
+			if(certificateList == null){
+				System.out.println("certificateList NULL");
+			}else{
+				for(Certificate c : certificateList){
+					System.out.println(c.toString());
+				}
+			}
+			if(projectCareerList == null){
+				System.out.println("projectCareerList NULL");
+			}else{
+				for(ProjectCareer p : projectCareerList){
+					System.out.println(p.toString());
+				}
+			}
+			
 			//값을 Insert
 			//각 List 값을 init하여 DB에 저장
-			//academicBgList
-			if(academicBgList == null){
-				academicBgList = new ArrayList<>();
-				//List에 없더라도  PK,FK 값 집어 넣음
-				//('loginID000000', 'loginId', null, null...)
-				academicBgList = new ArrayList<>();
-				AcademicBg academicBg = new AcademicBg();
-				academicBg.setAcademicBgId(loginId+"000000");
-				academicBg.setResumeId(loginId);
-			
-				academicBgList.add(academicBg);
-			}else{
+			/*
 				//리스트만큼 순차적으로 Id에 Serial값과 이력서id를 입력 
 				for(int i=0;i<academicBgList.size();i++){
 					academicBgList.get(i).setAcademicBgId(loginId+String.format("%06d", i));
 					academicBgList.get(i).setResumeId(loginId);
 				}
-			}
-			//careerList
-			if(careerList == null){
-				careerList = new ArrayList<>();
-				Career career = new Career();
-				career.setCareerId(loginId+"000000");
-				career.setResumeId(loginId);
-				careerList.add(career); //error
-			}else{
+		
 				for(int i=0;i<careerList.size();i++){
 					careerList.get(i).setCareerId(loginId+String.format("%06d", i));
 					careerList.get(i).setResumeId(loginId);
 				}
-			}
-			//certificateList
-			if(certificateList == null){
-				certificateList = new ArrayList<>();
-				Certificate certificate = new Certificate();
-				certificate.setCertificateId(loginId+"000000");
-				certificate.setResumeId(loginId);
-				certificateList.add(certificate);
-			}else{
+		
+			
 				for(int i=0;i<certificateList.size();i++){
 					certificateList.get(i).setCertificateId(loginId+String.format("%06d", i));
 					certificateList.get(i).setResumeId(loginId);
 				}
-			}
-			//projectCareerList
-			if(projectCareerList == null){
-				projectCareerList = new ArrayList<>();
-				ProjectCareer projectCareer = new ProjectCareer();
-				projectCareer.setProjectCareerID(loginId+"000000");
-				projectCareer.setResumeId(loginId);
-				projectCareerList.add(projectCareer);
-			}else{
+		
 				for(int i=0;i<projectCareerList.size();i++){
 					projectCareerList.get(i).setProjectCareerID(loginId+String.format("%06d", i));
 					projectCareerList.get(i).setResumeId(loginId);
 				}
-			}
+			*/
 			//end
 			
 			//DB리스트를 전부 삭제한 후, UI에서 가져온 정보를 DB에 전부 삽입
 			//리스트를 전부 삭제
+			
 			resumeDAO.deleteAcademicBgById(loginId);
 			resumeDAO.deleteCareerById(loginId);
 			resumeDAO.deleteCertificateById(loginId);
 			resumeDAO.deleteProjectCareerById(loginId);
-			
 			
 			//이력서 정보 전부 삽입
 			resumeDAO.insertAcademicBgList(academicBgList);
