@@ -12,9 +12,12 @@ import dao.QnaDAO;
 import vo.Qna;
 
 public class QnaAction extends ActionSupport implements SessionAware{
-	Qna qna;
-	int qnano;
-	List<Qna> qnalist;
+	private Qna qna;
+	private int qnano;
+	private List<Qna> qnalist;
+	
+	private String selector;//선택한 
+	private String editedAnswer; 
 	
 	QnaDAO dao=new QnaDAO();
 	Map<String,Object> session;
@@ -74,6 +77,15 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+
+	public String getEditedAnswer() {
+		return editedAnswer;
+	}
+
+	public void setEditedAnswer(String editedAnswer) {
+		this.editedAnswer = editedAnswer;
+	}
+	
 	
 	
 	

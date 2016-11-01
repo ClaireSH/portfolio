@@ -56,7 +56,7 @@
 
 			<div class="row">
 				<!-- 섹션 -->
-				<div class="col-lg-3">
+				<div class="col-lg-6">
 
 					<div class="panel panel-danger">
 						<div class="panel-heading">
@@ -68,10 +68,9 @@
 						<div class="panel-body">
 
 
-							<link rel="stylesheet"
-								href="portfolio/plugin/tagInput/bootstrap-tagsinput.css">
+							<link rel="stylesheet" href="/plugin/tagInput/bootstrap-tagsinput.css">
 
-							<link rel="stylesheet" href="portfolio/plugin/tagInput/app.css">
+							<link rel="stylesheet" href="/plugin/tagInput/app.css">
 							<script>
 								(function(i, s, o, g, r, a, m) {
 									i['GoogleAnalyticsObject'] = r;
@@ -95,84 +94,35 @@
 										'bootstrap-tagsinput.github.io');
 								ga('send', 'pageview');
 							</script>
-							<input type="text"
-								value="Amsterdam,Washington,Sydney,Beijing,Cairo"
+							
+							<p>
+							<button type="button" class="btn btn-outline btn-primary">취미생활</button>
+                                <button type="button" class="btn btn-outline btn-success">여가생활</button>
+                                <button type="button" class="btn btn-outline btn-info">대학생활</button>
+                                <button type="button" class="btn btn-outline btn-warning">직장생활</button>
+                                <button type="button" class="btn btn-outline btn-danger">일상생활</button>
+							</p>
+							
+							<input id="cate" type="text"
+								value="취미생활,여가생활"
 								data-role="tagsinput">
 							<!--카테고리태그 -->
-							<input type="text" />
-							<script>
-								var cities = new Bloodhound(
-										{
-											datumTokenizer : Bloodhound.tokenizers.obj
-													.whitespace('text'),
-											queryTokenizer : Bloodhound.tokenizers.whitespace,
-											prefetch : 'portfolio/plugin/tagInput/cities.json'
-										});
-								cities.initialize();
-
-								var elt = $('input');
-								elt
-										.tagsinput({
-											tagClass : function(item) {
-												switch (item.continent) {
-												case 'Europe':
-													return 'label label-primary';
-												case 'America':
-													return 'label label-danger label-important';
-												case 'Australia':
-													return 'label label-success';
-												case 'Africa':
-													return 'label label-default';
-												case 'Asia':
-													return 'label label-warning';
-												}
-											},
-											itemValue : 'value',
-											itemText : 'text',
-											typeaheadjs : {
-												name : 'cities',
-												displayKey : 'text',
-												source : cities.ttAdapter()
-											}
-										});
-								elt.tagsinput('add', {
-									"value" : 1,
-									"text" : "Amsterdam",
-									"continent" : "Europe"
-								});
-								elt.tagsinput('add', {
-									"value" : 4,
-									"text" : "Washington",
-									"continent" : "America"
-								});
-								elt.tagsinput('add', {
-									"value" : 7,
-									"text" : "Sydney",
-									"continent" : "Australia"
-								});
-								elt.tagsinput('add', {
-									"value" : 10,
-									"text" : "Beijing",
-									"continent" : "Asia"
-								});
-								elt.tagsinput('add', {
-									"value" : 13,
-									"text" : "Cairo",
-									"continent" : "Africa"
-								});
-							</script>
-
+							<input type="text"  />
+						<script>
+						$('#cate').change(function(){
+							console.log('변화 :'+$("#cate").val());
+							
+						});
+						</script>
+				
 							<!--버튼 -->
-							<input type="button" class="btn btn-default"
-								onclick="careerRow(this)" value="+"> <input
-								type="button" class="btn btn-default" onclick="careerRow(this)"
-								value="-">
+							
 						</div>
 					</div>
 				</div>
 				<!--섹션.끝-->
 				<!-- 섹션 -->
-				<div class="col-lg-9">
+				<div class="col-lg-6">
 
 					<div class="panel panel-danger">
 						<div class="panel-heading">
@@ -182,18 +132,15 @@
 						</div>
 						<div class="panel-body">
 
-							<div class="container">
+							<div >
 							<h5>질문 리스트</h5>
 							<table>
 							</table>
 							</div>
-							<div class="container">
+							<div>
 								<textarea name="textarea" class="jqte-test"></textarea>
 							</div>
-							<input type="button" class="btn btn-default"
-								onclick="careerRow(this)" value="+"> <input
-								type="button" class="btn btn-default" onclick="careerRow(this)"
-								value="-">
+					
 						</div>
 					</div>
 				</div>
@@ -201,11 +148,6 @@
 
 			</div>
 
-			<div style="text-align: center;">
-				<input type="button" id="admit" class="btn btn-default btn-info"
-					value="수정"> <input type="button" id="delete"
-					class="btn btn-default" value="삭제" onclick="deleteResume()">
-			</div>
 
 			<input type="hidden" class="license" name="resumeVO.license_seq"
 				value="15733"> <input type="hidden" id="ncd"
@@ -226,10 +168,10 @@
 			$('.jqte-test').jqte();
 		</script>
 		<script
-			src="/portfolio/plugin/tagInput/dist/bootstrap-tagsinput.min.js"></script>
+			src="plugin/tagInput/dist/bootstrap-tagsinput.min.js"></script>
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
-		<script src="/portfolio/plugin/tagInput/app.js"></script>
+		<script src="plugin/tagInput/app.js"></script>
 	</div>
 </div>
 </body>

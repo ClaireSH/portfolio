@@ -54,8 +54,8 @@
 											<s:iterator value="qnalist" begin="0" end="2" step="1" status="incre">
 												<tr>
 													<td >${num}</td>
-													<td>${question}</td>
-													<td id="a+${incre.index}">${answer}</td>
+													<td>${question}</td>qnano
+													<td><div class="editCell" id="cell${num}" value="${answer}">${answer}</div></td>
 													<td>${title}</td>
 												</tr>
 											</s:iterator>
@@ -66,10 +66,18 @@
 									</div>
 								</form>
 								<script>
-									$("#btn_edit").click(function() {
-										$(".gradeU").removeAttr("readonly");
+								
+								function makeEvent(id){
+									$("'#'+id").dblclick(function() {
+										var vv = $("'#'+id").val()
+										$("'#'+id").parent().append('<input type="text" name="editedAnswer" value="'+vv+'"><input type="hidden" name="selector" value="'+id.substring(1,)+'">');
+										$("'#'+id").remove();
+										alert('삭제2');
 									});
-								</script>
+	
+								}
+								
+																</script>
 							</div>
 							<!-- /.table-responsive -->
 						</div>
