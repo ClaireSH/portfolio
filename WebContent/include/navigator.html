@@ -129,17 +129,17 @@
 					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 분석<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="/portfolio/pages/morris.html"><i class="fa  fa-list-ol fa-fw"></i> 순위분석</a></li>
-						<li><a href="/portfolio/pages/flot.html"><i class="fa fa-bar-chart-o fa-fw"></i> 추이분석</a></li>
+						<li><a href="analy_str.action"><i class="fa  fa-list-ol fa-fw"></i> 순위분석</a></li>
+						<li><a href="analy_num.action"><i class="fa fa-bar-chart-o fa-fw"></i> 추이분석</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>개발자도구(개발자용)<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="/portfolio/pages/example/panels-wells.html">Panels and Wells</a></li>
-						<li><a href="/portfolio/pages/example/buttons.html">Buttons</a></li>
-						<li><a href="/portfolio/pages/example/notifications.html">Notifications</a></li>
-						<li><a href="/portfolio/pages/example/typography.html">Typography</a></li>
-						<li><a href="/portfolio/pages/example/icons.html"> Icons</a></li>
-						<li><a href="/portfolio/pages/example/grid.html">Grid</a></li>
+						<li><a href="panels.action">Panels and Wells</a></li>
+						<li><a href="buttons.action">Buttons</a></li>
+						<li><a href="notifications.action">Notifications</a></li>
+						<li><a href="typography.action">Typography</a></li>
+						<li><a href="icons.action"> Icons</a></li>
+						<li><a href="grid.action">Grid</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 
 
@@ -160,7 +160,6 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="/portfolio/dist/js/sb-admin-2.js"></script>
-
 
 
 <!-- 회원가입 -->
@@ -188,6 +187,7 @@
 						</div>
 					</div>
 					<!-- /.panel-heading -->
+					
 					<script>
 						$(document).ready(
 								function() {
@@ -229,13 +229,14 @@
 
 											});//click
 
-								});//ready
+								});//ready								
 					</script>
+					
 					<div class="panel-body">
-						<ul class="chat">
+							<ul class="chat">
 							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />
 							</span>
-								<div class="chat-body clearfix">
+							<div class="chat-body clearfix">
 									<div class="header">
 										<strong class="primary-font">[여가생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> 12 / 20번 질문
 										</small>
@@ -270,14 +271,12 @@
 						</ul>
 					</div>
 					<!-- /.panel-body -->
-
-
-
-
+		
 					<div class="panel-footer">
 						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
-								<button class="btn btn-warning btn-sm" id="btn-chat">보내기</button>
+							<input id="btn-input" type="text" class="form-control input-sm" name="qna.answer" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
+								<button class="btn btn-warning btn-sm" id="btn-chat" >보내기</button>
+
 							</span>
 						</div>
 					</div>
