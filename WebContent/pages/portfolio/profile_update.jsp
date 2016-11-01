@@ -66,7 +66,7 @@
             </fieldset>
 
             <input type="hidden" id="birthday" name="memberVo.birth" value="">
-
+ 
             <div id="btnCenter" style="top: 50px;">
                 <input type="submit" value="수정" /> <input type="reset" value="삭제" />
             </div>
