@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import dao.MemberDAO;
 import dao.ResumeDAO;
@@ -40,9 +41,8 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	ResumeDAO resumeDAO = new ResumeDAO();
 	
 	public String login(){
-		
+		System.out.println("로그인을하자미친놈아");
 		Member m = memberDAO.selectMember(memberVo.getMemberId());
-		
 		if(m == null){
 			return INPUT;
 		}else if(!(memberVo.getPassword()).equals(m.getPassword())){
@@ -51,6 +51,11 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			//로그인
 			System.out.println(m.getName() + "  " + " Login!!");
 			session.put("loginId", memberVo.getMemberId());
+			
+			//로그인 하면 메인으로 가는데 거기서 필요한 데이터
+			//나의인생 , 알람소식 
+			
+			
 			return LOGIN;
 		}
 	}
@@ -84,25 +89,37 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			String birth = useryear+"/"+usermonth+"/"+userday;
 			memberVo.setBirth(birth);
 			
-			AcademicBg academicBg = new AcademicBg();
-			Career career = new Career();
-			Certificate certificate = new Certificate();
-			ProjectCareer projectCareer = new ProjectCareer();
+			ArrayList<AcademicBg> abList = new ArrayList<>();
+			ArrayList<Career> cList = new ArrayList<>();
+			ArrayList<Certificate> cfList = new ArrayList<>();
+			ArrayList<ProjectCareer> pcList = new ArrayList<>();
 			
-			academicBg.setAcademicBgId(memberVo.getMemberId()+"000000");
-			academicBg.setResumeId(memberVo.getMemberId());
-			career.setCareerId(memberVo.getMemberId()+"000000");
-			career.setResumeId(memberVo.getMemberId());
-			certificate.setCertificateId(memberVo.getMemberId()+"000000");
-			certificate.setResumeId(memberVo.getMemberId());
-			projectCareer.setProjectCareerID(memberVo.getMemberId()+"000000");
-			projectCareer.setResumeId(memberVo.getMemberId());
+			for(int i=0;i<5;i++){
+				AcademicBg academicBg = new AcademicBg();
+				Career career = new Career();
+				Certificate certificate = new Certificate();
+				ProjectCareer projectCareer = new ProjectCareer();
+				
+				academicBg.setAcademicBgId(memberVo.getMemberId()+String.format("%06d", i));
+				academicBg.setResumeId(memberVo.getMemberId());
+				career.setCareerId(memberVo.getMemberId()+String.format("%06d", i));
+				career.setResumeId(memberVo.getMemberId());
+				certificate.setCertificateId(memberVo.getMemberId()+String.format("%06d", i));
+				certificate.setResumeId(memberVo.getMemberId());
+				projectCareer.setProjectCareerId(memberVo.getMemberId()+String.format("%06d", i));
+				projectCareer.setResumeId(memberVo.getMemberId());
+				
+				abList.add(academicBg);
+				cList.add(career);
+				cfList.add(certificate);
+				pcList.add(projectCareer);
+			}
 			
 			memberDAO.insertMember(memberVo);
-			resumeDAO.insertAcademicBg(academicBg);
-			resumeDAO.insertCareer(career);
-			resumeDAO.insertCertificate(certificate);
-			resumeDAO.insertProjectCareer(projectCareer);
+			resumeDAO.insertAcademicBgList(abList);
+			resumeDAO.insertCareerList(cList);
+			resumeDAO.insertCertificateList(cfList);
+			resumeDAO.insertProjectCareerList(pcList);
 			
 			return SUCCESS;
 		}else{

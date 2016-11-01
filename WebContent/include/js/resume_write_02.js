@@ -7,31 +7,42 @@
 //	$('#print_page *').attr('disabled', true);
 //	// perviewImage();
 //});
-
+	
+	var academicBgId;
+	var adminssionYear;
+	var graduationYear;
+	var schoolName;
+	var major;
+	var degree;
+	var remarks;
+	
 window.onload = function(){
 	/*전체가 읽힌 다음에 호출이 됌  */
 	
-	var adminssionYearArray = document.getElementsByClassName("adminssionYear0");
+	academicBgId =  document.getElementsByName("academicBgId");
+	adminssionYear = document.getElementsByName("adminssionYear");
+	graduationYear = document.getElementsByName("graduationYear");
+	schoolName = document.getElementsByName("schoolName");
+	major = document.getElementsByName("major");
+	degree = document.getElementsByName("degree");
+	
+	console.log(academicBgId[0].value);
+	console.log(academicBgId[1].value);
+	abilityRow("init");
+	/*adminssionYearArr = document.getElementsByClassName("adminssionYear0");
+	graduationYearArr = document.getElementByClassName("graduationYear0");
+	schoolNameArr = document.getElementsByClassName("schoolName0");
+	majorArr = document.getElementsByClassName("major0");
+	degreeArr = document.getElementsByClassName("degree0");
+	remarksArr = document.getElementsByClassName("remarks0");
+	
+	console.log(adminssionYearArr);
+	
 	for(var index in adminssionYearArray){
-		cArray[index].onclick = function(){
-			/*여기에서 this는 function을 호출하는 cArray[index]를 가리킴 */
-			
-			var food = this.value;
-			
-			if(this.checked){
-				var imgTag = document.getElementById("imgTag");
-				imgTag.src = 'image/'+this.value+'.jpg';
-				
-				calcurate(food, "+");
-			}else{
-				
-				calcurate(food, "-");
-			}
-			
-		}
+		console.log(adminssionYearArr[index].value);
 	}
 	
-	abilityRow(btn)
+	abilityRow(btn)*/
 	
 }
 	
@@ -218,22 +229,39 @@ function abilityRow(btn) {
 		var rowCount = $('#eduTable tr').length - 1;
 		var content = '';
 		content += '<tr>';
-		content += '<td><input class="form-control" type="text" maxlength = "11" name="academicBgList[' + rowCount + '].adminssionYear" value="${academicBgList[' + rowCount + '].adminssionYear}"  id="entrance' + rowCount + '" >';
+		content += '<td><input class="form-control" type="text" maxlength = "11" name="academicBgList' + rowCount + '.adminssionYear" value="${academicBgList[' + rowCount + '].adminssionYear}"  id="entrance' + rowCount + '" >';
 		content += '<input vaule= "0" class="form-control" type="hidden" id="edu_gubun" name=""  id="edu_gubun' + rowCount + '" ></td>';
-		content += '<td><input class="form-control" type="text" maxlength = "11" name="academicBgList[' + rowCount + '].graduationYear" value="${academicBgList[' + rowCount + '].graduationYear}" id="graduation' + rowCount + '"  ></td>';
-		content += '<td colspan="2"><input class="form-control" maxlength = "30" name="academicBgList[' + rowCount + '].schoolName" value="${academicBgList[' + rowCount + '].schoolName}"  type="text" id="school' + rowCount + '"  ></td>';
+		content += '<td><input class="form-control" type="text" maxlength = "11" name="academicBgList' + rowCount + '.graduationYear" value="${academicBgList[' + rowCount + '].graduationYear}" id="graduation' + rowCount + '"  ></td>';
+		content += '<td colspan="2"><input class="form-control" maxlength = "30" name="academicBgList' + rowCount + '.schoolName" value="${academicBgList[' + rowCount + '].schoolName}"  type="text" id="school' + rowCount + '"  ></td>';
 		content += '<td colspan="2"><input class="form-control" maxlength = "30" type="text" name="academicBgList[' + rowCount + '].major"  value="${academicBgList[' + rowCount + '].major}"  id="major' + rowCount + '"  ></td>';
-		content += '<td><input class="form-control" type="text" maxlength="20" name="academicBgList[' + rowCount + '].degree"  value="${academicBgList[' + rowCount + '].degree}" id="degree' + rowCount + '"  ></td>';
-		content += '<td><input class="form-control" type="text" maxlength="20" name="academicBgList[' + rowCount + '].remarks" value="${academicBgList[' + rowCount + '].remarks}"  id="note' + rowCount + '"  ></td>';
+		content += '<td><input class="form-control" type="text" maxlength="20" name="academicBgList' + rowCount + '.degree"  value="${academicBgList[' + rowCount + '].degree}" id="degree' + rowCount + '"  ></td>';
+		content += '<td><input class="form-control" type="text" maxlength="20" name="academicBgList' + rowCount + '.remarks" value="${academicBgList[' + rowCount + '].remarks}"  id="note' + rowCount + '"  ></td>';
 		content += '</tr>';
 		$('#eduTable > tbody:last').append(content);
 	} else if (btn.value == '-') {
 		$('#eduTable > tbody:last > tr:last').remove();
+	} else if (btn.value == 'init'){
+		var rowMax = academicBgId.length;
+		console.log(rowMax);
+		//var rowCount = $('#eduTable tr').length - 1;
+		for(var i=0;i<rowMax;i++){
+			var content = '';
+			content += '<tr>';
+			content += '<td><input class="form-control" type="text" maxlength = "11" name="academicBgList' + i + '.adminssionYear" value="'+ academicBgId+'"  id="entrance' + i + '" >';
+			content += '<input vaule= "0" class="form-control" type="hidden" id="edu_gubun" name=""  id="edu_gubun' + i + '" ></td>';
+			content += '<td><input class="form-control" type="text" maxlength = "11" name="academicBgList' + i + '.graduationYear" value="' + graduationYear + '" id="graduation' + i + '"  ></td>';
+			content += '<td colspan="2"><input class="form-control" maxlength = "30" name="academicBgList' + i + '.schoolName" value="' + schoolName + '"  type="text" id="school' + i + '"  ></td>';
+			content += '<td colspan="2"><input class="form-control" maxlength = "30" type="text" name="academicBgList' + i + '.major"  value="' + major + '"  id="major' + i + '"  ></td>';
+			content += '<td><input class="form-control" type="text" maxlength="20" name="academicBgList' + i + '.degree"  value="' + degree + '" id="degree' + i + '"  ></td>';
+			content += '<td><input class="form-control" type="text" maxlength="20" name="academicBgList' + i + '.remarks" value="' + remarks + '"  id="note' + i + '"  ></td>';
+			content += '</tr>';
+		}
+		$('#eduTable > tbody:last').append(content);
 	}
 }
 
 function careerRow(btn) {
-	if (btn.value == '+') {
+	if (btn.value == '+') { 
 		var rowCount = $('#careerTable tr').length;
 		var content = '';
 		content += '<tr>';

@@ -7,7 +7,7 @@
    <!--요청에 대한 -->
 
    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-   <constant name="struts.devMode" value="true" />
+   <constant name="struts.devMode" value="false" />
 
 
    <package name="default" namespace="/" extends="struts-default, json-default">
@@ -85,19 +85,27 @@
       
       <!-- <action name="favoriteMemberPage"> <result>/favoriteMemberPage.jsp</result> 
          </action> -->
-
+         
+         
+	<!-- AJAX클래스로 보낼 액션들 -->
       <!-- 질문입력 -->
+      <action name="firstInsertQuestion" class="action.JsonTestAction" method="firstInsertQuestion">
+         <result type="json" />
+      </action>
       <action name="insertQNA" class="action.JsonTestAction" method="insertQNA">
          <result type="json" />
       </action>
-
+      
+	<!-- .AJAX -->
       <!-- 질문수정 -->
       <!-- table.html -->
       <action name="selectQNA" class="action.JsonTestAction" method="tableFill">
          <result type="json" />
       </action>
       
-       
+      	
+                     
+            
        <!-- 이력서 수정 -->
       <action name="insertResume" >
          <result>/pages/portfolio/resume_write.jsp</result>
@@ -112,6 +120,11 @@
       <action name="prWrite" class="action.ResumeAction" method="prWrite">
          <result name="success" type="redirect">goPrWriteForm</result>
       </action>
+      
+      <!-- 자기소개서에 있는 질문리스트 -->
+      <action name="listQNA" class="action.QnaAction" method="listQNA">
+         <result name="success" >/pages/portfolio/cv_write.html</result>
+         </action>
 
    </package>
 

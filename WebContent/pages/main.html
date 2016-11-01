@@ -37,10 +37,21 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-clock-o fa-fw"></i> 나의 인생
+							<div class="btn-group pull-right">
+								<button type="button">
+									<i id="myView" class="fa fa-chevron-down"></i>
+								</button>
+								<script>
+									$('#myView').click(function() {
+										$('#trrrrr').slideToggle();
+
+									});
+								</script>
+							</div>
 						</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
-							<ul class="timeline">
+							<ul id="trrrrr" class="timeline">
 								<li>
 									<div class="timeline-badge">
 										<i class="fa fa-check"></i>
@@ -53,7 +64,7 @@
 											</p>
 										</div>
 										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis.</p>
+											<p>최신글을 불러옵니다.</p>
 										</div>
 									</div>
 								</li>
@@ -66,7 +77,7 @@
 											<h4 class="timeline-title">교육인생</h4>
 										</div>
 										<div class="timeline-body">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus.</p>
+											<p>어떤 교육을 받았는가?에 대해 자소서를 쓴 내용이 들어옵니다. 자소서의 카테고리 중 교육글이 있을 경우 최신글을 불러옵니다.</p>
 										</div>
 									</div>
 								</li>
@@ -79,11 +90,14 @@
 											<h4 class="timeline-title">도전인생</h4>
 										</div>
 										<div class="timeline-body">
-											  <ul>
-                          <ol>첫번째1</ol>
-                          <ol>두전째</ol>
-                          <ol>세번째</ol>
-                        </ul>
+											<ul>
+												<ol>첫번째1
+												</ol>
+												<ol>두전째
+												</ol>
+												<ol>세번째
+												</ol>
+											</ul>
 
 										</div>
 									</div>
@@ -201,22 +215,18 @@
 							<i class="fa fa-bell fa-fw"></i> 알림소식
 							<div class="btn-group pull-right">
 								<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-chevron-down"></i>
+									<i id="openRow2" class="fa fa-chevron-down"></i>
 								</button>
-							<script>
-								$('.fa-chevron-down').click(function(){
-									$('#bedge_panel').slideToggle();
-								});
-							</script>
+
 							</div>
 						</div>
 						<!-- /.panel-heading -->
 						<div id="bedge_panel" class="panel-body">
 							<div class="list-group">
-								<a href="#" class="list-group-item"> <i class="fa fa-comment fa-fw"></i> New Comment <span class="pull-right text-muted small"><em>4 minutes ago</em> </span>
-								</a> <a href="#" class="list-group-item"> <i class="fa fa-twitter fa-fw"></i> 3 New Followers <span class="pull-right text-muted small"><em>12 minutes ago</em> </span>
-								</a> <a href="#" class="list-group-item"> <i class="fa fa-envelope fa-fw"></i> Message Sent <span class="pull-right text-muted small"><em>27 minutes ago</em> </span>
-								</a> <a href="#" class="list-group-item"> <i class="fa fa-tasks fa-fw"></i> New Task <span class="pull-right text-muted small"><em>43 minutes ago</em> </span>
+								<a href="#" class="list-group-item"> <i class="fa fa-comment fa-fw"></i> 새 글 <span class="pull-right text-muted small"><em>4 minutes ago</em> </span>
+								</a> <a href="#" class="list-group-item"> <i class="fa fa-twitter fa-fw"></i> 새 친구 <span class="pull-right text-muted small"><em>12 minutes ago</em> </span>
+								</a> <a href="#" class="list-group-item"> <i class="fa fa-envelope fa-fw"></i> 새 쪽지 <span class="pull-right text-muted small"><em>27 minutes ago</em> </span>
+								</a> <a href="#" class="list-group-item"> <i class="fa fa-tasks fa-fw"></i> 새 분석결과 <span class="pull-right text-muted small"><em>43 minutes ago</em> </span>
 								</a>
 
 							</div>
@@ -246,57 +256,73 @@
 						</div>
 						<!-- /.panel-heading -->
 						<script>
-							$(document).ready(
-									function() {
+							var num = '1';
+							function setNum(a) {
+								num = a;
 
-										//질문 목록 받아오기
-										$('#answering').click(function() {
+							};
+							//콜백 
+							function firstCallBack(data) {
+								//alert('첫질문 : '+data.question+'/'+data.type+'/'+data.num);
+								$('.chat').append(
+										'<li class="left clearfix"><span class="chat-img pull-left">' + '<img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span> ' + '<div class="chat-body clearfix"> <div class="header"> <strong class="primary-font">[' + data.type + '생활]</strong> ' + '<small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> ' + data.num + ' / ' + data.totalQna + '번 질문 </small> </div> <p>' + data.question
+												+ '</p> </div></li>');
+								//저장하기
+								setNum(data.num);
+							};
 
-											$.ajax({
-												url : 'insertQNA',
-												type : 'post',
-												success : function(data) {
-													//alert('질문(한번에 하나씩 받아온다?!) : '+data.question);
+							function otherCallBack(data) {
+								$('.chat').append('<li class="right clearfix"><span class="chat-img pull-right"> </span> <div class="clearfix"> <div class="header"> <small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> <strong class="pull-right primary-font">[ ' + data.num + '번째 ] 답변</strong> </div> <p>' + data.answer + '</p> </div></li>');
 
-												}
-											});//ajax
+								$('.chat').append(
+										'<li class="left clearfix"><span class="chat-img pull-left">' + '<img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span> ' + '<div class="chat-body clearfix"> <div class="header"> <strong class="primary-font">[' + data.type + '생활]</strong> ' + '<small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> ' + parseInt(parseInt(data.num)+1)  + ' / ' + data.totalQna + '번 질문 </small> </div> <p>' + data.question
+												+ '</p> </div></li>');
 
-										});//click
+								$('.panel-body').scrollTop($('.panel-body').prop('scrollHeight'));
 
-										//답변전송
-										$('#btn-chat').click(
-												function() {
+								//저장하기
+								setNum(data.num);
+							}
 
-													$.ajax({
-														url : 'insertQNA',
-														type : 'post',
-														data : {
-															"answer" : $('#btn-input').val()
-														},
+							//
+							$(document).ready(function() {
 
-														success : function(data) {
+								//스크롤 뒤로 
 
-															$('.chat').append('<li class="right clearfix"><span class="chat-img pull-right"> </span> <div class="clearfix"> <div class="header"> <small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전 </small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong> </div> <p>' + data.answer + '</p> </div></li>').children("li:last").fadeIn(500);
-															$(".right:last-1").animate({
-																opacity : 0.25
-															//use more parameter for effect
-															}, 1000, function() {
-																jQuery('.right:last').html(dd);
-																// Animation complete.
-															});
-															$('.chat').append(
-																	'<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span> <div class="chat-body clearfix"> <div class="header"> <strong class="primary-font">[' + data.type + '생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> ' + data.num + '/ 20번 질문 </small> </div> <p>' + data.question
-																			+ '</p> </div></li>').children("li:last").fadeIn(500);
-															$('#btn-input').val('');
-														}
-													});
+								//첫질문 받기
+								$.ajax({
 
-												})
-									});
+									url : 'firstInsertQuestion',
+									type : 'post',
+									success : function(data) {
+										firstCallBack(data);
+
+									}
+
+								});
+
+								//모두 로딩 후 필드값 받아서 전달해보자 
+								$('#btnsend').click(function() {
+									var aa = $("#btnanswer").val();
+
+									$.ajax({
+										url : 'insertQNA',
+										type : 'post',
+										data : {
+											'answer' : $("#btnanswer").val(),
+										},
+										success : function(data) {
+											otherCallBack(data);
+											$("#btnanswer").val('');
+										}
+									});//ajax 
+								});//click
+
+							});//ready
 						</script>
 						<div class="panel-body">
 							<ul class="chat">
-								<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />
+								<!-- <li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />
 								</span>
 									<div class="chat-body clearfix">
 										<div class="header">
@@ -304,15 +330,15 @@
 											</small>
 										</div>
 										<p>평소에 하는 운동은 뭐가 있어?</p>
-									</div></li>
-								<li class="right clearfix"><span class="chat-img pull-right"> </span>
+									</div></li> -->
+								<!-- <li class="right clearfix"><span class="chat-img pull-right"> </span>
 									<div class="clearfix">
 										<div class="header">
 											<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전
 											</small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong>
 										</div>
 										<p>답변기다리는 중</p>
-									</div></li>
+									</div></li> -->
 
 							</ul>
 						</div>
@@ -323,8 +349,8 @@
 
 						<div class="panel-footer">
 							<div class="input-group">
-								<input id="btn-input" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
-									<button class="btn btn-warning btn-sm" id="btn-chat">보내기</button>
+								<input id="btnanswer" type="text" class="form-control input-sm" placeholder="답변을 입력해주세요" /> <span class="input-group-btn">
+									<button class="btn btn-warning btn-sm" id="btnsend">보내기</button>
 								</span>
 							</div>
 						</div>
@@ -344,10 +370,12 @@
 	<!-- /#wrapper -->
 
 
-	<!-- Morris Charts JavaScript -->
-	<script src="/portfolio/vendor/raphael/raphael.min.js"></script>
-	<script src="/portfolio/vendor/morrisjs/morris.min.js"></script>
-	<script src="/portfolio/data/morris-data.js"></script>
+	<script>
+		$('#bedge_panel').hide();
+		$('#openRow2').click(function() {
+			$('#bedge_panel').slideToggle();
+		});
+	</script>
 </body>
 
 </html>
