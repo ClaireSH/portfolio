@@ -95,7 +95,7 @@
 			<result name="success" type="dispatcher">/pages/tables.jsp
 			</result>
 		</action>
-		<action name="cvWrite" class="action.ResumeAction" method="listQNA">
+		<action name="cvWrite" class="action.cvAction" method="getCVboardList">
 			<result name="success" type="dispatcher">/pages/portfolio/cv_write.jsp
 			</result>
 		</action>
