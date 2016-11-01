@@ -49,7 +49,7 @@
 
 		<!-- 2-2 (1) 메인으로 이동 -->
 		<action name="main">
-			<result>/pages/main.html</result>
+			<result>/pages/main.jsp</result>
 		</action>
 
 		<!-- 2-3 로그아웃 -->
