@@ -14,11 +14,11 @@ public class ProjectCareer {
 	public ProjectCareer() {}
 
 
-	public String getProjectCareerID() {
+	public String getProjectCareerId() {
 		return projectCareerId;
 	}
 
-	public void setProjectCareerID(String projectCareerId) {
+	public void setProjectCareerId(String projectCareerId) {
 		this.projectCareerId = projectCareerId;
 	}
 
