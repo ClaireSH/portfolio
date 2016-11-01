@@ -103,17 +103,7 @@
                                 <button type="button" class="btn btn-outline btn-danger">일상생활</button>
 							</p>
 							
-							<input id="cate" type="text"
-								value="취미생활,여가생활"
-								data-role="tagsinput">
-							<!--카테고리태그 -->
-							<input type="text"  />
-						<script>
-						$('#cate').change(function(){
-							console.log('변화 :'+$("#cate").val());
-							
-						});
-						</script>
+					
 				
 							<!--버튼 -->
 							
@@ -140,7 +130,15 @@
 							<div>
 								<textarea name="textarea" class="jqte-test"></textarea>
 							</div>
-					
+						<input id="cate" type="text" value="취미생활,여가생활" data-role="tagsinput">
+							<!--카테고리태그 -->
+							<input type="text"  />
+						<script>
+						$('#cate').change(function(){
+							console.log('변화 :'+$("#cate").val());
+							
+						});
+						</script>
 						</div>
 					</div>
 				</div>
