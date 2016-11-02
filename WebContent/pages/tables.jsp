@@ -19,68 +19,6 @@
 </head>
 
 <body>
-	
-		<div id="wrapper">
-			<div id="myheader"></div>
-			<!-- Page Content -->
-
-			<div id="page-wrapper">
-				<div class="row">
-					<div class="col-lg-12">
-						<h1 class="page-header">질문편집</h1>
-					</div>
-					<!-- /.col-lg-12 -->
-				</div>
-				<!-- /.row -->
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">질문답변목록</div>
-							<!-- /.panel-heading -->
-							<div class="panel-body">
-								<table width="100%" class="table table-striped table-bordered table-hover container">
-									<col width="5%">
-									<col width="15%">
-									<col width="45%">
-									<col width="35%">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>분류</th>
-											<th>질문</th>
-											<th>답변</th>
-										</tr>
-									</thead>
-									<tbody>
-
-										<tr class="gradeU">
-											<td id="num">H01</td>
-											<td id="type">취미생활</td>
-											<td id="question">취미가뭐야?</td>
-											<td id="answer">내가 좋아하는 건...</td>
-										</tr>
-										
-										<tr class="gradeU">
-											<td id="num">H02</td>
-											<td id="type">취미생활</td>
-											<td id="question">어떤 계기로 하게 되었어?</td>
-											<td id="answer">내가 좋아하는 건...</td>
-										</tr>
-										
-										<tr class="gradeU">
-											<td id="num">H03</td>
-											<td id="type">취미생활</td>
-											<td id="question">다른 취미는 뭐가 있어?</td>
-											<td id="answer">내가 좋아하는 건...</td>
-										</tr>
-										
-										<tr class="gradeU">
-											<td id="num">H04</td>
-											<td id="type">취미생활</td>
-											<td id="question">취미를 직업으로 삼을 수 있다고 생각해?</td>
-											<td id="answer">내가 좋아하는 건...</td>
-										</tr>
-										
 
 	<div id="wrapper">
 		<div id="myheader"></div>
@@ -181,7 +119,7 @@
                                         <tr>
                                             <td>2</td>
                                             <td>Jacob</td>
-                                            <td>Thornton</td>
+                                           <td>Thornton</td>
                                             <td>@fat</td>
                                         </tr>
                                         <tr>
