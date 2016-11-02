@@ -95,11 +95,11 @@
 			<result name="success" type="dispatcher">/pages/tables.jsp
 			</result>
 		</action>
-		<!-- <action name="cvWrite" class="action.cvAction" method="getCVboardList">
+		<action name="cvWrite" class="action.cvAction" method="getCVboardList">
 			<result name="success" type="dispatcher">/pages/portfolio/cv_write.jsp
 			</result>
 		</action>
- -->
+
 		<!-- AJAX클래스로 보낼 액션들 -->
 		<!-- 질문입력 -->
 		<action name="firstInsertQuestion" class="action.JsonTestAction"
@@ -163,8 +163,8 @@
 		<action name="grid">
 			<result>/pages/example/grid.jsp</result>
 		</action>
-			
-		<!--  -->
+
+		<!-- -->
 	</package>
 
 	<!-- Add packages here -->
