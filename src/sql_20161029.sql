@@ -109,7 +109,12 @@ create table answer(
 	answer				varchar2(200)
 );
 
+insert into question values('1', '취미', '취미 질문입니다.')
+insert into question values('2', '취미', '취미 질문입니다.')
+insert into question values('3', '취미', '취미 질문입니다.')
 insert into question values('4', '취미', '취미 질문입니다.')
+
+
 insert into answer values('4', 'tooona', '취미 답변입니다.')
 
 select *
