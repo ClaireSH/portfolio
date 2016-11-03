@@ -109,12 +109,13 @@ create table answer(
 	answer				varchar2(200)
 );
 
-insert into question values('1', '취미', '취미 질문입니다.')
-insert into question values('2', '취미', '취미 질문입니다.')
-insert into question values('3', '취미', '취미 질문입니다.')
-insert into question values('4', '취미', '취미 질문입니다.')
 
+insert into question values('1', '여가시간', '여가 시간에는 주로 무엇을 하며 시간을 보내?');
+insert into question values('2', '여가시간 장점', '"주어진 대답"의 좋은 점이 뭐라고 생각해?');
+insert into question values('3', '여가시간 영향', '"주어진 대답" 으로 인해 네가 바뀐 부분은 뭐야?');
+insert into question values('4', '동아리&클럽', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
 
+select * from answer
 insert into answer values('4', 'tooona', '취미 답변입니다.')
 
 select *
@@ -142,6 +143,8 @@ create table tag(
 	tagName			varchar2(100)
 );
 
+select * from member
+
 insert into member values('lsh', '1234', '이수현', '0', '1992-02-03', 'tooona@naver.com', '010-6486-7621');
 insert into member values('kdb', '1234', '김디비', '0', '1989-02-03', 'kdb@naver.com', '010-6486-7621');
 insert into member values('jyp', '1234', '박진영', '0', '1967-02-03', 'jyp@naver.com', '010-6486-7621');
@@ -168,6 +171,7 @@ delete from  academicBg;
 delete from  career;
 delete from  certificate;
 delete from  projectCareer;
+delete from  question;
 //
 
 select * from career
