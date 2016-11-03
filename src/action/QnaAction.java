@@ -1,6 +1,7 @@
 package action;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -8,56 +9,33 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.QnaDAO;
-import vo.Answer;
-import vo.Question;
+import vo.Qna;
 
 public class QnaAction extends ActionSupport implements SessionAware{
-	
-	ArrayList<Question> qList;
-	Answer answerVo;
-
-	QnaDAO dao=new QnaDAO();
-	Map<String,Object> session;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-	
-	/*Qna qna;
+	Qna qna;
 	int qnano;
 	List<Qna> qnalist;
 	
 	QnaDAO dao=new QnaDAO();
 	Map<String,Object> session;
 	
-	public String insertQNA() throws Exception {
+	/*public String insertQNA() throws Exception {
 		//세션으로부터 로그인한 ID 읽어서 qna객체에 저장
 		String loginId = (String) session.get("loginId");
 		qna.setId(loginId);		
 		dao.insertQNA(qna);
 		return SUCCESS;		
-	}
+	}*/
 	
 	public String listQNA() throws Exception {
 		QnaDAO dao = new QnaDAO();		
-		qnalist = dao.listQNA();		
+//		qnalist = dao.listQNA();	
+		//FIXME 
+		qnalist = new ArrayList<Qna>();  
+		qnalist.add(new Qna("1번", "취미", "취미가 뭐라고요우?", "미응답상태", "없어도 되는거야 솔직히"));
+		qnalist.add(new Qna("2번", "취미", "취미가 뭐라고요우?", "미응답상태", "없어도 되는거야 솔직히"));
+		qnalist.add(new Qna("3번", "취미", "취미가 뭐라고요우?", "미응답상태", "없어도 되는거야 솔직히"));
+		qnalist.add(new Qna("4번", "취미", "취미가 뭐라고요우?", "미응답상태", "없어도 되는거야 솔직히"));
 		System.out.println(qnalist);
 		return SUCCESS;
 	}
@@ -95,5 +73,8 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	}
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-	}*/	
+	}
+	
+	
+	
 }
