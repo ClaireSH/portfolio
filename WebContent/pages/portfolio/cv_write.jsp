@@ -86,6 +86,25 @@
 								<button type="button" class="btn btn-outline btn-default">개발생활</button>
 							</p>
 
+							<table>
+								<thead>
+									<tr style="bgcolor: gray;">
+										<th>번호</th>
+										<th>질문</th>
+										<th>답변</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<s:iterator value="qnaList" status="qna" >
+										<tr>
+											<td>${qna.index}</td>
+											<td>${qna.question}</td>
+											<td>${qna.answer}</td>
+										</tr>
+									</s:iterator>
+								</tbody>
+							</table>
 
 
 							<!--버튼 -->
@@ -117,7 +136,7 @@
 							<!--카테고리태그 -->
 							<script>
 								$('#cate').change(function() {
-									alert('추가할 태그 :'+ $("#cate").val());
+									alert('추가할 태그 :' + $("#cate").val());
 								});
 							</script>
 						</div>
@@ -128,11 +147,7 @@
 			</div>
 
 
-			<input type="hidden" class="license" name="resumeVO.license_seq" value="15733"> 
-			<input type="hidden" id="ncd" name="resumeVO.mbr_dvd">
-			 <input type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> 
-			 <input type="hidden" name="resumeVO.resume_seq" value="713"> 
-			 <input type="hidden" id="sex" name="memberVo.sex" value="0">
+			<input type="hidden" class="license" name="resumeVO.license_seq" value="15733"> <input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input type="hidden" name="resumeVO.resume_seq" value="713"> <input type="hidden" id="sex" name="memberVo.sex" value="0">
 		</form>
 
 	</div>
