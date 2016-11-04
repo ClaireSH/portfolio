@@ -35,6 +35,21 @@ public class ResumeDAO {
 		return resume;
 	}
 	
+	public void updateResume(Resume resume){
+		SqlSession ss = null;
+		
+		try {
+			ss = factory.openSession();
+			ss.update("resume.updateResume", resume);
+			ss.commit();
+			System.out.println(resume.getSavedImgFile());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if( ss != null) ss.close();
+		}
+	}
+	
 	public ArrayList<AcademicBg> allAcdemicBgById(String resumeId){
 		SqlSession ss = null;
 		List<AcademicBg> aList = null;

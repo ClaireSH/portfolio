@@ -10,10 +10,10 @@
 <script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
 <!-- 내부 -->
-<script type="text/javascript"
-	src="/portfolio/include/js/resume_write_01.js"></script>
-<script type="text/javascript"
-	src="/portfolio/include/js/resume_write_02.js"></script>
+<%-- <script type="text/javascript" src="/portfolio/include/js/resume_write_01.js"></script>
+<script type="text/javascript" src="/portfolio/include/js/resume_write_02.js"></script> --%>
+<script type="text/javascript" src="/portfolio/pages/portfolio/js/resume_write_01.js"></script>
+<script type="text/javascript" src="/portfolio/pages/portfolio/js/resume_write_02.js"></script>
 
 <link rel="stylesheet" href="/portfolio/include/css/resume_write.css">
 </head>
@@ -80,47 +80,26 @@
 				<div class="panel-body">
 					<table class="table table-bordered">
 						<tbody>
-				
+								
 								
 								<tr>
 								<td style="width: 12%;">이름</td>
 								<td><input readonly type="text" class="form-control"
-									maxlength="10" id="name" name="resumeVO.mbr_name" value=""></td>
-								<td class="text-center" rowspan="3" style="width: 20%;"><img
-									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
-									src="http://placehold.it/20x20"> <input type="file" value="업로드" id="upload"
+									maxlength="10" id="name" name="memberVo.name" value="${memberVo.name}">
+								</td>
+								<td class="text-center" rowspan="3" style="width: 20%;">
+								<img id="previewImg" name="uploadFileName" style="width: 100px;"
+									src="img/${resumeVo.memberId}/${resumeVo.savedImgFile}">  
+									
+									<input type="file" value="업로드" id="upload"
 									name="upload"
 									onchange="previewImage(this,&#39;previewImg&#39;)"
-									style="width: 100%;"></td>
-							</tr>
-								
-								
-								<%-- <td style="width: 12%;">이름</td>
-								<td><input type="text" class="form-control" maxlength="10"
-									id="name" name="memberVO.name" value="${memberVo.name}"
-									disabled style="width: 80%;"></td>
-									<td rowspan="3" style="width: 13%;"></td> --%>
-									
-									<!--  -->
-									
-									
-								<!-- <td class="text-center" rowspan="4" style="width: 20%;"><img
-									id="previewImg" name="resumeVO.mbr_pic" style="width: 100px;"
-									src=""> <input type="file" value="업로드" id="upload"
-									name="upload"
-									onchange="previewImage(this,&#39;previewImg&#39;)"
-									style="width: 100%;"></td> -->
-									
-									
-									
-									<!--  -->
-							<!-- <tr>
-								<td>요미가나</td>
-								<td><input readonly type="text" class="form-control"
-									maxlength="13" id="jpnName" name="resumeVO.mbr_name_yomi"
-									value=""></td>
+									style="width: 100%;">
+								</td>
 
-							</tr> -->
+
+							</tr>
+				
 							<tr>
 								<td>생년월일</td>
 								<td>
@@ -153,7 +132,7 @@
 					</table>
 				</div>
 			</div>
-<%-- 					<!-- 이력서의 기본키, 외래키 정보 -->
+					<!-- 이력서의 기본키, 외래키 정보 -->
 					<s:iterator value="academicBgList" status="stat" >
 						<input type="hidden" 
 						name="academicBgList[<s:property value="%{#stat.index}"/>].academicBgId" 
@@ -196,7 +175,7 @@
 						name="projectCareerList[<s:property value="%{#stat.index}"/>].resumeId" 
 						value="<s:property value="resumeId"/>"
 						/>
-					</s:iterator> --%>
+					</s:iterator>
 					<!--  -->
 						
 			<!-- 학력, 관련교육 이수 -->
@@ -498,10 +477,11 @@
 		<div style="text-align: center;">
 			<!--  onclick="return updateResume()" -->
 			<input type="button" id="admit" class="btn btn-default btn-info"
-					value="저장" onclick="return updateResume()"> <input type="button" id="btn_toggle"
-					class="btn btn-default btn-info" value="수정"> <input
-					type="button" id="delete" class="btn btn-default" value="삭제"
-					onclick="deleteResume()">
+					value="저장" onclick="return updateResume()"/>
+			<input type="button" id="btn_toggle"
+					class="btn btn-default btn-info" value="수정"/> 
+			<input type="button" id="delete" class="btn btn-default" value="삭제"
+					onclick="deleteResume()"/>
 		</div>
 		<input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input
 			type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input
