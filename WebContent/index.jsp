@@ -18,7 +18,7 @@
    href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 <link rel="stylesheet" href="./css/styles.css" />
 <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="./include/js/join_write.js"></script>
+<script type="text/javascript" src="./pages/portfolio/js/join_write.js"></script>
 
 <script>
 window.onload=function(){
@@ -798,7 +798,7 @@ window.onload=function(){
    <script
       src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
    <script src="http://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
-   <script src="./js/scripts.js"></script>
+   <script src="js/scripts.js"></script>
 
 </body>
 </html>
