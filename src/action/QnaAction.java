@@ -7,7 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.QnaDAO;
+import dao.QuestionDAO;
 import vo.Answer;
 import vo.Question;
 
@@ -16,7 +16,7 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	ArrayList<Question> qList;
 	Answer answerVo;
 
-	QnaDAO dao=new QnaDAO();
+	QuestionDAO qdao=new QuestionDAO();
 	Map<String,Object> session;
 	
 	public void setSession(Map<String, Object> session) {

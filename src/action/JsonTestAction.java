@@ -7,10 +7,8 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.QnaDAO;
 import dao.QuestionDAO;
 import vo.Answer;
-import vo.Qna;
 import vo.Question;
 
 public class JsonTestAction extends ActionSupport implements SessionAware{
@@ -22,8 +20,8 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 	private String answer;
 	private int totalQna;  
 	
-	private Qna qnavo = new Qna(); 
-	QnaDAO dao=new QnaDAO();
+	/*private Qna qnavo = new Qna(); 
+	QnaDAO dao=new QnaDAO();*/
 	
 	QuestionDAO qDao = new QuestionDAO(); 
 	//////////////////////////////////////
@@ -49,7 +47,7 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 	public String firstInsertQuestion(){
 		System.out.println("=====AJAX 첫질문불러오는 메소드 실행=====");
 		cnt++; //FIXME 질문 번호 증가 위해 초기값은 1 이므로 매번 처음부터라는 단점 
-		Qna qtable = dao.getQNA(cnt); 
+		Qna qtable = qDao.getQNA(cnt); 
 		System.out.println("질문테이블 SELECT 확인 : "+qtable);
 		
 //		type = qtable.getType(); //질문유형 
