@@ -1,6 +1,6 @@
 package action;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -8,22 +8,12 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.QnaDAO;
-import vo.Answer;
-import vo.Question;
+import vo.Qna;
 
 public class QnaAction extends ActionSupport implements SessionAware{
-	
-	ArrayList<Question> qList;
-	Answer answerVo;
 
-	QnaDAO dao=new QnaDAO();
-	Map<String,Object> session;
 	
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-	
-	/*Qna qna;
+	Qna qna;
 	int qnano;
 	List<Qna> qnalist;
 	
@@ -78,5 +68,5 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	}
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-	}*/	
+	}	
 }

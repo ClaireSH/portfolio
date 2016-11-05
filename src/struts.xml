@@ -10,12 +10,10 @@
    <constant name="struts.devMode" value="false" />
 
 
-   <package name="default" namespace="/"
-      extends="struts-default, json-default">
+   <package name="default" namespace="/" 
+   	  extends="struts-default, json-default">
+   	  
       <default-action-ref name="index" />
-      <!-- <global-results> 모든 액션에서 "login"이 리턴되었을 때의 경로 (LoginInterceptor에서 
-         리턴함) </global-results> -->
-
       <!-- 인덱스로 이동 -->
       <action name="index">
          <result>/index.jsp</result>
@@ -58,7 +56,7 @@
       </action>
 
       <!-- 3-1 [포트폴리오]의 [개인정보관리] -->
-      <action name="goUpdateMemberForm" class="action.ResumeAction"
+      <action name="goUpdateMemberForm" class="action.ProfileAction"
          method="initUpdateMember">
          <result name="success" type="dispatcher">/pages/portfolio/profile_update.jsp
          </result>
@@ -71,13 +69,13 @@
       </action> -->
 	  
       <!-- 3-2 (2)개인정보 관리 업데이트 -->
-      <action name="updateMember" class="action.ResumeAction" method="updateMember">
+      <action name="updateMember" class="action.ProfileAction" method="updateMember">
          <result name="success" type="chain">goUpdateMemberForm</result>
          <result name="input" type="redirect">goUpdateMemberForm</result>
       </action>
 
       <!-- 3-2 (3)회원탈퇴 -->
-      <action name="deleteMember" class="action.ResumeAction" method="deleteMember">
+      <action name="deleteMember" class="action.ProfileAction" method="deleteMember">
          <result name="success" type="redirect">index</result>
          <result name="input" type="redirect">goUpdateMemberForm</result>
       </action>
@@ -93,9 +91,6 @@
       <action name="updateResume" class="action.ResumeAction" method="updateResume">
          <result name="success" type="redirect">goUpdateResumeForm</result>
       </action>
-
-      <!-- <action name="favoriteMemberPage"> <result>/favoriteMemberPage.jsp</result> 
-         </action> -->
 
       <action name="qnaEdit" class="action.QnaAction" method="listQNA">
          <result name="success" type="dispatcher">/pages/tables.jsp
@@ -126,20 +121,12 @@
 
 
 
-      <!-- 이력서 수정 -->
-      <action name="insertResume">
-         <result>/pages/portfolio/resume_write.jsp</result>
-      </action>
-
-
-
-
       <action name="prWrite" class="action.ResumeAction" method="prWrite">
          <result name="success" type="redirect">goPrWriteForm</result>
       </action>
 
       <!-- 자기소개서에 있는 질문리스트 -->
-      <action name="listQNA" class="action.QnaAction" method="listQNA">
+ 	  <action name="listQNA" class="action.QnaAction" method="listQNA">
          <result name="success">/pages/portfolio/cv_write.jsp</result>
       </action>
 
@@ -170,10 +157,7 @@
          <result>/pages/example/grid.jsp</result>
       </action>
          
-      <!--  -->
    </package>
-
-   <!-- Add packages here -->
 
 
 
