@@ -13,12 +13,12 @@
 <link rel="stylesheet" href="/portfolio/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css">
 
 <script type="text/javascript" src="/portfolio/jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js" charset="utf-8">
-	</head>
-	<body>
 	<script type="text/javascript">
 	$('textarea').jqte();
 </script>
-<div id="wrapper">
+
+</head>
+<body>
 	<div id="myheader"></div>
 
 	<!-- Page Content -->
@@ -58,9 +58,9 @@
 						<div class="panel-body">
 
 
-							<link rel="stylesheet" href="plugin/tagInput/bootstrap-tagsinput.css">
+							<link rel="stylesheet" href="/portfolio/plugin/tagInput/bootstrap-tagsinput.css">
 
-							<link rel="stylesheet" href="plugin/tagInput/app.css">
+							<link rel="stylesheet" href="/portfolio/plugin/tagInput/app.css">
 							<script>
 								(function(i, s, o, g, r, a, m) {
 									i['GoogleAnalyticsObject'] = r;
@@ -77,7 +77,7 @@
 								ga('send', 'pageview');
 							</script>
 
-							<p>
+							<p style="text-align: center;">
 								<button type="button" class="btn btn-outline btn-primary">취미생활</button>
 								<button type="button" class="btn btn-outline btn-success">여가생활</button>
 								<button type="button" class="btn btn-outline btn-info">대학생활</button>
@@ -86,25 +86,42 @@
 								<button type="button" class="btn btn-outline btn-default">개발생활</button>
 							</p>
 
-							<table>
-								<thead>
-									<tr style="bgcolor: gray;">
-										<th>번호</th>
-										<th>질문</th>
-										<th>답변</th>
-									</tr>
-								</thead>
-								<tbody>
 
-									<s:iterator value="qnaList" status="qna" >
+							<div class=".table-responsive">
+
+								<div id="qnaBoardList">
+									<table class="table .table-striped table-curved">
+										<thead>
+										<col width="15%">
+										<col width="45%">
+										<col width="40%">
 										<tr>
-											<td>${qna.index}</td>
-											<td>${qna.question}</td>
-											<td>${qna.answer}</td>
+											<th>선택</th>
+											<th>질문</th>
+											<th>답변</th>
 										</tr>
-									</s:iterator>
-								</tbody>
-							</table>
+										</thead>
+										<tbody>
+											<td><input type="checkbox" class="chk" value="1"></td>
+											<td><input type="checkbox" class="chk" value="2"></td>
+											<td><input type="checkbox" class="chk" value="3"></td>
+											<s:if test="qnaList != null">
+												<s:iterator value="qnaList" status="qna">
+													<tr>
+														<td><input type="checkbox" class="chk" value="${qna}"></td>
+														<td>${qna.question}</td>
+														<td>${qna.answer}</td>
+													</tr>
+												</s:iterator>
+											</s:if>
+										</tbody>
+									</table>
+								</div>
+								<!-- qnaBoardList -->
+
+
+							</div>
+
 
 
 							<!--버튼 -->
@@ -163,7 +180,19 @@
 		<script src="plugin/tagInput/dist/bootstrap-tagsinput.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"></script>
 		<script src="plugin/tagInput/app.js"></script>
+
+
+		<script type="text/javascript">
+			//체크박스 선택하면 넣기
+			$('.chk').click(function(){
+				alert('체크');
+			});
+			
+			
+//			var qnaObj = $('.chk').val();
+		</script>
+
+
 	</div>
-</div>
 </body>
 </html>

@@ -64,13 +64,19 @@
          </result>
       </action>
 
-      <!-- 3-2 (1)개인정보 관리 업데이트 -->
-      <action name="updateMember" class="action.ResumeAction" method="updateMember">
+	  <!-- 3-2 (2)개인정보 관리 업데이트 -->
+      <!-- <action name="upload" class="action.ResumeAction" method="updateMember">
          <result name="success" type="redirect">goUpdateMemberForm</result>
+         <result name="input" type="redirect">goUpdateMemberForm</result>
+      </action> -->
+	  
+      <!-- 3-2 (2)개인정보 관리 업데이트 -->
+      <action name="updateMember" class="action.ResumeAction" method="updateMember">
+         <result name="success" type="chain">goUpdateMemberForm</result>
          <result name="input" type="redirect">goUpdateMemberForm</result>
       </action>
 
-      <!-- 3-2 (2)회원탈퇴 -->
+      <!-- 3-2 (3)회원탈퇴 -->
       <action name="deleteMember" class="action.ResumeAction" method="deleteMember">
          <result name="success" type="redirect">index</result>
          <result name="input" type="redirect">goUpdateMemberForm</result>
@@ -95,7 +101,7 @@
          <result name="success" type="dispatcher">/pages/tables.jsp
          </result>
       </action>
-<action name="cvWrite" class="action.cvAction" method="getCVboardList">
+	  <action name="cvWrite" class="action.cvAction" method="getCVboardList">
          <result name="success" type="dispatcher">/pages/portfolio/cv_write.jsp
          </result>
       </action>

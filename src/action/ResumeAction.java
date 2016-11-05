@@ -1,14 +1,25 @@
 package action;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.MemberDAO;
 import dao.ResumeDAO;
+import util.FileService;
 import vo.AcademicBg;
 import vo.Career;
 import vo.Certificate;
@@ -33,8 +44,13 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	String usermonth;
 	String userday;
 	
+	
 	private Resume resume;
 	private String resumeId;
+	
+	private File upload;					/** 업로드할 파일. Form의 <file> 태그의 name. */
+	private String uploadFileName;			/** 업로드할 파일의 파일명 (File타입 속성명 + "FileName") */
+	private String uploadContentType;		/** 업로드할 파일의 컨텐츠 타입 (File타입 속성명 + "ContentType") */
 	
 	MemberDAO memberDAO= new MemberDAO();
 	ResumeDAO resumeDAO = new ResumeDAO();
@@ -42,6 +58,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	
 	//init
 	public String initUpdateMember(){
+		
 		//현재 로그인 ID를 불러 updateMemberForm에 값을 Init 
 		String loginId = (String)session.get("loginId");
 		memberVo = memberDAO.selectMember(loginId);
@@ -58,6 +75,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	//개인정보관리
 	public String updateMember(){
 		
+
 		System.out.println("RESUME ACTION");
 		for(AcademicBg a : academicBgList){
 			System.out.println(a.toString());
@@ -123,6 +141,7 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	}
 	
 	public String updateResume(){
+		
 		String loginId = (String)session.get("loginId");
 		Resume r = resumeDAO.selectResume(loginId);
 		if(r == null || loginId == null){
@@ -158,36 +177,35 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 				}
 			}
 			
-			//값을 Insert
-			//각 List 값을 init하여 DB에 저장
-			/*
-				//리스트만큼 순차적으로 Id에 Serial값과 이력서id를 입력 
-				for(int i=0;i<academicBgList.size();i++){
-					academicBgList.get(i).setAcademicBgId(loginId+String.format("%06d", i));
-					academicBgList.get(i).setResumeId(loginId);
-				}
+			FileService fileService = new FileService();
+			try {
+				
+				HttpServletRequest request = ServletActionContext.getRequest();
+			    ServletContext servletContext = request.getSession().getServletContext();
+			    String basePath = servletContext.getRealPath("img/"+loginId);
+			    System.out.println("basePath"+basePath);
+				String originalFileName = uploadFileName;
+				String savedFileName = fileService.saveFile(upload, basePath, uploadFileName);
+				
+				resumeVo = new Resume();
+				resumeVo.setOriginalImgFile(originalFileName);
+				resumeVo.setSavedImgFile(savedFileName);
+				
+				resumeVo.setMemberId(loginId);
+				resumeVo.setResumeId(loginId);
 		
-				for(int i=0;i<careerList.size();i++){
-					careerList.get(i).setCareerId(loginId+String.format("%06d", i));
-					careerList.get(i).setResumeId(loginId);
-				}
-		
+				System.out.println(resumeVo.getOriginalImgFile());
+				System.out.println(resumeVo.getSavedImgFile());
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-				for(int i=0;i<certificateList.size();i++){
-					certificateList.get(i).setCertificateId(loginId+String.format("%06d", i));
-					certificateList.get(i).setResumeId(loginId);
-				}
-		
-				for(int i=0;i<projectCareerList.size();i++){
-					projectCareerList.get(i).setProjectCareerID(loginId+String.format("%06d", i));
-					projectCareerList.get(i).setResumeId(loginId);
-				}
-			*/
-			//end
+			resumeDAO.updateResume(resumeVo);
 			
 			//DB리스트를 전부 삭제한 후, UI에서 가져온 정보를 DB에 전부 삽입
 			//리스트를 전부 삭제
-			
 			resumeDAO.deleteAcademicBgById(loginId);
 			resumeDAO.deleteCareerById(loginId);
 			resumeDAO.deleteCertificateById(loginId);
@@ -319,5 +337,33 @@ public class ResumeAction extends ActionSupport implements SessionAware{
 	public void setPrList(ArrayList<Pr> prList) {
 		this.prList = prList;
 	}
+
+	public File getUpload() {
+		return upload;
+	}
+
+	public void setUpload(File upload) {
+		this.upload = upload;
+	}
+
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	public String getUploadContentType() {
+		return uploadContentType;
+	}
+
+	public void setUploadContentType(String uploadContentType) {
+		this.uploadContentType = uploadContentType;
+	}
+
+	
+	
+	
 
 }

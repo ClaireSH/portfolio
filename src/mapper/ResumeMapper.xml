@@ -28,6 +28,13 @@
  		values(#{memberId}, #{memberId}, null, null)
  	</insert>
  	
+ 	<update id="updateResume" parameterType="String">
+ 		update Resume
+ 		set originalImgFile = #{originalImgFile},
+ 			savedImgFile = #{savedImgFile}
+ 		where resumeId = #{resumeId}
+ 	</update>
+ 	
 </mapper>
 	
 	
