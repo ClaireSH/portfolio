@@ -130,6 +130,9 @@
          <result name="success">/pages/portfolio/cv_write.jsp</result>
       </action>
 
+	  <action name="initQnaList" class="action.QnaEditAction" method="initQnaList">
+	     <result name="success" type="dispatcher">/pages/tables.jsp</result>
+	  </action> 
 
       <!-- example 페이지들 액션 -->
       <action name="analy_str">

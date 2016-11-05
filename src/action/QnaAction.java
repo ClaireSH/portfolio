@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.QnaDAO;
+import dao.QuestionDAO;
 import vo.Qna;
 
 public class QnaAction extends ActionSupport implements SessionAware{
