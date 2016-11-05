@@ -6,13 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>커버미 :: 이력서커버</title>
 <!-- 내부참조 -->
-<script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/js/essential_2.js"></script>
-<link rel="stylesheet" href="/include/css/resume_write.css">
+<script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="./js/essential_2.js"></script>
+<link rel="stylesheet" href="./include/css/resume_write.css">
 <!--편집-->
-<link rel="stylesheet" href="/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css">
+<link rel="stylesheet" href="./jQuery-TE_v.1.4.0/jquery-te-1.4.0.css">
 
-<script type="text/javascript" src="/jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js" charset="utf-8">
+<script type="text/javascript" src="./jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js" charset="utf-8">
 	</head>
 	<body>
 	<script type="text/javascript">
