@@ -192,7 +192,7 @@ $(document).ready(function() {
 			  	
 			 formData.append("attachFile1", $("input[name=attachFile1]")[0].files[0]);
 			 $.ajax({
-				    url: 'upload.action',
+				    url: 'upload3.action',
 				    data: formData,
 				    processData: false,
 				    contentType: false,

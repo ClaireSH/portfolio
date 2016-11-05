@@ -1,50 +1,12 @@
 //유웅 - resumeManagement.jsp
 //이미지 업로드
 
-//$(document).ready(function() {
-//	var input = $("#previewImg").val();
+$(document).ready(function() {
+	var input = $("#previewImg").val();
 //	$("#tabs").tabs();
 //	$('#print_page *').attr('disabled', true);
-//	// perviewImage();
-//});
-	
-	var academicBgId;
-	var adminssionYear;
-	var graduationYear;
-	var schoolName;
-	var major;
-	var degree;
-	var remarks;
-	
-window.onload = function(){
-	/*전체가 읽힌 다음에 호출이 됌  */
-	
-	academicBgId =  document.getElementsByName("academicBgId");
-	adminssionYear = document.getElementsByName("adminssionYear");
-	graduationYear = document.getElementsByName("graduationYear");
-	schoolName = document.getElementsByName("schoolName");
-	major = document.getElementsByName("major");
-	degree = document.getElementsByName("degree");
-	
-	console.log(academicBgId[0].value);
-	console.log(academicBgId[1].value);
-	abilityRow("init");
-	/*adminssionYearArr = document.getElementsByClassName("adminssionYear0");
-	graduationYearArr = document.getElementByClassName("graduationYear0");
-	schoolNameArr = document.getElementsByClassName("schoolName0");
-	majorArr = document.getElementsByClassName("major0");
-	degreeArr = document.getElementsByClassName("degree0");
-	remarksArr = document.getElementsByClassName("remarks0");
-	
-	console.log(adminssionYearArr);
-	
-	for(var index in adminssionYearArray){
-		console.log(adminssionYearArr[index].value);
-	}
-	
-	abilityRow(btn)*/
-	
-}
+	previewImage(this, "previewImg");
+});
 	
 
 function previewImage(input, target) {
@@ -203,9 +165,6 @@ function updateResume() {
 	var result = check();
 	if (result == false)
 		return false;
-    
-	
-	
 	*/
 	var resumeForm = document.getElementById('resumeForm');
 	resumeForm.action = "updateResume";

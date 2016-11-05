@@ -87,6 +87,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 		if(memberVo != null){
 			//회원가입 정보가 존재하면
 			String birth = useryear+"/"+usermonth+"/"+userday;
+			String birth = "2011/12/23";//useryear+"/"+usermonth+"/"+userday;
 			memberVo.setBirth(birth);
 			
 			ArrayList<AcademicBg> abList = new ArrayList<>();
