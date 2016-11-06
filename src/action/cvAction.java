@@ -8,13 +8,16 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.MemberDAO;
+import dao.QuestionDAO;
 import dao.ResumeDAO;
 import vo.AcademicBg;
+import vo.Answer;
 import vo.Career;
 import vo.Certificate;
 import vo.Member;
 import vo.Pr;
 import vo.ProjectCareer;
+import vo.Question;
 import vo.Resume;
 
 public class cvAction extends ActionSupport implements SessionAware{
@@ -39,12 +42,57 @@ public class cvAction extends ActionSupport implements SessionAware{
 	MemberDAO memberDAO= new MemberDAO();
 	ResumeDAO resumeDAO = new ResumeDAO();
 	Map<String, Object> session;
+	ArrayList<Question> qList;
+	ArrayList<Answer> aList;
+	QuestionDAO dao = new QuestionDAO();
 	
 	
-	
+	public ArrayList<Question> getqList() {
+		return qList;
+	}
+
+
+	public void setqList(ArrayList<Question> qList) {
+		this.qList = qList;
+	}
+
+
+	public ArrayList<Answer> getaList() {
+		return aList;
+	}
+
+
+	public void setaList(ArrayList<Answer> aList) {
+		this.aList = aList;
+	}
+
+
 	public String getCVboardList(){
 		System.out.println("게시글 목록 불러옴");
 		
+		//질문목록가져오기 (사용자가 선택한 유형별)
+		String loginId = (String) session.get("loginId");
+		qList = dao.allQuestionList();
+		System.out.println("1");
+		aList = dao.selectAnswerList(loginId);
+		System.out.println("2");
+		for (Question q : qList) {
+			System.out.println(q.toString());
+		}
+		System.out.println("4");
+
+		if (aList != null) {
+
+			for (Answer a : aList) {
+				System.out.println(a.toString());
+			}
+		}
+
+		
+		//선택한 질문이 자기소개서 폼으로 들어오는데 (클라에서 할부분)
+		
+		//자기소개서 리스트 가져오기 
+		//TODO PR리스트 가져오기 만들기 
 		
 		
 		return SUCCESS;

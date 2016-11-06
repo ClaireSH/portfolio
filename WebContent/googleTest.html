@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/portfolio/js/jquery-3.1.1.min.js"></script>
+<script>
+function test(){
+	var content = $('#content').val();	
+	alert('들어옴 :'+ content);
+	$.ajax({
+		 url: "https://script.google.com/macros/s/AKfycby3sb3tPQqIvznKjnZ3UHXUQdqcWM-PD5WXBJujcVceH6m9piJn/exec",
+		 data: {"A":content,"B":"b"},
+		 type: "POST"
+		});
+	alert('종료');
+}
+</script>
+
+</head>
+<body>
+
+
+<textarea id="content"></textarea>
+<button  onclick="javascript:test();">수정</button>
+
+</body>
+</html>
