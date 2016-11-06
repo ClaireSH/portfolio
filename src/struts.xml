@@ -95,11 +95,6 @@
 	  <action name="qnaEdit" class="action.QnaEditAction" method="initQnaList">
 	     <result name="success" type="dispatcher">/pages/tables.jsp</result>
 	  </action> 
-	  
-	  <!--1106   -->
-	  <action name="updateAnswer" class="action.QnaEditAction" method="updateAnswer">
-	     <result name="success" type="redirect">qnaEdit</result>
-	  </action> 
 
 	  <action name="cvWrite" class="action.cvAction" method="getCVboardList">
          <result name="success" type="dispatcher">/pages/portfolio/cv_write.jsp

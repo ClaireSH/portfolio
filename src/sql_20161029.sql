@@ -96,20 +96,12 @@ select * from answer;
 ----------------------------------------------------------------------------------------------------------
 보류 
 ----------------------------------------------------------------------------------------------------------
---//태그
-create table tag(
-	tagId			varchar2(20)	primary key,
-	questionType	varchar2(20)	not null
-);
-
---//자기소개
+//자기소개
 create table pr(
 	prId 			varchar2(20)	primary key,
 	resumeId		varchar2(20),
 	constraint fk_pr_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
-	content			varchar2(2000),
-	tagId			varchar2(20),
-	constraint fk_pr_tagId foreign key(tagId) references tag(tagId) on delete cascade
+	content		varchar2(2000)
 );
 ----------------------------------------------------------------------------------------------------------
 -- 더미데이터 -- 
@@ -146,7 +138,7 @@ delete from answer where memberId = 'tooona'
 select q.questionId, q.questionType, q.question 
 from question q, answer a, member m
 where q.questionId = a.questionId and a.memberId = m.memberId 
-and m.memberId = 'admin'
+and m.memberId = 'tooona'
 order by questionId asc;
 
 select *
