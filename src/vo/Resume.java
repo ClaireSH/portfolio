@@ -8,6 +8,10 @@ public class Resume {
 	String prTitle;			//자기소개서 제목
 	String prContent;		//자기소개서 내용
 	
+	
+	
+	public Resume() {
+	}
 	public String getResumeId() {
 		return resumeId;
 	}

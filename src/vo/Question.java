@@ -4,7 +4,10 @@ public class Question {
 	String questionId;
 	String questionType;
 	String question;
-	
+
+	public Question() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public String getQuestionId() {
 		return questionId;

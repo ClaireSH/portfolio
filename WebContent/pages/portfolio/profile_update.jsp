@@ -32,9 +32,10 @@
 
         <!-- Page Title -->
         <div class="col-md-2"></div>
-        <div class="page-header" style="border-left: 5px solid #337ab7;">
-            <span style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">개인정보 관리</span>
-        </div>
+       	<div class="page-header" style="border-left: 5px solid #337ab7;">
+			<span
+				style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">개인정보 관리</span>
+		</div>
 
 
         <!-- essential2에서 탭메뉴호출 -->
@@ -77,6 +78,6 @@
     <div class="footer"></div>
     <!-- end .footer -->
 </body>
-<script type="text/javascript" src="/portfolio/include/js/profile_modify.js"></script>
+<script type="text/javascript" src="/portfolio/pages/portfolio/js/profile_modify.js"></script>
 
 </html>
