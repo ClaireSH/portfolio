@@ -107,7 +107,7 @@ create table pr(
 	prId 			varchar2(20)	primary key,
 	resumeId		varchar2(20),
 	constraint fk_pr_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
-	content			varchar2(2000).
+	content			varchar2(2000),
 	tagId			varchar2(20),
 	constraint fk_pr_tagId foreign key(tagId) references tag(tagId) on delete cascade
 );
