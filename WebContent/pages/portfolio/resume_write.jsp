@@ -7,15 +7,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>커버미 :: 이력서수정 페이지</title>
 <!-- Latest compiled and minified CSS -->
-<script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
+<script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="./js/essential_2.js"></script>
 <!-- 내부 -->
+<script type="text/javascript"
+	src="./pages/portfolio/js/resume_write_01.js"></script>
+<script type="text/javascript"
+	src="./pages/portfolio/js/resume_write_02.js"></script>
 <%-- <script type="text/javascript" src="/portfolio/include/js/resume_write_01.js"></script>
 <script type="text/javascript" src="/portfolio/include/js/resume_write_02.js"></script> --%>
 <script type="text/javascript" src="/portfolio/pages/portfolio/js/resume_write_01.js"></script>
 <script type="text/javascript" src="/portfolio/pages/portfolio/js/resume_write_02.js"></script>
 
-<link rel="stylesheet" href="/portfolio/include/css/resume_write.css">
+<link rel="stylesheet" href="./include/css/resume_write.css">
 </head>
 <body>
 
@@ -119,7 +123,7 @@
 								<td>성별</td>
 								<td><label class="radio-inline"> <input
 										type="radio" name="memberVO.gender" id="gender1" value="${memberVo.gender}"
-										disabled>남
+										disabled checked>남
 								</label> <label class="radio-inline"> <input type="radio"
 										name="memberVO.gender" id="gender2" value="1" disabled>
 										여
