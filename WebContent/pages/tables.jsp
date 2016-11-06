@@ -39,7 +39,7 @@
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div class="table-responsive">
-								<form action="" method="get">
+								<form action="updateAnswer" method="get">
 
 									<table class="table table-striped table-bordered table-hover">
 										<thead>
@@ -51,18 +51,25 @@
 											</tr>
 										</thead>
 										<tbody>
-											<s:iterator value="qnalist" begin="0" end="2" step="1" status="incre">
+
+											<s:iterator value="qnaList" status="incre">
+												<input type="hidden" name="qnaList[${incre.index}].questionId" value="${questionId}"/>
+												<input type="hidden" name="qnaList[${incre.index}].questionType" value="${questionType}"/>
+												<input type="hidden" name="qnaList[${incre.index}].question" value="${question}"/>
+												
 												<tr>
-													<td >${num}</td>
-													<td>${question}</td>qnano
-													<td><div class="editCell" id="cell${num}" value="${answer}">${answer}</div></td>
-													<td>${title}</td>
+													<td>${questionId}</td>
+													<td>${question}</td>
+													<td><input type="text" name="qnaList[${incre.index}].answer" value="${answer}"/></td>
+													<%-- <td><div class="editCell" id="cell${num}" value="${answer}">${answer}</div></td> --%>
+													<td>${questionType}</td>
 												</tr>
 											</s:iterator>
 										</tbody>
 									</table>
 									<div style="text-align: center;">
-										<input type="button" id="btn_edit" class="btn btn-danger" value="수정"> <input type="button" id="btn_reset" class="btn btn-warning" value="초기화">
+										<input type="submit" id="btn_edit" class="btn btn-danger" value="수정"/>
+										<input type="button" id="btn_reset" class="btn btn-warning" value="초기화">
 									</div>
 								</form>
 								<script>

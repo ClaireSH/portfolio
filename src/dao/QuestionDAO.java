@@ -36,13 +36,13 @@ public class QuestionDAO {
 	}
 	
 	public ArrayList<Answer> selectAnswerList(String memberId){
-		System.out.println("QuestionDAO.selectAnswerList");
+		System.out.println("QuestionDAO.selectAnswerListById");
 		SqlSession ss=factory.openSession();
 		
 		List<Answer> aList = null;
 		
 		try {
-			aList = ss.selectList("answer.selectAnswerList", memberId);
+			aList = ss.selectList("answer.selectAnswerListById", memberId);
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}  finally {
@@ -65,12 +65,29 @@ public class QuestionDAO {
 		}
 	}
 	
+	public void insertAnswerList(ArrayList<Answer> aList){
+		System.out.println("QuestionDAO.insertAnswerList");
+		SqlSession ss=factory.openSession();
+	
+		try {
+			for(Answer answer:aList){
+				ss.insert("answer.insertAnswer", answer);
+			}		
+			ss.commit();
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		}  finally {
+			if (ss != null) ss.close();
+		}
+	}
+	
 	public void updateAnswer(Answer answer){
 		System.out.println("QuestionDAO.updateAnswer");
 		SqlSession ss=factory.openSession();
 
 		try {
 			ss.update("answer.updateAnswer", answer);
+			ss.commit();
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}  finally {
@@ -102,7 +119,8 @@ public class QuestionDAO {
 		
 		List<Question> qList = null;
 		try {
-			qList = ss.selectList("question.selectFinishedQuestionListById");
+			System.out.println(memberId);
+			qList = ss.selectList("question.selectFinishedQuestionListById", memberId);
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}  finally {
@@ -117,6 +135,21 @@ public class QuestionDAO {
 		
 		try {
 			ss.insert("question.insertQuestion", question);
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		}  finally {
+			if (ss != null) ss.close();
+		}
+	}
+	
+	public void insertQuestionList(ArrayList<Question> qList){
+		System.out.println("QuestionDAO.insertQuestionList");
+		SqlSession ss=factory.openSession();
+		
+		try {
+			for(Question question:qList){
+				ss.insert("question.insertQuestion", question);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}  finally {
