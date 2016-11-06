@@ -1,29 +1,20 @@
 package action;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import dao.QnaDAO;
 import dao.QuestionDAO;
-import vo.Answer;
-import vo.Question;
+import vo.Qna;
 
 public class QnaAction extends ActionSupport implements SessionAware{
-	
-	ArrayList<Question> qList;
-	Answer answerVo;
 
-	QuestionDAO qdao=new QuestionDAO();
-	Map<String,Object> session;
 	
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-	
-	/*Qna qna;
+	Qna qna;
 	int qnano;
 	List<Qna> qnalist;
 	
@@ -33,7 +24,7 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	public String insertQNA() throws Exception {
 		//세션으로부터 로그인한 ID 읽어서 qna객체에 저장
 		String loginId = (String) session.get("loginId");
-		qna.setId(loginId);		
+//		qna.setId(loginId);		
 		dao.insertQNA(qna);
 		return SUCCESS;		
 	}
@@ -78,5 +69,5 @@ public class QnaAction extends ActionSupport implements SessionAware{
 	}
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-	}*/	
+	}	
 }

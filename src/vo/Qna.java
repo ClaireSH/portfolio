@@ -1,31 +1,32 @@
 package vo;
 
 public class Qna {
-	String num;
-	String type;
+	String questionId;
+	String questionType;
 	String question;
-	String answer;
-	String completeness;
-	String id;
+	String answer; 
 	
+	public Qna() {
+		// TODO Auto-generated constructor stub
+	}
 	
-	public String getId() {
-		return id;
+	public String getAnswer() {
+		return answer;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
-	public String getNum() {
-		return num;
+	public String getQuestionId() {
+		return questionId;
 	}
-	public void setNum(String num) {
-		this.num = num;
+	public void setQuestionId(String questionId) {
+		this.questionId = questionId;
 	}
-	public String getType() {
-		return type;
+	public String getQuestionType() {
+		return questionType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
 	}
 	public String getQuestion() {
 		return question;
@@ -33,35 +34,17 @@ public class Qna {
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	public String getAnswer() {
-		return answer;
-	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-	public String getCompleteness() {
-		return completeness;
-	}
-	public void setCompleteness(String completeness) {
-		this.completeness = completeness;
-	}
-	
-	public Qna() {
-		// TODO Auto-generated constructor stub
-	}
+
 	@Override
 	public String toString() {
-		return "QNA [num=" + num + ", type=" + type + ", question=" + question + ", answer=" + answer
-				+ ", completeness=" + completeness + "]";
+		return "Qna [questionId=" + questionId + ", questionType=" + questionType + ", question=" + question
+				+ ", answer=" + answer + "]";
 	}
-	public Qna(String num, String type, String question, String answer, String completeness) {
-		super();
-		this.num = num;
-		this.type = type;
-		this.question = question;
-		this.answer = answer;
-		this.completeness = completeness;
-	}
+
+    
 	
+	
+
+
 	
 }

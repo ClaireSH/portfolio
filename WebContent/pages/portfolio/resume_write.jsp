@@ -63,7 +63,12 @@
     	  }
       });
 
-
+    	  $(".panel-body").hide();
+    	  //content 클래스를 가진 div를 표시/숨김(토글)
+    	  $(".panel-heading").click(function()
+    	  {
+    	    $(this).next(".panel-body").slideToggle(500);
+    	  });      
       });
       </script>
 

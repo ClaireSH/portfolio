@@ -1,8 +1,30 @@
 <!-- js로 load시킨 문서는 head정보가 별개, include  -->
 <meta charset="UTF-8">
-<ul id="myTab" class="nav nav-tabs" role="tablist" style="width: 100%; margin-bottom: 3%;">
-	<li id="tab01" role="presentation" ><a href="goUpdateMemberForm.action" role="tab" class="tab_font">개인정보</a></li>
-	<li id="tab02" role="presentation" ><a href="goUpdateResumeForm.action" role="tab" class="tab_font">기본이력서</a></li>
-	<li id="tab03" role="presentation" ><a href="listQNA.action" role="tab" class="tab_font">자기소개서</a></li>
+<!-- <ul id="myTab" class="nav nav-tabs" role="tablist"
+	style="width: 100%; margin-bottom: 3%;">
+	<li id="tab01" role="presentation"><a
+		href="goUpdateMemberForm.action" role="tab" class="tab_font">개인정보</a></li>
+	<li id="tab02" role="presentation"><a
+		href="goUpdateResumeForm.action" role="tab" class="tab_font">기본이력서</a></li>
+	<li id="tab03" role="presentation"><a href="listQNA.action"
+		role="tab" class="tab_font">자기소개서</a></li>
 </ul>
+ -->
+<div class="panel panel-default">
+	<div class="panel-heading">Pill Tabs</div>
+	<!-- /.panel-heading -->
+	<div class="panel-body">
+		<!-- Nav tabs -->
+		<ul class="nav nav-pills">
+			<li id="tab01"><a href="goUpdateMemberForm.action" data-toggle="tab">개인정보</a>
+			</li>
+			<li id="tab02"><a href="goUpdateResumeForm.action" data-toggle="tab">기본이력서</a>
+			</li>
+			<li id="tab03"><a href="listQNA.action" data-toggle="tab">자기소개서</a></li>
 
+		</ul>
+
+
+	</div>
+	<!-- /.panel -->
+</div>

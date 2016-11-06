@@ -112,7 +112,7 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 		
 		//클라이언트에서 보낸 정보 객체화해 저장 
 		qnavo.setAnswer(answer);
-		qnavo.setNum(num);
+//		qnavo.setNum(num);
 		
 		Answer answerVo = new Answer();
 		answerVo.setAnswer(answer);

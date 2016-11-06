@@ -23,6 +23,7 @@
  		where memberId = #{memberId}
  	</select>
  	
+ 	
  	<insert id="insertResume" parameterType="String">
  		insert into RESUME(resumeId, memberId, originalImgFile, savedImgFile)
  		values(#{memberId}, #{memberId}, null, null)

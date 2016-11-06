@@ -21,8 +21,8 @@
  		 select q.questionId, q.questionType, q.question 
 			from question q, answer a, member m
 			where q.questionId = a.questionId and a.memberId = m.memberId 
-			and m.memberId = '#{memberId}'
-			order by questionId asc;	
+			and m.memberId = #{memberId}
+			order by questionId asc
  	</select>
  	
  	<select id="selectQuestion" parameterType="String" resultMap="QuestionResult">

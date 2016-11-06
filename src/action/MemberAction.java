@@ -20,11 +20,7 @@ import vo.Resume;
 
 public class MemberAction extends ActionSupport implements SessionAware{
 	Member memberVo;
-	AcademicBg academicVo;
-	Resume resumeVo;
-	Career careerVo;
-	Certificate certificateVo;
-	ProjectCareer projectCareerVo;
+
 	
 	String id;
 	String password;
@@ -135,46 +131,6 @@ public class MemberAction extends ActionSupport implements SessionAware{
 
 	public void setMemberVo(Member memberVo) {
 		this.memberVo = memberVo;
-	}
-
-	public AcademicBg getAcademicVo() {
-		return academicVo;
-	}
-
-	public void setAcademicVo(AcademicBg academicVo) {
-		this.academicVo = academicVo;
-	}
-
-	public Resume getResumeVo() {
-		return resumeVo;
-	}
-
-	public void setResumeVo(Resume resumeVo) {
-		this.resumeVo = resumeVo;
-	}
-
-	public Career getCareerVo() {
-		return careerVo;
-	}
-
-	public void setCareerVo(Career careerVo) {
-		this.careerVo = careerVo;
-	}
-
-	public Certificate getCertificateVo() {
-		return certificateVo;
-	}
-
-	public void setCertificateVo(Certificate certificateVo) {
-		this.certificateVo = certificateVo;
-	}
-
-	public ProjectCareer getProjectCareerVo() {
-		return projectCareerVo;
-	}
-
-	public void setProjectCareerVo(ProjectCareer projectCareerVo) {
-		this.projectCareerVo = projectCareerVo;
 	}
 
 	public String getId() {
