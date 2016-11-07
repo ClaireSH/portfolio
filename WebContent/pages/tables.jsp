@@ -92,6 +92,36 @@
 					</div>
 					<!-- /.panel -->
 				</div>
+				<div class="col-lg-6">
+
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<div class="panel-title">
+									<i class="fa fa-clock-o fa-fw"></i> 자기소개서
+								</div>
+							</div>
+							<div class="panel-body">
+								<div style="overflow: hidden; margin: 10px 0;">
+									<input type="text" class="form-control" id="cvtitle" placeholder="버전명을 선택하거나 수정하세요" style="width: 90%; float: left;">
+									<div id="counter" style="width: 60px; height: 30px; margin: auto; overflow: hidden;">###</div>
+								</div>
+								<!-- 글내용 -->
+								<p>
+								<div class="wrap" style="margin: 10px 0;">
+									<textarea id="content" name="textarea" class="jqte-test form-control"></textarea>
+								</div>
+								</p>
+								<input id="cate" type="text" value="취미생활,여가생활" data-role="tagsinput">
+								<div style="text-align: center; margin: 10px 0;">
+									<button type="button" class="btn  btn-warning" onclick="javascript:submitsheet();">시트저장</button>
+									<a class="btn  btn-success" href="#writepage">새글쓰기</a>
+								</div>
+							</div>
+
+						</div>
+						<!--섹션.끝-->
+
+					</div>
 			</div>
 
 		</div>

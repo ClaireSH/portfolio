@@ -1,12 +1,20 @@
 
-delete from MEMBER 
-delete from resume
-delete from academicBg
-delete from career
-delete from certificate
-delete from projectCareer
+delete from member; 
+delete from resume;
+delete from academicBg;
+delete from career;
+delete from certificate;
+delete from projectCareer;
 
 select * from member   
+
+
+drop table member cascade constraints;
+drop table resume cascade constraints;
+drop table academicBg cascade constraints;
+drop table career cascade constraints;
+drop table certificate cascade constraints;
+drop table projectCareer cascade constraints;
 
 --테이블 삭제한 후 생성할 것!!
 create table member(
@@ -77,6 +85,10 @@ create table projectCareer(
 
 
 --//질문
+drop table question cascade constraints
+drop table answer cascade constraints
+drop table pr cascade constraints
+
 create table question(
 	questionId			varchar2(20)	primary key,
 	questionType		varchar2(20)	not null,
@@ -96,20 +108,12 @@ select * from answer;
 ----------------------------------------------------------------------------------------------------------
 보류 
 ----------------------------------------------------------------------------------------------------------
---//태그
-create table tag(
-	tagId			varchar2(20)	primary key,
-	questionType	varchar2(20)	not null
-);
-
---//자기소개
+//자기소개
 create table pr(
 	prId 			varchar2(20)	primary key,
 	resumeId		varchar2(20),
 	constraint fk_pr_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
-	content			varchar2(2000),
-	tagId			varchar2(20),
-	constraint fk_pr_tagId foreign key(tagId) references tag(tagId) on delete cascade
+	content		varchar2(2000)
 );
 ----------------------------------------------------------------------------------------------------------
 -- 더미데이터 -- 
@@ -134,6 +138,26 @@ insert into question values('00012', '대학생활', '동아리나 클럽에 가
 insert into answer values('00000', 'admin', '응!');
 
 
+insert into question values('1', '여가생활', '여가 시간에는 주로 무엇을 하며 시간을 보내?');
+insert into question values('2', '여가생활', '"주어진 대답"의 좋은 점이 뭐라고 생각해?');
+insert into question values('3', '여가생활', '"주어진 대답" 으로 인해 네가 바뀐 부분은 뭐야?');
+insert into question values('4', '대학생활', '대학에서 동아리나 클럽에 가입한 적이 있어?');
+insert into question values('5', '대학생활', '어떤 활동을 했어?');
+insert into question values('6', '대학생활', '기억에 남는 활동은?');
+insert into question values('7', '대학생활', '당신의 리더로서의 모습은?');
+insert into question values('8', '대학생활', '당신의 팔로워로서의 모습은?');
+insert into question values('9', '대학생활', '다시 동아리에 들어간다면?');
+
+insert into member values('admin','admin','관리자','0',sysdate,'admin@admin.com','01012345678');
+
+insert into answer values('1', 'admin', '데스티니 차일드');
+insert into answer values('2', 'admin', '일러스트를 볼 수 있다');
+insert into answer values('3', 'admin', '몰라');
+insert into answer values('4', 'admin', '아직');
+insert into answer values('5', 'admin', '아직이다');
+
+delete from member where memberId = 'admin'
+>>>>>>> d735185449f25d3bb7819f05aebfef44d4ef7ee5
 ------------------------------------------------------------------------------------------------------------
 --확인용
 ------------------------------------------------------------------------------------------------------------
@@ -155,7 +179,7 @@ delete from answer where memberId = 'tooona'
 select q.questionId, q.questionType, q.question, a.answer
 from question q, answer a, member m
 where q.questionId = a.questionId and a.memberId = m.memberId 
-and m.memberId = 'admin'
+and m.memberId = 'tooona'
 order by questionId asc;
 
 select *
@@ -166,7 +190,7 @@ select * from member
 
 
 
-//테이블 삭제 (안되면 밑에서 부터 차례대로 삭제!!)
+--//테이블 삭제 (안되면 밑에서 부터 차례대로 삭제!!)
 drop table member CASCADE CONSTRAINTS;
 drop table favoriteMember CASCADE CONSTRAINTS;
 drop table resume CASCADE CONSTRAINTS;
@@ -176,7 +200,7 @@ drop table career CASCADE CONSTRAINTS;
 drop table certificate CASCADE CONSTRAINTS;
 drop table projectCareer CASCADE CONSTRAINTS;
 
-//데이터 삭제 (안되면 밑에서 부터 차례대로 삭제!!)
+--//데이터 삭제 (안되면 밑에서 부터 차례대로 삭제!!)
 delete from  member;
 delete from  favoriteMember;
 delete from  resume;

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Fira+Sans:400,400italic' rel='stylesheet' type='text/css'>
+
+<!-- 	<script src="js/jquery.mobile.custom.min.js"></script>
+ -->  	
+	<title>Horizontal Timeline | CodyHouse</title>
+</head>
+<body>
+<section class="cd-horizontal-timeline">
+	<div class="timeline">
+		<div class="events-wrapper">
+			<div class="events">
+				<ol id="cvlist">
+					<li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
+					<li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
+
+				</ol>
+
+				<span class="filling-line" aria-hidden="true"></span>
+			</div> <!-- .events -->
+		</div> <!-- .events-wrapper -->
+			
+		<ul class="cd-timeline-navigation">
+			<li><a href="#0" class="prev inactive">Prev</a></li>
+			<li><a href="#0" class="next">Next</a></li>
+		</ul> <!-- .cd-timeline-navigation -->
+	</div> <!-- .timeline -->
+
+	<div class="events-content">
+		<ol id="cvcontent">
+			<li class="selected" data-date="16/01/2014">
+				<h2>제목</h2>
+				<em>날짜</em>
+				<p>내용</p>
+			</li>
+
+			<li data-date="28/02/2014">
+				<h2>제목</h2>
+				<em>날짜</em>
+				<p>내용</p>
+			</li>
+		</ol>
+	</div> <!-- .events-content -->
+</section>
+<script>
+var tag1 = '<li><a href="#0" data-date="29/02/2014">29 Feb</a></li>'; 
+var tag2 = '<li data-date="29/02/2014"> <h2>제목</h2> <em>날짜</em> <p>내용</p></li>'; 
+$('#cvlist').append(tag1);
+$('#cvcontent').append(tag2);
+</script>
+
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+<script src="js/jquery-2.1.4.js"></script>
+
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>

@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="./include/css/resume_write.css">
 </head>
 <body>
-<div id="wrapper">
+
 	<!-- essential2에서 헤더호출 -->
 	<div id="myheader"></div>
 	<!-- Page Content -->
@@ -40,15 +40,12 @@
 		<!--  -->
 
 		<!-- Page Title -->
+			<div class="row">
 		<div class="page-header" style="border-left: 5px solid #337ab7;">
-			<span
-				style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">기본
-				이력서 관리</span>
+			<span style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">기본 이력서 관리</span>
 		</div>
-
-		<div id="myheader2"></div>
-		<!-- 나중에 essential2에 넣자 -->
-
+		</div>
+	
 		<script type="text/javascript">
 	  $(document).ready(function () {
       $('#tab01').removeClass();
@@ -65,7 +62,12 @@
     	  }
       });
 
-
+    	  $(".panel-body").hide();
+    	  //content 클래스를 가진 div를 표시/숨김(토글)
+    	  $(".panel-heading").click(function()
+    	  {
+    	    $(this).next(".panel-body").slideToggle(500);
+    	  });      
       });
       </script>
 
@@ -77,11 +79,12 @@
 				name="files" id="file3">
 
 			<!-- 기본정보 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-default">
 				<div class="panel-heading">
-					<div class="panel-title">기본정보</div>
+					<div class="panel-title"><i class="fa fa-check-circle fa-fw"></i>기본정보</div>
+					<div class="panel-title"><i class="fa fa-clock-o fa-fw"></i>기본정보</div>
 				</div>
-				<div class="panel-body">
+				<div class="body">
 					<table class="table table-bordered">
 						<tbody>
 								
@@ -95,10 +98,7 @@
 								<img id="previewImg" name="uploadFileName" style="width: 100px;"
 									src="img/${resumeVo.memberId}/${resumeVo.savedImgFile}">  
 									
-									<input type="file" value="업로드" id="upload"
-									name="upload"
-									onchange="previewImage(this,&#39;previewImg&#39;)"
-									style="width: 100%;">
+									<input type="file" value="업로드" id="upload" name="upload" onchange="previewImage(this,&#39;previewImg&#39;)" style="width: 100%;">
 								</td>
 
 
@@ -181,11 +181,12 @@
 						/>
 					</s:iterator>
 					<!--  -->
-						
+			
 			<!-- 학력, 관련교육 이수 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-green">
 				<div class="panel-heading">
-					<div class="panel-title">학력, 관련교육 이수</div>
+					<div class="panel-title"><i class="fa fa-graduation-cap fa-fw"></i> 학력, 관련교육 이수</div>
+					<div class="panel-title"> <i class="fa fa-user fa-fw"></i> 학력, 관련교육 이수</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="eduTable"
@@ -262,9 +263,9 @@
 			</div>
 
 			<!-- 경력 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-yellow">
 				<div class="panel-heading">
-					<div class="panel-title">경력</div>
+					<div class="panel-title"><i class="fa fa-briefcase fa-fw"></i>경력</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="careerTable"
@@ -336,9 +337,9 @@
 			</div>
 
 			<!-- 면허, 자격 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-info">
 				<div class="panel-heading">
-					<div class="panel-title">면허, 자격</div>
+					<div class="panel-title"><i class="fa fa-certificate fa-fw"></i>면허, 자격</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="licenseTable"
@@ -397,9 +398,9 @@
 			</div>
 
 			<!-- 프로젝트 경력 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-warning">
 				<div class="panel-heading">
-					<div class="panel-title">프로젝트 경력</div>
+					<div class="panel-title"><i class="fa fa-github fa-fw"></i>프로젝트 경력</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered table-hove " id="projectTable"
@@ -492,7 +493,7 @@
 			type="hidden" name="resumeVO.resume_seq" value="713"> <input
 			type="hidden" id="sex" name="memberVo.gender" value="0">
 	</div>
-	</div>
+
 
 
 	<!-- end .container -->
