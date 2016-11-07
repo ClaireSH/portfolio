@@ -15,167 +15,144 @@ import vo.Question;
 
 public class JsonTestAction extends ActionSupport implements SessionAware{
 
-	//JSON용 파라미터로
-	private String num;
-	private String type;
-	private String question;
-	private String answer;
-	private int totalQna;  
-	
-	private Qna qnavo = new Qna(); 
-	QnaDAO dao=new QnaDAO();
+	private Question questionVo;
+	private Answer	answerVo;
+	private ArrayList<Question> qList;
+	private ArrayList<Answer> aList;
+	private ArrayList<Qna> qnaList;
 	
 	QuestionDAO qDao = new QuestionDAO(); 
-	//////////////////////////////////////
-	private static int cnt = 0;
-	private static String [] dummyQuestions; 
-	//////////////////////////////////////
-	
+
 	Map<String, Object> session;
-	public String tableFill() {
-		System.out.println("AJAX 답변편집액션 들어옴");
-
-		
-		
-		num = "1";
-		type = "훈련";
-		question = "어때?";
-		answer = "몰라";
-
-		return SUCCESS;
-
-	}
-
-	public String firstInsertQuestion(){
-		System.out.println("=====AJAX 첫질문불러오는 메소드 실행=====");
-		cnt++; //FIXME 질문 번호 증가 위해 초기값은 1 이므로 매번 처음부터라는 단점 
-		Qna qtable = dao.getQNA(cnt); 
-		System.out.println("질문테이블 SELECT 확인 : "+qtable);
-		
-//		type = qtable.getType(); //질문유형 
-//		num = qtable.getNum();//번호 
-//		question = qtable.getQuestion(); 
-		System.out.println("11111111111111");
-
-		//FIXME dao가 안되길래 더미로 넣어 수현아 
-		type = "취미"; 
-		num = Integer.toString(cnt);
-		
-		ArrayList<Question> qList = qDao.allQuestionList();
-		for(int i=0;i<qList.size();i++){
-			num = qList.get(i).getQuestionId();
-		}
-		
-		dummyQuestions = new String[]{qList.get(0).getQuestion(),qList.get(1).getQuestion(),qList.get(2).getQuestion(),qList.get(3).getQuestion()};  
-		//dummyQuestions = new String[]{"취미가뭐야?","어떤 계기로 하게 되었어?","다른 취미는 뭐가 있어?","취미를 직업으로 삼을 수 있다고 생각해?"};  
-		if(cnt > 4){
-			System.out.println("질문 array 넘어섰다. 다시 처음질문부터");
-			cnt = 1; 
-			num = Integer.toString(cnt); 
-		}
-		question = dummyQuestions[cnt-1]; 
-		totalQna = dummyQuestions.length; //FIXME 전체 질문
-
-
-
-		System.out.println("===========바퀴 : "+cnt);
-
-		
-		return SUCCESS;
-		
-	} 
 	
-	public String insertQNA() {
-		System.out.println("=====AJAX 질문입력액션 들어옴=====");
-		
-//		Qna qtable = dao.getQNA(cnt); 
-//		System.out.println("질문테이블 SELECT 확인 : "+qtable);
-//		type = qtable.getType(); //질문유형 
-//		num = qtable.getNum();//번호 
-//		question = qtable.getQuestion(); 
+	
+	public String initQna(){
+		System.out.println("initQna");
+		String loginId = (String)session.get("loginId");
+		qList = qDao.allQuestionList();
+		aList = qDao.selectAnswerList(loginId);
 		
 		
-		
-		//FIXME 답변에 대한 카운팅 잘 안된다.
-		if(cnt > 4){
-			System.out.println("질문 array 넘어섰다. 다시 처음질문부터");
-			cnt = 1; 
-			num = Integer.toString(cnt); 
+		if(aList == null){
+			//답변이 등록되지 않으면, 첫번째 질문만 정보를 가져옴
+			Question firstQuestion = qDao.selectQuestion("00000");
+			qList.add(firstQuestion);
+			System.out.println("11111"+qList.get(0).toString());
+			int convertQuestionId = Integer.parseInt(qList.get(0).getQuestionId());
+			//qList.questionId = 00000, 00001, 00002, 00003...
+			qList.get(0).setQuestionId(String.valueOf(convertQuestionId));
+			
+		}else{
+			//00000 자리수를 정상적으로 변환
+			for(int i=0;i<qList.size();i++){
+				int convertQuestionId = Integer.parseInt(qList.get(i).getQuestionId());
+				//qList.questionId = 00000, 00001, 00002, 00003...
+				qList.get(i).setQuestionId(String.valueOf(convertQuestionId));
+			}
+			
+			for(int i=0;i<aList.size();i++){
+				int convertQuestionId = Integer.parseInt(aList.get(i).getQuestionId());
+				//aList.questionId = 00000, 00001, 00002, 00003...
+				aList.get(i).setQuestionId(String.valueOf(convertQuestionId));
+			}
 		}
 
-		//ajax로 돌려줄 데이터
-		num = Integer.toString(cnt);
-		answer = answer; //지우면 안됨 
-		question = dummyQuestions[cnt];  
-		type = "취미";
-		totalQna = dummyQuestions.length;
-		
-		//클라이언트에서 보낸 정보 객체화해 저장 
-		qnavo.setAnswer(answer);
-//		qnavo.setNum(num);
-		
-		Answer answerVo = new Answer();
-		answerVo.setAnswer(answer);
-		answerVo.setMemberId((String)session.get("loginId"));
-		answerVo.setQuestionId(num);
-		System.out.println("dd"+answerVo.toString());
-		qDao.insertAnswer(answerVo);
-		System.out.println("완성된 하나의 질답객체 : "+qnavo);
-		
-		
-		cnt++; //FIXME 질문 번호 증가 위해 초기값은 1 이므로 매번 처음부터라는 단점 
-		
-		
 		return SUCCESS;
 	}
 	
-	public String insertQuestion(){
-		ArrayList<Question> qList = qDao.allQuestionList();
-		for(int i=0;i<qList.size();i++){
-			num = qList.get(i).getQuestionId();
+	public String insertAnswer(){
+	
+		String loginId = (String)session.get("loginId");
+		
+		//총 질문 수, 해당 계정의 총 답변 수
+		qList = qDao.allQuestionList();
+		System.out.println("qList.size()"+qList.size());
+		aList = qDao.selectAnswerList(loginId);
+		System.out.println("aList.size()"+aList.size());
+		
+		//DB에 답변이 없으면 00000, loginId, 해당 답변을 넣어준다 
+		if(aList == null){
+			//첫 답변을 DB에 저장		
+			answerVo.setMemberId(loginId);
+			answerVo.setQuestionId(String.format("%05d", 0));
+			qDao.insertAnswer(answerVo);
+			
+			//다음 질문을 DB에서 불러옴
+			questionVo = qDao.selectQuestion(String.format("%05d", 1));
+			
+			//00000자리수를 정상적으로 컨버팅하여 출력
+			answerVo.setQuestionId("0");
+			questionVo.setQuestionId("1");
+			
+			return SUCCESS;
 		}
+		
+		System.out.println(qList.size()+"    "+aList.size());
+		if(qList.size() <= aList.size()-1){
+			System.out.println("in");
+			//마지막 질문에 대한 답변
+			int finishedQuestionLength = (qDao.selectFinishedQuestionListById(loginId)).size(); 		
+			answerVo.setMemberId(loginId);
+			answerVo.setQuestionId(String.format("%05d", finishedQuestionLength));
+			qDao.insertAnswer(answerVo);
+			
+			answerVo.setQuestionId(String.valueOf(finishedQuestionLength));
+			return SUCCESS;
+		}else if(qList.size() <= aList.size()){
+			// 질문 수와 답변 수가 같거나 그 이상이면 에러
+			// 이유 : insert해도 질문Vo와 답변Vo가 Null
+			return SUCCESS;
+		}else{
+			//답변을 DB에 저장
+			int finishedQuestionLength = (qDao.selectFinishedQuestionListById(loginId)).size(); 		
+			answerVo.setMemberId(loginId);
+			answerVo.setQuestionId(String.format("%05d", finishedQuestionLength));
+			qDao.insertAnswer(answerVo);
+			
+			//다음 질문을 DB에서 불러옴
+			int nextLength = finishedQuestionLength + 1;
+			questionVo = qDao.selectQuestion(String.format("%05d", nextLength));
+			
+			//00000자리수를 정상적으로 컨버팅하여 출력
+			answerVo.setQuestionId(String.valueOf(finishedQuestionLength));
+			questionVo.setQuestionId(String.valueOf(nextLength));
+		}
+
 		return SUCCESS;
 	}
-
-	public String getNum() {
-		return num;
+	
+	public Question getQuestionVo() {
+		return questionVo;
 	}
 
-	public void setNum(String num) {
-		this.num = num;
+	public void setQuestionVo(Question questionVo) {
+		this.questionVo = questionVo;
 	}
 
-	public String getType() {
-		return type;
+	public ArrayList<Question> getqList() {
+		return qList;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setqList(ArrayList<Question> qList) {
+		this.qList = qList;
 	}
 
-	public String getQuestion() {
-		return question;
+	public ArrayList<Answer> getaList() {
+		return aList;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setaList(ArrayList<Answer> aList) {
+		this.aList = aList;
 	}
 
-	public String getAnswer() {
-		return answer;
+	public Answer getAnswerVo() {
+		return answerVo;
 	}
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setAnswerVo(Answer answerVo) {
+		this.answerVo = answerVo;
 	}
 
-	public int getTotalQna() {
-		return totalQna;
-	}
-
-	public void setTotalQna(int totalQna) {
-		this.totalQna = totalQna;
-	}
 
 	@Override
 	public void setSession(Map<String, Object> session) {

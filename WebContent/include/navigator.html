@@ -189,41 +189,148 @@
 					<!-- /.panel-heading -->
 					
 					<script>
+					
 						$(document).ready(
 								function() {
-
-									//질문 목록 받아오기
-									$('#answering').click(function() {
-
+	
+									//초기 질문 목록 받아오기
 										$.ajax({
-											url : 'insertQNA',
+											url : 'initQna',
 											type : 'post',
 											success : function(data) {
-												//alert('질문(한번에 하나씩 받아온다?!) : '+data.question);
-
+				
+												
+												var qList_len = data.qList.length;
+												var aList_len = data.aList.length;
+												
+												if(aList_len == null){
+													//질문만 보여준다.
+													$('.chat').append(
+															'<li class="left clearfix"><span class="chat-img pull-left">'+
+															'<img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />'+
+															'</span>'+
+															'<div class="chat-body clearfix">'+
+															'<div class="header">'+
+															'<strong class="primary-font">'+ data.qList[0].questionType + '</strong>'+
+															'<small class="pull-right text-muted"><i class="fa fa-clock-o fa-fw"></i>'+ 
+															data.qList[0].questionId + '/' + (parseInt(qList_len) - 1) +'번째 질문'+
+															'</small>'+
+															'</div>'+
+															'<p>'+ data.qList[0].question +'</p>'+
+															'</div></li>').children("li:last").fadeIn(500);
+													
+												}else{
+													for(var i=0;i<aList_len;i++){
+														//질문
+														$('.chat').append(
+																'<li class="left clearfix"><span class="chat-img pull-left">'+
+																'<img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />'+
+																'</span>'+
+																'<div class="chat-body clearfix">'+
+																'<div class="header">'+
+																'<strong class="primary-font">'+ data.qList[i].questionType + '</strong>'+
+																'<small class="pull-right text-muted"><i class="fa fa-clock-o fa-fw"></i>'+ 
+																data.qList[i].questionId + '/' + (parseInt(qList_len) - 1) +'번째 질문'+
+																'</small>'+
+																'</div>'+
+																'<p>'+ data.qList[i].question +'</p>'+
+																'</div></li>').children("li:last").fadeIn(500);
+														
+														//답변
+														$('.chat').append(
+																'<li class="right clearfix">'+
+																'<span class="chat-img pull-right"> </span>'+
+																'<div class="clearfix">'+
+																'<div class="header">'+
+																'<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i></small>'+
+																'<strong class="pull-right primary-font">'+ data.aList[i].questionId +'번째 답변</strong>'+
+																'</div> <p>' + data.aList[i].answer + '</p> </div></li>').children("li:last").fadeIn(500);
+														
+													}
+												}
+												//답변된 수 만큼 질문과 답변을 돌림
+												
+												
+												if(qList_len <= aList_len){
+													//질문 수와 답변 수가 같으면 질문은 출력하지 않는다(완료)
+												}else{
+													//질문 수(6)와 답변 수(5)가 다르면, 다음 질문을 보여준다.
+													$('.chat').append(
+															'<li class="left clearfix"><span class="chat-img pull-left">'+
+															'<img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />'+
+															'</span>'+
+															'<div class="chat-body clearfix">'+
+															'<div class="header">'+
+															'<strong class="primary-font">'+ data.qList[aList_len].questionType + '</strong>'+
+															'<small class="pull-right text-muted">'+
+															'<i class="fa fa-clock-o fa-fw"></i>'+ data.qList[aList_len].questionId + '/' + (parseInt(qList_len) - 1) +'번째 질문'+
+															'</small>'+
+															'</div>'+
+															'<p>'+ data.qList[aList_len].question +'</p>'+
+															'</div></li>').children("li:last").fadeIn(500);
+												}
+							
 											}
 										});//ajax
 
-									});//click
+									
 
 									//답변전송
 									$('#btn-chat').click(
+											
 											function() {
-
+												console.log('btn-chat');
 												$.ajax({
-													url : 'insertQNA',
+													url : 'insertAnswer',
 													type : 'post',
 													data : {
-														"answer" : $('#btn-input').val()
+														
+														"answerVo.answer" : $('#btn-input').val()
 													},
 
 													success : function(data) {
-
-														$('.chat').append('<li class="right clearfix"><span class="chat-img pull-right"> </span> <div class="clearfix"> <div class="header"> <small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전 </small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong> </div> <p>' + data.answer + '</p> </div></li>').children("li:last").fadeIn(500);
-
-														$('.chat').append(
-																'<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span> <div class="chat-body clearfix"> <div class="header"> <strong class="primary-font">[' + data.type + '생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> ' + data.num + '/ 20번 질문 </small> </div> <p>' + data.question
-																		+ '</p> </div></li>').children("li:last").fadeIn(500);
+														
+														var qList_len = data.qList.length;
+														var aList_len = data.aList.length;
+														
+														//alert(parseInt(qList_len) +""+ parseInt(aList_len-1));
+														$('#btn-input').val('');
+														
+														if(parseInt(qList_len) <= parseInt(aList_len)){
+															//질문 수와 답변 수가 같으면, 다음 질문(null)에 답변(null)할 수 없음
+															
+															alert('더 이상 답변 할 수 없습니다.');
+														}else if( parseInt(qList_len) <= parseInt(aList_len-1)){
+															//마지막 질문에 대한 답변 처리
+															$('.chat').append(
+																	'<li class="right clearfix">'+
+																	'<span class="chat-img pull-right"> </span>'+
+																	'<div class="clearfix">'+
+																	'<div class="header">'+
+																	'<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전 </small>'+
+																	'<strong class="pull-right primary-font">'+ data.answerVo.questionId +'번째 답변</strong>'+
+																	'</div> <p>' + data.answerVo.answer + '</p> </div></li>').children("li:last").fadeIn(500);
+														}else{
+															//답변
+															$('.chat').append(
+																	'<li class="right clearfix">'+
+																	'<span class="chat-img pull-right"> </span>'+
+																	'<div class="clearfix">'+
+																	'<div class="header">'+
+																	'<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전 </small>'+
+																	'<strong class="pull-right primary-font">'+ data.answerVo.questionId +'번째 답변</strong>'+
+																	'</div> <p>' + data.answerVo.answer + '</p> </div></li>').children("li:last").fadeIn(500);
+															//질문
+															$('.chat').append(
+																	'<li class="left clearfix">'+
+																	'<span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span>'+
+																	'<div class="chat-body clearfix">'+
+																	'<div class="header">'+
+																	'<strong class="primary-font">[' + data.questionVo.questionType + ']</strong>'+
+																	'<small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> ' + data.questionVo.questionId + '/' + parseInt(qList_len-1) +'번째 질문 </small>'+
+																	'</div> <p>' + data.questionVo.question + '</p> </div></li>').children("li:last").fadeIn(500);
+														}
+														
 													}
 												});//ajax
 
@@ -232,43 +339,14 @@
 								});//ready								
 					</script>
 					
-					<div class="panel-body">
-							<ul class="chat">
-							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />
-							</span>
-							<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">[여가생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> 12 / 20번 질문
-										</small>
-									</div>
-									<p>평소에 하는 운동은 뭐가 있어?</p>
-								</div></li>
-							<li class="right clearfix"><span class="chat-img pull-right"> </span>
-								<div class="clearfix">
-									<div class="header">
-										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전
-										</small> <strong class="pull-right primary-font">[ 5번째 ] 답변</strong>
-									</div>
-									<p>답변기다리는 중</p>
-								</div></li>
-							<li class="left clearfix"><span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_pm.png" alt="User Avatar" class="img-circle" />
-							</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">[조직생활]</strong> <small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> 2 / 30번 질문
-										</small>
-									</div>
-									<p>대학생활 중 동아리나 사회활동을 한 적이 있었다면 뭐를 했어?</p>
-								</div></li>
-							<li class="right clearfix"><span class="chat-img pull-right"> </span>
-								<div class="clearfix">
-									<div class="header">
-										<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 5분 전
-										</small> <strong class="pull-right primary-font">[ 3번째 ] 답변</strong>
-									</div>
-									<p>답변기다리는 중</p>
-								</div></li>
-						</ul>
+					<div class="panel-body" id="panel-body">
+						
+						<ul class="chat">
+						
+						<!-- 패널  -->
+						
+						</ul> 
+						
 					</div>
 					<!-- /.panel-body -->
 		

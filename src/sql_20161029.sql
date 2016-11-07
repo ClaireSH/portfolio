@@ -115,26 +115,35 @@ create table pr(
 -- 더미데이터 -- 
 ----------------------------------------------------------------------------------------------------------
 
-insert into question values('1', '여가생활', '여가 시간에는 주로 무엇을 하며 시간을 보내?');
-insert into question values('2', '여가생활', '"주어진 대답"의 좋은 점이 뭐라고 생각해?');
-insert into question values('3', '여가생활', '"주어진 대답" 으로 인해 네가 바뀐 부분은 뭐야?');
-insert into question values('4', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('5', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('6', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('7', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('8', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('9', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
+insert into question values('00000', '여가생활', '여가 생활은 잘 보내고 있니?');
+insert into question values('00001', '여가생활', '여가 시간에는 주로 무엇을 하며 시간을 보내?');
+insert into question values('00002', '여가생활', '"주어진 대답"의 좋은 점이 뭐라고 생각해?');
+insert into question values('00003', '여가생활', '"주어진 대답" 으로 인해 네가 바뀐 부분은 뭐야?');
+insert into question values('00004', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
+insert into question values('00005', '대학생활', '동아리나 클럽에?');
+insert into question values('00006', '대학생활', '가입하고 있거나');
+insert into question values('00007', '대학생활', '계획이 있니?');
+insert into question values('00008', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
+insert into question values('00009', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
+insert into question values('00010', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
+insert into question values('00011', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
+insert into question values('00012', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
 
-insert into answer values('1', 'admin', '데스티니 차일드');
-insert into answer values('2', 'admin', '일러스트를 볼 수 있다');
-insert into answer values('3', 'admin', '몰라');
-insert into answer values('4', 'admin', '아직');
-insert into answer values('5', 'admin', '아직이다');
+
+
+insert into answer values('00000', 'admin', '응!');
+
+
 ------------------------------------------------------------------------------------------------------------
 --확인용
 ------------------------------------------------------------------------------------------------------------
+delete from question
+delete from answer
 
-select * from answer
+select *
+		from answer
+		where memberId = 'admin'
+		order by questionId asc;
 
 select *
 from question
@@ -143,7 +152,7 @@ order by questionId asc;
 select * from answer
 delete from answer where memberId = 'tooona'
 
-select q.questionId, q.questionType, q.question 
+select q.questionId, q.questionType, q.question, a.answer
 from question q, answer a, member m
 where q.questionId = a.questionId and a.memberId = m.memberId 
 and m.memberId = 'admin'
@@ -176,7 +185,7 @@ delete from  career;
 delete from  certificate;
 delete from  projectCareer;
 delete from  question;
-
+delete from  answer;
 
 select * from career
 select * from member
