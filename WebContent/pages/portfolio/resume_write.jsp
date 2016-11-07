@@ -81,9 +81,9 @@
 			<!-- 기본정보 -->
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<div class="panel-title">기본정보</div>
+					<div class="panel-title"><i class="fa fa-check-circle fa-fw"></i>기본정보</div>
 				</div>
-				<div class="panel-body">
+				<div class="body">
 					<table class="table table-bordered">
 						<tbody>
 								
@@ -184,7 +184,7 @@
 			<!-- 학력, 관련교육 이수 -->
 			<div class="panel panel-green">
 				<div class="panel-heading">
-					<div class="panel-title">학력, 관련교육 이수</div>
+					<div class="panel-title"><i class="fa fa-graduation-cap fa-fw"></i> 학력, 관련교육 이수</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="eduTable"
@@ -263,7 +263,7 @@
 			<!-- 경력 -->
 			<div class="panel panel-yellow">
 				<div class="panel-heading">
-					<div class="panel-title">경력</div>
+					<div class="panel-title"><i class="fa fa-briefcase fa-fw"></i>경력</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="careerTable"
@@ -337,7 +337,7 @@
 			<!-- 면허, 자격 -->
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<div class="panel-title">면허, 자격</div>
+					<div class="panel-title"><i class="fa fa-certificate fa-fw"></i>면허, 자격</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="licenseTable"
@@ -398,7 +398,7 @@
 			<!-- 프로젝트 경력 -->
 			<div class="panel panel-warning">
 				<div class="panel-heading">
-					<div class="panel-title">프로젝트 경력</div>
+					<div class="panel-title"><i class="fa fa-github fa-fw"></i>프로젝트 경력</div>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered table-hove " id="projectTable"

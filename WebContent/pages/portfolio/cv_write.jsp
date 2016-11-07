@@ -31,6 +31,11 @@
 		alert('')
 
 	}
+	
+	
+	
+	
+	
 </script>
 
 </head>
@@ -110,8 +115,7 @@
 										</s:iterator>
 									</tbody>
 								</table>
-
-
+														
 								<!--버튼 -->
 
 							</div>
