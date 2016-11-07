@@ -40,13 +40,12 @@
 		<!--  -->
 
 		<!-- Page Title -->
-		<div class="page-header">
+			<div class="row">
+		<div class="page-header" style="border-left: 5px solid #337ab7;">
 			<span style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">기본 이력서 관리</span>
 		</div>
-
-		<div id="myheader2"></div>
-		<!-- 나중에 essential2에 넣자 -->
-
+		</div>
+	
 		<script type="text/javascript">
 	  $(document).ready(function () {
       $('#tab01').removeClass();
@@ -80,7 +79,7 @@
 				name="files" id="file3">
 
 			<!-- 기본정보 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">기본정보</div>
 				</div>
@@ -98,10 +97,7 @@
 								<img id="previewImg" name="uploadFileName" style="width: 100px;"
 									src="img/${resumeVo.memberId}/${resumeVo.savedImgFile}">  
 									
-									<input type="file" value="업로드" id="upload"
-									name="upload"
-									onchange="previewImage(this,&#39;previewImg&#39;)"
-									style="width: 100%;">
+									<input type="file" value="업로드" id="upload" name="upload" onchange="previewImage(this,&#39;previewImg&#39;)" style="width: 100%;">
 								</td>
 
 
@@ -184,9 +180,9 @@
 						/>
 					</s:iterator>
 					<!--  -->
-						
+			
 			<!-- 학력, 관련교육 이수 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-green">
 				<div class="panel-heading">
 					<div class="panel-title">학력, 관련교육 이수</div>
 				</div>
@@ -265,7 +261,7 @@
 			</div>
 
 			<!-- 경력 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-yellow">
 				<div class="panel-heading">
 					<div class="panel-title">경력</div>
 				</div>
@@ -339,7 +335,7 @@
 			</div>
 
 			<!-- 면허, 자격 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">면허, 자격</div>
 				</div>
@@ -400,7 +396,7 @@
 			</div>
 
 			<!-- 프로젝트 경력 -->
-			<div class="panel panel-danger">
+			<div class="panel panel-warning">
 				<div class="panel-heading">
 					<div class="panel-title">프로젝트 경력</div>
 				</div>

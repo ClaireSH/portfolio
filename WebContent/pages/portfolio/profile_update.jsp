@@ -33,11 +33,14 @@
 
 
 		<!-- Page Title -->
+		<div class="row">
 		<div class="page-header" style="border-left: 5px solid #337ab7;">
 			<span
 				style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">개인정보
 				관리</span>
 		</div>
+		</div>
+		
 		<div class="panel panel-danger">
 			<div class="panel-heading">
 				<div class="panel-title">기본정보</div>
