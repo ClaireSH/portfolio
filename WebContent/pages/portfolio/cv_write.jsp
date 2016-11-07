@@ -23,12 +23,15 @@
 			data : {
 				"제목" : cvtitle,
 				"내용" : content,
-				"Tag" : cvtag
+				"태그" : cvtag
 			},
 			type : "POST"
 		});
 
-		alert('')
+		cvtitle = ' ';
+		content = ' ';
+		cvtitle = ' ';
+		console.log('전송완료');
 
 	}
 	
@@ -76,7 +79,7 @@
 						<div class="panel panel-danger">
 							<div class="panel-heading">
 								<div class="panel-title">
-									<lngtag data-langnum="300"> <i class="fa fa-clock-o fa-fw"></i> My커버</lngtag>
+									<lngtag data-langnum="300"> <i class="fa fa-user fa-fw"></i> My커버</lngtag>
 								</div>
 							</div>
 							<div class="panel-body">
