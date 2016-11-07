@@ -82,7 +82,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title"><i class="fa fa-check-circle fa-fw"></i>기본정보</div>
-					<div class="panel-title"><i class="fa fa-clock-o fa-fw"></i>기본정보</div>
+
 				</div>
 				<div class="body">
 					<table class="table table-bordered">
@@ -186,7 +186,7 @@
 			<div class="panel panel-green">
 				<div class="panel-heading">
 					<div class="panel-title"><i class="fa fa-graduation-cap fa-fw"></i> 학력, 관련교육 이수</div>
-					<div class="panel-title"> <i class="fa fa-user fa-fw"></i> 학력, 관련교육 이수</div>
+
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="eduTable"

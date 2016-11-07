@@ -34,7 +34,7 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="panel panel-default">
+					<div class="panel panel-danger">
 						<div class="panel-heading">최근 질문과 답변</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
@@ -77,14 +77,14 @@
 								function makeEvent(id){
 									$("'#'+id").dblclick(function() {
 										var vv = $("'#'+id").val()
-										$("'#'+id").parent().append('<input type="text" name="editedAnswer" value="'+vv+'"><input type="hidden" name="selector" value="'+id.substring(1,)+'">');
+										$("'#'+id").parent().append('<input type="text" name="editedAnswer" value="'+vv+'"><input type="hidden" name="selector" value="'+id.substring(1,9)+'">');
 										$("'#'+id").remove();
 										alert('삭제2');
 									});
 	
 								}
 								
-																</script>
+								</script>
 							</div>
 							<!-- /.table-responsive -->
 						</div>
