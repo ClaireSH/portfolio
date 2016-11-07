@@ -23,12 +23,15 @@
 			data : {
 				"제목" : cvtitle,
 				"내용" : content,
-				"Tag" : cvtag
+				"태그" : cvtag
 			},
 			type : "POST"
 		});
 
-		alert('')
+		cvtitle = ' ';
+		content = ' ';
+		cvtitle = ' ';
+		console.log('전송완료');
 
 	}
 </script>
