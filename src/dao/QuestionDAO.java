@@ -113,6 +113,21 @@ public class QuestionDAO {
 		return (ArrayList<Question>) qList;
 	}
 	
+	public Question selectQuestion(String questionId){
+		System.out.println("QuestionDAO.selectQuestion");
+		SqlSession ss=factory.openSession();
+		
+		Question question = null;
+		try {
+			question = ss.selectOne("question.selectQuestion", questionId);
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		}  finally {
+			if (ss != null) ss.close();
+		}
+		return question;
+	}
+	
 	public ArrayList<Question> selectFinishedQuestionListById(String memberId){
 		System.out.println("QuestionDAO.selectFinishedQuestionListById");
 		SqlSession ss=factory.openSession();
@@ -135,6 +150,7 @@ public class QuestionDAO {
 		
 		try {
 			ss.insert("question.insertQuestion", question);
+			ss.commit();
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}  finally {
