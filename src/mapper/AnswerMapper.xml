@@ -15,6 +15,7 @@
 		select *
 		from answer
 		where memberId = #{memberId}
+		order by questionId asc
 	</select>
 
 	<select id="selectAnswer" parameterType="hashMap" resultMap="AnswerResult">

@@ -14,7 +14,7 @@
  	<select id="allQuestionList" resultMap="QuestionResult">
  		select questionId, questionType, question
  		from question
- 		order by questionId
+ 		order by questionId asc
  	</select>
  	
  	<select id="selectFinishedQuestionListById" parameterType="String" resultMap="QuestionResult">

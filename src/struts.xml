@@ -101,25 +101,15 @@
          </result>
       </action>
  
-      <!-- AJAX클래스로 보낼 액션들 -->
-      <!-- 질문입력 -->
-      <action name="firstInsertQuestion" class="action.JsonTestAction"
-         method="firstInsertQuestion">
-         <result type="json" />
+ 	  <!--Json (1)Qna 초기화  -->
+      <action name="initQna" class="action.JsonTestAction" method="initQna">
+         <result name="success" type="json" />
       </action>
-      <action name="insertQNA" class="action.JsonTestAction" method="insertQNA">
-         <result type="json" />
+      
+      <!--Json (2)Qna 답변작성  -->
+      <action name="insertAnswer" class="action.JsonTestAction" method="insertAnswer">
+         <result name="success" type="json" />
       </action>
-
-      <!-- .AJAX -->
-      <!-- 질문수정 -->
-      <!-- table.html -->
-      <action name="selectQNA" class="action.JsonTestAction" method="tableFill">
-         <result type="json" />
-      </action>
-
-
-
 
       <action name="prWrite" class="action.ResumeAction" method="prWrite">
          <result name="success" type="redirect">goPrWriteForm</result>
@@ -157,7 +147,9 @@
       <action name="grid">
          <result>/pages/example/grid.jsp</result>
       </action>
-         
+      
+
+      
    </package>
 
 
