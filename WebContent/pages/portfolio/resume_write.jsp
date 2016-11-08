@@ -82,7 +82,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title"><i class="fa fa-check-circle fa-fw"></i>기본정보</div>
-					<div class="panel-title"><i class="fa fa-clock-o fa-fw"></i>기본정보</div>
+
 				</div>
 				<div class="body">
 					<table class="table table-bordered">
@@ -98,7 +98,7 @@
 								<img id="previewImg" name="uploadFileName" style="width: 100px;"
 									src="img/${resumeVo.memberId}/${resumeVo.savedImgFile}">  
 									
-									<input type="file" value="업로드" id="upload" name="upload" onchange="previewImage(this,&#39;previewImg&#39;)" style="width: 100%;">
+									<input type="file" value="업로드" id="upload" name="upload" onchange="previewImage(this,'previewImg')" style="width: 100%;">
 								</td>
 
 
@@ -186,7 +186,7 @@
 			<div class="panel panel-green">
 				<div class="panel-heading">
 					<div class="panel-title"><i class="fa fa-graduation-cap fa-fw"></i> 학력, 관련교육 이수</div>
-					<div class="panel-title"> <i class="fa fa-user fa-fw"></i> 학력, 관련교육 이수</div>
+
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered" id="eduTable"
