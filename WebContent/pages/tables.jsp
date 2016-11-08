@@ -12,6 +12,15 @@
 <script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/portfolio/js/essential.js"></script>
 
+<script>
+function sendRow(index,qna,answer) {
+	$('#Myquestion').val(qna);
+	var ms = $('#Myquestion2').val(answer);
+	console.log(ms);
+	
+}
+</script>
+
 <title>Cover ME</title>
 
 
@@ -34,57 +43,44 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="panel panel-default">
+					<div class="panel panel-green">
 						<div class="panel-heading">최근 질문과 답변</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div class="table-responsive">
 								<form action="updateAnswer" method="get">
 
-									<table class="table table-striped table-bordered table-hover">
+									<table  class="table table-striped table-hover">
 										<thead>
 											<tr>
 												<th>#</th>
+												<th>유형</th>
 												<th>질문</th>
 												<th>답변</th>
-												<th>유형</th>
 											</tr>
 										</thead>
 										<tbody>
 
-											<s:iterator value="qnaList" status="incre">
-												<input type="hidden" name="qnaList[${incre.index}].questionId" value="${questionId}"/>
-												<input type="hidden" name="qnaList[${incre.index}].questionType" value="${questionType}"/>
-												<input type="hidden" name="qnaList[${incre.index}].question" value="${question}"/>
-												
+											<s:iterator value="qnaList" var="qna" status="incre" begin="0" end="">
+
+												<input type="hidden" name="qnaList[${incre.index}].questionId" value="${questionId}" />
+												<input type="hidden" name="qnaList[${incre.index}].questionType" value="${questionType}" />
+												<input type="hidden" name="qnaList[${incre.index}].question" value="${question}" />
+
 												<tr>
 													<td>${questionId}</td>
-													<td>${question}</td>
-													<td><input type="text" name="qnaList[${incre.index}].answer" value="${answer}"/></td>
-													<%-- <td><div class="editCell" id="cell${num}" value="${answer}">${answer}</div></td> --%>
 													<td>${questionType}</td>
+													<td>${question}</td>
+													<td>
+													<a href="#" class="btn btn-info" onclick="javascript:sendRow('${questionId}','${question}','${answer}');">수정</a></td>
 												</tr>
 											</s:iterator>
 										</tbody>
 									</table>
 									<div style="text-align: center;">
-										<input type="submit" id="btn_edit" class="btn btn-danger" value="수정"/>
-										<input type="button" id="btn_reset" class="btn btn-warning" value="초기화">
+										<input type="submit" id="btn_edit" class="btn btn-danger" value="수정" /> <input type="button" id="btn_reset" class="btn btn-warning" value="초기화">
 									</div>
 								</form>
-								<script>
-								
-								function makeEvent(id){
-									$("'#'+id").dblclick(function() {
-										var vv = $("'#'+id").val()
-										$("'#'+id").parent().append('<input type="text" name="editedAnswer" value="'+vv+'"><input type="hidden" name="selector" value="'+id.substring(1,)+'">');
-										$("'#'+id").remove();
-										alert('삭제2');
-									});
-	
-								}
-								
-																</script>
 							</div>
 							<!-- /.table-responsive -->
 						</div>
@@ -94,34 +90,32 @@
 				</div>
 				<div class="col-lg-6">
 
-						<div class="panel panel-danger">
-							<div class="panel-heading">
-								<div class="panel-title">
-									<i class="fa fa-clock-o fa-fw"></i> 자기소개서
-								</div>
-							</div>
-							<div class="panel-body">
-								<div style="overflow: hidden; margin: 10px 0;">
-									<input type="text" class="form-control" id="cvtitle" placeholder="버전명을 선택하거나 수정하세요" style="width: 90%; float: left;">
-									<div id="counter" style="width: 60px; height: 30px; margin: auto; overflow: hidden;">###</div>
-								</div>
-								<!-- 글내용 -->
-								<p>
-								<div class="wrap" style="margin: 10px 0;">
-									<textarea id="content" name="textarea" class="jqte-test form-control"></textarea>
-								</div>
-								</p>
-								<input id="cate" type="text" value="취미생활,여가생활" data-role="tagsinput">
-								<div style="text-align: center; margin: 10px 0;">
-									<button type="button" class="btn  btn-warning" onclick="javascript:submitsheet();">시트저장</button>
-									<a class="btn  btn-success" href="#writepage">새글쓰기</a>
-								</div>
-							</div>
-
+					<div class="panel panel-green">
+						<div class="panel-heading">
+							<i class="fa fa-clock-o fa-fw"></i> 답변편집
 						</div>
-						<!--섹션.끝-->
+						<div class="panel-body">
+							<div style="overflow: hidden; margin: 10px 0;">
+								<input type="text" class="form-control" id="Myquestion" disabled="disabled" placeholder="수정할 답변을 클릭하세요" style="width: 100%; float: left;">
+							</div>
+							<!-- 글내용 -->
+							<p>
+							<div class="wrap" style="margin: 10px 0;">
+								<textarea id="Myquestion2" name="textarea" class="form-control" rows="19"></textarea>
+							</div>
+							</p>
+
+
+							<div style="text-align: center; margin: 10px 0;">
+								<button type="button" class="btn  btn-warning" onclick="javascript:submitsheet();">시트저장</button>
+								<a class="btn  btn-success" href="#writepage">새글쓰기</a>
+							</div>
+						</div>
 
 					</div>
+					<!--섹션.끝-->
+
+				</div>
 			</div>
 
 		</div>
