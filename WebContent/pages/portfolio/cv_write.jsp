@@ -15,8 +15,8 @@
 <script>
 	function submitsheet() {
 		var cvtitle = $('#cvtitle').val();
-		var content = $('#content').val();
-		var cvtag = $("#cate").val()
+		var content = $('#content2').val();
+		var cvtag = $("#cate").val();
 
 		$.ajax({
 			url : "https://script.google.com/macros/s/AKfycby3sb3tPQqIvznKjnZ3UHXUQdqcWM-PD5WXBJujcVceH6m9piJn/exec",
@@ -28,9 +28,9 @@
 			type : "POST"
 		});
 
-		cvtitle = ' ';
-		content = ' ';
-		cvtitle = ' ';
+		$('#cvtitle').val('');
+		$('#content2').val("");//에디터 내용은 안지워지는 문제
+		$("#cate").val('');
 		console.log('전송완료');
 
 	}
@@ -142,10 +142,10 @@
 								<!-- 글내용 -->
 								<p>
 								<div class="wrap" style="margin: 10px 0;">
-									<textarea id="content" name="textarea" class="jqte-test form-control"></textarea>
+									<textarea id="content2" name="textarea" class="jqte-test form-control"></textarea>
 								</div>
 								</p>
-								<input id="cate" type="text" value="취미생활,여가생활" data-role="tagsinput">
+								<input id="cate" type="text" value="취미생활,여가생활" data-role="tagsinput" style="background-color:gray;">
 								<div style="text-align: center; margin: 10px 0;">
 									<button type="button" class="btn  btn-warning" onclick="javascript:submitsheet();">시트저장</button>
 									<a class="btn  btn-success" href="#writepage">새글쓰기</a>
@@ -165,7 +165,7 @@
 				<!-- 섹션 -->
 				<div class="col-lg-12">
 
-					<iframe src="/portfolio/plugin/horizontal-timeline/timeLine.html" width="100%" height="800px"></iframe>
+				<!-- 	<iframe src="/portfolio/plugin/horizontal-timeline/timeLine.html" width="100%" height="800px"></iframe> -->
 				</div>
 		
 		</div>
@@ -182,12 +182,12 @@
 	</div>
 	<script type="text/javascript">
 		$(function() {
-			$('#content').keyup(function(e) {
+			$('#content2').keyup(function(e) {
 				var content = $(this).val();
 				$(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
 				$('#counter').html(content.length + '자');
 			});
-			$('#content').keyup();
+			$('#content2').keyup();
 
 		});
 		$('.jqte-test').jqte();

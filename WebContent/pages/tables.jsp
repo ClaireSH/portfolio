@@ -19,6 +19,24 @@ function sendRow(index,qna,answer) {
 	console.log(ms);
 	
 }
+
+function submitsheet() {
+	var answerdata = $('#Myquestion2').val();
+	var questiondata = $("#Myquestion").val();
+	$.ajax({
+		url : "https://script.google.com/macros/s/AKfycbzlPq5wascXsZqpjga77mPylCpMtDj6AX86K7cTpRSXipsC1zw/exec",
+		data : {
+			"질문" : questiondata,
+			"답변" : answerdata
+		},
+		type : "POST"
+	});
+
+	$('#Myquestion').val('');
+	$('#Myquestion2').val('');
+	console.log('전송완료'+questiondata+'/'+answerdata);
+
+}
 </script>
 
 <title>Cover ME</title>
@@ -48,7 +66,7 @@ function sendRow(index,qna,answer) {
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div class="table-responsive">
-								<form action="updateAnswer" method="get">
+								<form id="fform" action="updateAnswer" method="post">
 
 									<table  class="table table-striped table-hover">
 										<thead>
@@ -77,9 +95,9 @@ function sendRow(index,qna,answer) {
 											</s:iterator>
 										</tbody>
 									</table>
-									<div style="text-align: center;">
+									<!-- <div style="text-align: center;">
 										<input type="submit" id="btn_edit" class="btn btn-danger" value="수정" /> <input type="button" id="btn_reset" class="btn btn-warning" value="초기화">
-									</div>
+									</div> -->
 								</form>
 							</div>
 							<!-- /.table-responsive -->
@@ -108,7 +126,7 @@ function sendRow(index,qna,answer) {
 
 							<div style="text-align: center; margin: 10px 0;">
 								<button type="button" class="btn  btn-warning" onclick="javascript:submitsheet();">시트저장</button>
-								<a class="btn  btn-success" href="#writepage">새글쓰기</a>
+								<a class="btn  btn-success" href="#" onclick="document.getElementById('fform').submit()">서버저장</a>
 							</div>
 						</div>
 
