@@ -21,7 +21,7 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 	private ArrayList<Answer> aList;
 	private ArrayList<Qna> qnaList;
 	
-	QuestionDAO qDao = new QuestionDAO(); 
+	QuestionDAO dao = new QuestionDAO(); 
 
 	Map<String, Object> session;
 	
@@ -29,13 +29,13 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 	public String initQna(){
 		System.out.println("initQna");
 		String loginId = (String)session.get("loginId");
-		qList = qDao.allQuestionList();
-		aList = qDao.selectAnswerList(loginId);
+		qList = dao.allQuestionList();
+		aList = dao.selectAnswerList(loginId);
 		
 		
 		if(aList == null){
 			//답변이 등록되지 않으면, 첫번째 질문만 정보를 가져옴
-			Question firstQuestion = qDao.selectQuestion("00000");
+			Question firstQuestion = dao.selectQuestion("00000");
 			qList.add(firstQuestion);
 			System.out.println("11111"+qList.get(0).toString());
 			int convertQuestionId = Integer.parseInt(qList.get(0).getQuestionId());
@@ -65,9 +65,9 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 		String loginId = (String)session.get("loginId");
 		
 		//총 질문 수, 해당 계정의 총 답변 수
-		qList = qDao.allQuestionList();
+		qList = dao.allQuestionList();
 		System.out.println("qList.size()"+qList.size());
-		aList = qDao.selectAnswerList(loginId);
+		aList = dao.selectAnswerList(loginId);
 		System.out.println("aList.size()"+aList.size());
 		
 		//DB에 답변이 없으면 00000, loginId, 해당 답변을 넣어준다 
@@ -75,10 +75,10 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 			//첫 답변을 DB에 저장		
 			answerVo.setMemberId(loginId);
 			answerVo.setQuestionId(String.format("%05d", 0));
-			qDao.insertAnswer(answerVo);
+			dao.insertAnswer(answerVo);
 			
 			//다음 질문을 DB에서 불러옴
-			questionVo = qDao.selectQuestion(String.format("%05d", 1));
+			questionVo = dao.selectQuestion(String.format("%05d", 1));
 			
 			//00000자리수를 정상적으로 컨버팅하여 출력
 			answerVo.setQuestionId("0");
@@ -91,10 +91,10 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 		if(qList.size() <= aList.size()-1){
 			System.out.println("in");
 			//마지막 질문에 대한 답변
-			int finishedQuestionLength = (qDao.selectFinishedQuestionListById(loginId)).size(); 		
+			int finishedQuestionLength = (dao.selectFinishedQuestionListById(loginId)).size(); 		
 			answerVo.setMemberId(loginId);
 			answerVo.setQuestionId(String.format("%05d", finishedQuestionLength));
-			qDao.insertAnswer(answerVo);
+			dao.insertAnswer(answerVo);
 			
 			answerVo.setQuestionId(String.valueOf(finishedQuestionLength));
 			return SUCCESS;
@@ -104,14 +104,14 @@ public class JsonTestAction extends ActionSupport implements SessionAware{
 			return SUCCESS;
 		}else{
 			//답변을 DB에 저장
-			int finishedQuestionLength = (qDao.selectFinishedQuestionListById(loginId)).size(); 		
+			int finishedQuestionLength = (dao.selectFinishedQuestionListById(loginId)).size(); 		
 			answerVo.setMemberId(loginId);
 			answerVo.setQuestionId(String.format("%05d", finishedQuestionLength));
-			qDao.insertAnswer(answerVo);
+			dao.insertAnswer(answerVo);
 			
 			//다음 질문을 DB에서 불러옴
 			int nextLength = finishedQuestionLength + 1;
-			questionVo = qDao.selectQuestion(String.format("%05d", nextLength));
+			questionVo = dao.selectQuestion(String.format("%05d", nextLength));
 			
 			//00000자리수를 정상적으로 컨버팅하여 출력
 			answerVo.setQuestionId(String.valueOf(finishedQuestionLength));
