@@ -70,7 +70,7 @@
 	  
       <!-- 3-2 (2)개인정보 관리 업데이트 -->
       <action name="updateMember" class="action.ProfileAction" method="updateMember">
-         <result name="success" type="chain">goUpdateMemberForm</result>
+         <result name="success" type="redirect">goUpdateMemberForm</result>
          <result name="input" type="redirect">goUpdateMemberForm</result>
       </action>
 

@@ -11,7 +11,23 @@
 <!-- 내부참조 -->
 <script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/portfolio/js/essential_2.js"></script>
-
+<script>
+function onClick(){
+	var form = document.getElementById('updateMemberForm');
+	
+	
+	var userpw 	= document.getElementById("userpw").value;
+	var userpw0	= document.getElementById("userpw0").value;
+	if(userpw == userpw0){
+		
+		form.submit();
+	}else{
+		alert("비밀번호가 일치하지 않습니다.");
+	}
+	
+}
+	
+</script>
 <!-- 내부참조 -->
 <link rel="stylesheet" href="/portfolio/include/css/profile_modify.css">
 <title>커버미 :: 개인정보 수정</title>
@@ -46,27 +62,50 @@
 				<div class="panel-title">기본정보</div>
 			</div>
 			<div class="panel-body">
-				<s:form action="memberUpdate" name="updateForm"
+				<s:form id="updateMemberForm" action="updateMember" name="updateForm"
 					onsubmit="return joinMember()" method="post"
 					style="margin: 0px; padding-bottom: 100px; border-top: none; background: url('') no-repeat center center; background-size: cover;">
 					<!-- name 변경 해야함,  col-md(크기) 변경-->
 					<fieldset class="width:100%;">
 						<ul>
-							<li><label for="userid">아이디</label> <input type='text'
-								name="${memberVo.memberId}" maxlength=20
-								value="${memberVo.memberId}" readonly /></li>
-							<li><label for="userpw">패스워드</label> <input type='password'
-								id="userpw" name="memberVo.password" maxlength=20 /></li>
-							<li id="pwEnter"><label for="userpw0">패스워드 확인</label> <input
-								type='password' id="userpw0" maxlength=20 /></li>
-							<li><label for="username">이름</label> <input type='text'
-								id="username" name="${memberVo.name}" maxlength=20
-								value="${memberVo.name}" /></li>
-
+							<li>
+								<label for="userid">아이디</label>
+								<input type='text' name="memberVo.memberId" maxlength=20 value="${memberVo.memberId}" readonly />
+							</li>
+							<li>
+								<label for="userpw">패스워드</label>
+								<input type='password' id="userpw" name="memberVo.password" maxlength=20 />
+							</li>
+							<li id="pwEnter">
+								<label for="userpw0">패스워드 확인</label>
+								<input type='password' id="userpw0" name="userpw0" maxlength=20 />
+								
+							</li>
+							<li>
+								<label for="username">이름</label>
+								<input type='text' id="username" name="memberVo.name" maxlength=20 value="${memberVo.name}" />
+							</li>
 							<!-- 이부분 Action이랑 연결시켜야함. -->
-							<li id="gender"><label>성별</label> <input
-								name="memberVo.gender" id="man" type="radio" value="0" />남자 <input
-								name="memberVo.gender" id="woman" type="radio" value="1" />여자</li>
+							<li id="gender">
+								<label>성별</label>
+								<input type="hidden" id="gender" value="#{memberVo.gender}"/> 
+								<input name="memberVo.gender" id="man" type="radio" value="0" />남자
+								<input name="memberVo.gender" id="woman" type="radio" value="1" />여자
+								<script>
+									window.onload = function(){
+											var gender = document.getElementById("gender").value;
+											var man = document.getElementById("man");
+											var woman = document.getElementById("woman");
+											if(gender == "0"){
+												man.checked = true;
+												console.log("0");
+											}else{
+												woman.checked = true;
+												console.log("1");
+											}
+									}
+								</script>
+							</li>
 							<!-- ---- -->
 							<li><label>생년월일</label>
 							<select id="years" name="useryear" title="월">
@@ -127,10 +166,9 @@
 					<input type="hidden" id="birthday" name="memberVo.birth" value="">
 
 					<div id="btnCenter" style="top: 50px;">
-						<input type="submit" value="수정" /> <input type="reset" value="삭제" />
+						<input type="button" value="수정" onclick="onClick();"/> <input type="reset" value="삭제" />
 					</div>
 				</s:form>
-				<input type="hidden" id="gender" name="memberVo.gender" value="0" />
 			</div>
 		</div>
 	</div>

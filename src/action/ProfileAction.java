@@ -41,15 +41,16 @@ public class ProfileAction extends ActionSupport implements SessionAware{
 	public String updateMember(){
 		
 		String loginId = (String)session.get("loginId");
+		String birth = useryear+"/"+usermonth+"/"+userday;
+		memberVo.setBirth(birth);
+		System.out.println(memberVo.toString());
 		Member m = memberDAO.selectMember(loginId);
 		if(m == null){
 			return INPUT;
-		}else if(!(memberVo.getPassword()).equals(m.getPassword())){
-			return INPUT;
 		}else{
 			//업데이트
-			memberDAO.updateMember(m);
-			System.out.println(m.getName() + "  " + " Update!!");
+			memberDAO.updateMember(memberVo);
+			System.out.println(memberVo.toString() + "  " + " Update!!");
 			return SUCCESS;
 		}
 	}
