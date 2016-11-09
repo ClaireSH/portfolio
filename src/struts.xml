@@ -121,7 +121,7 @@
       </action>
    
 	  <!-- cvWrite.jsp >>>> MyCoverJsonAction (1)All  -->
-      <action name="allDisplay" class="action.MyCoverJsonAction" method="allDispay">
+      <action name="allDisplay" class="action.MyCoverJsonAction" method="allDisplay">
          <result name="success" type="json" />
       </action>
       
