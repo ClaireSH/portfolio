@@ -131,7 +131,7 @@
       </action>
       
       <!-- cvWrite.jsp >>>> MyCoverJsonAction (3)대학생활  -->
-      <action name="displayUniversityLife" class="action.MyCoverJsonAction" method="displayUniversityLif">
+      <action name="displayUniversityLife" class="action.MyCoverJsonAction" method="displayUniversityLife">
          <result name="success" type="json" />
       </action>
       

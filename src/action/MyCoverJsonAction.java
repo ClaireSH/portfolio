@@ -62,7 +62,7 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		
 		
 		for(int i=0;i<qList.size();i++){
-			if(qList.get(i).getQuestionType() == "여가시간"){
+			if(qList.get(i).getQuestionType().equals("여가생활")){
 				Qna qna = new Qna();
 				//질문
 				qna.setQuestionId(qList.get(i).getQuestionId());
@@ -71,6 +71,7 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 				//답변
 				qna.setAnswer(aList.get(i).getAnswer());
 				//삽입
+				System.out.println(qna.toString());
 				qnaList.add(qna);
 			}
 		}
@@ -95,7 +96,7 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		
 		
 		for(int i=0;i<qList.size();i++){
-			if(qList.get(i).getQuestionType() == "대학생활"){
+			if(qList.get(i).getQuestionType().equals("대학생활")){
 				Qna qna = new Qna();
 				//질문
 				qna.setQuestionId(qList.get(i).getQuestionId());
@@ -128,7 +129,7 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		
 		
 		for(int i=0;i<qList.size();i++){
-			if(qList.get(i).getQuestionType() == "일상생활"){
+			if(qList.get(i).getQuestionType().equals("일상생활")){
 				Qna qna = new Qna();
 				//질문
 				qna.setQuestionId(qList.get(i).getQuestionId());
@@ -161,7 +162,7 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		
 		
 		for(int i=0;i<qList.size();i++){
-			if(qList.get(i).getQuestionType() == "개발생활"){
+			if(qList.get(i).getQuestionType().equals("개발생활")){
 				Qna qna = new Qna();
 				//질문
 				qna.setQuestionId(qList.get(i).getQuestionId());
