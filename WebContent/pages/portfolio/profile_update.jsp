@@ -68,10 +68,50 @@
 								name="memberVo.gender" id="man" type="radio" value="0" />남자 <input
 								name="memberVo.gender" id="woman" type="radio" value="1" />여자</li>
 							<!-- ---- -->
-							<li><label>생년월일</label> <select id="year" name="useryear"
-								title="월"></select>년&nbsp;&nbsp; <select id="month"
-								name="usermonth" title="월"></select>월&nbsp;&nbsp; <select
-								id="day" name="userday" title="일"></select>일</li>
+							<li><label>생년월일</label>
+							<select id="years" name="useryear" title="월">
+								<script>
+									  var myDate = new Date();
+									  var year = myDate.getFullYear();
+									  for(var i = 1900; i < year+1; i++){
+										  if(i == "${useryear}"){
+											  document.write('<option selected="selected" value="'+i+'">'+i+'</option>');
+										  }
+										  else{
+											  document.write('<option value="'+i+'">'+i+'</option>');
+										  }
+										  
+									  }
+								</script>
+							</select>년&nbsp;&nbsp;
+							<select id="months" name="usermonth" title="월">
+								<script>
+									  var month = 12; 
+									  for(var i = 1; i < month+1; i++){
+										  if(i == "${usermonth}"){
+											  document.write('<option selected="selected" value="'+i+'">'+i+'</option>');
+										  }
+										  else{
+											  document.write('<option value="'+i+'">'+i+'</option>');
+										  }
+										  
+									  }
+								</script>
+							</select>월&nbsp;&nbsp; 
+							<select id="days" name="userday" title="일">
+								<script>
+									  var day = 31;
+									  for(var i = 1; i < day+1; i++){
+										  if(i == "${userday}"){
+											  document.write('<option selected="selected" value="'+i+'">'+i+'</option>');
+										  }
+										  else{
+											  document.write('<option value="'+i+'">'+i+'</option>');
+										  }
+									  }
+								</script>
+							</select>일
+							</li>
 							<li><label>이메일</label> <input type='text'
 								placeholder='이메일 주소@도메인' id="email" name="memberVo.email"
 								value="${memberVo.email}"></li>

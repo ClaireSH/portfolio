@@ -28,9 +28,9 @@ public class ProfileAction extends ActionSupport implements SessionAware{
 		String loginId = (String)session.get("loginId");
 		memberVo = memberDAO.selectMember(loginId);
 		memberVo.setPassword("");
-		String useryear = (memberVo.getBirth()).substring(0,4);
-		String usermonth = (memberVo.getBirth()).substring(5,7);	
-		String userday = (memberVo.getBirth().substring(8, 10)); 
+		useryear = (memberVo.getBirth()).substring(0,4);
+		usermonth = (memberVo.getBirth()).substring(5,7);	
+		userday = (memberVo.getBirth().substring(8, 10)); 
 		
 		System.out.println(useryear+"/"+usermonth+"/"+userday);
 		System.out.println(memberVo.toString());
@@ -75,4 +75,38 @@ public class ProfileAction extends ActionSupport implements SessionAware{
 		// TODO Auto-generated method stub
 		this.session=session;
 	}
+
+	public Member getMemberVo() {
+		return memberVo;
+	}
+
+	public void setMemberVo(Member memberVo) {
+		this.memberVo = memberVo;
+	}
+
+	public String getUseryear() {
+		return useryear;
+	}
+
+	public void setUseryear(String useryear) {
+		this.useryear = useryear;
+	}
+
+	public String getUsermonth() {
+		return usermonth;
+	}
+
+	public void setUsermonth(String usermonth) {
+		this.usermonth = usermonth;
+	}
+
+	public String getUserday() {
+		return userday;
+	}
+
+	public void setUserday(String userday) {
+		this.userday = userday;
+	}
+	
+	
 }

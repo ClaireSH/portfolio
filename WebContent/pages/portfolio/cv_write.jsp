@@ -16,6 +16,16 @@
 <link rel="stylesheet"
    href="/portfolio/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css">
 <script>
+	/* var acc = document.getElementsByClassName("accordion");
+	var i; */
+	
+	/* for (i = 0; i < acc.length; i++) {
+	    acc[i].onclick = function(){
+	        this.classList.toggle("active");
+	        this.nextElementSibling.classList.toggle("show");
+	  }
+	} */
+
    function submitsheet() {
       var cvtitle = $('#cvtitle').val();
       var content = $('#content').val();
@@ -65,12 +75,41 @@
 
    
     $(document).ready(function() {
+    	var textUrl ='allDisplay';
+    	
+    	 $.ajax({
+             url : textUrl,
+             type : "GET",
+             dataType : "json",
+             success : function(data) {
+           	  var table='';
+                 $(data.qnaList).each(function(index, item){
+                    //table += "<button class='accordion'>"+this.question+"</button>"
+                    //답변
+                   table += "<button class='accordion' type='button'>"+ "Q." + (index+1) + " " + this.question + "</button>"
+                    +"<div class='panel'>"
+                    +"<br>"
+                    +"<p>"+ "A. " + this.answer + "</p>"
+                    +"</div>"
+                 });
+                 $('#table1').html(table);
+                 
+                 var acc = document.getElementsByClassName("accordion");
+                 var i;
+
+                 for (i = 0; i < acc.length; i++) {
+                     acc[i].onclick = function(){
+                         this.classList.toggle("active");
+                         this.nextElementSibling.classList.toggle("show");
+   	           	  	}
+             	}
+             }
+        });
+    	
         $('#sorting').children().on('click', function() {
             var value = $(this).val();
-            alert(value);
-            var textUrl ='';
-            switch(value){
             
+            switch(value){
             
             case "all":
                textUrl='allDisplay';
@@ -88,29 +127,32 @@
                textUrl='displayDevelop';
             break;
             }
-            alert(textUrl);
             $.ajax({
               url : textUrl,
               type : "GET",
               dataType : "json",
               success : function(data) {
-                 var table = "<table data-role='table' id='table1' data-mode=''>"
-                       + "<tr>" + "<th>#</th>" + "<th>질문</th>" + "</tr>";
+            	  var table='';
+                  $(data.qnaList).each(function(index, item){
+                     //table += "<button class='accordion'>"+this.question+"</button>"
+                     //답변
+                    table += "<button class='accordion' type='button'>"+ "Q." + (index+1) + " " + this.question + "</button>"
+                     +"<div class='panel'>"
+                     +"<br>"
+                     +"<p>"+ "A. " + this.answer + "</p>"
+                     +"</div>"
+                  });
+                  $('#table1').html(table);
+                  
+                  var acc = document.getElementsByClassName("accordion");
+                  var i;
 
-                 $(data).each(
-                       function(index, item) {
-
-                          table += "<tr><td>" + index + 1 + "</td>" + "<td>"
-                                + this.question + "</td></tr>";
-
-                       });
-
-                 table += "</table>";
-
-                 $('#table1').html(table);
-              },
-              error : function(error) {
-                 alert(error.responseText);
+                  for (i = 0; i < acc.length; i++) {
+                      acc[i].onclick = function(){
+                          this.classList.toggle("active");
+                          this.nextElementSibling.classList.toggle("show");
+    	           	  }
+             	  }
               }
            });
             
@@ -155,7 +197,6 @@
             <input type="hidden" name="files" id="file1"> <input
                type="hidden" name="files" id="file2"> <input type="hidden"
                name="files" id="file3">
-
 
             <div class="row">
                <!-- 섹션 -->
@@ -210,7 +251,7 @@
                               </s:iterator>
                            </tbody>
                         </table> --%>
-                              <span id="table1"></span>
+                             <span id="table1"></span>
 
                         <!--버튼 -->
 
@@ -305,7 +346,7 @@
       $('.jqte-test').jqte();
    </script>
 
-   <style type="text/css">
+ <style type="text/css">
 iframe {
    border: none;
 }
@@ -318,7 +359,7 @@ iframe[seamless] {
    display: block;
 }
 </style>
-   <style>
+<style>
 .wrap span {
    position: absolute;
    bottom: 5px;
@@ -332,5 +373,34 @@ iframe[seamless] {
    font-size: 1em;
 }
 </style>
-   < /body>
+<style>
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+#table1 div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+#table1 div.panel.show {
+    display: block;
+}
+</style>
+
+   </body>
 </html>
