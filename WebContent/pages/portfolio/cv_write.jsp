@@ -11,8 +11,33 @@
 <script src="/portfolio/jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js" charset="utf-8"></script>
 <!--편집-->
 <link rel="stylesheet" href="/portfolio/include/css/resume_write.css">
+<script src="/portfolio/js/jquery-google-sheet-to-json.min.js"></script>
 <link rel="stylesheet" href="/portfolio/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css">
 <script>
+	$(document).ready(function() {
+
+		// use your spreadsheet id here
+		var SPREADSHEET_ID = '1KVnrF3AkZ1Zw6mldTRHLg9WjyqP9vZyr_q9laV-2Lek';
+		$.googleSheetToJSON(SPREADSHEET_ID).done(function(rows) {
+			// each row is a row of data from the spreadsheet
+			console.log(rows[0].timestamp);
+
+			for (var i = 0; i < rows.length; i++) {
+
+				var date = rows[i].timestamp;
+				var tag = rows[i].태그;
+				var title = rows[i].제목;
+				var contents = rows[i].내용;
+
+				$('body').append('<h2>'+title+'</h2><h3>'+date+'</h3><br><p>'+contents+'</p>')
+				
+				}
+
+		}).fail(function(err) {
+			console.log('error!', err);
+		});
+	});
+
 	function submitsheet() {
 		var cvtitle = $('#cvtitle').val();
 		var content = $('#content2').val();
@@ -34,13 +59,21 @@
 		console.log('전송완료');
 
 	}
-	
-	
-	
-	
-	
 </script>
+<style>
+.wrap span {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
 
+#counter {
+	background: rgba(255, 0, 0, 0.5);
+	border-radius: 0.5em;
+	padding: 5px 10px 5px 10px;
+	font-size: 1em;
+}
+</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -118,7 +151,7 @@
 										</s:iterator>
 									</tbody>
 								</table>
-														
+
 								<!--버튼 -->
 
 							</div>
@@ -145,7 +178,7 @@
 									<textarea id="content2" name="textarea" class="jqte-test form-control"></textarea>
 								</div>
 								</p>
-								<input id="cate" type="text" value="취미생활,여가생활" data-role="tagsinput" style="background-color:gray;">
+								<input id="cate" type="text" value="취미생활,여가생활" data-role="tagsinput">
 								<div style="text-align: center; margin: 10px 0;">
 									<button type="button" class="btn  btn-warning" onclick="javascript:submitsheet();">시트저장</button>
 									<a class="btn  btn-success" href="#writepage">새글쓰기</a>
@@ -161,13 +194,13 @@
 					<input type="hidden" class="license" name="resumeVO.license_seq" value="15733"> <input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input type="hidden" name="resumeVO.resume_seq" value="713"> <input type="hidden" id="sex" name="memberVo.sex" value="0">
 			</form>
 
-		
-				<!-- 섹션 -->
-				<div class="col-lg-12">
+
+			<!-- 섹션 -->
+			<div class="col-lg-12">
 
 				<!-- 	<iframe src="/portfolio/plugin/horizontal-timeline/timeLine.html" width="100%" height="800px"></iframe> -->
-				</div>
-		
+			</div>
+
 		</div>
 
 		<!-- end .container -->
@@ -193,32 +226,6 @@
 		$('.jqte-test').jqte();
 	</script>
 
-	<style type="text/css">
-iframe {
-	border: none;
-}
 
-iframe:focus {
-	outline: none;
-}
-
-iframe[seamless] {
-	display: block;
-}
-</style>
-	<style>
-.wrap span {
-	position: absolute;
-	bottom: 5px;
-	right: 5px;
-}
-
-#counter {
-	background: rgba(255, 0, 0, 0.5);
-	border-radius: 0.5em;
-	padding: 5px 10px 5px 10px;
-	font-size: 1em;
-}
-</style>
-	< /body>
+</body>
 </html>
