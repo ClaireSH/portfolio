@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="/portfolio/plugin/tagInput/app.css">
 
 <script>
+/* 카테고리 선택 ajax */
+/*************************************************************************************************************** 
 	$.ajax({
 		url : 'allDisplay',
 		type : "GET",
@@ -38,6 +40,8 @@
 			alert(error.responseText);
 		}
 	});
+ ***************************************************************************************************************/	
+/* 모두 로딩 후 불러옴 */
 	$(document).ready(function() {
 
 		// use your spreadsheet id here
@@ -68,12 +72,14 @@
 			type : "GET",
 			dataType : "json",
 			success : function(data) {
-				var table = '';
+				var table = "<table data-role='table' id='table1' data-mode=''>" + "<tr>" + "   <th>#</th>" + "   <th>질문</th>" + "</tr>";
+				//var table = '';
 				$(data.qnaList).each(function(index, item) {
 					//table += "<button class='accordion'>"+this.question+"</button>"
 					//답변
 					table += "<button class='accordion' type='button'>" + "<i class='fa fa-question-circle'></i> [" + this.questionType + "] " + this.question + "</button>" + "<div class='panel'>" + "<br>" + "<p>" + "<i class='fa fa-check-circle fa-fw'></i> " + this.answer + "</p>" + "</div>"
 				});
+				table += "</table>";
 				$('#table1').html(table);
 
 				var acc = document.getElementsByClassName("accordion");
@@ -155,7 +161,7 @@
 		$('#cvtitle').val('');
 		$('#content2').val("");//에디터 내용은 안지워지는 문제
 		$("#cate").val('');
-		console.log('전송완료');
+		alert('저장완료');
 
 	}
 </script>

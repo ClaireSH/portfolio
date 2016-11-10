@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kr">
-
+<script src="/portfolio/vendor/jquery/jquery.min.js"></script>
+<script src="/portfolio/dist/js/sb-admin-2.js"></script>
 <head>
 
 <meta charset="utf-8">
@@ -12,7 +13,7 @@
 <meta name="author" content="">
 <script type="text/javascript" src="/portfolio/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/portfolio/js/essential.js"></script>
-
+<script src="/portfolio/js/jquery-google-sheet-to-json.min.js"></script>
 <title>Cover ME</title>
 
 </head>
@@ -54,6 +55,7 @@
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<ul id="trrrrr" class="timeline">
+							
 								<li>
 									<div class="timeline-badge">
 										<i class="fa fa-check"></i>
@@ -117,6 +119,9 @@
 
 
 							</ul>
+<script>
+
+</script>
 						</div>
 						<!-- /.panel-body -->
 					</div>
@@ -259,9 +264,28 @@
 						<!-- /.panel-heading -->
 						
 						<script>
-						$(document).ready(
-								function() {
-					
+						$(document).ready( function() {
+							// use your spreadsheet id here
+							var SPREADSHEET_ID = '1KVnrF3AkZ1Zw6mldTRHLg9WjyqP9vZyr_q9laV-2Lek';
+							$.googleSheetToJSON(SPREADSHEET_ID).done(function(rows) {
+								// each row is a row of data from the spreadsheet
+								console.log(rows[0].timestamp);
+
+								for (var i = 0; i < 5; i++) {
+
+									var date = rows[i].timestamp;
+									var tag = rows[i].태그;
+									var title = rows[i].제목;
+									var contents = rows[i].내용;
+
+									$('#cvalllist').append('<span style="color:gray;font-weight:bold;"> [' + date.substring(0,13) + '] </span> <div style="font-size:24px;font-weight:bold;"><i class="fa fa-file-text" ></i>&nbsp;&nbsp;&nbsp;' + title + '</div><hr>')
+
+								}
+
+							}).fail(function(err) {
+								console.log('error!', err);
+							});
+							
 									//초기 질문 목록 받아오기
 										$.ajax({
 											url : 'initQna',
@@ -321,69 +345,12 @@
 													}
 												}
 												
-												/* if(qList_len == aList_len){
-													//질문 수와 답변 수가 같으면 아무것도 안나옴(완료)
-												}else{
-													//질문 수(6)와 답변 수(5)가 다르면, 다음 질문을 보여준다.
-													$('.chat_home').append(
-															'<li class="left clearfix"><span class="chat-img pull-left">'+
-															'<img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />'+
-															'</span>'+
-															'<div class="chat-body clearfix">'+
-															'<div class="header">'+
-															'<strong class="primary-font">'+ data.qList[aList_len].questionType + '</strong>'+
-															'<small class="pull-right text-muted">'+
-															'<i class="fa fa-clock-o fa-fw"></i>'+ data.qList[aList_len].questionId + '/' + qList_len +'번째 질문'+
-															'</small>'+
-															'</div>'+
-															'<p>'+ data.qList[aList_len].question +'</p>'+
-															'<hr></hr>'+
-															'</div></li>').children("li:last").fadeIn(500);
-												} */
+											
 							
 											}
 										});//ajax
 
 									
-
-									//답변전송
-									/* $('#btn-chat').click(
-											
-											function() {
-												console.log('btn-chat');
-												$.ajax({
-													url : 'insertAnswer',
-													type : 'post',
-													data : {
-														"answerVo.answer" : $('#btn-input').val()
-													},
-
-													success : function(data) {
-														
-														var qList_len = data.qList.length;
-														
-														$('#btn-input').val('');
-														$('.chat_home').append(
-																'<li class="right clearfix">'+
-																'<span class="chat-img pull-right"> </span>'+
-																'<div class="clearfix">'+
-																'<div class="header">'+
-																'<small class=" text-muted"> <i class="fa fa-clock-o fa-fw"></i> 20분 전 </small>'+
-																'<strong class="pull-right primary-font">'+ data.answerVo.questionId +'번째 답변</strong>'+
-																'</div> <p>' + data.answerVo.answer + '</p> </div></li>').children("li:last").fadeIn(500);
-
-														$('.chat_home').append(
-																'<li class="left clearfix">'+
-																'<span class="chat-img pull-left"> <img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" /> </span>'+
-																'<div class="chat-body clearfix">'+
-																'<div class="header">'+
-																'<strong class="primary-font">[' + data.questionVo.questionType + ']</strong>'+
-																'<small class="pull-right text-muted"> <i class="fa fa-clock-o fa-fw"></i> ' + data.questionVo.questionId + '/' + qList_len +'번째 질문 </small>'+
-																'</div> <p>' + data.questionVo.question + '</p> </div></li>').children("li:last").fadeIn(500);
-													}
-												});//ajax
-
-											});//click */
 
 								});//ready								
 					</script>

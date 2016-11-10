@@ -44,7 +44,7 @@
 		<mapper resource="mapper\ProjectMapper.xml"/>
 	    <mapper resource="mapper\MyCoverMapper.xml"/>
 	    <mapper resource="mapper\MyCoverWithTagMapper.xml"/>
-		<mapper resource="mapper\TagMapper.xml"/>
+
 		<mapper resource="mapper\QuestionMapper.xml"/>
 		<mapper resource="mapper\AnswerMapper.xml"/>
 	</mappers>

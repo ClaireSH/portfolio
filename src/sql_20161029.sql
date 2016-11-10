@@ -146,7 +146,7 @@ insert into question values('00010', '대학생활', '동아리나 클럽에 가
 insert into question values('00011', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
 insert into question values('00012', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
 
-
+delete from QUESTION
 
 insert into answer values('00000', 'admin', '응!');
 
