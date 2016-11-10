@@ -44,6 +44,8 @@ button.accordion.active, button.accordion:hover {
 }
 </style>
 <script>
+ 
+ 
 	$(document).ready(function() {
 
 		// use your spreadsheet id here
@@ -52,6 +54,15 @@ button.accordion.active, button.accordion:hover {
 			// each row is a row of data from the spreadsheet
 
 			var table = '';
+			
+			var list1 = Array(); 
+			var list2 = Array(); 
+			var list3 = Array(); 
+			var list4 = Array(); 
+			var list5 = Array(); 
+			var list6 = Array(); 
+			var list7 = Array(); 
+			
 			for (var i = 0; i < rows.length; i++) {
 
 				var total = rows[i].전체;
@@ -59,7 +70,45 @@ button.accordion.active, button.accordion:hover {
 				var type = rows[i].유형;
 				var question = rows[i].질문;
 
-				table += "<tr><td>[ " + type + " ]</td>" + "<td>" + question + "</td></tr>";
+				switch(type){
+				case '자기분석':
+					list1.push(rows[i]);
+					break;
+				case '대학생활/사회생활':
+					list2.push(rows[i]);
+					break;
+				case '일본시리즈':
+					list3.push(rows[i]);
+					break;
+				case '그외':
+					list4.push(rows[i]);
+					break;
+				case ' IT직무경험과 프로젝트':
+					list5.push(rows[i]);
+					break;
+				case '회사에 대한 구체적 내용':
+					list6.push(rows[i]);
+					break;
+				case '기술관련질문 <초급>':
+					list7.push(rows[i]);
+					break;
+				case '기술관련질문 <중급>':
+					list8.push(rows[i]);
+					break;
+				case '기술관련질문 <고급>':
+					list9.push(rows[i]);
+					break;
+				}	
+				
+				console.log(list1);
+				console.log(list2);
+				console.log(list3);
+				console.log(list4);
+				console.log(list5);
+				console.log(list6);
+				console.log(list7);
+				
+				table += "<tr><td style=color:gray;>[ " + type + " ]</td>" + "<td>" + question + "</td></tr>";
 
 			}
 			table += "</table>";
