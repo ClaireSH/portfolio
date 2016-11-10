@@ -127,11 +127,15 @@
 						<li><a href="goUpdateResumeForm.action"><i class="fa fa-th-list fa-fw"></i> 이력서커버</a></li>
 						<li><a href="cvWrite.action"><i class="fa fa-columns   fa-fw"></i> 자기소개커버</a></li>
 					</ul> <!-- /.nav-second-level --></li>
+				<li><a href="training_interview.action"><i class="fa fa-user fa-fw"></i> 트레이닝</a></li>
+
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 분석<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="analy_str.action"><i class="fa  fa-list-ol fa-fw"></i> 순위분석</a></li>
 						<li><a href="analy_num.action"><i class="fa fa-bar-chart-o fa-fw"></i> 추이분석</a></li>
 					</ul> <!-- /.nav-second-level --></li>
+				
+				
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>개발자도구(개발자용)<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="panels.action">Panels and Wells</a></li>
@@ -190,9 +194,10 @@
 					
 					<script>
 					
-						$(document).ready(
+						$(document).ready(	
+
 								function() {
-	
+							
 									//초기 질문 목록 받아오기
 										$.ajax({
 											url : 'initQna',

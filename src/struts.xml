@@ -70,7 +70,7 @@
 	  
       <!-- 3-2 (2)개인정보 관리 업데이트 -->
       <action name="updateMember" class="action.ProfileAction" method="updateMember">
-         <result name="success" type="chain">goUpdateMemberForm</result>
+         <result name="success" type="redirect">goUpdateMemberForm</result>
          <result name="input" type="redirect">goUpdateMemberForm</result>
       </action>
 
@@ -119,7 +119,38 @@
  	  <action name="listQNA" class="action.QnaAction" method="listQNA">
          <result name="success">/pages/portfolio/cv_write.jsp</result>
       </action>
-
+   
+	  <!-- cvWrite.jsp >>>> MyCoverJsonAction (1)All  -->
+      <action name="allDisplay" class="action.MyCoverJsonAction" method="allDisplay">
+         <result name="success" type="json" />
+      </action>
+      
+      <!-- cvWrite.jsp >>>> MyCoverJsonAction (2)여가생활  -->
+      <action name="displayFreeTime" class="action.MyCoverJsonAction" method="displayFreeTime">
+         <result name="success" type="json" />
+      </action>
+      
+      <!-- cvWrite.jsp >>>> MyCoverJsonAction (3)대학생활  -->
+      <action name="displayUniversityLife" class="action.MyCoverJsonAction" method="displayUniversityLife">
+         <result name="success" type="json" />
+      </action>
+      
+      <!-- cvWrite.jsp >>>> MyCoverJsonAction (4)일상생활  -->
+      <action name="displayEveryDayLife" class="action.MyCoverJsonAction" method="displayEveryDayLife">
+         <result name="success" type="json" />
+      </action>
+      
+      <!-- cvWrite.jsp >>>> MyCoverJsonAction (5)개발생활  -->
+      <action name="displayDevelop" class="action.MyCoverJsonAction" method="displayDevelop">
+         <result name="success" type="json" />
+      </action>
+      
+      <!-- /pages/training/interview_write.jsp >>>> MyCoverJsonAction (5)개발생활  -->
+      <action name="training_interview">
+      <result>/pages/training/interview_write.jsp</result>
+      </action>
+      
+  
 	  
 
       <!-- example 페이지들 액션 -->

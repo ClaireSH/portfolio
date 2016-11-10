@@ -98,7 +98,7 @@
 								<img id="previewImg" name="uploadFileName" style="width: 100px;"
 									src="img/${resumeVo.memberId}/${resumeVo.savedImgFile}">  
 									
-									<input type="file" value="업로드" id="upload" name="upload" onchange="previewImage(this,&#39;previewImg&#39;)" style="width: 100%;">
+									<input type="file" value="업로드" id="upload" name="upload" onchange="previewImage(this,'previewImg')" style="width: 100%;">
 								</td>
 
 
