@@ -16,12 +16,13 @@ public class MyCoverWithTagDAO {
 		
 	}
 	
-	public ArrayList<MyCoverWithTag> selectMyCoverWithTagListByResumeId(String resumeId){
+	
+	public ArrayList<MyCoverWithTag> selectMyCoverListByResumeId(String resumeId){
 		SqlSession ss=factory.openSession();
 		
 		List<MyCoverWithTag> coverList = null;
 		try {
-			coverList = ss.selectList("myCoverWithTag.selectMyCoverWithTagListByResumeId", resumeId);
+			coverList = ss.selectList("myCoverWithTag.selectMyCoverListByResumeId", resumeId);
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		}  finally {
@@ -29,6 +30,21 @@ public class MyCoverWithTagDAO {
 		}
 		
 		return (ArrayList<MyCoverWithTag>) coverList;
+	}
+	
+	public ArrayList<Tag> selectTagList(String myCoverId){
+		SqlSession ss=factory.openSession();
+		
+		List<Tag> tagList = null;
+		try {
+			tagList = ss.selectList("myCoverWithTag.selectTagList", myCoverId);
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		}  finally {
+			if (ss != null) ss.close();
+		}
+		
+		return (ArrayList<Tag>) tagList;
 	}
 	
 	public void insertMyCover(MyCoverWithTag cover){

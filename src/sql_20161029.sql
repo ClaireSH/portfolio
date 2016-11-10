@@ -185,7 +185,7 @@ insert into tag values('취미', 'admin0000');
 insert into tag values('활동', 'admin0000');
 insert into tag values('취직', 'admin0000');
 
- select a.myCoverId, a.resumeId, a.versionName, a.content, b.tagName 
+ select b.myCoverId, b.tagName 
  		 from MyCover a, Tag b
  		 where a.myCoverId = b.myCoverId and a.resumeId = 'admin'	
 select *
@@ -196,6 +196,8 @@ select *
 select *
 from question
 order by questionId asc;
+
+select * from member
 
 select * from answer
 delete from answer where memberId = 'tooona'

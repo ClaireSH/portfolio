@@ -10,33 +10,29 @@
 	 -->
 	 
 	<resultMap type="Tag" id="TagResult">
- 		<id property = "tagName" column = "tagName"/>
+ 		<result property = "tagName" column = "tagName"/>
 		<result property = "myCoverId" column = "myCoverId"/>
  	</resultMap>
-	
-	<resultMap type="MyCover" id="MyCoverResult">
+	 
+	<resultMap type="MyCoverWithTag" id="MyCoverWithTagResult">
 		<id property="myCoverId" column="myCoverId"/>
 		<result property = "resumeId" column ="resumeId"/>
 		<result property = "versionName" column = "versionName" />
 		<result property = "content" column = "content"/>
- 	</resultMap>
-	 
-	<resultMap type="MyCoverWithTag" id="MyCoverWithTagResult">
-		<result property="myCoverId" column="myCoverId"/>
-		<result property = "resumeId" column ="resumeId"/>
-		<result property = "versionName" column = "versionName" />
-		<result property = "content" column = "content"/>
-		<collection property="tag" resultMap="tagResult"/>	<!--ArrayList  -->
  	</resultMap>
  	
  	
  	
 
  	
- 	<select id="selectMyCoverWithTagListByResumeId" parameterType="String" resultMap="MyCoverWithTagResult">
- 		 select a.myCoverId, a.resumeId, a.versionName, a.content, b.tagName 
- 		 from MyCover a, Tag b
- 		 where a.myCoverId = b.myCoverId and a.resumeId = #{resumeId}	
+ 	<select id="selectMyCoverListByResumeId" parameterType="String" resultMap="MyCoverWithTagResult">
+ 		 select myCoverId, resumeId, versionName, content 
+ 		 from MyCover
+ 		 where resumeId = #{resumeId}	
+ 	</select>
+ 	
+ 	<select id="selectTagList" parameterType="String" resultMap="TagResult">
+ 		SELECT * FROM Tag WHERE myCoverId = #{myCoverId}
  	</select>
  	
  	<insert id="insertMyCover" parameterType="vo.MyCoverWithTag">
@@ -55,7 +51,7 @@
 
  	<update id="updateMyCover" parameterType="vo.MyCoverWithTag">
  		update MyCover
- 		set versionName = #{versionName}
+ 		set versionName = #{versionName},
  			content = #{content}
  		where myCoverId = #{myCoverId}
  	</update>

@@ -37,7 +37,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	ResumeDAO resumeDAO = new ResumeDAO();
 	
 	public String login(){
-		System.out.println("로그인을하자미친놈아");
+
 		Member m = memberDAO.selectMember(memberVo.getMemberId());
 		if(m == null){
 			return INPUT;
@@ -50,8 +50,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			
 			//로그인 하면 메인으로 가는데 거기서 필요한 데이터
 			//나의인생 , 알람소식 
-			
-			
+
 			return LOGIN;
 		}
 	}

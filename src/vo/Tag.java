@@ -16,6 +16,10 @@ public class Tag {
 	public void setMyCoverId(String myCoverId) {
 		this.myCoverId = myCoverId;
 	}
+	@Override
+	public String toString() {
+		return "Tag [tagName=" + tagName + ", myCoverId=" + myCoverId + "]";
+	}
 	
 	
 	

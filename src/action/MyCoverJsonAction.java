@@ -13,6 +13,7 @@ import vo.Answer;
 import vo.MyCoverWithTag;
 import vo.Qna;
 import vo.Question;
+import vo.Tag;
 
 public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 	ArrayList<Qna> qnaList;
@@ -24,7 +25,6 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 	MyCoverWithTagDAO coverDao = new MyCoverWithTagDAO();
 	
 	public String initMyCover(){
-		System.out.println("allDisplay");
 		
 		//Question 파트
 		qnaList = new ArrayList<>();
@@ -48,10 +48,78 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		}
 		
 		//Cover 파트//
-		coverList = coverDao.selectMyCoverWithTagListByResumeId(loginId);
+		coverList = coverDao.selectMyCoverListByResumeId(loginId);
+		ArrayList<Tag> tagList = null; 
+		for(MyCoverWithTag cover : coverList){
+			tagList = coverDao.selectTagList(cover.getMyCoverId());
+			cover.setTagList(tagList);	
+		}
 		
-		for(MyCoverWithTag c : coverList){
-			System.out.println(c.toString());
+		for(MyCoverWithTag cover : coverList){
+			
+			System.out.println(cover.toString());
+			for(Tag tag : tagList){
+				System.out.println(tag.toString());
+			}
+		}
+		
+		return SUCCESS;
+	}
+	
+	public String updateMyCover(){
+
+		//Question 파트
+		qnaList = new ArrayList<>();
+		ArrayList<Question> qList = null;
+		ArrayList<Answer> aList = null;
+		
+		String loginId = (String) session.get("loginId");
+		qList = questionDao.selectFinishedQuestionListById(loginId);
+		aList = questionDao.selectAnswerList(loginId);
+		
+		for(int i=0;i<qList.size();i++){
+			Qna qna = new Qna();
+			//질문
+			qna.setQuestionId(qList.get(i).getQuestionId());
+			qna.setQuestionType(qList.get(i).getQuestionType());
+			qna.setQuestion(qList.get(i).getQuestion());
+			//답변
+			qna.setAnswer(aList.get(i).getAnswer());
+			//삽입
+			qnaList.add(qna);
+		}
+		
+		//Cover
+		//String loginId = (String) session.get("loginId");
+		coverList = coverDao.selectMyCoverListByResumeId(loginId);
+		ArrayList<Tag> tagList = null; 
+		for(MyCoverWithTag cover : coverList){
+			tagList = coverDao.selectTagList(cover.getMyCoverId());
+			cover.setTagList(tagList);	
+		}
+		
+		for(MyCoverWithTag cover:coverList){
+			coverDao.updateMyCover(cover);
+			coverDao.deleteTagByMyCoverId(cover.getMyCoverId());
+			for(Tag tag : cover.getTagList()){
+				coverDao.insertTag(tag);
+			}
+		}
+		
+		loginId = (String) session.get("loginId");
+		coverList = coverDao.selectMyCoverListByResumeId(loginId);
+		tagList = null; 
+		for(MyCoverWithTag cover : coverList){
+			tagList = coverDao.selectTagList(cover.getMyCoverId());
+			cover.setTagList(tagList);	
+		}
+		
+		for(MyCoverWithTag cover : coverList){
+			
+			System.out.println(cover.toString());
+			for(Tag tag : tagList){
+				System.out.println(tag.toString());
+			}
 		}
 		
 		return SUCCESS;
