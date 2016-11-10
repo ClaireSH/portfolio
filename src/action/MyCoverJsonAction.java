@@ -67,38 +67,18 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 	}
 	
 	public String updateMyCover(){
-
-		//Question 파트
-		qnaList = new ArrayList<>();
-		ArrayList<Question> qList = null;
-		ArrayList<Answer> aList = null;
 		
 		String loginId = (String) session.get("loginId");
-		qList = questionDao.selectFinishedQuestionListById(loginId);
-		aList = questionDao.selectAnswerList(loginId);
-		
-		for(int i=0;i<qList.size();i++){
-			Qna qna = new Qna();
-			//질문
-			qna.setQuestionId(qList.get(i).getQuestionId());
-			qna.setQuestionType(qList.get(i).getQuestionType());
-			qna.setQuestion(qList.get(i).getQuestion());
-			//답변
-			qna.setAnswer(aList.get(i).getAnswer());
-			//삽입
-			qnaList.add(qna);
-		}
-		
-		//Cover
-		//String loginId = (String) session.get("loginId");
 		coverList = coverDao.selectMyCoverListByResumeId(loginId);
 		ArrayList<Tag> tagList = null; 
 		for(MyCoverWithTag cover : coverList){
+			//"DB에 저장된 tagList"값을 "cover 객체 안에 존재하는 ArrayList<Tag> tagList"에 저장
 			tagList = coverDao.selectTagList(cover.getMyCoverId());
 			cover.setTagList(tagList);	
 		}
-		
+
 		for(MyCoverWithTag cover:coverList){
+			//Cover데이터 갱신
 			coverDao.updateMyCover(cover);
 			coverDao.deleteTagByMyCoverId(cover.getMyCoverId());
 			for(Tag tag : cover.getTagList()){
@@ -106,7 +86,7 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 			}
 		}
 		
-		loginId = (String) session.get("loginId");
+		//갱신된 데이터를 다시 coverList에 저장
 		coverList = coverDao.selectMyCoverListByResumeId(loginId);
 		tagList = null; 
 		for(MyCoverWithTag cover : coverList){

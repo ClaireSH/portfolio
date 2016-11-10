@@ -37,7 +37,7 @@
  	
  	<insert id="insertMyCover" parameterType="vo.MyCoverWithTag">
  		insert into MyCover(myCoverId, resumeId, versionName, content) 
- 		values(#{myCoverId}, #{resumeId}, #{versionName}, #{content})
+ 		values(#{myCoverId}, #{resumeId}, #{versionName, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR})
  	</insert>
  	
  	<insert id="insertTag" parameterType="vo.Tag">
@@ -52,7 +52,7 @@
  	<update id="updateMyCover" parameterType="vo.MyCoverWithTag">
  		update MyCover
  		set versionName = #{versionName},
- 			content = #{content}
+ 			content = #{content, jdbcType=VARCHAR}
  		where myCoverId = #{myCoverId}
  	</update>
  	

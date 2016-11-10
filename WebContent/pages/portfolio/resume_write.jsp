@@ -50,7 +50,12 @@
 	  $(document).ready(function () {
       $('#tab01').removeClass();
       $('#tab02').addClass('active');
-
+		
+      var savedImgFile = document.getElementById("savedImgFile").value;
+      if(savedImgFile == ''){
+    	  $('#previewImg').attr('src', 'img/non-picture.png');
+      }
+      
       var toggle = false;
       $('#btn_toggle').on('click',function(){
     	  if(toggle){
@@ -97,7 +102,7 @@
 								<td class="text-center" rowspan="3" style="width: 20%;">
 								<img id="previewImg" name="uploadFileName" style="width: 100px;"
 									src="img/${resumeVo.memberId}/${resumeVo.savedImgFile}">  
-									
+									<input type="hidden" id="savedImgFile" value="${resumeVo.savedImgFile}"/>
 									<input type="file" value="업로드" id="upload" name="upload" onchange="previewImage(this,'previewImg')" style="width: 100%;">
 								</td>
 

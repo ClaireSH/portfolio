@@ -61,7 +61,7 @@
 			console.log('error!', err);
 		});
 
-		var textUrl = 'allDisplay';
+		var textUrl = 'initMyCover';
 
 		$.ajax({
 			url : textUrl,
