@@ -15,77 +15,108 @@
 <link rel="stylesheet" href="/portfolio/jQuery-TE_v.1.4.0/jquery-te-1.4.0.css">
 <link rel="stylesheet" href="/portfolio/plugin/tagInput/bootstrap-tagsinput.css">
 <link rel="stylesheet" href="/portfolio/plugin/tagInput/app.css">
+<style type="text/css">
+button.accordion {
+	background-color: #eee;
+	color: #444;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
+	transition: 0.4s;
+}
 
+button.accordion.active, button.accordion:hover {
+	background-color: #ddd;
+}
+
+#table1 div.panel {
+	padding: 0 18px;
+	display: none;
+	background-color: white;
+}
+
+#table1 div.panel.show {
+	display: block;
+}
+</style>
 <script>
-	$.ajax({
-		url : 'allDisplay',
-		type : "GET",
-		dataType : "json",
-		success : function(data) {
-			var table = "<table data-role='table' id='table1' data-mode=''>" + "<tr>" + "   <th>#</th>" + "   <th>질문</th>" + "</tr>";
-
-			$(data).each(function(index, item) {
-
-				table += "<tr><td>" + index + 1 + "</td>" + "<td>" + this.question + "</td></tr>";
-
-			});
-
-			table += "</table>";
-
-			$('#table1').html(table);
-		},
-		error : function(error) {
-			alert(error.responseText);
-		}
-	});
+ 
+ 
 	$(document).ready(function() {
 
 		// use your spreadsheet id here
-		var SPREADSHEET_ID = '1KVnrF3AkZ1Zw6mldTRHLg9WjyqP9vZyr_q9laV-2Lek';
+		var SPREADSHEET_ID = '1RjlTIiqUqBvGv9gDNgAwwy6y53r3vQSjgMdCTgdmWgY';
 		$.googleSheetToJSON(SPREADSHEET_ID).done(function(rows) {
 			// each row is a row of data from the spreadsheet
-			console.log(rows[0].timestamp);
 
-			for (var i = 0; i < 5; i++) {
+			var table = '';
+			
+			var list1 = Array(); 
+			var list2 = Array(); 
+			var list3 = Array(); 
+			var list4 = Array(); 
+			var list5 = Array(); 
+			var list6 = Array(); 
+			var list7 = Array(); 
+			
+			for (var i = 0; i < rows.length; i++) {
 
-				var date = rows[i].timestamp;
-				var tag = rows[i].태그;
-				var title = rows[i].제목;
-				var contents = rows[i].내용;
+				var total = rows[i].전체;
+				var num = rows[i].번호;
+				var type = rows[i].유형;
+				var question = rows[i].질문;
 
-				$('#cvalllist').append('<span style="color:gray;font-weight:bold;"> [' + date.substring(0,13) + '] </span> <div style="font-size:24px;font-weight:bold;"><i class="fa fa-file-text" ></i>&nbsp;&nbsp;&nbsp;' + title + '</div><hr>')
+				switch(type){
+				case '자기분석':
+					list1.push(rows[i]);
+					break;
+				case '대학생활/사회생활':
+					list2.push(rows[i]);
+					break;
+				case '일본시리즈':
+					list3.push(rows[i]);
+					break;
+				case '그외':
+					list4.push(rows[i]);
+					break;
+				case ' IT직무경험과 프로젝트':
+					list5.push(rows[i]);
+					break;
+				case '회사에 대한 구체적 내용':
+					list6.push(rows[i]);
+					break;
+				case '기술관련질문 <초급>':
+					list7.push(rows[i]);
+					break;
+				case '기술관련질문 <중급>':
+					list8.push(rows[i]);
+					break;
+				case '기술관련질문 <고급>':
+					list9.push(rows[i]);
+					break;
+				}	
+				
+				console.log(list1);
+				console.log(list2);
+				console.log(list3);
+				console.log(list4);
+				console.log(list5);
+				console.log(list6);
+				console.log(list7);
+				
+				table += "<tr><td style=color:gray;>[ " + type + " ]</td>" + "<td>" + question + "</td></tr>";
 
 			}
+			table += "</table>";
+
+			$('#table1').html(table);
 
 		}).fail(function(err) {
 			console.log('error!', err);
-		});
-
-		var textUrl = 'allDisplay';
-
-		$.ajax({
-			url : textUrl,
-			type : "GET",
-			dataType : "json",
-			success : function(data) {
-				var table = '';
-				$(data.qnaList).each(function(index, item) {
-					//table += "<button class='accordion'>"+this.question+"</button>"
-					//답변
-					table += "<button class='accordion' type='button'>" + "<i class='fa fa-question-circle'></i> [" + this.questionType + "] " + this.question + "</button>" + "<div class='panel'>" + "<br>" + "<p>" + "<i class='fa fa-check-circle fa-fw'></i> " + this.answer + "</p>" + "</div>"
-				});
-				$('#table1').html(table);
-
-				var acc = document.getElementsByClassName("accordion");
-				var i;
-
-				for (i = 0; i < acc.length; i++) {
-					acc[i].onclick = function() {
-						this.classList.toggle("active");
-						this.nextElementSibling.classList.toggle("show");
-					}
-				}
-			}
 		});
 
 		$('#sorting').children().on('click', function() {
@@ -209,7 +240,7 @@ button.accordion.active, button.accordion:hover {
 
 			<div class="row">
 				<div class="page-header" style="border-left: 5px solid #337ab7;">
-					<span style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">이력서 커버</span>
+					<span style="font-size: 25px; font-weight: bold; font-family: inherit; margin-left: 1%;">면접질문대비</span>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -222,9 +253,9 @@ button.accordion.active, button.accordion:hover {
 					<!-- 섹션 -->
 					<div class="col-lg-5">
 
-						<div class="panel panel-danger">
+						<div class="panel panel-green">
 							<div class="panel-heading">
-								<i class="fa fa-user fa-fw"></i> My커버
+								<i class="fa fa-user fa-fw"></i> 질문리스트
 								<div class="btn-group pull-right">
 									<button id="openRow2" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 										<i class="fa fa-chevron-down"></i>
@@ -235,7 +266,7 @@ button.accordion.active, button.accordion:hover {
 							<div id="bedge_panel1" class="panel-body">
 
 
-							
+
 
 								<div style="text-align: center;">
 									<p id="sorting">
@@ -253,42 +284,19 @@ button.accordion.active, button.accordion:hover {
 
 							</div>
 						</div>
-
-
 						<!--  -->
-						<div class="panel panel-danger">
-							<div class="panel-heading">
-								<i class="fa fa-user fa-fw"></i> My커버
-								<div class="btn-group pull-right">
-									<button id="openRow22" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-										<i class="fa fa-chevron-down"></i>
-									</button>
-								</div>
 
-							</div>
-							<div id="bedge_panel2" class="panel-body">
-								<div style="text-align: left;">
-									<div id="cvalllist"></div>
-								</div>
 
-								<span id="table1"></span>
 
-								<!--버튼 -->
-
-							</div>
-						</div>
-						<!--  -->
 
 					</div>
 					<!--섹션.끝-->
 					<!-- 섹션 -->
 					<div class="col-lg-7">
 
-						<div class="panel panel-danger">
+						<div class="panel panel-green">
 							<div class="panel-heading">
-								<div class="panel-title">
-									<i class="fa fa-clock-o fa-fw"></i> 자기소개서
-								</div>
+									<i class="fa fa-clock-o fa-fw"></i> 스크립트
 							</div>
 							<div class="panel-body">
 								<div style="overflow: hidden; margin: 10px 0;">
@@ -311,18 +319,25 @@ button.accordion.active, button.accordion:hover {
 						</div>
 						<!--섹션.끝-->
 
-					</div>
+						<!-- 2222 -->
+						<div class="panel panel-green">
+							<div class="panel-heading">
+									<i class="fa fa-clock-o fa-fw"></i> 번역기
+							</div>
+							<iframe width="100%" height="530px" scrolling="no" src="http://translate.naver.com/#/ja/ko" align="middle" border="0">
+							<div class="panel-body">
+							</div>
+							<!--섹션.끝-->
+
+						</div>
 
 
-					<input type="hidden" class="license" name="resumeVO.license_seq" value="15733"> <input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input type="hidden" name="resumeVO.resume_seq" value="713"> <input type="hidden" id="sex" name="memberVo.sex" value="0">
+						<input type="hidden" class="license" name="resumeVO.license_seq" value="15733"> <input type="hidden" id="ncd" name="resumeVO.mbr_dvd"> <input type="hidden" id="ncd2" name="resumeVO.mbr_portfolio"> <input type="hidden" name="resumeVO.resume_seq" value="713"> <input type="hidden" id="sex" name="memberVo.sex" value="0">
 			</form>
 
 
 			<!-- 섹션 -->
-			<div class="col-lg-12">
 
-				<!-- 	<iframe src="/portfolio/plugin/horizontal-timeline/timeLine.html" width="100%" height="800px"></iframe> -->
-			</div>
 
 		</div>
 

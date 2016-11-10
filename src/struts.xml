@@ -155,6 +155,11 @@
          <result name="success" type="json" />
       </action>
       
+      <!-- /pages/training/interview_write.jsp >>>> MyCoverJsonAction (5)개발생활  -->
+      <action name="training_interview">
+      <result>/pages/training/interview_write.jsp</result>
+      </action>
+      
   
 	  
 
