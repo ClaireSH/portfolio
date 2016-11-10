@@ -5,11 +5,7 @@ public class Resume {
 	String memberId;
 	String originalImgFile;	//사용자가 첨부한 파일명
 	String savedImgFile;	//실제 서버에 저장된 파일명
-	String prTitle;			//자기소개서 제목
-	String prContent;		//자기소개서 내용
-	
-	
-	
+
 	public Resume() {
 	}
 	public String getResumeId() {
@@ -36,23 +32,13 @@ public class Resume {
 	public void setSavedImgFile(String savedImgFile) {
 		this.savedImgFile = savedImgFile;
 	}
-	public String getPrTitle() {
-		return prTitle;
-	}
-	public void setPrTitle(String prTitle) {
-		this.prTitle = prTitle;
-	}
-	public String getPrContent() {
-		return prContent;
-	}
-	public void setPrContent(String prContent) {
-		this.prContent = prContent;
-	}
 	@Override
 	public String toString() {
 		return "Resume [resumeId=" + resumeId + ", memberId=" + memberId + ", originalImgFile=" + originalImgFile
-				+ ", savedImgFile=" + savedImgFile + ", prTitle=" + prTitle + ", prContent=" + prContent + "]";
+				+ ", savedImgFile=" + savedImgFile + "]";
 	}
+	
+	
 	
 	
 	

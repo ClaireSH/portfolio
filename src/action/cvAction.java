@@ -15,7 +15,6 @@ import vo.Answer;
 import vo.Career;
 import vo.Certificate;
 import vo.Member;
-import vo.Pr;
 import vo.ProjectCareer;
 import vo.Question;
 import vo.Resume;
@@ -30,7 +29,6 @@ public class cvAction extends ActionSupport implements SessionAware{
 	ArrayList<ProjectCareer> projectCareerList;
 	
 	ArrayList<Resume> resumeList;
-	ArrayList<Pr> prList;
 	
 	String useryear;
 	String usermonth;
@@ -385,12 +383,5 @@ public class cvAction extends ActionSupport implements SessionAware{
 
 	}
 
-	public ArrayList<Pr> getPrList() {
-		return prList;
-	}
-
-	public void setPrList(ArrayList<Pr> prList) {
-		this.prList = prList;
-	}
 
 }

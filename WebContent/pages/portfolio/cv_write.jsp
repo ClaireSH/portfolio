@@ -75,7 +75,7 @@
 
    
     $(document).ready(function() {
-    	var textUrl ='allDisplay';
+    	var textUrl ='initMyCover';
     	
     	 $.ajax({
              url : textUrl,
