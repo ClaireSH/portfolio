@@ -104,7 +104,20 @@ create table answer(
 	answer				varchar2(200)
 );
 
-select * from answer;
+create table MyCover(
+	myCoverId			varchar2(20)	primary key,
+	resumeId			varchar2(20),
+	constraint fk_MyCover_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
+	versionName			varchar2(100)	not null,
+	content				varchar2(3000)
+);
+
+create table Tag(
+	tagName				varchar2(100),
+	myCoverId			varchar2(20),
+	constraint fk_Tag_myCoverId foreign key(myCoverId) references MyCover(myCoverId) on delete cascade
+);
+
 ----------------------------------------------------------------------------------------------------------
 보류 
 ----------------------------------------------------------------------------------------------------------
@@ -161,9 +174,20 @@ delete from member where memberId = 'admin'
 ------------------------------------------------------------------------------------------------------------
 --확인용
 ------------------------------------------------------------------------------------------------------------
-delete from question
-delete from answer
 
+insert into MyCover(myCoverId, resumeId, versionName, content) values('admin0000', 'admin', 'Name01', 'Hello!');
+insert into MyCover(myCoverId, resumeId, versionName, content) values('admin0001', 'admin', 'Name02', 'Hello Java!');
+insert into MyCover(myCoverId, resumeId, versionName, content) values('admin0002', 'admin', 'Name03', 'Hello Unity!');
+insert into MyCover(myCoverId, resumeId, versionName, content) values('admin0003', 'admin', 'Name04', 'Hello C!');
+ 		
+insert into tag values('여가생활', 'admin0000');
+insert into tag values('취미', 'admin0000');
+insert into tag values('활동', 'admin0000');
+insert into tag values('취직', 'admin0000');
+
+ select a.myCoverId, a.resumeId, a.versionName, a.content, b.tagName 
+ 		 from MyCover a, Tag b
+ 		 where a.myCoverId = b.myCoverId and a.resumeId = 'admin'	
 select *
 		from answer
 		where memberId = 'admin'

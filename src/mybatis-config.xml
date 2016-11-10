@@ -13,7 +13,9 @@
 		<typeAlias type="vo.Member" alias="Member"/>
 		<typeAlias type="vo.ProjectCareer" alias="ProjectCareer"/>
 		<typeAlias type="vo.Resume" alias="Resume"/>
-		<typeAlias type="vo.Pr" alias="Pr"/>
+		<typeAlias type="vo.MyCover" alias="MyCover"/>
+		<typeAlias type="vo.MyCoverWithTag" alias="MyCoverWithTag"/>
+		<typeAlias type="vo.Tag" alias="Tag"/>
 		<typeAlias type="vo.Qna" alias="Qna"/>
 		<typeAlias type="vo.Question" alias="Question"/>
 		<typeAlias type="vo.Answer" alias="Answer"/>
@@ -40,9 +42,9 @@
 		<mapper resource="mapper\CareerMapper.xml"/>
 		<mapper resource="mapper\CertificateMapper.xml"/>
 		<mapper resource="mapper\ProjectMapper.xml"/>
-		<mapper resource="mapper\ProjectMapper.xml"/>
-	<!-- <mapper resource="mapper\PrMapper.xml"/>
-		<mapper resource="mapper\QNAMapper.xml"/> -->
+	    <mapper resource="mapper\MyCoverMapper.xml"/>
+	    <mapper resource="mapper\MyCoverWithTagMapper.xml"/>
+		<mapper resource="mapper\TagMapper.xml"/>
 		<mapper resource="mapper\QuestionMapper.xml"/>
 		<mapper resource="mapper\AnswerMapper.xml"/>
 	</mappers>

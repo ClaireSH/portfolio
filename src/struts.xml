@@ -120,6 +120,11 @@
          <result name="success">/pages/portfolio/cv_write.jsp</result>
       </action>
    
+   	  <!-- cvWrite.jsp >>>> MyCoverJsonAction (0)InitMyCover  -->
+      <action name="initMyCover" class="action.MyCoverJsonAction" method="initMyCover">
+         <result name="success" type="json" />
+      </action>
+   	  
 	  <!-- cvWrite.jsp >>>> MyCoverJsonAction (1)All  -->
       <action name="allDisplay" class="action.MyCoverJsonAction" method="allDisplay">
          <result name="success" type="json" />

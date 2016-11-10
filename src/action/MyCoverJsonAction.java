@@ -7,17 +7,55 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import dao.MyCoverWithTagDAO;
 import dao.QuestionDAO;
 import vo.Answer;
+import vo.MyCoverWithTag;
 import vo.Qna;
 import vo.Question;
 
 public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 	ArrayList<Qna> qnaList;
+	ArrayList<MyCoverWithTag> coverList;
 	
 	Map<String, Object> session;
 
-	QuestionDAO dao = new QuestionDAO();
+	QuestionDAO questionDao = new QuestionDAO();
+	MyCoverWithTagDAO coverDao = new MyCoverWithTagDAO();
+	
+	public String initMyCover(){
+		System.out.println("allDisplay");
+		
+		//Question 파트
+		qnaList = new ArrayList<>();
+		ArrayList<Question> qList = null;
+		ArrayList<Answer> aList = null;
+		
+		String loginId = (String) session.get("loginId");
+		qList = questionDao.selectFinishedQuestionListById(loginId);
+		aList = questionDao.selectAnswerList(loginId);
+		
+		for(int i=0;i<qList.size();i++){
+			Qna qna = new Qna();
+			//질문
+			qna.setQuestionId(qList.get(i).getQuestionId());
+			qna.setQuestionType(qList.get(i).getQuestionType());
+			qna.setQuestion(qList.get(i).getQuestion());
+			//답변
+			qna.setAnswer(aList.get(i).getAnswer());
+			//삽입
+			qnaList.add(qna);
+		}
+		
+		//Cover 파트//
+		coverList = coverDao.selectMyCoverWithTagListByResumeId(loginId);
+		
+		for(MyCoverWithTag c : coverList){
+			System.out.println(c.toString());
+		}
+		
+		return SUCCESS;
+	}
 	
 	public String allDisplay(){
 		System.out.println("allDisplay");
@@ -27,8 +65,8 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		ArrayList<Answer> aList = null;
 		
 		String loginId = (String) session.get("loginId");
-		qList = dao.selectFinishedQuestionListById(loginId);
-		aList = dao.selectAnswerList(loginId);
+		qList = questionDao.selectFinishedQuestionListById(loginId);
+		aList = questionDao.selectAnswerList(loginId);
 		
 		for(int i=0;i<qList.size();i++){
 			Qna qna = new Qna();
@@ -57,8 +95,8 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		ArrayList<Answer> aList = null;
 		
 		String loginId = (String) session.get("loginId");
-		qList = dao.selectFinishedQuestionListById(loginId);
-		aList = dao.selectAnswerList(loginId);
+		qList = questionDao.selectFinishedQuestionListById(loginId);
+		aList = questionDao.selectAnswerList(loginId);
 		
 		
 		for(int i=0;i<qList.size();i++){
@@ -91,8 +129,8 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		ArrayList<Answer> aList = null;
 		
 		String loginId = (String) session.get("loginId");
-		qList = dao.selectFinishedQuestionListById(loginId);
-		aList = dao.selectAnswerList(loginId);
+		qList = questionDao.selectFinishedQuestionListById(loginId);
+		aList = questionDao.selectAnswerList(loginId);
 		
 		
 		for(int i=0;i<qList.size();i++){
@@ -124,8 +162,8 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		ArrayList<Answer> aList = null;
 		
 		String loginId = (String) session.get("loginId");
-		qList = dao.selectFinishedQuestionListById(loginId);
-		aList = dao.selectAnswerList(loginId);
+		qList = questionDao.selectFinishedQuestionListById(loginId);
+		aList = questionDao.selectAnswerList(loginId);
 		
 		
 		for(int i=0;i<qList.size();i++){
@@ -157,8 +195,8 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		ArrayList<Answer> aList = null;
 		
 		String loginId = (String) session.get("loginId");
-		qList = dao.selectFinishedQuestionListById(loginId);
-		aList = dao.selectAnswerList(loginId);
+		qList = questionDao.selectFinishedQuestionListById(loginId);
+		aList = questionDao.selectAnswerList(loginId);
 		
 		
 		for(int i=0;i<qList.size();i++){
@@ -182,9 +220,6 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 	
-	
-	
-
 	public ArrayList<Qna> getQnaList() {
 		return qnaList;
 	}
@@ -193,6 +228,15 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		this.qnaList = qnaList;
 	}
 
+	
+	
+	public ArrayList<MyCoverWithTag> getCoverList() {
+		return coverList;
+	}
+
+	public void setCoverList(ArrayList<MyCoverWithTag> coverList) {
+		this.coverList = coverList;
+	}
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
