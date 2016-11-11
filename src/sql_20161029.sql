@@ -82,13 +82,7 @@ create table projectCareer(
 );
 
 
-
-
 --//질문
-drop table question cascade constraints
-drop table answer cascade constraints
-drop table pr cascade constraints
-
 create table question(
 	questionId			varchar2(20)	primary key,
 	questionType		varchar2(20)	not null,
@@ -104,14 +98,17 @@ create table answer(
 	answer				varchar2(200)
 );
 
+
+--//커버
 create table MyCover(
 	myCoverId			varchar2(20)	primary key,
 	resumeId			varchar2(20),
 	constraint fk_MyCover_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
-	versionName			varchar2(100)	not null,
+	versionName			varchar2(100),
 	content				varchar2(3000)
 );
 
+--//태그
 create table Tag(
 	tagName				varchar2(100),
 	myCoverId			varchar2(20),
@@ -119,83 +116,47 @@ create table Tag(
 );
 
 ----------------------------------------------------------------------------------------------------------
-보류 
-----------------------------------------------------------------------------------------------------------
-//자기소개
-create table pr(
-	prId 			varchar2(20)	primary key,
-	resumeId		varchar2(20),
-	constraint fk_pr_resumeId foreign key(resumeId) references resume(resumeId) on delete cascade,
-	content		varchar2(2000)
-);
-----------------------------------------------------------------------------------------------------------
 -- 더미데이터 -- 
 ----------------------------------------------------------------------------------------------------------
 
-insert into question values('00000', '여가생활', '여가 생활은 잘 보내고 있니?');
 insert into question values('00001', '여가생활', '여가 시간에는 주로 무엇을 하며 시간을 보내?');
 insert into question values('00002', '여가생활', '"주어진 대답"의 좋은 점이 뭐라고 생각해?');
-insert into question values('00003', '여가생활', '"주어진 대답" 으로 인해 네가 바뀐 부분은 뭐야?');
-insert into question values('00004', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('00005', '대학생활', '동아리나 클럽에?');
-insert into question values('00006', '대학생활', '가입하고 있거나');
-insert into question values('00007', '대학생활', '계획이 있니?');
-insert into question values('00008', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('00009', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('00010', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('00011', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
-insert into question values('00012', '대학생활', '동아리나 클럽에 가입하고 있거나 계획이 있니?');
+insert into question values('00003', '여가생활', '주어진 대답 으로 인해 네가 바뀐 부분은 뭐야?');
+insert into question values('00004', '대학생활', '대학에서 동아리나 클럽에 가입한 적이 있어?');
+insert into question values('00005', '대학생활', '어떤 활동을 했어?');
+insert into question values('00006', '대학생활', '기억에 남는 활동은?');
+insert into question values('00007', '대학생활', '당신의 리더로서의 모습은?');
+insert into question values('00008', '대학생활', '당신의 팔로워로서의 모습은?');
+insert into question values('00009', '대학생활', '다시 동아리에 들어간다면?');
 
-delete from QUESTION
-
-insert into answer values('00000', 'admin', '응!');
-
-
-insert into question values('1', '여가생활', '여가 시간에는 주로 무엇을 하며 시간을 보내?');
-insert into question values('2', '여가생활', '"주어진 대답"의 좋은 점이 뭐라고 생각해?');
-insert into question values('3', '여가생활', '"주어진 대답" 으로 인해 네가 바뀐 부분은 뭐야?');
-insert into question values('4', '대학생활', '대학에서 동아리나 클럽에 가입한 적이 있어?');
-insert into question values('5', '대학생활', '어떤 활동을 했어?');
-insert into question values('6', '대학생활', '기억에 남는 활동은?');
-insert into question values('7', '대학생활', '당신의 리더로서의 모습은?');
-insert into question values('8', '대학생활', '당신의 팔로워로서의 모습은?');
-insert into question values('9', '대학생활', '다시 동아리에 들어간다면?');
-
-insert into member values('admin','admin','관리자','0',sysdate,'admin@admin.com','01012345678');
-
-insert into answer values('1', 'admin', '데스티니 차일드');
-insert into answer values('2', 'admin', '일러스트를 볼 수 있다');
-insert into answer values('3', 'admin', '몰라');
-insert into answer values('4', 'admin', '아직');
-insert into answer values('5', 'admin', '아직이다');
-
-delete from member where memberId = 'admin'
-
+insert into MyCover(myCoverId, resumeId, versionName, content) values('admin000000', 'admin', 'Name01', 'Hello!');
+insert into MyCover(myCoverId, resumeId, versionName, content) values('admin000001', 'admin', 'Name02', 'Hello Java!');
+insert into MyCover(myCoverId, resumeId, versionName, content) values('admin000002', 'admin', 'Name03', 'Hello Unity!');
+insert into MyCover(myCoverId, resumeId, versionName, content) values('admin000003', 'admin', 'Name04', 'Hello C!');
+ 
+insert into tag values('여가생활', 'admin000000');
+insert into tag values('취미', 'admin000001');
+insert into tag values('활동', 'admin000002');
+insert into tag values('취직', 'admin000003');
 ------------------------------------------------------------------------------------------------------------
 --확인용
 ------------------------------------------------------------------------------------------------------------
 
-insert into MyCover(myCoverId, resumeId, versionName, content) values('admin0000', 'admin', 'Name01', 'Hello!');
-insert into MyCover(myCoverId, resumeId, versionName, content) values('admin0001', 'admin', 'Name02', 'Hello Java!');
-insert into MyCover(myCoverId, resumeId, versionName, content) values('admin0002', 'admin', 'Name03', 'Hello Unity!');
-insert into MyCover(myCoverId, resumeId, versionName, content) values('admin0003', 'admin', 'Name04', 'Hello C!');
- 		
-insert into tag values('여가생활', 'admin0000');
-insert into tag values('취미', 'admin0000');
-insert into tag values('활동', 'admin0000');
-insert into tag values('취직', 'admin0000');
+select * from MYCOVER
 
- select a.myCoverId, a.resumeId, a.versionName, a.content, b.tagName 
+ select b.myCoverId, b.tagName 
  		 from MyCover a, Tag b
  		 where a.myCoverId = b.myCoverId and a.resumeId = 'admin'	
 select *
-		from answer
-		where memberId = 'admin'
-		order by questionId asc;
+from answer
+where memberId = 'admin'
+order by questionId asc;
 
 select *
 from question
 order by questionId asc;
+
+select * from member
 
 select * from answer
 delete from answer where memberId = 'tooona'
@@ -218,11 +179,14 @@ select * from member
 drop table member CASCADE CONSTRAINTS;
 drop table favoriteMember CASCADE CONSTRAINTS;
 drop table resume CASCADE CONSTRAINTS;
-drop table pr CASCADE CONSTRAINTS;
 drop table academicBg CASCADE CONSTRAINTS;
 drop table career CASCADE CONSTRAINTS;
 drop table certificate CASCADE CONSTRAINTS;
 drop table projectCareer CASCADE CONSTRAINTS;
+drop table Question CASCADE CONSTRAINTS;
+drop table Answer CASCADE CONSTRAINTS;
+drop table MyCover CASCADE CONSTRAINTS;
+drop table tag CASCADE CONSTRAINTS;
 
 --//데이터 삭제 (안되면 밑에서 부터 차례대로 삭제!!)
 delete from  member;
@@ -234,6 +198,8 @@ delete from  certificate;
 delete from  projectCareer;
 delete from  question;
 delete from  answer;
+delete from  tag;
+delete from  MYCOVER;
 
 select * from career
 select * from member

@@ -124,6 +124,11 @@
       <action name="initMyCover" class="action.MyCoverJsonAction" method="initMyCover">
          <result name="success" type="json" />
       </action>
+      
+      <!-- cvWrite.jsp >>>> MyCoverJsonAction (0)InitMyCover  -->
+      <action name="updateMyCover" class="action.MyCoverJsonAction" method="updateMyCover">
+         <result name="success" type="json" />
+      </action>
    	  
 	  <!-- cvWrite.jsp >>>> MyCoverJsonAction (1)All  -->
       <action name="allDisplay" class="action.MyCoverJsonAction" method="allDisplay">

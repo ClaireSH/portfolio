@@ -6,17 +6,16 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import dao.MemberDAO;
+import dao.MyCoverWithTagDAO;
 import dao.ResumeDAO;
 import vo.AcademicBg;
 import vo.Career;
 import vo.Certificate;
-import vo.FavoriteMember;
 import vo.Member;
+import vo.MyCoverWithTag;
 import vo.ProjectCareer;
-import vo.Resume;
 
 public class MemberAction extends ActionSupport implements SessionAware{
 	Member memberVo;
@@ -35,9 +34,10 @@ public class MemberAction extends ActionSupport implements SessionAware{
 	
 	MemberDAO memberDAO = new MemberDAO();
 	ResumeDAO resumeDAO = new ResumeDAO();
+	MyCoverWithTagDAO coverDAO = new MyCoverWithTagDAO();
 	
 	public String login(){
-		System.out.println("로그인을하자미친놈아");
+
 		Member m = memberDAO.selectMember(memberVo.getMemberId());
 		if(m == null){
 			return INPUT;
@@ -50,8 +50,7 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			
 			//로그인 하면 메인으로 가는데 거기서 필요한 데이터
 			//나의인생 , 알람소식 
-			
-			
+
 			return LOGIN;
 		}
 	}
@@ -91,7 +90,10 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			ArrayList<Certificate> cfList = new ArrayList<>();
 			ArrayList<ProjectCareer> pcList = new ArrayList<>();
 			
+			ArrayList<MyCoverWithTag> coverList = new ArrayList<>(); 
+			
 			for(int i=0;i<5;i++){
+				//기본이력서 정보 초기값
 				AcademicBg academicBg = new AcademicBg();
 				Career career = new Career();
 				Certificate certificate = new Certificate();
@@ -117,6 +119,16 @@ public class MemberAction extends ActionSupport implements SessionAware{
 			resumeDAO.insertCareerList(cList);
 			resumeDAO.insertCertificateList(cfList);
 			resumeDAO.insertProjectCareerList(pcList);
+			
+			for(int i=0;i<5;i++){
+				//자기소개서 정보 초기값
+				MyCoverWithTag cover = new MyCoverWithTag();
+				cover.setMyCoverId(memberVo.getMemberId()+String.format("%06d", i));	
+				cover.setResumeId(memberVo.getMemberId());
+				cover.setVersionName("");
+				cover.setContent("");
+				coverDAO.insertMyCover(cover);
+			}
 			
 			return SUCCESS;
 		}else{

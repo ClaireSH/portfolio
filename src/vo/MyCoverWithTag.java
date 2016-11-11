@@ -7,7 +7,7 @@ public class MyCoverWithTag {
 	private String resumeId;
 	private String versionName;
 	private String content;
-	private ArrayList<String> tagName;
+	private ArrayList<Tag> tagList;
 	
 	public String getMyCoverId() {
 		return myCoverId;
@@ -33,17 +33,19 @@ public class MyCoverWithTag {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public ArrayList<String> getTagName() {
-		return tagName;
+	public ArrayList<Tag> getTagList() {
+		return tagList;
 	}
-	public void setTagName(ArrayList<String> tagName) {
-		this.tagName = tagName;
+	public void setTagList(ArrayList<Tag> tagList) {
+		this.tagList = tagList;
 	}
 	@Override
 	public String toString() {
 		return "MyCoverWithTag [myCoverId=" + myCoverId + ", resumeId=" + resumeId + ", versionName=" + versionName
-				+ ", content=" + content + ", tagName=" + tagName + "]";
+				+ ", content=" + content + ", tagList=" + tagList + "]";
 	}
+	
+	
 	
 	
 	

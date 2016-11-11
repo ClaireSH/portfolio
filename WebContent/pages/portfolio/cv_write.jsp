@@ -17,8 +17,7 @@
 <link rel="stylesheet" href="/portfolio/plugin/tagInput/app.css">
 
 <script>
-/* 카테고리 선택 ajax */
-/*************************************************************************************************************** 
+	/* 카테고리 선택 ajax */
 	$.ajax({
 		url : 'allDisplay',
 		type : "GET",
@@ -40,30 +39,62 @@
 			alert(error.responseText);
 		}
 	});
- ***************************************************************************************************************/	
-/* 모두 로딩 후 불러옴 */
+
+	/* 시트제출 */
+	function submitsheet() {
+		var cvtitle = $('#cvtitle').val();
+		var content = $('#content2').val();
+		var cvtag = $("#cate").val();
+
+		$.ajax({
+			url : "https://script.google.com/macros/s/AKfycby3sb3tPQqIvznKjnZ3UHXUQdqcWM-PD5WXBJujcVceH6m9piJn/exec",
+			data : {
+				"제목" : cvtitle,
+				"내용" : content,
+				"태그" : cvtag
+			},
+			type : "POST"
+		});
+
+		$('#cvtitle').val('');
+		$('#content2').val("");//에디터 내용은 안지워지는 문제
+		$("#cate").val('');
+		alert('저장완료');
+
+	}
+
+	/* 모두 로딩 후 불러옴 */
 	$(document).ready(function() {
 
 		// use your spreadsheet id here
 		var SPREADSHEET_ID = '1KVnrF3AkZ1Zw6mldTRHLg9WjyqP9vZyr_q9laV-2Lek';
 		$.googleSheetToJSON(SPREADSHEET_ID).done(function(rows) {
 			// each row is a row of data from the spreadsheet
-			console.log(rows[0].timestamp);
+			//console.log(rows[0].timestamp);
 
-			for (var i = 0; i < 5; i++) {
+			for (var i = rows.length-1; i >= 0; i--) {
 
 				var date = rows[i].timestamp;
 				var tag = rows[i].태그;
 				var title = rows[i].제목;
 				var contents = rows[i].내용;
+				var num = rows[i].전체;
 
-				$('#cvalllist').append('<span style="color:gray;font-weight:bold;"> [' + date.substring(0,13) + '] </span> <div style="font-size:24px;font-weight:bold;"><i class="fa fa-file-text" ></i>&nbsp;&nbsp;&nbsp;' + title + '</div><hr>')
-
-			}
-
+				$('#cvalllist').append('<div id="mycvlist'+i+'"><span id="'+num+'" style="color:gray;font-weight:bold;"><input id="title" type="hidden" value="'+title+'"><input id="content" type="hidden" value="'+contents+'"> [' + date.substring(0, 13) + '] </span> <div style="font-size:24px;font-weight:bold;"><i class="fa fa-file-text" ></i>&nbsp;&nbsp;&nbsp;' + title + '</div><hr></div>')
+			
+				$('#mycvlist'+i).click(function() {
+				var tit = $(this).find('input#title').val();
+				var msg = $(this).find('input#content').val(); 
+				console.log(tit+'/'+msg);
+				$('#cvtitle').val(tit);
+				$('#	').val(msg);
+			});//click
+				
+			}//for
+			t
 		}).fail(function(err) {
 			console.log('error!', err);
-		});
+		});//google sheet 
 
 		var textUrl = 'allDisplay';
 
@@ -72,14 +103,12 @@
 			type : "GET",
 			dataType : "json",
 			success : function(data) {
-				var table = "<table data-role='table' id='table1' data-mode=''>" + "<tr>" + "   <th>#</th>" + "   <th>질문</th>" + "</tr>";
-				//var table = '';
+				var table = '';
 				$(data.qnaList).each(function(index, item) {
 					//table += "<button class='accordion'>"+this.question+"</button>"
 					//답변
 					table += "<button class='accordion' type='button'>" + "<i class='fa fa-question-circle'></i> [" + this.questionType + "] " + this.question + "</button>" + "<div class='panel'>" + "<br>" + "<p>" + "<i class='fa fa-check-circle fa-fw'></i> " + this.answer + "</p>" + "</div>"
 				});
-				table += "</table>";
 				$('#table1').html(table);
 
 				var acc = document.getElementsByClassName("accordion");
@@ -115,55 +144,9 @@
 				textUrl = 'displayDevelop';
 				break;
 			}
-			$.ajax({
-				url : textUrl,
-				type : "GET",
-				dataType : "json",
-				success : function(data) {
-					var table = '';
-					$(data.qnaList).each(function(index, item) {
-						//table += "<button class='accordion'>"+this.question+"</button>"
-						//답변
-						table += "<button class='accordion' type='button'>" + "<i class='fa fa-question-circle'></i> [" + this.questionType + "] " + this.question + "</button>" + "<div class='panel'>" + "<br>" + "<p>" + "<i class='fa fa-check-circle fa-fw'></i> " + this.answer + "</p>" + "</div>"
-					});
-					$('#table1').html(table);
 
-					var acc = document.getElementsByClassName("accordion");
-					var i;
-
-					for (i = 0; i < acc.length; i++) {
-						acc[i].onclick = function() {
-							this.classList.toggle("active");
-							this.nextElementSibling.classList.toggle("show");
-						}
-					}
-				}
-			});
-
-		});
-	});
-
-	function submitsheet() {
-		var cvtitle = $('#cvtitle').val();
-		var content = $('#content2').val();
-		var cvtag = $("#cate").val();
-
-		$.ajax({
-			url : "https://script.google.com/macros/s/AKfycby3sb3tPQqIvznKjnZ3UHXUQdqcWM-PD5WXBJujcVceH6m9piJn/exec",
-			data : {
-				"제목" : cvtitle,
-				"내용" : content,
-				"태그" : cvtag
-			},
-			type : "POST"
-		});
-
-		$('#cvtitle').val('');
-		$('#content2').val("");//에디터 내용은 안지워지는 문제
-		$("#cate").val('');
-		alert('저장완료');
-
-	}
+		});//click
+	});//ready
 </script>
 <style type="text/css">
 button.accordion {
@@ -241,7 +224,7 @@ button.accordion.active, button.accordion:hover {
 							<div id="bedge_panel1" class="panel-body">
 
 
-							
+
 
 								<div style="text-align: center;">
 									<p id="sorting">
@@ -298,15 +281,13 @@ button.accordion.active, button.accordion:hover {
 							</div>
 							<div class="panel-body">
 								<div style="overflow: hidden; margin: 10px 0;">
-									<input type="text" class="form-control" id="cvtitle" placeholder="버전명을 선택하거나 수정하세요" style="width: 90%; float: left;">
-									<div id="counter" style="width: 60px; height: 30px; margin: auto; overflow: hidden;">###</div>
+									<input type="text" class="form-control" id="cvtitle" placeholder="버전명을 선택하거나 작성하세요" style="width: 90%; float: left;">
+									<div id="counter" style="width: 60px; height: 30px; margin: 10px; overflow: hidden;">###</div>
 								</div>
 								<!-- 글내용 -->
-								<p>
 								<div class="wrap" style="margin: 10px 0;">
-									<textarea id="content2" name="textarea" class="jqte-test form-control"></textarea>
+									<textarea id="content2" rows="100" name="textarea" style="height:100%;" class="form-control"></textarea>
 								</div>
-								</p>
 								<input id="cate" type="text" value="취미생활,여가생활" data-role="tagsinput">
 								<div style="text-align: center; margin: 10px 0;">
 									<button type="button" class="btn  btn-warning" onclick="javascript:submitsheet();">시트저장</button>

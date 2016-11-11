@@ -13,6 +13,7 @@ import vo.Answer;
 import vo.MyCoverWithTag;
 import vo.Qna;
 import vo.Question;
+import vo.Tag;
 
 public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 	ArrayList<Qna> qnaList;
@@ -24,7 +25,6 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 	MyCoverWithTagDAO coverDao = new MyCoverWithTagDAO();
 	
 	public String initMyCover(){
-		System.out.println("allDisplay");
 		
 		//Question 파트
 		qnaList = new ArrayList<>();
@@ -48,10 +48,58 @@ public class MyCoverJsonAction extends ActionSupport implements SessionAware{
 		}
 		
 		//Cover 파트//
-		coverList = coverDao.selectMyCoverWithTagListByResumeId(loginId);
+		coverList = coverDao.selectMyCoverListByResumeId(loginId);
+		ArrayList<Tag> tagList = null; 
+		for(MyCoverWithTag cover : coverList){
+			tagList = coverDao.selectTagList(cover.getMyCoverId());
+			cover.setTagList(tagList);	
+		}
 		
-		for(MyCoverWithTag c : coverList){
-			System.out.println(c.toString());
+		for(MyCoverWithTag cover : coverList){
+			
+			System.out.println(cover.toString());
+			for(Tag tag : tagList){
+				System.out.println(tag.toString());
+			}
+		}
+		
+		return SUCCESS;
+	}
+	
+	public String updateMyCover(){
+		
+		String loginId = (String) session.get("loginId");
+		coverList = coverDao.selectMyCoverListByResumeId(loginId);
+		ArrayList<Tag> tagList = null; 
+		for(MyCoverWithTag cover : coverList){
+			//"DB에 저장된 tagList"값을 "cover 객체 안에 존재하는 ArrayList<Tag> tagList"에 저장
+			tagList = coverDao.selectTagList(cover.getMyCoverId());
+			cover.setTagList(tagList);	
+		}
+
+		for(MyCoverWithTag cover:coverList){
+			//Cover데이터 갱신
+			coverDao.updateMyCover(cover);
+			coverDao.deleteTagByMyCoverId(cover.getMyCoverId());
+			for(Tag tag : cover.getTagList()){
+				coverDao.insertTag(tag);
+			}
+		}
+		
+		//갱신된 데이터를 다시 coverList에 저장
+		coverList = coverDao.selectMyCoverListByResumeId(loginId);
+		tagList = null; 
+		for(MyCoverWithTag cover : coverList){
+			tagList = coverDao.selectTagList(cover.getMyCoverId());
+			cover.setTagList(tagList);	
+		}
+		
+		for(MyCoverWithTag cover : coverList){
+			
+			System.out.println(cover.toString());
+			for(Tag tag : tagList){
+				System.out.println(tag.toString());
+			}
 		}
 		
 		return SUCCESS;

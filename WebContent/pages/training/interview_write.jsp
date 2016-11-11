@@ -62,6 +62,8 @@ button.accordion.active, button.accordion:hover {
 			var list5 = Array(); 
 			var list6 = Array(); 
 			var list7 = Array(); 
+			var list8 = Array(); 
+			var list9 = Array(); 
 			
 			for (var i = 0; i < rows.length; i++) {
 
@@ -100,17 +102,20 @@ button.accordion.active, button.accordion:hover {
 					break;
 				}	
 				
-				console.log(list1);
-				console.log(list2);
-				console.log(list3);
-				console.log(list4);
-				console.log(list5);
-				console.log(list6);
-				console.log(list7);
-				
+			
 				table += "<tr><td style=color:gray;>[ " + type + " ]</td>" + "<td>" + question + "</td></tr>";
 
 			}
+			console.log(list1);
+			console.log(list2);
+			console.log(list3);
+			console.log(list4);
+			console.log(list5);
+			console.log(list6);
+			console.log(list7);
+			console.log(list8);
+			console.log(list9);
+			
 			table += "</table>";
 
 			$('#table1').html(table);
