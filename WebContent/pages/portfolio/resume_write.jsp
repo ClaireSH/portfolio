@@ -52,8 +52,22 @@
       $('#tab02').addClass('active');
 		
       var savedImgFile = document.getElementById("savedImgFile").value;
-      if(savedImgFile == ''){
-    	  $('#previewImg').attr('src', 'img/non-picture.png');
+      var gender = document.getElementById("gender").value;
+      
+      alert(gender);
+ 
+      //성별에 따라 사진이 바뀜
+      if(savedImgFile == '' && gender == '0'){
+    	  $('#previewImg').attr('src', 'img/man.jpg');
+      }else if(savedImgFile == '' && gender == '1'){
+    	  $('#previewImg').attr('src', 'img/woman.png');
+      }
+      
+ 	  //성별
+      if(gender == '0'){
+    	  $("#gender1:radio[value='0']").attr("checked", true) ;
+      }else{
+    	  $("#gender2:radio[value='1']").attr("checked", true) ;
       }
       
       var toggle = false;
@@ -129,11 +143,12 @@
 							<tr>
 								<td>성별</td>
 								<td><label class="radio-inline"> <input
-										type="radio" name="memberVO.gender" id="gender1" value="${memberVo.gender}"
+										type="radio" name="memberVO.gender" id="gender1" value="0"
 										disabled checked>남
 								</label> <label class="radio-inline"> <input type="radio"
 										name="memberVO.gender" id="gender2" value="1" disabled>
 										여
+										<input type="hidden" id="gender" value="${memberVo.gender}"/>
 								</label></td>
 							
 							</tr>
