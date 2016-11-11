@@ -301,11 +301,11 @@
 												//답변된 수 만큼 질문과 답변을 돌림
 												if(aList_len == null){
 													//질문만 보여준다.
-													$('.chat_home').append(
+													$('.chat').append(
 															'<li class="left clearfix"><span class="chat-img pull-left">'+
 															'<img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />'+
 															'</span>'+
-															'<div class="chat-body clearfix">'+
+															'<div class="clearfix">'+
 															'<div class="header">'+
 															'<strong class="primary-font">'+ data.qList[0].questionType + '</strong>'+
 															'<small class="pull-right text-muted"><i class="fa fa-clock-o fa-fw"></i>'+ 
@@ -318,11 +318,11 @@
 												}else{
 													for(var i=0;i<aList_len;i++){
 														//질문
-														$('.chat_home').append(
+														$('.chat').append(
 																'<li class="left clearfix"><span class="chat-img pull-left">'+
 																'<img src="/portfolio/include/img/icon_circle_design.png" alt="User Avatar" class="img-circle" />'+
 																'</span>'+
-																'<div class="chat-body clearfix">'+
+																'<div class="clearfix">'+
 																'<div class="header">'+
 																'<strong class="primary-font">'+ data.qList[i].questionType + '</strong>'+
 																'<small class="pull-right text-muted"><i class="fa fa-clock-o fa-fw"></i>'+ 
@@ -333,7 +333,7 @@
 																'</div></li>').children("li:last").fadeIn(500);
 														
 														//답변
-														$('.chat_home').append(
+														$('.chat').append(
 																'<li class="right clearfix">'+
 																'<span class="chat-img pull-right"> </span>'+
 																'<div class="clearfix">'+
@@ -357,7 +357,7 @@
 						
 						
 						<div class="panel-body">
-							<ul class="chat_home" style='list-style-type: none; padding-left:20px; '>
+							<ul class="chat" style='list-style-type: none; padding-left:20px; '>
 								<!-- /.panel-body -->
 							</ul>
 						</div>
